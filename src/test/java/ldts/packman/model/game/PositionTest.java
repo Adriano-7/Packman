@@ -45,4 +45,11 @@ public class PositionTest {
         assertEquals(5, left.getX());
         assertEquals(0, left.getY());
     }
+    @Test
+    public void equals() {
+        assertFalse(position.equals(null));
+        assertFalse(position.equals(new String("ABC")));
+        assertTrue(position.equals(position));
+        assertTrue(position.equals( new Position(position.getX(), position.getY()) ));
+    }
 }
