@@ -5,8 +5,11 @@ import ldts.packman.model.game.elements.Pacman;
 
 public class PacmanController {
     private Pacman pacman;
+    enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
+    private Direction direction;
     public PacmanController(Pacman pacman) {
         this.pacman = pacman;
+        this.direction = Direction.NONE;
     }
     public void movePacman(Position position) {
         pacman.setPosition(position);   // no checking done
@@ -22,6 +25,18 @@ public class PacmanController {
     }
     public void movePacmanRight() {
         movePacman(pacman.getPosition().getRight());
+    }
+    public void movePacmanInDirection() {
+        switch (direction) {
+            case UP: movePacmanUp(); break;
+            case DOWN: movePacmanDown(); break;
+            case LEFT: movePacmanLeft(); break;
+            case RIGHT: movePacmanRight(); break;
+            case NONE: default: break;
+        }
+    }
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
     public Pacman getPacman() {
         return this.pacman;
