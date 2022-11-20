@@ -57,13 +57,18 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawWall(Wall wall, Position position){
-        drawCharacter(position.getX(), position.getY(),'|', "#FFFFFF");
+    public void drawPacman(Position position){
+        drawCharacter(position,'@', "#FFFFFF");
     }
     @Override
-    public void drawPacman(Pacman pacman, Position position){
-        drawCharacter(position.getX(), position.getY(),'@', "#FFFFFF");
+    public void drawWall(Position position){
+        drawCharacter(position,'|', "#FFFFFF");
     }
+    @Override
+    public void drawCoin(Position position){
+        drawCharacter(position,'o', "#d4af37");
+    }
+
     @Override
     public void drawText(Position position, String text, String color){
         TextGraphics graphics = screen.newTextGraphics();
@@ -72,10 +77,10 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawCharacter(int x, int y, char ch, String color){
+    public void drawCharacter(Position position, char ch, String color){
         TextGraphics textGraphics = screen.newTextGraphics();
         textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(x, y, "" + ch);
+        textGraphics.putString(position.getX(), position.getY(), "" + ch);
     }
 
     @Override
@@ -84,7 +89,7 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void refresh() throws IOException {
+    public void refresh() throws IOException{
         screen.refresh();
     }
 

@@ -5,6 +5,6 @@ import ldts.packman.model.game.elements.Pacman;
 
 public class PacmanViewer {
     public void draw(Pacman pacman, GUI gui) {
-        gui.drawPacman(pacman, pacman.getPosition());
+        gui.drawPacman(pacman.getPosition());
     }
 }
