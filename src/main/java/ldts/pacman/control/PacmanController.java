@@ -1,44 +1,50 @@
 package ldts.pacman.control;
 
+import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
+import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 
 public class PacmanController {
-    private Pacman pacman;
+    private Arena arena;
     enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
     private Direction direction;
-    public PacmanController(Pacman pacman) {
-        this.pacman = pacman;
+    public PacmanController(Arena arena) {
+        this.arena = arena;
         this.direction = Direction.NONE;
     }
     public void movePacman(Position position) {
-        pacman.setPosition(position);   // no checking done
+        arena.getPacman().setPosition(position);   // no checking done
     }
     public void movePacmanUp() {
-        movePacman(pacman.getPosition().getUp());
+        movePacman(arena.getPacman().getPosition().getUp());
     }
     public void movePacmanDown() {
-        movePacman(pacman.getPosition().getDown());
+        movePacman(arena.getPacman().getPosition().getDown());
     }
     public void movePacmanLeft() {
-        movePacman(pacman.getPosition().getLeft());
+        movePacman(arena.getPacman().getPosition().getLeft());
     }
     public void movePacmanRight() {
-        movePacman(pacman.getPosition().getRight());
+        movePacman(arena.getPacman().getPosition().getRight());
     }
     public void movePacmanInDirection() {
         switch (direction) {
-            case UP: movePacmanUp(); break;
-            case DOWN: movePacmanDown(); break;
-            case LEFT: movePacmanLeft(); break;
-            case RIGHT: movePacmanRight(); break;
-            case NONE: default: break;
+            case UP -> movePacmanUp();
+            case DOWN -> movePacmanDown();
+            case LEFT -> movePacmanLeft();
+            case RIGHT -> movePacmanRight();
         }
     }
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public void changeDirection(GUI.OPTION option) {
+        switch (option) {
+            case UP -> this.direction = Direction.UP;
+            case DOWN -> this.direction = Direction.DOWN;
+            case LEFT -> this.direction = Direction.LEFT;
+            case RIGHT -> this.direction = Direction.RIGHT;
+        }
     }
     public Pacman getPacman() {
-        return this.pacman;
+        return this.arena.getPacman();
     }
 }

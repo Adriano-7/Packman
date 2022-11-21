@@ -1,6 +1,8 @@
 package ldts.pacman.control;
 
+import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
+import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,9 @@ public class PacmanControllerTest {
     PacmanController pacmanController;
     @BeforeEach
     public void setUp() {
-        this.pacmanController = new PacmanController( new Pacman(-3, 4));
+        Arena arena = new Arena(40, 40);
+
+        this.pacmanController = new PacmanController(arena);
     }
     @Test
     public void movePacman() {
@@ -61,25 +65,25 @@ public class PacmanControllerTest {
     public void movePacmanInDirection() {
         Position position = pacmanController.getPacman().getPosition();
 
-        pacmanController.setDirection(PacmanController.Direction.UP);
+        pacmanController.changeDirection(GUI.OPTION.UP);
         pacmanController.movePacmanInDirection();
         assertEquals(position.getUp(), pacmanController.getPacman().getPosition());
 
         position = position.getUp();
 
-        pacmanController.setDirection(PacmanController.Direction.DOWN);
+        pacmanController.changeDirection(GUI.OPTION.DOWN);
         pacmanController.movePacmanInDirection();
         assertEquals(position.getDown(), pacmanController.getPacman().getPosition());
 
         position = position.getDown();
 
-        pacmanController.setDirection(PacmanController.Direction.LEFT);
+        pacmanController.changeDirection(GUI.OPTION.LEFT);
         pacmanController.movePacmanInDirection();
         assertEquals(position.getLeft(), pacmanController.getPacman().getPosition());
 
         position = position.getLeft();
 
-        pacmanController.setDirection(PacmanController.Direction.RIGHT);
+        pacmanController.changeDirection(GUI.OPTION.RIGHT);
         pacmanController.movePacmanInDirection();
         assertEquals(position.getRight(), pacmanController.getPacman().getPosition());
 
@@ -89,7 +93,7 @@ public class PacmanControllerTest {
     public void manyMoveInDirection() {
         Position position = pacmanController.getPacman().getPosition();
 
-        pacmanController.setDirection(PacmanController.Direction.UP);
+        pacmanController.changeDirection(GUI.OPTION.UP);
 
         pacmanController.movePacmanInDirection();
         pacmanController.movePacmanInDirection();
