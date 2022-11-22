@@ -41,4 +41,7 @@ public class Arena {
     public List<Wall> getWalls() {
         return walls;
     }
+    public void setPacman(Pacman pacman) {
+        this.pacman = pacman;
+    }
 }
