@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class Game {
     private final LanternaGUI gui;
-    private Arena arena;
     private State state;
 
     public Game() throws IOException {
@@ -28,7 +27,7 @@ public class Game {
         this.state = state;
     }
     public void run() throws IOException {
-        int FPS = 40;
+        int FPS = 60;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

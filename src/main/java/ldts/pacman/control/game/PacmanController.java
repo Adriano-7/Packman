@@ -1,13 +1,12 @@
 package ldts.pacman.control.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.control.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 
-public class PacmanController extends ArenaController {
+public class PacmanController extends GameController {
     private long lastMovement;
     public enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
     private Direction direction;
