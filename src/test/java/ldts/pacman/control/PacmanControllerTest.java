@@ -1,5 +1,7 @@
 package ldts.pacman.control;
 
+
+import ldts.pacman.control.game.PacmanController;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
@@ -13,8 +15,8 @@ public class PacmanControllerTest {
     PacmanController pacmanController;
     @BeforeEach
     public void setUp() {
-        Arena arena = new Arena(40, 40);
-
+        Arena arena = new Arena(10, 10);
+        arena.setPacman(new Pacman(4, -1));
         this.pacmanController = new PacmanController(arena);
     }
     @Test
@@ -63,37 +65,37 @@ public class PacmanControllerTest {
     }
     @Test
     public void movePacmanInDirection() {
-        Position position = pacmanController.getPacman().getPosition();
+        Position initial = pacmanController.getPacman().getPosition();
 
-        pacmanController.changeDirection(GUI.OPTION.UP);
+        pacmanController.setDirection(PacmanController.Direction.UP);
         pacmanController.movePacmanInDirection();
-        assertEquals(position.getUp(), pacmanController.getPacman().getPosition());
+        assertEquals(initial.getUp(), pacmanController.getPacman().getPosition());
 
-        position = position.getUp();
+        initial = initial.getUp();
 
-        pacmanController.changeDirection(GUI.OPTION.DOWN);
+        pacmanController.setDirection(PacmanController.Direction.DOWN);
         pacmanController.movePacmanInDirection();
-        assertEquals(position.getDown(), pacmanController.getPacman().getPosition());
+        assertEquals(initial.getDown(), pacmanController.getPacman().getPosition());
 
-        position = position.getDown();
+        initial = initial.getDown();
 
-        pacmanController.changeDirection(GUI.OPTION.LEFT);
+        pacmanController.setDirection(PacmanController.Direction.LEFT);
         pacmanController.movePacmanInDirection();
-        assertEquals(position.getLeft(), pacmanController.getPacman().getPosition());
+        assertEquals(initial.getLeft(), pacmanController.getPacman().getPosition());
 
-        position = position.getLeft();
+        initial = initial.getLeft();
 
-        pacmanController.changeDirection(GUI.OPTION.RIGHT);
+        pacmanController.setDirection(PacmanController.Direction.RIGHT);
         pacmanController.movePacmanInDirection();
-        assertEquals(position.getRight(), pacmanController.getPacman().getPosition());
+        assertEquals(initial.getRight(), pacmanController.getPacman().getPosition());
 
-        position = position.getRight();
+        //initial = initial.getRight();
     }
     @Test
     public void manyMoveInDirection() {
         Position position = pacmanController.getPacman().getPosition();
 
-        pacmanController.changeDirection(GUI.OPTION.UP);
+        pacmanController.setDirection(PacmanController.Direction.UP);
 
         pacmanController.movePacmanInDirection();
         pacmanController.movePacmanInDirection();
@@ -101,4 +103,43 @@ public class PacmanControllerTest {
 
         assertEquals(position.getUp().getUp().getUp(), pacmanController.getPacman().getPosition());
     }
+    @Test
+    public void stepNoMovement() {
+        Pacman pacman = pacmanController.getModel().getPacman();
+        Position initial = pacman.getPosition();
+
+        pacmanController.step(null, GUI.OPTION.NONE, 1000);
+        assertEquals(initial, pacman.getPosition());
+
+        pacmanController.step(null, GUI.OPTION.UP, 500);
+        assertEquals(initial, pacman.getPosition());
+
+        pacmanController.step(null, GUI.OPTION.LEFT, -1000);
+        assertEquals(initial, pacman.getPosition());
+    }
+    @Test
+    public void stepWithMovement() {
+        Pacman pacman = pacmanController.getModel().getPacman();
+        Position initial = pacman.getPosition();
+
+        pacmanController.step(null, GUI.OPTION.UP, 501);
+        assertEquals(initial.getUp(), pacman.getPosition());
+
+        pacmanController.step(null, GUI.OPTION.NONE, 1002);
+        assertEquals(initial.getUp().getUp(), pacman.getPosition());
+
+    }
+    @Test
+    public void stepTimeTesting() {
+        Pacman pacman = pacmanController.getModel().getPacman();
+        Position initial = pacman.getPosition();
+
+        pacmanController.step(null, GUI.OPTION.NONE, 1000);
+        assertEquals(initial, pacman.getPosition());
+        // assertEquals(pacman.getLastMovement(), 0);
+
+        pacmanController.step(null, GUI.OPTION.DOWN, 501);
+        assertEquals(initial.getDown(), pacman.getPosition());
+    }
+
 }

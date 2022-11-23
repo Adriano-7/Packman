@@ -53,4 +53,7 @@ public class Arena {
         List<Monster> monsterList = new ArrayList<>();
         return monsterList;
     }
+    public void setPacman(Pacman pacman) {
+        this.pacman = pacman;
+    }
 }

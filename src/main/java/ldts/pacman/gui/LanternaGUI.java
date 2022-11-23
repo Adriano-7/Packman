@@ -41,10 +41,10 @@ public class LanternaGUI implements GUI {
 
     @Override
     public OPTION getNextOption() throws IOException {
-        KeyStroke keyStroke = screen.readInput();
+        KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return OPTION.NONE;
         KeyType keyType = keyStroke.getKeyType();
-        if (keyType == KeyType.EOF) return OPTION.QUIT;
+        if (keyType == KeyType.EOF || keyType == KeyType.Character && keyStroke.getCharacter() == 'q') return OPTION.QUIT;
         if (keyType == KeyType.ArrowUp) return OPTION.UP;
         if (keyType == KeyType.ArrowDown) return OPTION.DOWN;
         if (keyType == KeyType.ArrowLeft) return OPTION.LEFT;
