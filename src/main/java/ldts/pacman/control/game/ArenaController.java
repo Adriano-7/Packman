@@ -8,10 +8,11 @@ import ldts.pacman.state.MenuState;
 
 public class ArenaController extends GameController {
     private PacmanController pacmanController;
-
+    private MonsterController monsterController;
     public ArenaController(Arena arena) {
         super(arena);
         this.pacmanController = new PacmanController(arena);
+        this.monsterController = new MonsterController(arena);
     }
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
@@ -20,6 +21,7 @@ public class ArenaController extends GameController {
         }
         else {
             pacmanController.step(game, option, time);
+            monsterController.step(game, option, time);
         }
     }
 }

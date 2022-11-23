@@ -1,15 +1,23 @@
 package ldts.pacman.control.game;
 
+import ldts.pacman.Game;
+import ldts.pacman.gui.GUI;
+import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
-public class MonsterController {
-    private Monster monster;
-    public MonsterController(Monster monster) {
-        this.monster = monster;
+public class MonsterController extends GameController {
+    private long lastMovement;
+    public MonsterController(Arena model) {
+        super(model);
+        this.lastMovement = 0;
     }
-    public void move() { // maybe strategy pattern here
-    }
-    public void changeDirectionRandom() {
-        //
+    public void step(Game game, GUI.OPTION option, long time) {
+        if (time - lastMovement > 500 ) {
+            for (Monster monster: getModel().getMonsters()) {
+                MovementStrategy movementStrategy = monster.getMovementStrategy(getModel());
+                movementStrategy.move(monster);
+            }
+            lastMovement = time;
+        }
     }
 }
