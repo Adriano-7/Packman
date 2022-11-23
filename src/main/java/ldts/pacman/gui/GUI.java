@@ -9,6 +9,7 @@ public interface GUI {
     void drawPacman(Position position);
     void drawWall(Position position);
     void drawCoin(Position position);
+    void drawMonster(Position position ,String color);
     void drawText(Position position, String text, String color);
     void drawCharacter(Position position, char ch, String color);
     void clear();
