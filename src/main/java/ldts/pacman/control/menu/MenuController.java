@@ -22,7 +22,8 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-                if (getModel().isSelectedStart()) game.setState(new GameState(new Arena(10, 10)));  // TODO: new ArenaLoader
+                if (getModel().isSelectedStart()) {game.setState(new GameState(new Arena(10, 10)));}  // TODO: new ArenaLoader
+                break;
             case QUIT:
                 System.exit(0);
                 break;

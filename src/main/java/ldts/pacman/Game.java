@@ -2,7 +2,9 @@ package ldts.pacman;
 
 import ldts.pacman.gui.LanternaGUI;
 import ldts.pacman.model.game.arena.Arena;
+import ldts.pacman.model.menu.Menu;
 import ldts.pacman.state.GameState;
+import ldts.pacman.state.MenuState;
 import ldts.pacman.state.State;
 
 import java.io.IOException;
@@ -15,21 +17,18 @@ public class Game {
     public Game() throws IOException {
         int width = 80, height = 40;
         this.gui = new LanternaGUI(width, height);
-        this.arena = new Arena(width, height);
-        this.state = new GameState(arena);
+        this.state = new MenuState(new Menu());
     }
 
     public static void main(String[] args) throws IOException {
         Game game = new Game();
         game.run();
     }
-    public State getState() {return state;}
-
     public void setState(State state) {
         this.state = state;
     }
     public void run() throws IOException {
-        int FPS = 10;
+        int FPS = 40;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
