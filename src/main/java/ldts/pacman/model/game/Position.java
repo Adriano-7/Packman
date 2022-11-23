@@ -11,6 +11,16 @@ public class Position {
     public Position getUp(){return new Position(x,y-1);}
     public int getX(){return this.x;}
     public int getY(){return this.y;}
+    public Position getRandomNeighbour(){
+        int n=(int) (Math.random()*4);
+        return switch (n) {
+            case 0 -> getDown();
+            case 1 -> getUp();
+            case 2 -> getLeft();
+            case 3 -> getRight();
+            default -> null;
+        };
+    }
 
     @Override
     public boolean equals(Object o){

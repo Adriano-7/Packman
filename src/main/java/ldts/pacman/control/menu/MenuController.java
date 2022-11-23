@@ -4,8 +4,14 @@ import ldts.pacman.Game;
 import ldts.pacman.control.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
+import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.RedMonster;
+import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.state.GameState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu model) {
@@ -22,7 +28,15 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-                if (getModel().isSelectedStart()) {game.setState(new GameState(new Arena(10, 10)));}  // TODO: new ArenaLoader
+                // Temporary
+                Arena arena = new Arena(10, 10);
+                arena.setPacman(new Pacman(10, 10));
+                List<Monster> monsters = new ArrayList<>();
+                Monster red = new RedMonster(20, 20);
+                monsters.add(red);
+                arena.setMonsters(monsters);
+                // TODO: new ArenaLoader
+                if (getModel().isSelectedStart()) {game.setState(new GameState(arena));}
                 break;
             case QUIT:
                 System.exit(0);

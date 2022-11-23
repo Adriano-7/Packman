@@ -1,5 +1,6 @@
 package ldts.pacman.model.game.arena;
 
+import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.Coin;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
@@ -55,5 +56,20 @@ public class Arena {
     }
     public void setPacman(Pacman pacman) {
         this.pacman = pacman;
+    }
+    public void setMonsters(List<Monster> monsters) {
+        this.monsters = monsters;
+    }
+    public boolean isWall(Position position) {
+        for (Wall wall: walls) {
+            if (wall.getPosition().equals(position)) return true;
+        }
+        return false;
+    }
+    public boolean isMonster(Position position) {
+        for (Monster monster: monsters) {
+            if (monster.getPosition() == position) return true;
+        }
+        return false;
     }
 }

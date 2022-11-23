@@ -2,13 +2,11 @@ package ldts.pacman.state;
 
 
 import ldts.pacman.Game;
-import ldts.pacman.control.game.GameController;
+import ldts.pacman.control.game.ArenaController;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.menu.Menu;
 import ldts.pacman.view.game.ArenaViewer;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -33,7 +31,7 @@ public class GameStateTest {
     }
     @Test
     public void getController(){
-        assertEquals(GameController.class,gameState.getController().getClass());
+        assertEquals(ArenaController.class,gameState.getController().getClass());
     }
 
     @Test

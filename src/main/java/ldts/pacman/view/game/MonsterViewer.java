@@ -5,7 +5,7 @@ import ldts.pacman.model.game.elements.Monster;
 
 public class MonsterViewer implements ElementViewer<Monster> {
     @Override
-    public void draw(Monster monster, GUI gui){
-        gui.drawText(monster.getPosition(), "M", "#CC0000");
+    public void draw(Monster monster, GUI gui) {
+        gui.drawMonster(monster.getPosition(),monster.getColor());
     }
 }

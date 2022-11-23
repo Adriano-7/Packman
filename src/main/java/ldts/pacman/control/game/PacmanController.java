@@ -1,13 +1,12 @@
 package ldts.pacman.control.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.control.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 
-public class PacmanController extends ArenaController {
+public class PacmanController extends GameController {
     private long lastMovement;
     public enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
     private Direction direction;
@@ -17,7 +16,11 @@ public class PacmanController extends ArenaController {
         lastMovement = 0;
     }
     public void movePacman(Position position) {
-        getModel().getPacman().setPosition(position);   // no checking done
+        if (!getModel().isWall(position)) {
+            getModel().getPacman().setPosition(position);
+            if (getModel().isMonster(position)) getModel().getPacman().decreaseHealth();
+            // TODO: (for later) if getModel().isPowerUp() -> ...
+        }
     }
     public void movePacmanUp() {
         movePacman(getModel().getPacman().getPosition().getUp());
@@ -53,12 +56,7 @@ public class PacmanController extends ArenaController {
             case LEFT -> setDirection(Direction.LEFT);
             case RIGHT -> setDirection(Direction.RIGHT);
         }
-        /*
-        if (option == GUI.OPTION.UP) setDirection(Direction.UP);
-        if (option == GUI.OPTION.DOWN) setDirection(Direction.DOWN);
-        if (option == GUI.OPTION.LEFT) setDirection(Direction.LEFT);
-        if (option == GUI.OPTION.RIGHT) setDirection(Direction.RIGHT);
-        */
+
         if (time - lastMovement > 500 && this.direction != Direction.NONE) {
             movePacmanInDirection();
             lastMovement = time;
