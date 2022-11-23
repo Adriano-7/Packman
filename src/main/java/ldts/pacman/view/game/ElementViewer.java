@@ -1,4 +1,4 @@
-package ldts.pacman.view;
+package ldts.pacman.view.game;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.elements.Element;

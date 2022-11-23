@@ -1,32 +1,30 @@
-package ldts.pacman.view;
+package ldts.pacman.view.game;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Element;
+import ldts.pacman.view.Viewer;
 
-import java.io.IOException;
 import java.util.List;
 
-public class ArenaViewer {
+public class ArenaViewer extends Viewer<Arena> {
+    private Arena arena;
     private PacmanViewer pacmanViewer;
     private MonsterViewer monsterViewer;
     private CoinViewer coinViewer;
     private WallViewer wallViewer;
-    public ArenaViewer() {
+    public ArenaViewer(Arena arena) {
+        super(arena);
         pacmanViewer = new PacmanViewer();
         monsterViewer = new MonsterViewer();
         coinViewer = new CoinViewer();
         wallViewer = new WallViewer();
     }
-    public void draw(Arena arena, GUI gui) throws IOException {
-        gui.clear();
-
-        pacmanViewer.draw(arena.getPacman(), gui);
-        drawElements(arena.getCoins(), gui, coinViewer);
-        drawElements(arena.getMonsters(), gui, monsterViewer);
-        drawElements(arena.getWalls(), gui, wallViewer);
-
-        gui.refresh();
+    public void drawElements(GUI gui) {
+        pacmanViewer.draw(getModel().getPacman(), gui);
+        drawElements(getModel().getCoins(), gui, coinViewer);
+        drawElements(getModel().getMonsters(), gui, monsterViewer);
+        drawElements(getModel().getWalls(), gui, wallViewer);
     }
     private<T extends Element> void drawElements(List<T> elements, GUI gui, ElementViewer<T> viewer) {
         for (T element: elements) {

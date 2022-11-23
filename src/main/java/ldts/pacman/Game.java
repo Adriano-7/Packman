@@ -2,26 +2,47 @@ package ldts.pacman;
 
 import ldts.pacman.gui.LanternaGUI;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.view.ArenaViewer;
+import ldts.pacman.model.menu.Menu;
+import ldts.pacman.state.GameState;
+import ldts.pacman.state.MenuState;
+import ldts.pacman.state.State;
 
 import java.io.IOException;
 
 public class Game {
     private final LanternaGUI gui;
-    private Arena arena;
+    private State state;
+
     public Game() throws IOException {
         int width = 80, height = 40;
         this.gui = new LanternaGUI(width, height);
-        this.arena = new Arena(width, height);
+        this.state = new MenuState(new Menu());
     }
+
     public static void main(String[] args) throws IOException {
         Game game = new Game();
         game.run();
     }
+    public void setState(State state) {
+        this.state = state;
+    }
     public void run() throws IOException {
-        ArenaViewer arenaViewer = new ArenaViewer();
-        while (true) {
-            arenaViewer.draw(arena, gui);
+        int FPS = 60;
+        int frameTime = 1000 / FPS;
+
+        while (this.state != null) {
+            long startTime = System.currentTimeMillis();
+
+            state.step(this, gui, startTime);
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+            }
         }
+        gui.close();
     }
 }

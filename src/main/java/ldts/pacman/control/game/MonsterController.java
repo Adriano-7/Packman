@@ -1,4 +1,4 @@
-package ldts.pacman.control;
+package ldts.pacman.control.game;
 
 import ldts.pacman.model.game.elements.Monster;
 
