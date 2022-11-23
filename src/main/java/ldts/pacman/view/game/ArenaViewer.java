@@ -1,6 +1,7 @@
 package ldts.pacman.view.game;
 
 import ldts.pacman.gui.GUI;
+import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Element;
 import ldts.pacman.view.Viewer;
@@ -25,6 +26,8 @@ public class ArenaViewer extends Viewer<Arena> {
         drawElements(getModel().getCoins(), gui, coinViewer);
         drawElements(getModel().getMonsters(), gui, monsterViewer);
         drawElements(getModel().getWalls(), gui, wallViewer);
+
+        gui.drawText(new Position(0, 0), "Health: " + getModel().getPacman().getHealth(), "#FFD700");
     }
     private<T extends Element> void drawElements(List<T> elements, GUI gui, ElementViewer<T> viewer) {
         for (T element: elements) {

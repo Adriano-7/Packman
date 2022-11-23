@@ -16,7 +16,11 @@ public class PacmanController extends GameController {
         lastMovement = 0;
     }
     public void movePacman(Position position) {
-        getModel().getPacman().setPosition(position);   // no checking done
+        if (!getModel().isWall(position)) {
+            getModel().getPacman().setPosition(position);
+            if (getModel().isMonster(position)) getModel().getPacman().decreaseHealth();
+            // TODO: (for later) if getModel().isPowerUp() -> ...
+        }
     }
     public void movePacmanUp() {
         movePacman(getModel().getPacman().getPosition().getUp());
@@ -52,12 +56,7 @@ public class PacmanController extends GameController {
             case LEFT -> setDirection(Direction.LEFT);
             case RIGHT -> setDirection(Direction.RIGHT);
         }
-        /*
-        if (option == GUI.OPTION.UP) setDirection(Direction.UP);
-        if (option == GUI.OPTION.DOWN) setDirection(Direction.DOWN);
-        if (option == GUI.OPTION.LEFT) setDirection(Direction.LEFT);
-        if (option == GUI.OPTION.RIGHT) setDirection(Direction.RIGHT);
-        */
+
         if (time - lastMovement > 500 && this.direction != Direction.NONE) {
             movePacmanInDirection();
             lastMovement = time;
