@@ -8,7 +8,7 @@ import ldts.pacman.view.Viewer;
 
 import java.awt.*;
 
-public abstract class Monster extends Element {
+public abstract class Monster extends MovableElement {
     public Monster(int x, int y){
         super(x,y);
     }

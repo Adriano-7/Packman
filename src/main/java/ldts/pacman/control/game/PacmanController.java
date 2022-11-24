@@ -6,63 +6,32 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 
+import java.lang.management.PlatformLoggingMXBean;
+
 public class PacmanController extends GameController {
     private long lastMovement;
-    public enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
-    private Direction direction;
+    private PlayerMovement playerMovement;
+
     public PacmanController(Arena model) {
         super(model);
-        direction = Direction.NONE;
+        playerMovement = new PlayerMovement(model);
         lastMovement = 0;
     }
-    public void movePacman(Position position) {
-        if (!getModel().isWall(position)) {
-            getModel().getPacman().setPosition(position);
-            if (getModel().isMonster(position)) getModel().getPacman().decreaseHealth();
-            // getModel().retrieveCoins(position);
-            // or retrieve coins from pacmanController? //TODO
-            // also keep track of score
-            // TODO: (for later) if getModel().isPowerUp() -> ...
-        }
-    }
-    public void movePacmanUp() {
-        movePacman(getModel().getPacman().getPosition().getUp());
-    }
-    public void movePacmanDown() {
-        movePacman(getModel().getPacman().getPosition().getDown());
-    }
-    public void movePacmanLeft() {
-        movePacman(getModel().getPacman().getPosition().getLeft());
-    }
-    public void movePacmanRight() {
-        movePacman(getModel().getPacman().getPosition().getRight());
-    }
-    public void movePacmanInDirection() {
-        switch (direction) {
-            case UP: movePacmanUp(); break;
-            case DOWN: movePacmanDown(); break;
-            case LEFT: movePacmanLeft(); break;
-            case RIGHT: movePacmanRight(); break;
-        }
-    }
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
+
     public Pacman getPacman() {
         return getModel().getPacman();
     }
+
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
-        switch (option) {
-            case UP -> setDirection(Direction.UP);
-            case DOWN -> setDirection(Direction.DOWN);
-            case LEFT -> setDirection(Direction.LEFT);
-            case RIGHT -> setDirection(Direction.RIGHT);
-        }
+        // processar input (mudar direção)
+        // verificar tempo
+        // mover o pacman
+        playerMovement.changeDirection(option);
 
-        if (time - lastMovement > 500 && this.direction != Direction.NONE) {
-            movePacmanInDirection();
+        if (time - lastMovement > 500 && playerMovement.move(getPacman())) {
             lastMovement = time;
+            //collectCoin(position);
         }
     }
 }

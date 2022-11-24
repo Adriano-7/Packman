@@ -1,8 +1,21 @@
 package ldts.pacman.control.game;
 
+import ldts.pacman.gui.GUI;
+import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.MovableElement;
 
-public interface MovementStrategy {
+public abstract class MovementStrategy {
     // Maybe change monster to Element (also usable for Pacman)
-    void move(Monster monster);
+    protected Arena arena;
+    public MovementStrategy(Arena arena) {
+        this.arena = arena;
+    }
+    public abstract boolean move(MovableElement element);
+    public void resetPositions() {
+        arena.getPacman().setPosition(arena.getPacman().getInitialPosition());
+        for (Monster monster: arena.getMonsters()) {
+            monster.setPosition(monster.getInitialPosition());
+        }
+    }
 }
