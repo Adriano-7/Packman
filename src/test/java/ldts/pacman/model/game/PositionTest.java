@@ -52,4 +52,10 @@ public class PositionTest {
         assertTrue(position.equals(position));
         assertTrue(position.equals( new Position(position.getX(), position.getY()) ));
     }
+    @Test
+    public void getRandomNeighbour(){
+        Position initial_pos= position;
+        Position final_pos=position.getRandomNeighbour();
+        assertTrue((initial_pos.getDown().equals(final_pos) || initial_pos.getUp().equals(final_pos) || initial_pos.getLeft().equals(final_pos) || initial_pos.getRight().equals(final_pos)));
+    }
 }

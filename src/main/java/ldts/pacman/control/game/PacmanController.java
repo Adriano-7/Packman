@@ -19,6 +19,9 @@ public class PacmanController extends GameController {
         if (!getModel().isWall(position)) {
             getModel().getPacman().setPosition(position);
             if (getModel().isMonster(position)) getModel().getPacman().decreaseHealth();
+            // getModel().retrieveCoins(position);
+            // or retrieve coins from pacmanController? //TODO
+            // also keep track of score
             // TODO: (for later) if getModel().isPowerUp() -> ...
         }
     }

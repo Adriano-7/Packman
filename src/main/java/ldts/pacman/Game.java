@@ -14,7 +14,7 @@ public class Game {
     private State state;
 
     public Game() throws IOException {
-        int width = 80, height = 40;
+        int width = 60, height = 30;
         this.gui = new LanternaGUI(width, height);
         this.state = new MenuState(new Menu());
     }
