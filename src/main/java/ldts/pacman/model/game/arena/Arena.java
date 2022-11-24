@@ -60,6 +60,12 @@ public class Arena {
     public void setMonsters(List<Monster> monsters) {
         this.monsters = monsters;
     }
+    public void setWalls(List<Wall> walls ){
+        this.walls=walls;
+    }
+    public void setCoins(List<Coin> coins) {
+        this.coins = coins;
+    }
     public boolean isWall(Position position) {
         for (Wall wall: walls) {
             if (wall.getPosition().equals(position)) return true;
@@ -68,7 +74,7 @@ public class Arena {
     }
     public boolean isMonster(Position position) {
         for (Monster monster: monsters) {
-            if (monster.getPosition() == position) return true;
+            if (monster.getPosition().equals(position)) return true;
         }
         return false;
     }

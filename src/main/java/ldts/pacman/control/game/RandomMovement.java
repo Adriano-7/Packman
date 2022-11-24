@@ -12,6 +12,7 @@ public class RandomMovement implements MovementStrategy {
     public RandomMovement(Arena arena) {
         this.arena = arena;
     }
+    @Override
     public void move(Monster monster) {
         boolean moved = false;
         while(!moved) {
