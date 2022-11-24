@@ -13,6 +13,11 @@ public class PacmanTest {
         this.pacman = new Pacman(5, 3);
     }
     @Test
+    public void setScore(){
+        pacman.setScore(10);
+        assertEquals(10,pacman.getScore());
+    }
+    @Test
     public void position() {
         assertEquals(new Position(5, 3), pacman.getPosition());
 
@@ -26,5 +31,11 @@ public class PacmanTest {
         pacman.decreaseHealth();
 
         assertEquals(health - 1, pacman.getHealth());
+    }
+    @Test
+    public void score() {
+        int score = pacman.getScore();
+        pacman.increaseScore();
+        assertEquals(score + 1, pacman.getScore());
     }
 }

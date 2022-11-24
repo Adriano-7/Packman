@@ -7,5 +7,7 @@ public class PacmanViewer implements ElementViewer<Pacman> {
     @Override
     public void draw(Pacman pacman, GUI gui) {
         gui.drawPacman(pacman.getPosition());
+        gui.drawScore(pacman.getScore());
+        gui.drawHealth(pacman.getHealth());
     }
 }

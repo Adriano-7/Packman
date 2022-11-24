@@ -22,12 +22,10 @@ public class ArenaViewer extends Viewer<Arena> {
         wallViewer = new WallViewer();
     }
     public void drawElements(GUI gui) {
-        pacmanViewer.draw(getModel().getPacman(), gui);
         drawElements(getModel().getCoins(), gui, coinViewer);
         drawElements(getModel().getMonsters(), gui, monsterViewer);
         drawElements(getModel().getWalls(), gui, wallViewer);
-
-        gui.drawText(new Position(0, 0), "Health: " + getModel().getPacman().getHealth(), "#FFD700");
+        pacmanViewer.draw(getModel().getPacman(), gui);
     }
     private<T extends Element> void drawElements(List<T> elements, GUI gui, ElementViewer<T> viewer) {
         for (T element: elements) {

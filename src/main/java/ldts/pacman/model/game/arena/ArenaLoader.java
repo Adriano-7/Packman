@@ -42,8 +42,6 @@ public class ArenaLoader {
     }
     public Arena createArena() {
         Arena arena = new Arena(getWidth(), getHeight());
-        // using a switch case for all chars would make code harder to expand
-        // using create for each avoids that
 
         arena.setPacman(createPacman());
         arena.setMonsters(createMonsters());
