@@ -6,7 +6,7 @@ public class Menu {
     private final List<String> options;
     private int currentOption =0;
     public Menu(){
-        this.options= Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","EXIT");
+        this.options= Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","OPTIONS", "EXIT");
     }
 
     public void next_Op(){
