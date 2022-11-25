@@ -1,4 +1,4 @@
-package ldts.pacman.control;
+package ldts.pacman.control.game;
 
 import ldts.pacman.control.game.RandomMovement;
 import ldts.pacman.model.game.Position;
@@ -50,7 +50,7 @@ public class RandomMovementTest {
         Mockito.when(arena.getWalls()).thenReturn(walls);
         Mockito.when(arena.getPacman()).thenReturn(new Pacman(0, 0));
 
-        //Mock isWall when the position is any of the walls in walls
+
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenAnswer(invocation -> {
             Position position = invocation.getArgument(0);
             return walls.stream().anyMatch(wall -> wall.getPosition().equals(position));

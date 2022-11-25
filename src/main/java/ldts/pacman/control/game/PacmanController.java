@@ -13,24 +13,18 @@ import java.util.List;
 public class PacmanController extends GameController {
     private long lastMovement;
     private PlayerMovement playerMovement;
-
     public PacmanController(Arena model) {
         super(model);
         playerMovement = new PlayerMovement(model);
         lastMovement = 0;
     }
-
     public Pacman getPacman() {
         return getModel().getPacman();
     }
 
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
-        // processar input (mudar direção)
-        // verificar tempo
-        // mover o pacman
         playerMovement.changeDirection(option);
-
         if (time - lastMovement > 500 && playerMovement.move(getPacman())) {
             lastMovement = time;
             collectCoin(getModel().getPacman().getPosition());

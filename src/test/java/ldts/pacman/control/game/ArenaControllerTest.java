@@ -1,7 +1,8 @@
-package ldts.pacman.control;
+package ldts.pacman.control.game;
 
 import ldts.pacman.Game;
 import ldts.pacman.control.game.ArenaController;
+import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.state.MenuState;
@@ -16,6 +17,14 @@ public class ArenaControllerTest {
         Arena arena = new Arena(10, 10);
         arenaController = new ArenaController(arena);
     }
+
+    @Test
+    public void quitGame() {
+        Game game = Mockito.mock(Game.class);
+        arenaController.step(game, GUI.OPTION.QUIT, 0);
+        Mockito.verify(game, Mockito.times(1)).setState(Mockito.any(MenuState.class));
+    }
+
     @Test
     public void stepZeroHealth() {
         Pacman pacman = Mockito.mock(Pacman.class);

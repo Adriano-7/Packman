@@ -13,29 +13,27 @@ public class PacmanTest {
         this.pacman = new Pacman(5, 3);
     }
     @Test
-    public void setScore(){
+    public void testSetScore(){
         pacman.setScore(10);
         assertEquals(10,pacman.getScore());
     }
     @Test
-    public void position() {
+    public void testGetPosition() {
         assertEquals(new Position(5, 3), pacman.getPosition());
 
         pacman.setPosition(new Position(0, -1));
         assertEquals(new Position(0, -1), pacman.getPosition());
     }
     @Test
-    public void health() {
-        int health = pacman.getHealth();
-
-        pacman.decreaseHealth();
-
-        assertEquals(health - 1, pacman.getHealth());
-    }
-    @Test
-    public void score() {
+    public void testIncreaseScore() {
         int score = pacman.getScore();
         pacman.increaseScore();
         assertEquals(score + 1, pacman.getScore());
+    }
+    @Test
+    public void testDecreaseHealth() {
+        int health = pacman.getHealth();
+        pacman.decreaseHealth();
+        assertEquals(health - 1, pacman.getHealth());
     }
 }

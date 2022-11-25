@@ -19,10 +19,6 @@ public class Menu {
     public boolean isSelected(int i){
         return currentOption == i;
     }
-    public void isSelectedGoBack(){
-        if(isSelectedStart())
-            currentOption--;
-    }
     public boolean isSelectedStart(){
         return isSelected(0) || isSelected(1);
     }
@@ -32,6 +28,4 @@ public class Menu {
     public int getNumberEntries(){
         return options.size();
     }
-
-
 }

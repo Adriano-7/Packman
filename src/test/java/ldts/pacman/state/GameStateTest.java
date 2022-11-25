@@ -24,7 +24,8 @@ public class GameStateTest {
         arena=new Arena(5,5);
         gameState=new GameState(arena);
     }
-
+    @Test
+    public void testGetModel(){assertEquals(arena,gameState.getModel());}
     @Test
     public void getViewer(){
         assertEquals(ArenaViewer.class,gameState.getViewer().getClass());
@@ -32,18 +33,5 @@ public class GameStateTest {
     @Test
     public void getController(){
         assertEquals(ArenaController.class,gameState.getController().getClass());
-    }
-
-    @Test
-    public void step() throws IOException {
-        GUI gui=Mockito.mock(GUI.class);
-        Game game = Mockito.mock(Game.class);
-        Mockito.when(gui.getNextOption()).thenReturn(GUI.OPTION.QUIT);
-
-        gameState.step(game,gui,1);
-
-        Mockito.verify(gui, Mockito.times(1)).getNextOption();
-
-        //assertEquals(MenuState.class, game.getState().getClass());
     }
 }

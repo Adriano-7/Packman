@@ -13,11 +13,11 @@ public class WallTest {
         wall = new Wall(5, 10);
     }
     @Test
-    public void getPosition() {
+    public void testGetPosition() {
         assertEquals(new Position(5, 10), wall.getPosition());
     }
     @Test
-    public void setPosition() {
+    public void testSetPosition() {
         wall.setPosition(new Position(-5, 2));
         assertEquals(new Position(-5, 2), wall.getPosition());
     }

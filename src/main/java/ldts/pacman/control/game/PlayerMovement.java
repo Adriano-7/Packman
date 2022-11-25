@@ -67,9 +67,6 @@ public class PlayerMovement extends MovementStrategy {
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
-    public Direction getDirection(Direction direction){
-        return this.direction;
-    }
 
     public boolean move(MovableElement element) {
         return movePlayerInDirection();

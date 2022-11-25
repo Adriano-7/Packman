@@ -1,11 +1,19 @@
-package ldts.pacman.control;
+package ldts.pacman.control.game;
 
 import ldts.pacman.control.game.PlayerMovement;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
+import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.Wall;
+import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,6 +25,14 @@ public class PlayerMovementTest {
         Arena arena = new Arena(10, 10);
         this.pacman = new Pacman(4, -1);
         arena.setPacman(pacman);
+
+        List<Wall> walls = new ArrayList<>();
+        walls.add(new Wall(7, 7));
+        arena.setWalls(walls);
+
+        List<Monster> monsters = new ArrayList<>();
+        monsters.add(new RedMonster(9, 5));
+        arena.setMonsters(monsters);
 
         playerMovement = new PlayerMovement(arena);
     }

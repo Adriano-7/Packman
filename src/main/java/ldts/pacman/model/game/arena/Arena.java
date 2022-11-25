@@ -20,9 +20,6 @@ public class Arena {
         this.width = width;
         this.height = height;
         pacman = new Pacman(5, 5);
-        coins = createCoins();
-        monsters = createMonsters();
-        walls = createWalls();
     }
     public int getWidth() {
         return width;
@@ -42,18 +39,7 @@ public class Arena {
     public List<Wall> getWalls() {
         return walls;
     }
-    public List<Wall> createWalls() {
-        List<Wall> wallList = new ArrayList<>();
-        return wallList;
-    }
-    public List<Coin> createCoins() {
-        List<Coin> coinList = new ArrayList<>();
-        return coinList;
-    }
-    public List<Monster> createMonsters() {
-        List<Monster> monsterList = new ArrayList<>();
-        return monsterList;
-    }
+
     public void setPacman(Pacman pacman) {
         this.pacman = pacman;
     }
