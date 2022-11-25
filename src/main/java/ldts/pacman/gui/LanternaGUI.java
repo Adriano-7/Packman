@@ -81,7 +81,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawScore(int score) {
-
+        drawText(new Position(50, 0), "Score: " + score, "#FFD700");
     }
     @Override
     public void drawHealth(int health) {

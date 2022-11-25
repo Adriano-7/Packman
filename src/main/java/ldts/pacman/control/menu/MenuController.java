@@ -30,18 +30,7 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-                // Temporary
-                /*
-                Arena arena = new Arena(10, 10);
-                arena.setPacman(new Pacman(10, 10));
-                List<Monster> monsters = new ArrayList<>();
-                Monster red = new RedMonster(20, 20);
-                monsters.add(red);
-                arena.setMonsters(monsters);
-                if (getModel().isSelectedStart()) {
-                    game.setState(new GameState(arena));
-                }
-                */
+
                 if (getModel().isSelectedStart()) {
                     game.setState(new GameState(new ArenaLoader(1).createArena()));
                 }

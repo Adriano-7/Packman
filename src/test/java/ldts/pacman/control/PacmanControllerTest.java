@@ -5,9 +5,12 @@ import ldts.pacman.control.game.PacmanController;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
+import ldts.pacman.model.game.elements.Coin;
 import ldts.pacman.model.game.elements.Pacman;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,6 +20,7 @@ public class PacmanControllerTest {
     public void setUp() {
         Arena arena = new Arena(10, 10);
         arena.setPacman(new Pacman(4, -1));
+        arena.setCoins(Arrays.asList(new Coin(10, 10)));
         this.pacmanController = new PacmanController(arena);
     }
     @Test
@@ -57,5 +61,8 @@ public class PacmanControllerTest {
         pacmanController.step(null, GUI.OPTION.DOWN, 501);
         assertEquals(initial.getDown(), pacman.getPosition());
     }
+    @Test
+    public void stepCollectCoin() {
 
+    }
 }

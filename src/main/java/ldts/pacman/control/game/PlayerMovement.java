@@ -24,9 +24,6 @@ public class PlayerMovement extends MovementStrategy {
                 pacman.decreaseHealth();
                 super.resetPositions();
             }
-            // getModel().retrieveCoins(position);
-            // or retrieve coins from pacmanController? //TODO
-            // also keep track of score
             // TODO: (for later) if getModel().isPowerUp() -> ...
             return true;
         }
