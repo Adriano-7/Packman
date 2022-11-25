@@ -1,8 +1,8 @@
 package ldts.pacman.model.game.elements;
 
 public class Pacman extends MovableElement {
-    int health;
-    int score;
+    private int health;
+    private int score;
     public Pacman(int x, int y) {
         super(x, y);
         this.health = 3;
