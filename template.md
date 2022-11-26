@@ -24,7 +24,8 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >- **Menu** to see the best scores
 >
 > Conceptual mock-ups of the planned features:
-> ![Mock](https://user-images.githubusercontent.com/93844395/204063857-afe1e54a-b2d7-45c2-a558-3914241dc886.jpg)
+> 
+> <img src="https://user-images.githubusercontent.com/93844395/204063857-afe1e54a-b2d7-45c2-a558-3914241dc886.jpg" height="664,8" width="806,4" >
 
 ### DESIGN
 
@@ -36,12 +37,10 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>We used the **Adapter** pattern. Using a GUI interface with the methods used by our classes allows less frequent changes in general classes and avoids direct dependency across them.
 >>In the case that we would change the external library, all that would be needed is to implement the GUI interface in a new class and pass that derived class to our classes.
 >>
->>**Implementation**\
->> LanternaGUI
->> GUI
->> Lanterna external library
->> Clients are the viewers (use GUI instead of Lanterna directly)
+>>**Implementation**
 >> 
+>> <img src="https://user-images.githubusercontent.com/93844395/204065998-a82f33bd-253e-4c7f-8e70-a52c010587c6.jpg" height="336,63" width="531,09" >
+>>
 >> These classes can be found in the following links:
 >> - [GUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/GUI.java)
 >> - [LanternaGUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/LanternaGUI.java)
@@ -64,7 +63,10 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 > It does not know, however, which concrete implementation to return. Therefore, by using this pattern, we delegate the choice of the MovementStrategy to the subclasses of Monster.
 > Only those will (know to) specify the concrete specification (e.g. RandomMovement)
 >>
->>**Implementation**\
+>>**Implementation**
+>> 
+>> <img src="https://user-images.githubusercontent.com/93844395/204080284-b589bb6e-7bc4-4db3-a905-9f265da6bf1c.jpg" height="338,58" width="556,38" > 
+>> 
 >> These classes can be found in the following links:
 >> - [Monster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/Monster.java)
 >> - [BlueMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/BlueMonster.java)
@@ -87,6 +89,9 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>We used the **Strategy** pattern. There exist some strategies that define the way the entities can move. A given entity must only identify as moving with that algorithm and not define it.\
 >>
 >>**Implementation**\
+>>
+>> <img src="https://user-images.githubusercontent.com/93844395/204080444-1fe67958-bcd0-4e7e-a1bc-45e9f087192b.jpg" height="307" width="508,2" > 
+>> 
 >> These classes can be found in the following links:
 >> - [MonsterController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/MonsterController.java)
 >> - [MovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/MovementStrategy.java)
@@ -104,7 +109,9 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 We've used the **Model-View-Control** pattern, more specifically HMVC (MVC for each component). This defines a model with the data for the entity, a controller which manipulates that data and a Viewer to display the data.
 >>
 >>**Implementation**
-> ![PacmanControllerViewer](https://user-images.githubusercontent.com/93844395/204064990-5eeb87d8-ae65-4b28-bc47-0ae6a282d663.jpg)
+> 
+> 
+>![MVC](https://user-images.githubusercontent.com/93844395/204065838-d7cb2566-f179-4da2-b522-af6faff55a1f.jpg)
 > 
 >> An example of the application of this pattern can be found in the following links:
 >> - [PacmanController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/PacmanController.java)
@@ -129,6 +136,9 @@ In the classes below, there's also present the usage of a FactoryMethod, allowin
 This pattern allows us to avoid the scattered conditional logic by using polymorphism.
 >>
 >>**Implementation**
+>> 
+>><img src="https://user-images.githubusercontent.com/93844395/204080620-b3bb1148-4f18-43b0-9ef5-fb8fb8881615.jpg" height="328,4" width="505,8" >
+>>
 >>  These classes can be found in the following links:
 >> - [Game](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/Game.java)
 >> - [State](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/state/State.java)
@@ -176,7 +186,7 @@ A solution for this would be splitting the "interfaces" of said Controllers. Thi
 ### TESTING
 **Coverage Report**
 
-![Coverage Report](https://user-images.githubusercontent.com/93844395/204059751-7b661b7e-4353-4d14-a1db-d0f69be09885.png)
+<img src="https://user-images.githubusercontent.com/93844395/204059751-7b661b7e-4353-4d14-a1db-d0f69be09885.png" height="340,2" width="997,5" >
 
 -[Mutation testing report](https://adriano-7.github.io/)
 
