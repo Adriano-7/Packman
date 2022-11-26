@@ -8,20 +8,20 @@ You'll also be able to play with your friend in a 2-player mode, where one of yo
 This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Félix Martins* (*up202108837*@fe.up.pt) and *Tomás Pereira* (*up202108845*@fe.up.pt) for LDTS 2022⁄23.
 
 ### IMPLEMENTED FEATURES
->- **Pacman movement** - moves in direction given by input and keeps moving until reaches wall or receives input
+>- **Pacman movement** - moves in direction given by input and keeps moving until reaches a wall or receives input
 >- **Monster movement** - moves randomly in the maze for now
 >- **Pacman collects coins** - score increases when he collects one
 >- **Pacman collides with monsters** - health decreased and positions of monsters and pacman reset to beginning of level
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
->   
+> ![Game](https://user-images.githubusercontent.com/93844395/204083448-e0a45342-ce44-46d8-b204-686bc19dc1c8.png)
 
 ### PLANNED FEATURES
 
->- **Multiplayer** - pacman player and monster player
->- **PowerUps for** pacman - makes ghosts "scared" (change behaviour) and is able to eat them for points
->- **Different** movement algorithms for different monsters
->- **Menu** to choose the level to play
->- **Menu** to see the best scores
+>- **Multiplayer** - one of the players will be a pacman and the other a monster
+>- **PowerUps for** - pacman - makes ghosts "scared" (change behaviour) and is able to eat them for points
+>- **Different** - movement algorithms for different monsters
+>- **Menu** - to choose the level to play
+>- **Menu** - to see the best scores
 >
 > Conceptual mock-ups of the planned features:
 > 
@@ -29,12 +29,14 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 
 ### DESIGN
 
+>> A photograph of the current UML class diagram can be found in the following link: [UML Diagram](https://user-images.githubusercontent.com/93844395/204084591-b0a2ea99-712e-439c-8c15-ae827d00ecf9.jpg)
+
 >>**Problem in Context**\
->>Using Lanterna directly as a way of drawing in all of our Viewer Classes would make for a direct violation of the DIP
+>>Using Lanterna directly as a way of drawing in all of our Viewer Classes would make for a direct violation of the DIP.
 >>In fact, a lot of our classes would depend on Lanterna. Changing that external library would be difficult (or just updating it): changes would have to be made across several classes.
 >> 
 >>**The Pattern**\
->>We used the **Adapter** pattern. Using a GUI interface with the methods used by our classes allows less frequent changes in general classes and avoids direct dependency across them.
+>>We used the **Adapter** pattern. Using a GUI interface with the methods used by our classes allows less frequent changes in general classes and avoids direct dependency across them with Lanterna.
 >>In the case that we would change the external library, all that would be needed is to implement the GUI interface in a new class and pass that derived class to our classes.
 >>
 >>**Implementation**
@@ -79,6 +81,7 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>**Consequences**\
 >>Using this pattern, we delegate the algorithm choice for the movement to the type of monster.
 > The controller asks for it from the monster and uses it to move said monster.
+> This avoids any switch case by using polymorphism.
 
 
 >>**Problem in Context**\
@@ -86,9 +89,10 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 > That would make for code cloning.
 >>
 >>**The Pattern**\
->>We used the **Strategy** pattern. There exist some strategies that define the way the entities can move. A given entity must only identify as moving with that algorithm and not define it.\
+>>We used the **Strategy** pattern. There exist some strategies that define the way the entities can move.
+> A given entity must only identify as moving with that algorithm and not define it.
 >>
->>**Implementation**\
+>>**Implementation**
 >>
 >> <img src="https://user-images.githubusercontent.com/93844395/204080444-1fe67958-bcd0-4e7e-a1bc-45e9f087192b.jpg" height="307" width="508,2" > 
 >> 
@@ -99,20 +103,23 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >> - [PlayerMovement](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/PlayerMovement.java)
 >>
 >>**Consequences**
->>As such, we've removed having to clone code due to multiple entities having the same algorithm.
+>>As such, we've avoided having to duplicate code due to multiple entities having the same movement algorithm.
+> It allows us to pass it to a movable object, and it will behave accordingly.
 
 
 >>**Problem in Context**\
 >>In defining a class with its data, behaviour (movement) and way of drawing itself, we would be neglecting the **Single Responsibility Principle**.
+>>That class would have too many responsibilities and there would be many reasons for it to change.
 >>
->>**The Pattern**   
-We've used the **Model-View-Control** pattern, more specifically HMVC (MVC for each component). This defines a model with the data for the entity, a controller which manipulates that data and a Viewer to display the data.
+>>**The Pattern**
+We've used the **Model-View-Control** pattern, more specifically HMVC (MVC for each component).
+> This defines a model with the data for the entity, a controller which manipulates that data and a Viewer to display the data.
 >>
 >>**Implementation**
-> 
-> 
->![MVC](https://user-images.githubusercontent.com/93844395/204065838-d7cb2566-f179-4da2-b522-af6faff55a1f.jpg)
-> 
+>> 
+>> This image represents an example of the usage of MVC.
+>>![MVC](https://user-images.githubusercontent.com/93844395/204065838-d7cb2566-f179-4da2-b522-af6faff55a1f.jpg)
+>> 
 >> An example of the application of this pattern can be found in the following links:
 >> - [PacmanController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/PacmanController.java)
 >> - [PacmanViewer](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/view/game/PacmanViewer.java)
@@ -120,20 +127,24 @@ We've used the **Model-View-Control** pattern, more specifically HMVC (MVC for e
 >>
 >>**Consequences**\
 By using this pattern, we've delegated each responsibility to each class, now respecting the SRP.
+> There will only be one reason for each class to change.
 
 
 >>**Problem in Context**\
 >>A possible but bad solution would be to have multiple flags for the states in the Game and use a switch-case statement.
-Any controller (controls movement of entities) could modify those flags which would make the game/application change behaviour
->>The controller for the player(s) should receive input from the user(s)
+Any controller (controls movement of entities) could modify those flags which would make the game/application change behaviour.
+> This is a violation of the OCP.
+>>Also, the controllers should be able to receive input from the user.
 >>
 >>**The Pattern**\
 We used the **State** Pattern to modify behaviour according to the state.
 This pattern allows you to represent different states with different subclasses.
 We can switch to a different state of the "game" by switching to another implementation (another subclass of State).
 Our game (main class) has a state and any controller can modify it. The state represents what's going on in the application.
-In the classes below, there's also present the usage of a FactoryMethod, allowing the subclasses of State to denote their controller and viewer of choice.
 This pattern allows us to avoid the scattered conditional logic by using polymorphism.
+In the classes below, there's also present the usage of a FactoryMethod, allowing the subclasses of State to denote their controller and viewer of choice.
+>> This will allow them to pass input from the user to their controller. 
+>> 
 >>
 >>**Implementation**
 >> 
@@ -148,7 +159,7 @@ This pattern allows us to avoid the scattered conditional logic by using polymor
 >>**Consequences**\
 Using this pattern makes existing states explicit and easier to comprehend.
 There's no need for conditional statements in relation to application state, used polymorphism instead.
-Passing input to the controllers is now done by states (using polymorphism) and it's clear what use it has in each state.
+Passing input to the controllers is now done by states using the factory method.
 
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
@@ -162,16 +173,17 @@ However, this is not a good solution from our project's point of view, since the
 There are switches used in direction and options.
 Possible refactor would be to add a Direction and/or Option Parent Class and add specific Direction/Option subclasses.
 For example, in the case of Direction, it would be easy to implement a method getNextPosition() for each Direction.
-As such defining the direction would allow us to only call that method and not have to deal with conditional logic.
-The conditional logic (switches) would be substituted by polymorphism (Refactor called Replace Type Code with Subclasses))
-However, this would result in a class explosion (too many classes), especially in the long run.
+As such, defining the direction would allow us to only call that method and not have to deal with conditional logic.
+The conditional logic (switches) would be substituted by polymorphism (refactor called Replace Type Code with Subclasses)
+However, this would result in a "class explosion" (too many classes), especially in the long run.
 
 #### Speculative Generality
 Several options in Menu are not implemented and are unused ("MULTIPLAYER", "SCORES", "OPTIONS").
+In fact, Multiplayer for now does the same as single player.
 A possibly refactor would be to remove these options and only adding them when the features for these options are implemented (or are in the work)
 
 #### Repeated field across subclasses
-Each monster class has a certain colour with which it will be colored.
+Each monster class has a certain colour with which it will be coloured.
 However, the attribute for color is present in each of the monsters and not even in the general (abstract) monster.
 A simple refactor would be to move that attribute to the Monster class and to make the constructor initiate that element with the return value of getColor.
 Another possible solution would be to delete that attribute and implement the getColor logic directly with the raw return value for each subclass of monster.
@@ -192,6 +204,6 @@ A solution for this would be splitting the "interfaces" of said Controllers. Thi
 
 ### SELF-EVALUATION
 
-- Adriano Machado:
-- Félix Martins:
-- Tomás Pereira:
+- Adriano Machado: 37%
+- Félix Martins: 37%
+- Tomás Pereira: 26%
