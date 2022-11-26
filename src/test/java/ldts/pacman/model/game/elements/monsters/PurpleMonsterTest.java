@@ -14,7 +14,7 @@ public class PurpleMonsterTest {
 
     @Test
     public void testPurpleMonsterMovementStrategy() {
-        assertInstanceOf(RandomMovement.class, purpleMonster.getMovementStrategy(null));
+        assertTrue(purpleMonster.getMovementStrategy(null) instanceof RandomMovement);
     }
 
     @Test

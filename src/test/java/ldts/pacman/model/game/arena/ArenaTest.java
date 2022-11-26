@@ -4,7 +4,6 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.ClassOrderer;
 import org.junit.jupiter.api.Test;
 import ldts.pacman.model.game.elements.Monster;
 import org.mockito.Mock;

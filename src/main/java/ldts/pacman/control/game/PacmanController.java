@@ -25,7 +25,7 @@ public class PacmanController extends GameController {
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
         playerMovement.changeDirection(option);
-        if (time - lastMovement > 500 && playerMovement.move(getPacman())) {
+        if (time - lastMovement > 200 && playerMovement.move(getPacman())) {
             lastMovement = time;
             collectCoin(getModel().getPacman().getPosition());
         }

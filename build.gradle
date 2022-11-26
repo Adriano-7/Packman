@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'info.solidsoft.pitest' version '1.7.4'
+    id 'jacoco'
 }
 
 group 'ldts.pacman'
@@ -32,4 +33,13 @@ test {
     useJUnitPlatform {
         includeEngines('junit-jupiter', 'jqwik')
     }
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+    reportsDirectory = layout.buildDirectory.dir('reports/jacoco')
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }

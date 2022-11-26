@@ -10,9 +10,10 @@ public class OrangeMonsterTest {
     private OrangeMonster orangeMonster;
     @BeforeEach
     public void setUp() {orangeMonster = new OrangeMonster(1, 6);}
+
     @Test
     public void testOrangeMonsterMovementStrategy() {
-        assertInstanceOf(RandomMovement.class, orangeMonster.getMovementStrategy(null));
+        assertTrue(orangeMonster.getMovementStrategy(null) instanceof RandomMovement);
     }
     @Test
     public void testOrangeMonsterPosition() {

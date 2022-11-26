@@ -32,7 +32,7 @@ public class RandomMovementTest {
     @Test
     public void move4Options() {
         Monster monster = new BlueMonster(5, 5);
-        //Mock the isWall method of the arena
+
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
         Mockito.when(arena.getPacman()).thenReturn(new Pacman(0, 0));
 

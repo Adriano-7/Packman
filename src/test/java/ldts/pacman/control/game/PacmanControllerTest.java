@@ -14,8 +14,6 @@ import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,7 +37,7 @@ public class PacmanControllerTest {
         pacmanController.step(null, GUI.OPTION.NONE, 1000);
         assertEquals(initial, pacman.getPosition());
 
-        pacmanController.step(null, GUI.OPTION.UP, 500);
+        pacmanController.step(null, GUI.OPTION.UP, 200);
         assertEquals(initial, pacman.getPosition());
 
         pacmanController.step(null, GUI.OPTION.LEFT, -1000);
@@ -64,11 +62,8 @@ public class PacmanControllerTest {
 
         pacmanController.step(null, GUI.OPTION.NONE, 1000);
         assertEquals(initial, pacman.getPosition());
-        // assertEquals(pacman.getLastMovement(), 0);
 
         pacmanController.step(null, GUI.OPTION.DOWN, 501);
         assertEquals(initial.getDown(), pacman.getPosition());
     }
-
-    //public void collectCoinTest() throws IOException {
-    }
+}

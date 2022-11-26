@@ -12,7 +12,7 @@ public class RedMonsterTest {
     public void setUp() {redMonster = new RedMonster(2, 7);}
     @Test
     public void testRedMonsterMovementStrategy() {
-        assertInstanceOf(RandomMovement.class, redMonster.getMovementStrategy(null));
+        assertTrue(redMonster.getMovementStrategy(null) instanceof RandomMovement);
     }
     @Test
     public void testRedMonsterPosition() {
