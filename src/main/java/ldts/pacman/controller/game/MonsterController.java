@@ -1,4 +1,4 @@
-package ldts.pacman.control.game;
+package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;

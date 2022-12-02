@@ -1,16 +1,11 @@
 package ldts.pacman.state;
 
 
-import ldts.pacman.Game;
-import ldts.pacman.control.game.ArenaController;
-import ldts.pacman.gui.GUI;
+import ldts.pacman.controller.game.ArenaController;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.view.game.ArenaViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

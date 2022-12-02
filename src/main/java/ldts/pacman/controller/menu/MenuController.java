@@ -1,19 +1,13 @@
-package ldts.pacman.control.menu;
+package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
-import ldts.pacman.control.Controller;
+import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
-import ldts.pacman.model.game.elements.Monster;
-import ldts.pacman.model.game.elements.monsters.RedMonster;
-import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.state.GameState;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu model) {

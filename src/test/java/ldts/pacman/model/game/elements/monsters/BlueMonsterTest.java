@@ -1,6 +1,6 @@
 package ldts.pacman.model.game.elements.monsters;
 
-import ldts.pacman.control.game.RandomMovement;
+import ldts.pacman.controller.game.RandomMovement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

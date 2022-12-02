@@ -1,6 +1,6 @@
 package ldts.pacman.model.game.elements.monsters;
-import ldts.pacman.control.game.MovementStrategy;
-import ldts.pacman.control.game.RandomMovement;
+import ldts.pacman.controller.game.MovementStrategy;
+import ldts.pacman.controller.game.RandomMovement;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 

@@ -1,8 +1,6 @@
 package ldts.pacman.model.game.elements;
 
-import ldts.pacman.control.game.MovementStrategy;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.arena.Arena;
 
 public abstract class MovableElement extends Element {
     private final Position initialPosition;

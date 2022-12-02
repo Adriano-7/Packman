@@ -1,4 +1,4 @@
-package ldts.pacman.control.game;
+package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
@@ -7,7 +7,6 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Coin;
 import ldts.pacman.model.game.elements.Pacman;
 
-import java.lang.management.PlatformLoggingMXBean;
 import java.util.List;
 
 public class PacmanController extends GameController {

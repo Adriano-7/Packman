@@ -1,7 +1,7 @@
 package ldts.pacman.state;
 
-import ldts.pacman.control.Controller;
-import ldts.pacman.control.game.ArenaController;
+import ldts.pacman.controller.Controller;
+import ldts.pacman.controller.game.ArenaController;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.view.game.ArenaViewer;
 import ldts.pacman.view.Viewer;

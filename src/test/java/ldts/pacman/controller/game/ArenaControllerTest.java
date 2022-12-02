@@ -1,7 +1,6 @@
-package ldts.pacman.control.game;
+package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.control.game.ArenaController;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;

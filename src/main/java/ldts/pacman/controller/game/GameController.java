@@ -1,6 +1,6 @@
-package ldts.pacman.control.game;
+package ldts.pacman.controller.game;
 
-import ldts.pacman.control.Controller;
+import ldts.pacman.controller.Controller;
 import ldts.pacman.model.game.arena.Arena;
 
 public abstract class GameController extends Controller<Arena> {

@@ -1,7 +1,7 @@
 package ldts.pacman.state;
 
 import ldts.pacman.Game;
-import ldts.pacman.control.Controller;
+import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.view.Viewer;
 

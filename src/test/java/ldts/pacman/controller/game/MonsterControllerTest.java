@@ -1,19 +1,14 @@
-package ldts.pacman.control.game;
+package ldts.pacman.controller.game;
 
-import ldts.pacman.control.game.MonsterController;
-import ldts.pacman.control.game.PacmanController;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
