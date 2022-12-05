@@ -9,17 +9,23 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import ldts.pacman.model.game.Position;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
 
     public LanternaGUI(Screen screen) {this.screen = screen;}
 
-    public LanternaGUI(int width, int height) throws IOException{
-        Terminal terminal = createTerminal(width, height);
+    public LanternaGUI(int width, int height) throws IOException, URISyntaxException, FontFormatException {
+        AWTTerminalFontConfiguration fontConfig = loadFont();
+        Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
 
@@ -31,14 +37,25 @@ public class LanternaGUI implements GUI {
         screen.doResizeIfNecessary();
         return screen;
     }
-    private Terminal createTerminal(int width, int height) throws IOException {
+    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
+        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
 
+    private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, IOException, FontFormatException {
+        URL resource = getClass().getClassLoader().getResource("fonts/Square-Regular.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        GraphicsEnvironment g = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        g.registerFont(font);
+
+        Font loadFont =  font.deriveFont(Font.PLAIN, 23);
+        return AWTTerminalFontConfiguration.newInstance(loadFont);
+    }
     @Override
     public OPTION getNextOption() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
@@ -55,11 +72,11 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawPacman(Position position){
-        drawCharacter(position,'@', "#FFFFFF");
+        drawCharacter(position,'@', "#FFFF00");
     }
     @Override
     public void drawWall(Position position){
-        drawCharacter(position,'|', "#FFFFFF");
+        drawCharacter(position,'#', "#2424FF");
     }
     @Override
     public void drawCoin(Position position){

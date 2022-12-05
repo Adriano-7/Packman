@@ -7,19 +7,21 @@ import ldts.pacman.state.GameState;
 import ldts.pacman.state.MenuState;
 import ldts.pacman.state.State;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Game {
     private final LanternaGUI gui;
     private State state;
 
-    public Game() throws IOException {
+    public Game() throws IOException, URISyntaxException, FontFormatException {
         int width = 60, height = 30;
         this.gui = new LanternaGUI(width, height);
         this.state = new MenuState(new Menu());
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
         Game game = new Game();
         game.run();
     }
