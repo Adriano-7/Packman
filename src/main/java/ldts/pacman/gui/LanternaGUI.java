@@ -53,7 +53,7 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment g = GraphicsEnvironment.getLocalGraphicsEnvironment();
         g.registerFont(font);
 
-        Font loadFont =  font.deriveFont(Font.PLAIN, 23);
+        Font loadFont =  font.deriveFont(Font.PLAIN, 25);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
     @Override
@@ -98,11 +98,11 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawScore(int score) {
-        drawText(new Position(50, 0), "Score: " + score, "#FFD700");
+        drawText(new Position(0, 21), "Score: " + score, "#FFD700");
     }
     @Override
     public void drawHealth(int health) {
-        drawText(new Position(0, 0), "Health: " + health, "#FFD700");
+        drawText(new Position(0, 20), "Health: " + health, "#FFD700");
     }
 
     @Override
