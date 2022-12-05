@@ -1,4 +1,4 @@
-package ldts.pacman;
+package ldts.pacman.FileManipulation;
 
 import ldts.pacman.model.game.arena.ArenaLoader;
 

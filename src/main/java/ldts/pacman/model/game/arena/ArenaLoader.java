@@ -1,18 +1,13 @@
 package ldts.pacman.model.game.arena;
 
-import ldts.pacman.ResourceFileReader;
+import ldts.pacman.FileManipulation.ResourceFileReader;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;
 import ldts.pacman.model.game.elements.monsters.PurpleMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 

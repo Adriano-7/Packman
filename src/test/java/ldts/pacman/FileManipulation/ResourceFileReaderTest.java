@@ -1,5 +1,6 @@
-package ldts.pacman;
+package ldts.pacman.FileManipulation;
 
+import ldts.pacman.FileManipulation.ResourceFileReader;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

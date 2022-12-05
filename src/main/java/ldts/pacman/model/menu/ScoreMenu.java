@@ -1,6 +1,6 @@
 package ldts.pacman.model.menu;
 
-import ldts.pacman.ResourceFileReader;
+import ldts.pacman.FileManipulation.ResourceFileReader;
 
 import java.io.IOException;
 import java.util.List;
