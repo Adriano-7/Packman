@@ -7,15 +7,8 @@ import java.util.List;
 
 public class ScoreMenu {
     private List<String> lines;
-    public ScoreMenu() {
-        try {
-            lines = new ResourceFileReader().readLines("/scores.txt");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Could not find such file");
-            System.out.println("Will probably lead to NullPointerException's");
-        }
+    public ScoreMenu() throws IOException {
+        lines = new ResourceFileReader().readLines("/scores.txt");
     }
     public List<String> getLines() {
         return lines;

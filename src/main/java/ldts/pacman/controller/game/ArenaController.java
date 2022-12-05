@@ -17,6 +17,8 @@ public class ArenaController extends GameController {
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
         if (option == GUI.OPTION.QUIT || getModel().getPacman().getHealth() == 0) {
+            // TODO: ask for name and update scores file
+            // getModel().getPacman().getScore()
             game.setState(new MenuState(new Menu()));
         }
         else {

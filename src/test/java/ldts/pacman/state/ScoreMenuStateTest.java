@@ -17,16 +17,16 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
 public class ScoreMenuStateTest {
     public ScoreMenuState scoreMenuState;
     public ScoreMenu scoreMenu;
     @BeforeEach
-    public void setUp(){
-        scoreMenu = new ScoreMenu();
+    public void setUp() {
+        try { scoreMenu = new ScoreMenu(); }
+        catch (IOException e) { fail(); }
         scoreMenuState = new ScoreMenuState(scoreMenu);
     }
     @Test
