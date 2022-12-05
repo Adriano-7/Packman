@@ -9,7 +9,7 @@ public class ScoreMenu {
     private List<String> lines;
     public ScoreMenu() {
         try {
-            lines = new ResourceFileReader("/scores.txt").getLines();
+            lines = new ResourceFileReader().readLines("/scores.txt");
         }
         catch (IOException e) {
             e.printStackTrace();

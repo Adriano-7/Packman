@@ -10,18 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceFileReader {
-    private final List<String> lines;
-    public ResourceFileReader(String filePath) throws IOException {
+    public List<String> readLines(String filePath) throws IOException {
         URL resource = ArenaLoader.class.getResource(filePath);
         BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));
-        lines = readLines(reader);
+        return readLines(reader);
     }
-    private List<String> readLines(BufferedReader reader) throws IOException {
+    public List<String> readLines(BufferedReader reader) throws IOException {
         List<String> lines = new ArrayList<>();
         for (String line; (line = reader.readLine()) != null; ) lines.add(line);
-        return lines;
-    }
-    public List<String> getLines() {
         return lines;
     }
 }
