@@ -5,7 +5,9 @@ import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.Menu;
+import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.state.GameState;
+import ldts.pacman.state.ScoreMenuState;
 
 import java.io.IOException;
 
@@ -24,9 +26,11 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-
-                if (getModel().isSelectedStart()) {
+                else if (getModel().isSelectedStart()) {
                     game.setState(new GameState(new ArenaLoader(2).createArena()));
+                }
+                else if (getModel().isSelectedScores()) {
+                    game.setState(new ScoreMenuState(new ScoreMenu()));
                 }
                 break;
             case QUIT:

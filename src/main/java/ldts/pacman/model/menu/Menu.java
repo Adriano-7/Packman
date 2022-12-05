@@ -28,4 +28,8 @@ public class Menu {
     public int getNumberEntries(){
         return options.size();
     }
+
+    public boolean isSelectedScores() {
+        return isSelected(2);
+    }
 }
