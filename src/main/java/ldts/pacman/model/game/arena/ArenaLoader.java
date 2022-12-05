@@ -1,5 +1,6 @@
 package ldts.pacman.model.game.arena;
 
+import ldts.pacman.ResourceFileReader;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;
@@ -20,15 +21,7 @@ public class ArenaLoader {
     private final List<String> lines;
 
     public ArenaLoader(int levelNumber) throws IOException {
-        URL resource = ArenaLoader.class.getResource("/maps/level" + levelNumber + ".lvl");
-        BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));
-        lines = readLines(reader);
-    }
-
-    private List<String> readLines(BufferedReader reader) throws IOException {
-        List<String> lines = new ArrayList<>();
-        for (String line; (line = reader.readLine()) != null; ) lines.add(line);
-        return lines;
+        lines = new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
     }
     private int getWidth() {
         int width = 0;
