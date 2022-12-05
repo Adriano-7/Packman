@@ -3,15 +3,13 @@ package ldts.pacman.model.game.arena;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;
-import ldts.pacman.model.game.elements.monsters.PurpleMonster;
+import ldts.pacman.model.game.elements.monsters.PinkMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +71,7 @@ public class ArenaLoader {
                 switch (lines.get(y).charAt(x)) {
                     case 'R' -> monsters.add(new RedMonster(x, y));
                     case 'B' -> monsters.add(new BlueMonster(x, y));
-                    case 'P' -> monsters.add(new PurpleMonster(x, y));
+                    case 'P' -> monsters.add(new PinkMonster(x, y));
                     case 'O' -> monsters.add(new OrangeMonster(x, y));
                 }
             }
