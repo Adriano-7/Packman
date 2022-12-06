@@ -1,10 +1,10 @@
 package ldts.pacman;
 
-import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.state.ScoreMenuState;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -16,6 +16,8 @@ public class GameTest {
             game.setState(null);
             game.run();
         }
-        catch (IOException e) { fail(); }
+        catch (IOException | URISyntaxException | FontFormatException e ) {
+            fail();
+        }
     }
 }
