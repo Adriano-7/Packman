@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,34 +25,41 @@ public class ResourceFileReaderTest {
     }
     @Test
     public void readLinesWithReader() {
-        String filePath = "/scores.txt";
+        String filePath = "/scoresRead.txt";
+        List<String> expectedLines = Arrays.asList("|===USERNAME=======SCORE====|",
+                "  1. 123456789  - 123456789", "  2. 019231515  - 5000", "  3. 151985153  - 2500",
+                "  4. hello      - 1200", "  5. h          - 789", "  6. aa         - 600",
+                "  7. bb         - 300", "  8. ccccccccc  - 9", "  9. ddddddddd  - 5",
+                "  10. eheeheaaa - 1", "|===========================|");
+
         try {
-            URL resource = ArenaLoader.class.getResource(filePath);
+            URL resource = ResourceFileReaderTest.class.getResource(filePath);
             BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));
 
             List<String> fileLines = resourceFileReader.readLines(reader);
 
-            assertTrue(fileLines.size() > 0);
+            assertEquals(expectedLines, fileLines);
         }
         catch (FileNotFoundException e) {
-            System.out.println(filePath + " not found");
-            fail();
+            fail(filePath + " not found");
         }
         catch (IOException e) {
             fail();
         }
     }
     @Test
-    public void readLinesWithString() {
-        String filePath = "/scores.txt";
+        public void readLinesWithString() {
+        String filePath = "/scoresRead.txt";
+        List<String> expectedLines = Arrays.asList("|===USERNAME=======SCORE====|", "  1. 123456789  - 123456789", "  2. 019231515  - 5000", "  3. 151985153  - 2500", "  4. hello      - 1200", "  5. h          - 789", "  6. aa         - 600", "  7. bb         - 300", "  8. ccccccccc  - 9", "  9. ddddddddd  - 5", "  10. eheeheaaa - 1", "|===========================|");
         resourceFileReader = Mockito.spy(resourceFileReader);
 
         try {
-            List<String> lines = resourceFileReader.readLines(filePath);
+            List<String> fileLines = resourceFileReader.readLines(filePath);
 
             Mockito.verify(resourceFileReader, times(1))
                     .readLines(Mockito.any(BufferedReader.class));
-            assertTrue(lines.size() > 0);
+
+            assertEquals(expectedLines, fileLines);
         }
         catch (IOException e) {
             fail();

@@ -25,7 +25,7 @@ public class ScoreMenuStateTest {
     public ScoreMenu scoreMenu;
     @BeforeEach
     public void setUp() {
-        try { scoreMenu = new ScoreMenu(); }
+        try { scoreMenu = new ScoreMenu("/scores.txt"); }
         catch (IOException e) { fail(); }
         scoreMenuState = new ScoreMenuState(scoreMenu);
     }
