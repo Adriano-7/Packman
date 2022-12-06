@@ -14,7 +14,8 @@ This project is under development by *Adriano Machado* (*up202105352*@fe.up.pt),
 >- **Pacman collides with monsters** - health decreased and positions of monsters and pacman reset to beginning of level
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
 >
-> ![Game](https://user-images.githubusercontent.com/93844395/204083448-e0a45342-ce44-46d8-b204-686bc19dc1c8.png)
+> ![Game](https://user-images.githubusercontent.com/93844395/205906343-158744f7-075b-439e-ac3e-98dd43542497.png)
+
 
 ### PLANNED FEATURES
 
