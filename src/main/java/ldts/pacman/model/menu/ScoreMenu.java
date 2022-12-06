@@ -50,6 +50,7 @@ public class ScoreMenu {
 
         newLines.add(footer);
         lines = newLines;
+        new ResourceFileWriter().writeLines(filePath, lines);
     }
     private int getScore(String line) {
         return Integer.parseInt(line.substring(line.lastIndexOf('-') + 2));
