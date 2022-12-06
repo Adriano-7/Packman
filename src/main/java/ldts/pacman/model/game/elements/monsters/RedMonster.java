@@ -5,7 +5,7 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
 public class RedMonster extends Monster {
-    private final String color = "#FF0000";
+    private final String color = "#d03e19";
     public RedMonster(int x, int y) {super(x, y);}
     @Override
     public MovementStrategy getMovementStrategy(Arena arena) {return new RandomMovement(arena);}
