@@ -24,7 +24,7 @@ public class OrangeMonsterTest {
     }
     @Test
     public void testOrangeMonsterColor(){
-        assertEquals("#FFB852", orangeMonster.getColor());
+        assertEquals("#db851c", orangeMonster.getColor());
         assertNotEquals("#000000", orangeMonster.getColor());
     }
 }

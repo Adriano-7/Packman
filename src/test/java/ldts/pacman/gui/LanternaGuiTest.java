@@ -34,14 +34,14 @@ public class LanternaGuiTest {
     public void testDrawPacman() {
         gui.drawPacman(new Position(2,3));
 
-        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 255, 255));
+        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 255, 0));
         Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 3, "@");
     }
     @Test
     public void testDrawWall(){
         gui.drawWall(new Position(4, 5));
-        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 255, 255));
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(4, 5, "|");
+        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(36, 36, 255));
+        Mockito.verify(textGraphics, Mockito.times(1)).putString(4, 5, "#");
     }
     @Test
     public void testDrawCoin(){
@@ -71,12 +71,12 @@ public class LanternaGuiTest {
     public void testDrawScore(){
         gui.drawScore(100);
         Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 215, 0));
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(50, 0, "Score: 100");
+        Mockito.verify(textGraphics, Mockito.times(1)).putString(0, 21, "Score: 100");
     }
     @Test
     public void testDrawHealth(){
         gui.drawHealth(100);
         Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 215, 0));
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(0, 0, "Health: 100");
+        Mockito.verify(textGraphics, Mockito.times(1)).putString(0, 20, "Health: 100");
     }
 }

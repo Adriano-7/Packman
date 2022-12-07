@@ -14,12 +14,12 @@ public class PinkMonsterTest {
         pinkMonster = new PinkMonster(5, 5);}
 
     @Test
-    public void testPurpleMonsterMovementStrategy() {
+    public void testPinkMonsterMovementStrategy() {
         assertTrue(pinkMonster.getMovementStrategy(null) instanceof RandomMovement);
     }
 
     @Test
-    public void testPurpleMonsterPosition() {
+    public void testPinkMonsterPosition() {
         assertEquals(5, pinkMonster.getPosition().getX());
         assertEquals(5, pinkMonster.getPosition().getY());
         assertNotEquals(6, pinkMonster.getPosition().getX());
@@ -27,8 +27,8 @@ public class PinkMonsterTest {
     }
 
     @Test
-    public void testPurpleMonsterColor(){
-        assertEquals("#FFB8FF", pinkMonster.getColor());
+    public void testPinkMonsterColor(){
+        assertEquals("#ea82e5", pinkMonster.getColor());
         assertNotEquals("#000000", pinkMonster.getColor());
     }
 }

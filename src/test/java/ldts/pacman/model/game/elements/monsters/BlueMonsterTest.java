@@ -27,7 +27,7 @@ public class BlueMonsterTest {
 
     @Test
     public void testBlueMonsterColor(){
-        assertEquals("#00FFFF", blueMonster.getColor());
+        assertEquals("#46bfee", blueMonster.getColor());
         assertNotEquals("#000000", blueMonster.getColor());
     }
 }

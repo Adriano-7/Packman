@@ -23,7 +23,7 @@ public class RedMonsterTest {
     }
     @Test
     public void testRedMonsterColor(){
-        assertEquals("#FF0000", redMonster.getColor());
+        assertEquals("#d03e19", redMonster.getColor());
         assertNotEquals("#000000", redMonster.getColor());
     }
 }
