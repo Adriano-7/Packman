@@ -4,7 +4,12 @@ import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.Menu;
+import ldts.pacman.model.menu.SaveScore;
+import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.state.MenuState;
+import ldts.pacman.state.SaveScoreState;
+
+import java.io.IOException;
 
 public class ArenaController extends GameController {
     private PacmanController pacmanController;
@@ -17,9 +22,8 @@ public class ArenaController extends GameController {
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
         if (option == GUI.OPTION.QUIT || getModel().getPacman().getHealth() == 0) {
-            // TODO: ask for name and update scores file
-            // getModel().getPacman().getScore()
-            game.setState(new MenuState(new Menu()));
+            int score = getModel().getPacman().getScore();
+            game.setState(new SaveScoreState(new SaveScore(score)));
         }
         else {
             pacmanController.step(game, option, time);
