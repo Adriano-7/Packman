@@ -47,13 +47,13 @@ public class PlayerMovement extends MovementStrategy {
     }
 
     public boolean movePlayerInDirection() {
-        switch (direction) {
-            case UP: return movePlayerUp();
-            case DOWN: return movePlayerDown();
-            case LEFT: return movePlayerLeft();
-            case RIGHT: return movePlayerRight();
-        }
-        return false;
+        return switch (direction) {
+            case UP -> movePlayerUp();
+            case DOWN -> movePlayerDown();
+            case LEFT -> movePlayerLeft();
+            case RIGHT -> movePlayerRight();
+            default -> false;
+        };
     }
     public void changeDirection(GUI.OPTION option) {
         switch (option) {
@@ -61,12 +61,13 @@ public class PlayerMovement extends MovementStrategy {
             case DOWN -> setDirection(Direction.DOWN);
             case LEFT -> setDirection(Direction.LEFT);
             case RIGHT -> setDirection(Direction.RIGHT);
+            default -> {}
         }
     }
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
-
+    @Override
     public boolean move(MovableElement element) {
         return movePlayerInDirection();
     }

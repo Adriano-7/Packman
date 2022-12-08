@@ -12,6 +12,8 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LanternaGuiTest {
     private LanternaGUI gui;
     private Screen screen;
@@ -28,7 +30,7 @@ public class LanternaGuiTest {
     }
     @Test
     public void testGetNextOption() throws IOException {
-        assert gui.getNextOption() == GUI.OPTION.UP;
+        assertEquals(gui.getNextOption(), GUI.OPTION.UP);
     }
     @Test
     public void testDrawPacman() {
