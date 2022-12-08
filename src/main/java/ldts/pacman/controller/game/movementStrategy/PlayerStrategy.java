@@ -1,4 +1,4 @@
-package ldts.pacman.controller.game;
+package ldts.pacman.controller.game.movementStrategy;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
@@ -6,11 +6,11 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
 import ldts.pacman.model.game.elements.Pacman;
 
-public class PlayerMovement extends MovementStrategy {
+public class PlayerStrategy extends MovementStrategy {
     public enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
     private Direction direction;
 
-    public PlayerMovement(Arena arena) {
+    public PlayerStrategy(Arena arena) {
         super(arena);
         this.direction = Direction.NONE;
     }

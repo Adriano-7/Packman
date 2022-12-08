@@ -1,5 +1,6 @@
 package ldts.pacman.controller.game;
 
+import ldts.pacman.controller.game.movementStrategy.RandomStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
@@ -18,14 +19,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RandomMovementTest {
-    private RandomMovement randomMovement;
+public class RandomStrategyTest {
+    private RandomStrategy randomStrategy;
     private Arena arena;
     @BeforeEach
     public void setUp() {
         //Create arena mock using Mockito
         this.arena = Mockito.mock(Arena.class);
-        this.randomMovement = new RandomMovement(arena);
+        this.randomStrategy = new RandomStrategy(arena);
     }
     @Test
     public void move4Options() {
@@ -34,7 +35,7 @@ public class RandomMovementTest {
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
         Mockito.when(arena.getPacman()).thenReturn(new Pacman(0, 0));
 
-        randomMovement.move(monster);
+        randomStrategy.move(monster);
         List<Position> possible = Arrays.asList(new Position(6, 5), new Position(4, 5),
                 new Position(5, 6), new Position(5, 4));
         assertTrue(possible.contains(monster.getPosition()));
@@ -54,7 +55,7 @@ public class RandomMovementTest {
             return walls.stream().anyMatch(wall -> wall.getPosition().equals(position));
         });
 
-        randomMovement.move(monster);
+        randomStrategy.move(monster);
         assertEquals(new Position(5, 4), monster.getPosition());
     }
 }

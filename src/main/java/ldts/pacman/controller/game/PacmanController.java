@@ -1,6 +1,7 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
+import ldts.pacman.controller.game.movementStrategy.PlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
@@ -11,10 +12,10 @@ import java.util.List;
 
 public class PacmanController extends GameController {
     private long lastMovement;
-    private PlayerMovement playerMovement;
+    private PlayerStrategy playerStrategy;
     public PacmanController(Arena model) {
         super(model);
-        playerMovement = new PlayerMovement(model);
+        playerStrategy = new PlayerStrategy(model);
         lastMovement = 0;
     }
     public Pacman getPacman() {
@@ -23,8 +24,8 @@ public class PacmanController extends GameController {
 
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
-        playerMovement.changeDirection(option);
-        if (time - lastMovement > 200 && playerMovement.move(getPacman())) {
+        playerStrategy.changeDirection(option);
+        if (time - lastMovement > 200 && playerStrategy.move(getPacman())) {
             lastMovement = time;
             collectCoin(getModel().getPacman().getPosition());
         }

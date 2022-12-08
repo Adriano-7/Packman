@@ -1,6 +1,6 @@
 package ldts.pacman.model.game.elements.monsters;
 
-import ldts.pacman.controller.game.RandomMovement;
+import ldts.pacman.controller.game.movementStrategy.RandomStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ public class RedMonsterTest {
     public void setUp() {redMonster = new RedMonster(2, 7);}
     @Test
     public void testRedMonsterMovementStrategy() {
-        assertTrue(redMonster.getMovementStrategy(null) instanceof RandomMovement);
+        assertTrue(redMonster.getMovementStrategy(null) instanceof RandomStrategy);
     }
     @Test
     public void testRedMonsterPosition() {
