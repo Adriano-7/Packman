@@ -3,6 +3,7 @@ package ldts.pacman.controller.menu;
 import ldts.pacman.Game;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
+import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.state.GameState;
@@ -26,7 +27,8 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isSelectedExit()) game.setState(null);
 
                 if (getModel().isSelectedStart()) {
-                    game.setState(new GameState(new ArenaLoader(3).createArena()));
+                    Arena arena = new ArenaLoader(3).createArena();
+                    game.setState(new GameState(arena));
                 }
                 break;
             case QUIT:
