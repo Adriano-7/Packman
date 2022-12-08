@@ -23,9 +23,8 @@ public class Position {
             default -> null;
         };
     }
-
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
@@ -36,7 +35,7 @@ public class Position {
         return Objects.hash(x, y);
     }
 
-    public Position add(Position other) {
+    public Position plus(Position other) {
         return new Position(this.x + other.x, this.y + other.y);
     }
 }
