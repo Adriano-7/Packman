@@ -11,14 +11,14 @@ import org.mockito.Mockito;
 
 public class ScoreMenuControllerTest {
     Game game;
+    ScoreMenuController scoreMenuController;
     @BeforeEach
     public void setUp() {
         game = Mockito.mock(Game.class);
+        scoreMenuController = new ScoreMenuController(null);
     }
     @Test
     public void stepNoQuit() {
-        ScoreMenuController scoreMenuController = new ScoreMenuController(null);
-
         scoreMenuController.step(game, GUI.OPTION.NONE, 0);
         scoreMenuController.step(game, GUI.OPTION.UP, 0);
         scoreMenuController.step(game, GUI.OPTION.DOWN, 0);
@@ -29,8 +29,6 @@ public class ScoreMenuControllerTest {
     }
     @Test
     public void stepWithQuit() {
-        ScoreMenuController scoreMenuController = new ScoreMenuController(null);
-
         scoreMenuController.step(game, GUI.OPTION.SELECT, 0);
         scoreMenuController.step(game, GUI.OPTION.QUIT, 0);
 

@@ -30,9 +30,7 @@ public class ScoreMenu {
         int i = 1;
         for ( ; i < lines.size() - 1; i++) {
             if(getScore(lines.get(i)) < scoreToAdd && !newLineAdded) {
-                int numberOfSpaces = i >= 10 ? 9-name.length() : 10-name.length();
-                newLines.add("  " + i + ". " + name +
-                        " ".repeat(numberOfSpaces) + " - " + scoreToAdd);
+                newLines.add("  " + i + ". " + name + " - " + scoreToAdd);
                 newLineAdded = true;
             }
             if (newLineAdded) {
@@ -42,9 +40,7 @@ public class ScoreMenu {
             else newLines.add(lines.get(i));
         }
         if (!newLineAdded) {
-            int numberOfSpaces = i >= 10 ? 10-name.length() : 11-name.length();
-            lines.add("  " + i + ". " + name +
-                    " ".repeat(numberOfSpaces) + " - " + scoreToAdd);
+            lines.add("  " + i + ". " + name + " - " + scoreToAdd);
         }
         if (newLines.size() > 11) newLines.remove(newLines.size() - 1);
 

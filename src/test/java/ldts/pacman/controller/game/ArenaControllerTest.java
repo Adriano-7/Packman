@@ -5,6 +5,7 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.state.MenuState;
+import ldts.pacman.state.SaveScoreState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -21,7 +22,8 @@ public class ArenaControllerTest {
     public void quitGame() {
         Game game = Mockito.mock(Game.class);
         arenaController.step(game, GUI.OPTION.QUIT, 0);
-        Mockito.verify(game, Mockito.times(1)).setState(Mockito.any(MenuState.class));
+        Mockito.verify(game, Mockito.times(1))
+                .setState(Mockito.any(SaveScoreState.class));
     }
 
     @Test
@@ -34,6 +36,7 @@ public class ArenaControllerTest {
 
         arenaController.step(game, null, 0);
 
-        Mockito.verify(game, Mockito.times(1)).setState(Mockito.any(MenuState.class));
+        Mockito.verify(game, Mockito.times(1))
+                .setState(Mockito.any(SaveScoreState.class));
     }
 }
