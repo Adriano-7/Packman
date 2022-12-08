@@ -20,7 +20,9 @@ public class GameStateTest {
         gameState=new GameState(arena);
     }
     @Test
-    public void testGetModel(){assertEquals(arena,gameState.getModel());}
+    public void testGetModel(){
+        assertEquals(arena,gameState.getModel());
+    }
     @Test
     public void getViewer(){
         assertEquals(ArenaViewer.class,gameState.getViewer().getClass());

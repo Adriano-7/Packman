@@ -11,6 +11,7 @@ public class MonsterController extends GameController {
         super(model);
         this.lastMovement = 0;
     }
+    @Override
     public void step(Game game, GUI.OPTION option, long time) {
         if (time - lastMovement > 500 ) {
             for (Monster monster: getModel().getMonsters()) {

@@ -9,7 +9,6 @@ import ldts.pacman.view.Viewer;
 import java.util.List;
 
 public class ArenaViewer extends Viewer<Arena> {
-    private Arena arena;
     private PacmanViewer pacmanViewer;
     private MonsterViewer monsterViewer;
     private CoinViewer coinViewer;
@@ -21,6 +20,7 @@ public class ArenaViewer extends Viewer<Arena> {
         coinViewer = new CoinViewer();
         wallViewer = new WallViewer();
     }
+    @Override
     public void drawElements(GUI gui) {
         drawElements(getModel().getCoins(), gui, coinViewer);
         drawElements(getModel().getMonsters(), gui, monsterViewer);
