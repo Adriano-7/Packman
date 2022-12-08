@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 public class Menu {
     private final List<String> options;
-    private int currentOption =0;
+    private int currentOption = 0;
     public Menu(){
-        this.options= Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","OPTIONS", "EXIT");
+        this.options = Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","OPTIONS", "EXIT");
     }
 
     public void next_Op(){
@@ -27,5 +27,8 @@ public class Menu {
     }
     public int getNumberEntries(){
         return options.size();
+    }
+    public boolean isSelectedScores() {
+        return isSelected(2);
     }
 }
