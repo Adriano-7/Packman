@@ -18,7 +18,7 @@ public class SaveScoreController extends Controller<SaveScore> {
     public void step(Game game, GUI.OPTION option, long time) throws IOException {
         switch(option) {
             case SELECT:
-                new ScoreMenu("/scores.txt")
+                new ScoreMenu()
                         .addScore(getModel().getTimeStamp(), getModel().getScore());
                 // no break here intended
             case QUIT:

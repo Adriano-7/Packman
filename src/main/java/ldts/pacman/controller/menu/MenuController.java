@@ -32,7 +32,7 @@ public class MenuController extends Controller<Menu> {
                     game.setState(new GameState(arena));
                 }
                 else if (getModel().isSelectedScores()) {
-                    game.setState(new ScoreMenuState(new ScoreMenu("/scores.txt")));
+                    game.setState(new ScoreMenuState(new ScoreMenu()));
                 }
                 break;
             case QUIT:
