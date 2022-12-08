@@ -1,4 +1,4 @@
-package ldts.pacman.state;
+package ldts.pacman.applicationState;
 
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.game.ArenaController;

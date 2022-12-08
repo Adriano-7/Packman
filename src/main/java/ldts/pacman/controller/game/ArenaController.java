@@ -3,13 +3,8 @@ package ldts.pacman.controller.game;
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.menu.Menu;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.state.MenuState;
-import ldts.pacman.state.SaveScoreState;
-
-import java.io.IOException;
+import ldts.pacman.applicationState.SaveScoreState;
 
 public class ArenaController extends GameController {
     private PacmanController pacmanController;

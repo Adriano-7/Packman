@@ -5,7 +5,6 @@ import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.MovableElement;
 
 public abstract class MovementStrategy {
-    // Maybe change monster to Element (also usable for Pacman)
     protected Arena arena;
     public MovementStrategy(Arena arena) {
         this.arena = arena;

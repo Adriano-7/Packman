@@ -1,6 +1,4 @@
-package ldts.pacman.FileManipulation;
-
-import ldts.pacman.model.game.arena.ArenaLoader;
+package ldts.pacman.fileManipulation;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,16 +1,9 @@
-package ldts.pacman.state;
+package ldts.pacman.applicationState;
 
-import ldts.pacman.Game;
-import ldts.pacman.controller.Controller;
-import ldts.pacman.controller.game.ArenaController;
 import ldts.pacman.controller.menu.ScoreMenuController;
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.view.Viewer;
-import ldts.pacman.view.game.ArenaViewer;
 import ldts.pacman.view.menu.ScoreMenuViewer;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

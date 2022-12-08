@@ -1,7 +1,7 @@
 package ldts.pacman.model.menu;
 
-import ldts.pacman.FileManipulation.ResourceFileReader;
-import ldts.pacman.FileManipulation.ResourceFileWriter;
+import ldts.pacman.fileManipulation.ResourceFileReader;
+import ldts.pacman.fileManipulation.ResourceFileWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;

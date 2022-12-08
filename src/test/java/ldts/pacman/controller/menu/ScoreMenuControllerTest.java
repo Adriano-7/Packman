@@ -2,9 +2,7 @@ package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.state.MenuState;
-import ldts.pacman.state.State;
+import ldts.pacman.applicationState.MenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

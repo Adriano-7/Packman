@@ -1,11 +1,8 @@
-package ldts.pacman.state;
+package ldts.pacman.applicationState;
 
 import ldts.pacman.controller.menu.MenuController;
-import ldts.pacman.controller.menu.ScoreMenuController;
 import ldts.pacman.model.menu.Menu;
-import ldts.pacman.model.menu.MenuTest;
 import ldts.pacman.view.menu.MenuViewer;
-import ldts.pacman.view.menu.ScoreMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

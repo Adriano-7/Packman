@@ -1,13 +1,10 @@
-package ldts.pacman.state;
+package ldts.pacman.applicationState;
 
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.SaveScoreController;
-import ldts.pacman.controller.menu.ScoreMenuController;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.view.Viewer;
 import ldts.pacman.view.menu.SaveScoreViewer;
-import ldts.pacman.view.menu.ScoreMenuViewer;
 
 public class SaveScoreState extends State<SaveScore> {
     public SaveScoreState(SaveScore model) {

@@ -1,6 +1,6 @@
 package ldts.pacman.model.game.arena;
 
-import ldts.pacman.FileManipulation.ResourceFileReader;
+import ldts.pacman.fileManipulation.ResourceFileReader;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;

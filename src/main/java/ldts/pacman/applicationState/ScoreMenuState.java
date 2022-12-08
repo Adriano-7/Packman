@@ -1,11 +1,9 @@
-package ldts.pacman.state;
+package ldts.pacman.applicationState;
 
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.ScoreMenuController;
-import ldts.pacman.model.menu.Menu;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.view.Viewer;
-import ldts.pacman.view.menu.MenuViewer;
 import ldts.pacman.view.menu.ScoreMenuViewer;
 
 public class ScoreMenuState extends State<ScoreMenu> {

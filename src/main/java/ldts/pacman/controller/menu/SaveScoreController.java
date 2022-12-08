@@ -6,7 +6,7 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.model.menu.SaveScore;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.state.MenuState;
+import ldts.pacman.applicationState.MenuState;
 
 import java.io.IOException;
 
