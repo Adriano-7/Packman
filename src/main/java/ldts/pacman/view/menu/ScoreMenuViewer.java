@@ -16,9 +16,8 @@ public class ScoreMenuViewer extends Viewer<ScoreMenu> {
         gui.drawText(new Position(5, 5), "TOP 10 SCORES", "#FFFFFF");
         List<String> scores = getModel().getLines();
         for (int i = 0; i < scores.size(); i++) {
-            // TODO: display scores according to window height/width (or just do this better)
-            // Also have to choose a color
-            gui.drawText(new Position(10, 10 + (i + 1)),
+            // TODO: choose a color
+            gui.drawText(new Position(0, 5 + (i + 1)),
                     scores.get(i), "#FFFF00");
         }
     }
