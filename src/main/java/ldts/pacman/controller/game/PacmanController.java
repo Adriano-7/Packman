@@ -1,6 +1,7 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
+import ldts.pacman.controller.game.movementStrategy.PacmanStrategy;
 import ldts.pacman.controller.game.movementStrategy.PlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
@@ -15,7 +16,7 @@ public class PacmanController extends GameController {
     private PlayerStrategy playerStrategy;
     public PacmanController(Arena model) {
         super(model);
-        playerStrategy = new PlayerStrategy(model);
+        playerStrategy = new PacmanStrategy(model);
         lastMovement = 0;
     }
     public Pacman getPacman() {

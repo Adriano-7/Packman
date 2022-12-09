@@ -9,7 +9,7 @@ public interface GUI {
     void drawPacman(Position position);
     void drawWall(Position position);
     void drawCoin(Position position);
-    void drawMonster(Position position ,String color);
+    void drawMonster(Position position, String color);
     void drawScore(int score);
     void drawHealth(int health);
     void drawText(Position position, String text, String color);
@@ -17,5 +17,5 @@ public interface GUI {
     void clear();
     void refresh() throws IOException;
     void close() throws IOException;
-    enum OPTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
+    enum OPTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, W, A, S, D}
 }

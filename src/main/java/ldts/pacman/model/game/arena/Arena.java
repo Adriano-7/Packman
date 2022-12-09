@@ -1,10 +1,7 @@
 package ldts.pacman.model.game.arena;
 
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.elements.Coin;
-import ldts.pacman.model.game.elements.Monster;
-import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.model.game.elements.Wall;
+import ldts.pacman.model.game.elements.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +10,7 @@ public class Arena {
     private final int width;
     private final int height;
     private Pacman pacman;
+    private MonsterPlayer monsterPlayer;
     private List<Coin> coins;
     private List<Monster> monsters;
     private List<Wall> walls;
@@ -30,6 +28,7 @@ public class Arena {
     public Pacman getPacman() {
         return pacman;
     }
+    public MonsterPlayer getMonsterPlayer(){return monsterPlayer;}
     public List<Coin> getCoins() {
         return coins;
     }

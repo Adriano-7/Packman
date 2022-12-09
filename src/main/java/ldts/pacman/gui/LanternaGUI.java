@@ -67,6 +67,14 @@ public class LanternaGUI implements GUI {
         if (keyType == KeyType.ArrowLeft) return OPTION.LEFT;
         if (keyType == KeyType.ArrowRight) return OPTION.RIGHT;
         if (keyType == KeyType.Enter) return OPTION.SELECT;
+        if(keyType == KeyType.Character) {
+            switch(keyStroke.getCharacter()) {
+                case 'w': return OPTION.W;
+                case 's': return OPTION.S;
+                case 'a': return OPTION.A;
+                case 'd': return OPTION.D;
+            }
+        }
         return OPTION.NONE;
     }
 
