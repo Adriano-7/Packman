@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public interface GUI {
     OPTION getNextOption() throws IOException;
-    void drawPacman(Position position);
+    void drawPacman(Position position, Position direction);
     void drawWall(Position position);
     void drawCoin(Position position);
     void drawMonster(Position position ,String color);

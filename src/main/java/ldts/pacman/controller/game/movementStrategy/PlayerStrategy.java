@@ -31,18 +31,22 @@ public class PlayerStrategy extends MovementStrategy {
 
     public boolean movePlayerUp() {
         setDirection(Direction.UP);
+        arena.getPacman().setDirection(new Position(0, 1));
         return movePlayer(arena.getPacman().getPosition().getUp());
     }
     public boolean movePlayerDown() {
         setDirection(Direction.DOWN);
+        arena.getPacman().setDirection(new Position(0, -1));
         return movePlayer(arena.getPacman().getPosition().getDown());
     }
     public boolean movePlayerLeft() {
         setDirection(Direction.LEFT);
+        arena.getPacman().setDirection(new Position(-1, 0));
         return movePlayer(arena.getPacman().getPosition().getLeft());
     }
     public boolean movePlayerRight() {
         setDirection(Direction.RIGHT);
+        arena.getPacman().setDirection(new Position(1, 0));
         return movePlayer(arena.getPacman().getPosition().getRight());
     }
 

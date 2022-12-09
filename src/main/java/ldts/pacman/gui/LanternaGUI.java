@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+
 public class LanternaGUI implements GUI {
     private final Screen screen;
 
@@ -53,7 +54,7 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment g = GraphicsEnvironment.getLocalGraphicsEnvironment();
         g.registerFont(font);
 
-        Font loadFont =  font.deriveFont(Font.PLAIN, 25);
+        Font loadFont =  font.deriveFont(Font.PLAIN, 32);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
     @Override
@@ -71,19 +72,22 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawPacman(Position position){
-        drawCharacter(position,'@', "#FFFF00");
+    public void drawPacman(Position position, Position direction) {
+        if(direction.equals(new Position(0,1))) {drawCharacter(position,'.', "#FFFF00");}
+        if(direction.equals(new Position(0,-1))) {drawCharacter(position,',', "#FFFF00");}
+        if(direction.equals(new Position(1,0))) {drawCharacter(position,'+', "#FFFF00");}
+        if(direction.equals(new Position(-1,0))) {drawCharacter(position,'-', "#FFFF00");}
     }
     @Override
     public void drawWall(Position position){
-        drawCharacter(position,'#', "#2424FF");
+        drawCharacter(position,'~', "#2424FF");
     }
     @Override
     public void drawCoin(Position position){
-        drawCharacter(position,'o', "#d4af37");
+        drawCharacter(position,'}', "#d4af37");
     }
     @Override
-    public void drawMonster(Position position,String color){drawCharacter(position,	'M',color);}
+    public void drawMonster(Position position,String color){drawCharacter(position,	'%',color);}
     @Override
     public void drawText(Position position, String text, String color){
         TextGraphics graphics = screen.newTextGraphics();
@@ -98,11 +102,14 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawScore(int score) {
-        drawText(new Position(0, 21), "Score: " + score, "#FFD700");
+        drawText(new Position(0, 22), "Score: " + score, "#FFFFFF");
     }
     @Override
     public void drawHealth(int health) {
-        drawText(new Position(0, 20), "Health: " + health, "#FFD700");
+        while (health > 0) {
+            drawCharacter(new Position(health, 21), '+', "#FFD700");
+            health--;
+        }
     }
 
     @Override
