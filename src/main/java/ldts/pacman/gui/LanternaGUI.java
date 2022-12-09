@@ -83,7 +83,7 @@ public class LanternaGUI implements GUI {
         drawCharacter(position,'o', "#d4af37");
     }
     @Override
-    public void drawMonster(Position position,String color){drawCharacter(position,	'M',color);}
+    public void drawMonster(Position position, String color){drawCharacter(position,'M',color);}
     @Override
     public void drawText(Position position, String text, String color){
         TextGraphics graphics = screen.newTextGraphics();

@@ -20,9 +20,11 @@ public class SaveScoreController extends Controller<SaveScore> {
             case SELECT:
                 new ScoreMenu("/scores.txt")
                         .addScore(getModel().getTimeStamp(), getModel().getScore());
-                // no break here intended
+                // fall through
             case QUIT:
                 game.setState(new MenuState(new Menu()));
+                break;
+            default:
                 break;
         }
     }
