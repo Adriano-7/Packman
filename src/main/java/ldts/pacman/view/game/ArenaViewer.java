@@ -13,16 +13,19 @@ public class ArenaViewer extends Viewer<Arena> {
     private MonsterViewer monsterViewer;
     private CoinViewer coinViewer;
     private WallViewer wallViewer;
+    private PowerUpViewer powerUpViewer;
     public ArenaViewer(Arena arena) {
         super(arena);
         pacmanViewer = new PacmanViewer();
         monsterViewer = new MonsterViewer();
         coinViewer = new CoinViewer();
         wallViewer = new WallViewer();
+        powerUpViewer = new PowerUpViewer();
     }
     @Override
     public void drawElements(GUI gui) {
         drawElements(getModel().getCoins(), gui, coinViewer);
+        drawElements(getModel().getPowerUps(), gui, powerUpViewer);
         drawElements(getModel().getMonsters(), gui, monsterViewer);
         drawElements(getModel().getWalls(), gui, wallViewer);
         pacmanViewer.draw(getModel().getPacman(), gui);

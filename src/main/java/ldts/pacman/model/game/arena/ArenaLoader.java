@@ -36,6 +36,7 @@ public class ArenaLoader {
         arena.setMonsters(createMonsters());
         arena.setWalls(createWalls());
         arena.setCoins(createCoins());
+        arena.setPowerUps(createPowerUps());
         return arena;
     }
     private List<Coin> createCoins() {
@@ -77,5 +78,14 @@ public class ArenaLoader {
             }
         }
         return walls;
+    }
+    private List<PowerUp> createPowerUps() {
+        List<PowerUp> powerUps = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            for (int x = 0; x < lines.get(y).length(); x++) {
+                if (lines.get(y).charAt(x) == 'C') powerUps.add(new PowerUp(x, y));
+            }
+        }
+        return powerUps;
     }
 }
