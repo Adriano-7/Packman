@@ -7,14 +7,9 @@ import ldts.pacman.model.game.elements.MovableElement;
 import ldts.pacman.model.game.elements.Pacman;
 
 public class PlayerStrategy extends MovementStrategy {
-    public enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
-    private Direction direction;
-
     public PlayerStrategy(Arena arena) {
         super(arena);
-        this.direction = Direction.NONE;
     }
-
     public boolean movePlayer(Position position) {
         if (!arena.isWall(position)) {
             arena.getPacman().setPosition(position);
@@ -23,52 +18,24 @@ public class PlayerStrategy extends MovementStrategy {
                 pacman.decreaseHealth();
                 super.resetPositions();
             }
-            // TODO: (for later) if getModel().isPowerUp() -> ...
+            // TODO: (for later) if getModel().isPowerUp(Position) -> ...
             return true;
         }
         return false;
     }
-
-    public boolean movePlayerUp() {
-        setDirection(Direction.UP);
-        return movePlayer(arena.getPacman().getPosition().getUp());
-    }
-    public boolean movePlayerDown() {
-        setDirection(Direction.DOWN);
-        return movePlayer(arena.getPacman().getPosition().getDown());
-    }
-    public boolean movePlayerLeft() {
-        setDirection(Direction.LEFT);
-        return movePlayer(arena.getPacman().getPosition().getLeft());
-    }
-    public boolean movePlayerRight() {
-        setDirection(Direction.RIGHT);
-        return movePlayer(arena.getPacman().getPosition().getRight());
-    }
-
-    public boolean movePlayerInDirection() {
-        return switch (direction) {
-            case UP -> movePlayerUp();
-            case DOWN -> movePlayerDown();
-            case LEFT -> movePlayerLeft();
-            case RIGHT -> movePlayerRight();
-            default -> false;
-        };
-    }
-    public void changeDirection(GUI.OPTION option) {
+    public void changeDirection(GUI.OPTION option, MovableElement element) {
         switch (option) {
-            case UP -> setDirection(Direction.UP);
-            case DOWN -> setDirection(Direction.DOWN);
-            case LEFT -> setDirection(Direction.LEFT);
-            case RIGHT -> setDirection(Direction.RIGHT);
+            case UP -> element.setDirection(new Position(0, -1));
+            case DOWN -> element.setDirection(new Position(0, 1));
+            case LEFT -> element.setDirection(new Position(-1, 0));
+            case RIGHT -> element.setDirection(new Position(1, 0));
             default -> {}
         }
     }
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
     @Override
     public boolean move(MovableElement element) {
-        return movePlayerInDirection();
+        if (element.getDirection().equals(new Position(0, 0))) return false;
+        Position nextPosition = element.getPosition().plus(element.getDirection());
+        return movePlayer(nextPosition);
     }
 }
