@@ -2,8 +2,8 @@ package ldts.pacman;
 
 import ldts.pacman.gui.LanternaGUI;
 import ldts.pacman.model.menu.Menu;
-import ldts.pacman.applicationState.MenuState;
-import ldts.pacman.applicationState.State;
+import ldts.pacman.application.state.MenuState;
+import ldts.pacman.application.state.State;
 
 import java.awt.*;
 import java.io.IOException;

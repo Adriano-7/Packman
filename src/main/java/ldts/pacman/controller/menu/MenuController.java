@@ -7,8 +7,8 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.applicationState.GameState;
-import ldts.pacman.applicationState.ScoreMenuState;
+import ldts.pacman.application.state.GameState;
+import ldts.pacman.application.state.ScoreMenuState;
 
 import java.io.IOException;
 

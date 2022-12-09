@@ -1,4 +1,4 @@
-package ldts.pacman.applicationState;
+package ldts.pacman.application.state;
 
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.MenuController;

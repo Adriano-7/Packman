@@ -1,4 +1,4 @@
-package ldts.pacman.fileManipulation;
+package ldts.pacman.file.manipulation;
 
 import java.io.*;
 import java.net.URL;
