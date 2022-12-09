@@ -4,7 +4,7 @@ import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.applicationState.SaveScoreState;
+import ldts.pacman.application.state.SaveScoreState;
 
 public class ArenaController extends GameController {
     private PacmanController pacmanController;

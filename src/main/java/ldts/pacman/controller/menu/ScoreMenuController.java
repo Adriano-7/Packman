@@ -5,7 +5,7 @@ import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.applicationState.MenuState;
+import ldts.pacman.application.state.MenuState;
 
 public class ScoreMenuController extends Controller<ScoreMenu> {
     public ScoreMenuController(ScoreMenu model) {

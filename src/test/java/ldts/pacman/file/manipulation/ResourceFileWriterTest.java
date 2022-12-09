@@ -1,4 +1,4 @@
-package ldts.pacman.fileManipulation;
+package ldts.pacman.file.manipulation;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
