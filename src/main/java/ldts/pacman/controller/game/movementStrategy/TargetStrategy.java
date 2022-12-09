@@ -24,13 +24,13 @@ public class TargetStrategy extends MovementStrategy{
         List<Position> validDirections = new ArrayList<>();
         Position oppositeDirection = new Position(-element.getDirection().getX(), -element.getDirection().getY());
 
-        //remove from directions the opposite direction and every direction that will lead to a wall
+
         for (Position direction : directions) {
             if (!direction.equals(oppositeDirection) && !arena.isWall(element.getPosition().plus(direction))) {
                 validDirections.add(direction);
             }
         }
-        //set the direction that will lead to the smallest distance to the target
+
         Position bestDirection = validDirections.get(0);
         double bestDistance = distanceToTarget(element.getPosition().plus(bestDirection));
         for (Position direction : validDirections) {
@@ -40,6 +40,7 @@ public class TargetStrategy extends MovementStrategy{
                 bestDistance = distance;
             }
         }
+
         element.setDirection(bestDirection);
         element.setPosition(element.getPosition().plus(bestDirection));
         return true;

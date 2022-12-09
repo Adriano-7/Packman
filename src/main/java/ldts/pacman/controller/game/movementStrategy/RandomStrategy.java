@@ -26,7 +26,9 @@ public class RandomStrategy extends MovementStrategy {
             }
         }
 
-        if (validDirections.isEmpty()) return false;
+        if (validDirections.isEmpty()){
+            validDirections.add(oppositeDirection);
+        }
 
         int n = (int) (Math.random() * validDirections.size());
         element.setDirection(validDirections.get(n));
