@@ -53,12 +53,14 @@ public class LanternaGuiTest {
         Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(212, 175, 55));
         Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 2, "o");
     }
+    /*
     @Test
     public void testDrawMonster(){
         gui.drawMonster(new Position(2, 2), "#FF0000");
         Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 0, 0));
         Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 2, "M");
     }
+    */
     @Test
     public void testDrawText(){
         gui.drawText(new Position(2, 2), "Hello World", "#FF0000");

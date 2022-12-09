@@ -10,7 +10,6 @@ public interface GUI {
     void drawWall(Position position);
     void drawCoin(Position position);
     void drawMonster(Position position, String color);
-    void drawPowerUp(Position position);
     void drawScore(int score);
     void drawHealth(int health);
     void drawText(Position position, String text, String color);
