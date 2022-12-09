@@ -15,15 +15,11 @@ public class TargetStrategy extends MovementStrategy{
         super(arena);
         this.target = target;
     }
-    private double distanceToTarget(Position p){
-        return Math.sqrt((p.getX()-target.getX())^2+(p.getY()-target.getY())^2);
-    }
     @Override
     public boolean move(MovableElement element) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1), new Position(1, 0), new Position(-1, 0));
         List<Position> validDirections = new ArrayList<>();
         Position oppositeDirection = new Position(-element.getDirection().getX(), -element.getDirection().getY());
-
 
         for (Position direction : directions) {
             if (!direction.equals(oppositeDirection) && !arena.isWall(element.getPosition().plus(direction))) {
@@ -32,9 +28,9 @@ public class TargetStrategy extends MovementStrategy{
         }
 
         Position bestDirection = validDirections.get(0);
-        double bestDistance = distanceToTarget(element.getPosition().plus(bestDirection));
+        double bestDistance = target.distanceTo(element.getPosition().plus(bestDirection));
         for (Position direction : validDirections) {
-            double distance = distanceToTarget(element.getPosition().plus(direction));
+            double distance = target.distanceTo(element.getPosition().plus(direction));
             if (distance < bestDistance) {
                 bestDirection = direction;
                 bestDistance = distance;
