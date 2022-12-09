@@ -9,6 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class ArenaControllerTest {
     ArenaController arenaController;
     @BeforeEach
@@ -22,7 +26,7 @@ public class ArenaControllerTest {
         Game game = Mockito.mock(Game.class);
         arenaController.step(game, GUI.OPTION.QUIT, 0);
         Mockito.verify(game, Mockito.times(1))
-                .setState(Mockito.any(SaveScoreState.class));
+                    .setState(Mockito.any(SaveScoreState.class));
     }
 
     @Test
