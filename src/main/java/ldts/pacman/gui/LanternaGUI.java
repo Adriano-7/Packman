@@ -73,8 +73,8 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawPacman(Position position, Position direction) {
-        if(direction.equals(new Position(0,1))) {drawCharacter(position,'.', "#FFFF00");}
-        if(direction.equals(new Position(0,-1))) {drawCharacter(position,',', "#FFFF00");}
+        if(direction.equals(new Position(0,1))) {drawCharacter(position,',', "#FFFF00");}
+        if(direction.equals(new Position(0,-1))) {drawCharacter(position,'.', "#FFFF00");}
         if(direction.equals(new Position(1,0))) {drawCharacter(position,'+', "#FFFF00");}
         if(direction.equals(new Position(-1,0))) {drawCharacter(position,'-', "#FFFF00");}
     }
