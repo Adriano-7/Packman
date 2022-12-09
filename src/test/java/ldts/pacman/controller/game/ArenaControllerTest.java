@@ -24,15 +24,9 @@ public class ArenaControllerTest {
     @Test
     public void quitGame() {
         Game game = Mockito.mock(Game.class);
-        try {
-            arenaController.step(game, GUI.OPTION.QUIT, 0);
-            Mockito.verify(game, Mockito.times(1))
+        arenaController.step(game, GUI.OPTION.QUIT, 0);
+        Mockito.verify(game, Mockito.times(1))
                     .setState(Mockito.any(SaveScoreState.class));
-        }
-        catch (IOException e) {
-            fail();
-        }
-
     }
 
     @Test
@@ -42,12 +36,8 @@ public class ArenaControllerTest {
 
         Mockito.when(pacman.getHealth()).thenReturn(0);
         Game game = Mockito.mock(Game.class);
-        try {
-            arenaController.step(game, null, 0);
-        }
-        catch (IOException e) {
-            fail();
-        }
+
+        arenaController.step(game, null, 0);
 
         Mockito.verify(game, Mockito.times(1))
                 .setState(Mockito.any(SaveScoreState.class));
