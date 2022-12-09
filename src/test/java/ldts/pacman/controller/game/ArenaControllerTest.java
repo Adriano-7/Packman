@@ -4,10 +4,12 @@ import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.applicationState.SaveScoreState;
+import ldts.pacman.application.state.SaveScoreState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ArenaControllerTest {
     ArenaController arenaController;
@@ -22,7 +24,7 @@ public class ArenaControllerTest {
         Game game = Mockito.mock(Game.class);
         arenaController.step(game, GUI.OPTION.QUIT, 0);
         Mockito.verify(game, Mockito.times(1))
-                .setState(Mockito.any(SaveScoreState.class));
+                    .setState(Mockito.any(SaveScoreState.class));
     }
 
     @Test

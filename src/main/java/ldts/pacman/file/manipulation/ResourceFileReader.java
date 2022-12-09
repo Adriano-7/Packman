@@ -1,4 +1,4 @@
-package ldts.pacman.fileManipulation;
+package ldts.pacman.file.manipulation;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

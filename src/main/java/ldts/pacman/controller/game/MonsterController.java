@@ -1,6 +1,7 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
+import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
