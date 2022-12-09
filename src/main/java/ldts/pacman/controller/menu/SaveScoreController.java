@@ -17,15 +17,16 @@ public class SaveScoreController extends Controller<SaveScore> {
     @Override
     public void step(Game game, GUI.OPTION option, long time) throws IOException {
         switch(option) {
+            case UP:
+                getModel().prev_Op();
+                break;
+            case DOWN:
+                getModel().next_Op();
+                break;
             case SELECT:
-                new ScoreMenu("/scores.txt")
-                        .addScore(getModel().getTimeStamp(), getModel().getScore());
+                if (getModel().isSelectedExit()){game.setState(new MenuState(new Menu())); break;}
+                if (getModel().isSelectedSave()){new ScoreMenu("/scores.txt").addScore(getModel().getTimeStamp(), getModel().getScore()); game.setState(new MenuState(new Menu())); break;}
                 // fall through
-            case QUIT:
-                game.setState(new MenuState(new Menu()));
-                break;
-            default:
-                break;
         }
     }
 }
