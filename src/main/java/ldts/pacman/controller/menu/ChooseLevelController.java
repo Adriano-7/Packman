@@ -2,13 +2,13 @@ package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
 import ldts.pacman.applicationState.GameState;
-import ldts.pacman.applicationState.MenuState;
+import ldts.pacman.applicationState.MainMenuState;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.ChooseLevel;
-import ldts.pacman.model.menu.Menu;
+import ldts.pacman.model.menu.MainMenu;
 
 import java.io.IOException;
 
@@ -21,10 +21,10 @@ public class ChooseLevelController extends Controller<ChooseLevel> {
         switch (option) {
             case UP -> getModel().prev_Op();
             case DOWN -> getModel().next_Op();
-            case QUIT -> game.setState(new MenuState(new Menu()));
+            case QUIT -> game.setState(new MainMenuState(new MainMenu()));
             case SELECT -> {
                 if (getModel().isSelectedExit()) {
-                    game.setState(new MenuState(new Menu()));
+                    game.setState(new MainMenuState(new MainMenu()));
                     break;
                 }
                 int levelNumber = getModel().getCurrentOption() + 1;

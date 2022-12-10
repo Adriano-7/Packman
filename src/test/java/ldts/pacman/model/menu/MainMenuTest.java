@@ -3,13 +3,13 @@ package ldts.pacman.model.menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class MenuTest {
-    Menu menu;
+public class MainMenuTest {
+    MainMenu menu;
     @BeforeEach
     public void setUp() {
-        menu = new Menu();
+        menu = new MainMenu();
     }
     @Test
     public void testNext_Op() {
@@ -29,19 +29,19 @@ public class MenuTest {
     @Test
     public void testIsSelected() {
         boolean selected = menu.isSelected(0);
-        assertEquals(true, selected);
+        assertTrue(selected);
     }
     @Test
     public void testIsSelectedStart() {
         boolean selected = menu.isSelectedStart();
-        assertEquals(true, selected);
+        assertTrue(selected);
     }
     @Test
     public void testIsSelectedExit() {
         menu.next_Op();menu.next_Op();menu.next_Op();menu.next_Op();
-        assertEquals(true, menu.isSelectedExit());
+        assertTrue(menu.isSelectedExit());
         menu.next_Op();
-        assertEquals(false, menu.isSelectedExit());
+        assertFalse(menu.isSelectedExit());
     }
     @Test
     public void testGetNumberEntries() {

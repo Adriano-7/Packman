@@ -3,10 +3,11 @@ package ldts.pacman.controller.menu;
 import ldts.pacman.Game;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
+import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.Menu;
 import ldts.pacman.model.menu.SaveScore;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.applicationState.MenuState;
+import ldts.pacman.applicationState.MainMenuState;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class SaveScoreController extends Controller<SaveScore> {
                         .addScore(getModel().getTimeStamp(), getModel().getScore());
                 // no break here intended
             case QUIT:
-                game.setState(new MenuState(new Menu()));
+                game.setState(new MainMenuState(new MainMenu()));
                 break;
         }
     }
