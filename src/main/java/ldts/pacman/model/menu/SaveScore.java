@@ -13,7 +13,7 @@ public class SaveScore {
     public SaveScore(int score) {
         this.score = score;
         this.timeStamp = new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(new Date());
-        this.options = Arrays.asList("SAVA SCORE", "QUIT");
+        this.options = Arrays.asList("SAVE SCORE", "QUIT");
     }
     public int getScore() {
         return score;

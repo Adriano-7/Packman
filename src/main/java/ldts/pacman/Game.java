@@ -1,8 +1,8 @@
 package ldts.pacman;
 
+import ldts.pacman.application.state.MainMenuState;
 import ldts.pacman.gui.LanternaGUI;
-import ldts.pacman.model.menu.Menu;
-import ldts.pacman.application.state.MenuState;
+import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.application.state.State;
 
 import java.awt.*;
@@ -16,7 +16,7 @@ public class Game {
     public Game() throws IOException, URISyntaxException, FontFormatException {
         int width = 20, height = 23;
         this.gui = new LanternaGUI(width, height);
-        this.state = new MenuState(new Menu());
+        this.state = new MainMenuState(new MainMenu());
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {

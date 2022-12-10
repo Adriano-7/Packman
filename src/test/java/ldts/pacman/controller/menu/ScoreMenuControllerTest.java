@@ -2,7 +2,7 @@ package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
-import ldts.pacman.application.state.MenuState;
+import ldts.pacman.application.state.MainMenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,6 +31,6 @@ public class ScoreMenuControllerTest {
         scoreMenuController.step(game, GUI.OPTION.QUIT, 0);
 
         Mockito.verify(game, Mockito.times(2))
-                .setState(Mockito.any(MenuState.class));
+                .setState(Mockito.any(MainMenuState.class));
     }
 }

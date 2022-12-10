@@ -10,6 +10,9 @@ import java.util.List;
 public class ScoreMenu {
     private final String filePath;
     private List<String> lines;
+    public ScoreMenu() throws IOException {
+        this("/scores.txt");
+    }
     public ScoreMenu(String filePath) throws IOException {
         this.filePath = filePath;
         this.lines = new ResourceFileReader().readLines(filePath);
