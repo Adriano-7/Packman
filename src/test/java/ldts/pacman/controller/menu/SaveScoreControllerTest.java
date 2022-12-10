@@ -13,8 +13,8 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class SaveScoreControllerTest {
-    Game game;
-    SaveScoreController saveScoreController;
+    private Game game;
+    private SaveScoreController saveScoreController;
     @BeforeEach
     public void setUp() {
         game = Mockito.mock(Game.class);

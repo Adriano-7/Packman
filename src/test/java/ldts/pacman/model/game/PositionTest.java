@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PositionTest {
-    Position position;
+    private Position position;
     @BeforeEach
     public void setUp() {
         position = new Position(5, -1);

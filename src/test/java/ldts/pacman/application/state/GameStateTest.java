@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class GameStateTest {
-    public GameState gameState;
-    public Arena arena;
+    private GameState gameState;
+    private Arena arena;
 
     @BeforeEach
     public void setGameState(){

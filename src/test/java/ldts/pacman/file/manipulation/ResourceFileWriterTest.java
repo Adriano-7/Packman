@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
 public class ResourceFileWriterTest {
-    ResourceFileWriter resourceFileWriter;
-    List<String> lines;
+    private ResourceFileWriter resourceFileWriter;
+    private List<String> lines;
     @BeforeEach
     public void setUp() {
         resourceFileWriter = new ResourceFileWriter();

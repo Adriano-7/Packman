@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WallTest {
-    Wall wall;
+    private Wall wall;
     @BeforeEach
     public void setUp() {
         wall = new Wall(5, 10);

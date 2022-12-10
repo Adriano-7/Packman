@@ -16,8 +16,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerStrategyTest {
-    PlayerStrategy playerStrategy;
-    Pacman pacman;
+    private PlayerStrategy playerStrategy;
+    private Pacman pacman;
     @BeforeEach
     public void setUp() {
         Arena arena = new Arena(10, 10);

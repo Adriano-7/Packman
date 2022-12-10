@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
 public class ScoreMenuStateTest {
-    public ScoreMenuState scoreMenuState;
-    public ScoreMenu scoreMenu;
+    private ScoreMenuState scoreMenuState;
+    private ScoreMenu scoreMenu;
     @BeforeEach
     public void setUp() {
         try { scoreMenu = new ScoreMenu(); }

@@ -5,7 +5,7 @@ import ldts.pacman.model.menu.Menu;
 import org.junit.jupiter.api.BeforeEach;
 
 public class MainMenuControllerTest {
-    MainMenuController mainMenuController;
+    private MainMenuController mainMenuController;
     @BeforeEach
     public void setUp() {
         MainMenu mainMenu = new MainMenu();

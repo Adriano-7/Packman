@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainMenuStateTest {
-    MainMenu mainMenu;
-    MainMenuState mainMenuState;
+    private MainMenu mainMenu;
+    private MainMenuState mainMenuState;
     @BeforeEach
     public void setUp() {
         mainMenu = new MainMenu();

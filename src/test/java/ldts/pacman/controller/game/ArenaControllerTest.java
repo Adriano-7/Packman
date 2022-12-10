@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ArenaControllerTest {
-    ArenaController arenaController;
+    private ArenaController arenaController;
     @BeforeEach
     public void setUp() {
         Arena arena = new Arena(10, 10);

@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ScoreMenuTest {
-    ScoreMenu scoreMenu;
+    private ScoreMenu scoreMenu;
     @BeforeEach
     public void setUp() {
         try {

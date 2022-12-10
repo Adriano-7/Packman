@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class ScoreMenuControllerTest {
-    Game game;
-    ScoreMenuController scoreMenuController;
+    private Game game;
+    private ScoreMenuController scoreMenuController;
     @BeforeEach
     public void setUp() {
         game = Mockito.mock(Game.class);

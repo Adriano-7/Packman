@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SaveScoreStateTest {
-    SaveScore saveScore;
-    SaveScoreState saveScoreState;
+    private SaveScore saveScore;
+    private SaveScoreState saveScoreState;
     @BeforeEach
     public void setUp() {
         saveScore = new SaveScore(100);

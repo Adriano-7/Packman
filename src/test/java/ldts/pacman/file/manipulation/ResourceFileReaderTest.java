@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
 public class ResourceFileReaderTest {
-    ResourceFileReader resourceFileReader;
+    private ResourceFileReader resourceFileReader;
     @BeforeEach
     public void setUp() {
         resourceFileReader = new ResourceFileReader();

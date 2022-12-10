@@ -19,9 +19,9 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.times;
 
 public class SaveScoreViewerTest {
-    SaveScore saveScore;
-    SaveScoreViewer saveScoreViewer;
-    GUI gui;
+    private SaveScore saveScore;
+    private SaveScoreViewer saveScoreViewer;
+    private GUI gui;
     @BeforeEach
     public void setUp() {
         saveScore = new SaveScore(100);

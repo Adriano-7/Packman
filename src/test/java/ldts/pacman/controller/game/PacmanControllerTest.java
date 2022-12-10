@@ -16,7 +16,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PacmanControllerTest {
-    PacmanController pacmanController;
+    private PacmanController pacmanController;
     @BeforeEach
     public void setUp() {
         Arena arena = new Arena(10, 10);
@@ -45,6 +45,8 @@ public class PacmanControllerTest {
         Pacman pacman = pacmanController.getModel().getPacman();
         Position initial = pacman.getPosition();
 
+        // TODO: fix error in test (known error because of how way direction works)
+        // Direction doesn't start at (0, 0) but at (1, 0)
         pacmanController.step(null, GUI.OPTION.UP, 501);
         assertEquals(initial.getUp(), pacman.getPosition());
 
@@ -57,6 +59,8 @@ public class PacmanControllerTest {
         Pacman pacman = pacmanController.getModel().getPacman();
         Position initial = pacman.getPosition();
 
+        // TODO: fix error in test (known error because of how way direction works)
+        // Direction doesn't start at (0, 0) but at (1, 0)
         pacmanController.step(null, GUI.OPTION.NONE, 1000);
         assertEquals(initial, pacman.getPosition());
 
