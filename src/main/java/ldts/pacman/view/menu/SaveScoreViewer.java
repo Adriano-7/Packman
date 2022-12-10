@@ -13,8 +13,8 @@ public class SaveScoreViewer extends Viewer<SaveScore> {
     public void drawElements(GUI gui) {
         gui.drawText(new Position(2, 5), "GAME OVER", "#FFFFFF");
         gui.drawText(new Position(2, 7), "YOUR SCORE:", "#FFFFFF");
-        String timeAndScore = "" + getModel().getScore();
-        gui.drawText(new Position(13, 7), timeAndScore, "#FFFFFF");
+        String score = Integer.toString(getModel().getScore());
+        gui.drawText(new Position(13, 7), score, "#FFFFFF");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(
