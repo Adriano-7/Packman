@@ -6,7 +6,6 @@ import ldts.pacman.model.game.elements.Monster;
 
 public abstract class MonsterState {
     private final MovementStrategy movementStrategy;
-    private String color;
     private final char drawingChar;
     public MonsterState() {
         movementStrategy = createStrategy();
@@ -15,7 +14,7 @@ public abstract class MonsterState {
     protected abstract MovementStrategy createStrategy();
     public abstract String getColor();
     public void move(Monster monster, Arena arena) {
-        movementStrategy.move(monster, arena); // TODO (pass arena to parameter instead of constructor)
+        movementStrategy.move(monster, arena);
     }
     protected abstract char createDrawingChar();
     public char getDrawingChar() {

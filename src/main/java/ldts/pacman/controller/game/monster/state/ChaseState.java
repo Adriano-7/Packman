@@ -1,20 +1,25 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
-import ldts.pacman.controller.game.movement.strategy.RandomStrategy;
 import ldts.pacman.controller.game.movement.strategy.TargetStrategy;
 
-public class EatenState extends MonsterState {
+public class ChaseState extends MonsterState {
+    // needs color in constructor
+    private final String color;
+    public ChaseState(String color) {
+        this.color = color;
+    }
     @Override
     protected MovementStrategy createStrategy() {
-        // TODO
-        // return new TargetStrategy(initialPosition ? of monster);
+        // return new TargetStrategy();
+        // pacmanPosition as the target
         return null;
     }
     @Override
     public String getColor() {
-        return "#FFFFFF";
+        return this.color;
     }
+
     @Override
     protected char createDrawingChar() {
         return 0;
