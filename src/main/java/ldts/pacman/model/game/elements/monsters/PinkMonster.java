@@ -9,7 +9,7 @@ import ldts.pacman.model.game.elements.Monster;
 
 public class PinkMonster extends Monster {
     public PinkMonster(int x, int y) {
-        super(x, y, new Position(2, 17));
+        super(x, y, new Position(2, 16));
     }
     @Override
     protected MonsterState createMonsterState() {

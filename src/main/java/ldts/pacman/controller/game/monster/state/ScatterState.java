@@ -9,6 +9,7 @@ public class ScatterState extends MonsterState {
     public ScatterState(String color) {
         this.color = color;
     }
+    @Override
     public String getColor() {
         return this.color;
     }

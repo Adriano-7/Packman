@@ -10,7 +10,8 @@ public class ScaredState extends MonsterState {
     }
     @Override
     public String getColor() {
-        return null;
+        // TODO: Color and char
+        return "#46bfee";
     }
 
     @Override

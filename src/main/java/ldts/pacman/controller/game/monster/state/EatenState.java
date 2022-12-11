@@ -12,6 +12,7 @@ public class EatenState extends MonsterState {
     }
     @Override
     public String getColor() {
+        // TODO: Color and char
         return "#FFFFFF";
     }
     @Override
