@@ -5,17 +5,12 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.Monster;
 
 public class BlueMonster extends Monster {
-    // private final String color = "#46bfee";
     public BlueMonster(int x, int y) {
-        super(x, y);
+        super(x, y, new Position(2, 2));
     }
     @Override
     public MonsterState createMonsterState() {
         return new ScatterState(getBaseColor());
-    }
-    @Override
-    protected Position getAssignedCorner() {
-        return new Position(2, 2);
     }
     @Override
     public String getBaseColor() {

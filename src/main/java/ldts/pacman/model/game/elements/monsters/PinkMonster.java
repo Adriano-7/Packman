@@ -8,19 +8,13 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
 public class PinkMonster extends Monster {
-    // private final String color = "#ea82e5";
     public PinkMonster(int x, int y) {
-        super(x, y);
+        super(x, y, new Position(2, 17));
     }
     @Override
     protected MonsterState createMonsterState() {
         return new ScatterState(getBaseColor());
     }
-    @Override
-    protected Position getAssignedCorner() {
-        return new Position(2, 17);
-    }
-
     @Override
     public String getBaseColor() {
         return "#ea82e5";

@@ -1,6 +1,7 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
+import ldts.pacman.controller.game.movement.strategy.ScatterCornerStrategy;
 
 public class ScatterState extends MonsterState {
     // needs color in constructor
@@ -13,7 +14,7 @@ public class ScatterState extends MonsterState {
     }
     @Override
     protected MovementStrategy createStrategy() {
-        return null;
+        return new ScatterCornerStrategy();
     }
     @Override
     protected char createDrawingChar() {

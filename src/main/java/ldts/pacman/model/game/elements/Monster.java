@@ -1,17 +1,15 @@
 package ldts.pacman.model.game.elements;
 
 import ldts.pacman.controller.game.monster.state.MonsterState;
-import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.arena.Arena;
 
 public abstract class Monster extends MovableElement {
-    private final Position assignedCorner;
+    private final Position cornerTarget;
     private MonsterState state;
-    public Monster(int x, int y){
-        super(x,y);
-        this.assignedCorner = getAssignedCorner();
+    protected Monster(int x, int y, Position cornerTarget) {
+        super(x, y);
         this.state = createMonsterState();
+        this.cornerTarget = cornerTarget;
     }
     protected abstract MonsterState createMonsterState();
     public MonsterState getState() {
@@ -20,6 +18,8 @@ public abstract class Monster extends MovableElement {
     public void setState(MonsterState state) {
         this.state = state;
     }
-    protected abstract Position getAssignedCorner();
+    public Position getCornerTarget() {
+        return this.cornerTarget;
+    }
     public abstract String getBaseColor();
 }
