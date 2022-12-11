@@ -17,7 +17,7 @@ public class MonsterController extends GameController {
         if (time - lastMovement > 500 ) {
             for (Monster monster: getModel().getMonsters()) {
                 MovementStrategy movementStrategy = monster.getMovementStrategy(getModel());
-                movementStrategy.move(monster);
+                movementStrategy.move(monster, getModel());
             }
             lastMovement = time;
         }

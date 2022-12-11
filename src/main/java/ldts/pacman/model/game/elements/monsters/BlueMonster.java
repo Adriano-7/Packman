@@ -12,7 +12,7 @@ public class BlueMonster extends Monster {
     @Override
     public MovementStrategy getMovementStrategy(Arena arena) {
         if (strategy == null) {
-            this.strategy = new TargetStrategy(arena, new Position(16, 2));
+            this.strategy = new TargetStrategy(new Position(16, 2));
         }
         return strategy;
     }

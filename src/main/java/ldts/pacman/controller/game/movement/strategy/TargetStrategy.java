@@ -9,14 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TargetStrategy extends MovementStrategy{
-    private Position target;
+    private final Position target;
 
-    public TargetStrategy(Arena arena, Position target) {
-        super(arena);
+    public TargetStrategy(Position target) {
         this.target = target;
     }
     @Override
-    public boolean move(MovableElement element) {
+    public boolean move(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1), new Position(1, 0), new Position(-1, 0));
         List<Position> validDirections = new ArrayList<>();
         Position oppositeDirection = new Position(-element.getDirection().getX(), -element.getDirection().getY());

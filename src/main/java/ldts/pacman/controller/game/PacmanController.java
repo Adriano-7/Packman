@@ -15,7 +15,7 @@ public class PacmanController extends GameController {
     private PlayerStrategy playerStrategy;
     public PacmanController(Arena model) {
         super(model);
-        playerStrategy = new PlayerStrategy(model);
+        playerStrategy = new PlayerStrategy();
         lastMovement = 0;
     }
     public Pacman getPacman() {
@@ -25,7 +25,7 @@ public class PacmanController extends GameController {
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
         playerStrategy.changeDirection(option, getPacman());
-        if (time - lastMovement > 200 && playerStrategy.move(getPacman())) {
+        if (time - lastMovement > 200 && playerStrategy.move(getPacman(), getModel())) {
             lastMovement = time;
             collectCoin(getModel().getPacman().getPosition());
         }

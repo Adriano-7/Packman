@@ -8,8 +8,14 @@ public class ScaredState extends MonsterState {
     protected MovementStrategy createStrategy() {
         return new RandomStrategy();
     }
+
+    @Override
+    public String getColor() {
+        return "#FFFFFF";
+    }
+
     @Override
     protected char createDrawingChar() {
-        return 'c';
+        return 'b';
     }
 }

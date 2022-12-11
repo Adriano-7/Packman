@@ -15,7 +15,7 @@ public abstract class MonsterState {
     protected abstract MovementStrategy createStrategy();
     public abstract String getColor();
     public void move(Monster monster, Arena arena) {
-        movementStrategy.move(monster); // TODO (pass arena to parameter instead of constructor)
+        movementStrategy.move(monster, arena); // TODO (pass arena to parameter instead of constructor)
     }
     protected abstract char createDrawingChar();
     public char getDrawingChar() {

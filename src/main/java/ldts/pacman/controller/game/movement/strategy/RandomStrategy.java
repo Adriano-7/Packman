@@ -8,12 +8,8 @@ import ldts.pacman.model.game.elements.MovableElement;
 import java.util.*;
 
 public class RandomStrategy extends MovementStrategy {
-    public RandomStrategy(Arena arena) {
-        super(arena);
-    }
-
     @Override
-    public boolean move(MovableElement element) {
+    public boolean move(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1),
                 new Position(1, 0), new Position(-1, 0));
 
@@ -35,7 +31,7 @@ public class RandomStrategy extends MovementStrategy {
         element.setPosition(element.getPosition().plus(element.getDirection()));
         if (arena.getPacman().getPosition().equals(element.getPosition())) {
             arena.getPacman().decreaseHealth();
-            super.resetPositions();
+            super.resetPositions(arena);
         }
         return true;
     }

@@ -9,7 +9,7 @@ public class OrangeMonster extends Monster {
     private final String color = "#db851c";
     public OrangeMonster(int x, int y) {super(x, y);}
     @Override
-    public MovementStrategy getMovementStrategy(Arena arena) {return new RandomStrategy(arena);}
+    public MovementStrategy getMovementStrategy(Arena arena) {return new RandomStrategy();}
     @Override
     public String getColor() {
         return color;
