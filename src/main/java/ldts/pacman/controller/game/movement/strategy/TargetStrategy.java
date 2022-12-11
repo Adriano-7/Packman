@@ -28,6 +28,8 @@ public abstract class TargetStrategy extends MovementStrategy {
             }
         }
 
+        if (validDirections.isEmpty()) validDirections.add(oppositeDirection);
+
         Position bestDirection = validDirections.get(0);
         double bestDistance = target.distanceTo(element.getPosition().plus(bestDirection));
         for (Position direction : validDirections) {
