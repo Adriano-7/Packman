@@ -7,7 +7,7 @@ import ldts.pacman.model.game.elements.MovableElement;
 
 import java.util.*;
 
-public class RandomStrategy extends MovementStrategy {
+public class ScaredStrategy extends MovementStrategy {
     @Override
     public boolean move(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1),

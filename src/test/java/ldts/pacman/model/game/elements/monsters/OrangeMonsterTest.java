@@ -1,7 +1,6 @@
 package ldts.pacman.model.game.elements.monsters;
 
 import ldts.pacman.controller.game.monster.state.ScatterState;
-import ldts.pacman.controller.game.movement.strategy.RandomStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
