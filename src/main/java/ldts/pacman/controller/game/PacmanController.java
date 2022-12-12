@@ -28,6 +28,8 @@ public class PacmanController extends GameController {
         if (time - lastMovement > 200 && playerStrategy.move(getPacman(), getModel())) {
             lastMovement = time;
             collectCoin(getModel().getPacman().getPosition());
+            // if collectPowerUp(getModel().getPacman().getPosition())
+            //      for monster: monsters -> monster.setState(new ScaredState())
         }
     }
     private void collectCoin(Position position) {
