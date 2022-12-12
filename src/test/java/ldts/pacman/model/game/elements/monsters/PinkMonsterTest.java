@@ -1,6 +1,7 @@
 package ldts.pacman.model.game.elements.monsters;
 
-import ldts.pacman.controller.game.movementStrategy.RandomStrategy;
+import ldts.pacman.controller.game.monster.state.ScatterState;
+import ldts.pacman.controller.game.movement.strategy.RandomStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ public class PinkMonsterTest {
 
     @Test
     public void testPinkMonsterMovementStrategy() {
-        assertTrue(pinkMonster.getMovementStrategy(null) instanceof RandomStrategy);
+        assertTrue(pinkMonster.getState() instanceof ScatterState);
     }
 
     @Test
@@ -28,7 +29,7 @@ public class PinkMonsterTest {
 
     @Test
     public void testPinkMonsterColor(){
-        assertEquals("#ea82e5", pinkMonster.getColor());
-        assertNotEquals("#000000", pinkMonster.getColor());
+        assertEquals("#ea82e5", pinkMonster.getBaseColor());
+        assertNotEquals("#000000", pinkMonster.getBaseColor());
     }
 }

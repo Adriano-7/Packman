@@ -4,17 +4,15 @@ import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.applicationState.SaveScoreState;
+import ldts.pacman.application.state.SaveScoreState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ArenaControllerTest {
-    ArenaController arenaController;
+    private ArenaController arenaController;
     @BeforeEach
     public void setUp() {
         Arena arena = new Arena(10, 10);

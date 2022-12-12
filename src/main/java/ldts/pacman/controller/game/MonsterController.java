@@ -1,25 +1,26 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.controller.game.movementStrategy.MovementStrategy;
+import ldts.pacman.controller.game.monster.state.MonsterState;
+import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
+import java.util.List;
+
 public class MonsterController extends GameController {
-    private long lastMovement;
     public MonsterController(Arena model) {
         super(model);
-        this.lastMovement = 0;
     }
     @Override
-    public void step(Game game, GUI.OPTION option, long time) {
-        if (time - lastMovement > 500 ) {
-            for (Monster monster: getModel().getMonsters()) {
-                MovementStrategy movementStrategy = monster.getMovementStrategy(getModel());
-                movementStrategy.move(monster);
+    public void step(Game game, List<GUI.OPTION> options, long time) {
+        for (Monster monster: getModel().getMonsters()) {
+            MonsterState monsterState = monster.getState();
+            if (monsterState.move(monster, getModel(), time) &&
+                    monster.collidesWithPacman(getModel().getPacman())) {
+                monster.getHit(getModel());
             }
-            lastMovement = time;
         }
     }
 }

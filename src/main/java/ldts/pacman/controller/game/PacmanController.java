@@ -1,22 +1,23 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.controller.game.movementStrategy.PacmanStrategy;
-import ldts.pacman.controller.game.movementStrategy.PlayerStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.PacmanStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.PlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Coin;
+import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
 
 import java.util.List;
 
 public class PacmanController extends GameController {
     private long lastMovement;
-    private PlayerStrategy playerStrategy;
+    private PacmanStrategy pacmanStrategy;
     public PacmanController(Arena model) {
         super(model);
-        playerStrategy = new PacmanStrategy(model);
+        pacmanStrategy = new PacmanStrategy();
         lastMovement = 0;
     }
     public Pacman getPacman() {
@@ -24,11 +25,20 @@ public class PacmanController extends GameController {
     }
 
     @Override
-    public void step(Game game, GUI.OPTION option, long time) {
-        playerStrategy.changeDirection(option, getPacman());
-        if (time - lastMovement > 200 && playerStrategy.move(getPacman())) {
+    public void step(Game game, List<GUI.OPTION> options, long time) {
+        pacmanStrategy.changeDirection(options, getPacman());
+        Arena arena = getModel();
+        if (time - lastMovement > 200 && pacmanStrategy.move(getPacman(), arena)) {
             lastMovement = time;
-            collectCoin(getModel().getPacman().getPosition());
+            Monster monster = arena.getCollidingMonster(getPacman().getPosition());
+            if (monster != null) {
+                monster.getHit(arena);
+                return;
+            }
+            collectCoin(getPacman().getPosition());
+            // TODO: (for later) if getModel().isPowerUp(Position) -> ...
+            // if collectPowerUp(getModel().getPacman().getPosition())
+            //      for monster: monsters -> monster.setState(new ScaredState())
         }
     }
     private void collectCoin(Position position) {

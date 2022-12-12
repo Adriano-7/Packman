@@ -18,9 +18,9 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.times;
 
 public class ScoreMenuViewerTest {
-    ScoreMenu scoreMenu;
-    ScoreMenuViewer scoreMenuViewer;
-    GUI gui;
+    private ScoreMenu scoreMenu;
+    private ScoreMenuViewer scoreMenuViewer;
+    private GUI gui;
     @BeforeEach
     public void setUp() {
         gui = Mockito.mock(GUI.class);

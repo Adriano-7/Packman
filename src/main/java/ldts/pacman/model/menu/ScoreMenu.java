@@ -1,7 +1,7 @@
 package ldts.pacman.model.menu;
 
-import ldts.pacman.fileManipulation.ResourceFileReader;
-import ldts.pacman.fileManipulation.ResourceFileWriter;
+import ldts.pacman.file.manipulation.ResourceFileReader;
+import ldts.pacman.file.manipulation.ResourceFileWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +10,9 @@ import java.util.List;
 public class ScoreMenu {
     private final String filePath;
     private List<String> lines;
+    public ScoreMenu() throws IOException {
+        this("/scores.txt");
+    }
     public ScoreMenu(String filePath) throws IOException {
         this.filePath = filePath;
         this.lines = new ResourceFileReader().readLines(filePath);

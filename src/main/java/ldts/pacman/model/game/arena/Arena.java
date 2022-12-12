@@ -57,10 +57,19 @@ public class Arena {
         }
         return false;
     }
-    public boolean isMonster(Position position) {
+    public Monster getCollidingMonster(Position position) {
         for (Monster monster: monsters) {
-            if (monster.getPosition().equals(position)) return true;
+            if (monster.getPosition().equals(position)) return monster;
         }
-        return false;
+        return null;
+    }
+    public void resetPositions() {
+        for (Monster monster: monsters) {
+            resetPosition(monster);
+        }
+        resetPosition(pacman);
+    }
+    private void resetPosition(MovableElement element) {
+        element.setPosition(element.getInitialPosition());
     }
 }

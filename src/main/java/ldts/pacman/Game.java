@@ -1,9 +1,9 @@
 package ldts.pacman;
 
+import ldts.pacman.application.state.MainMenuState;
 import ldts.pacman.gui.LanternaGUI;
-import ldts.pacman.model.menu.Menu;
-import ldts.pacman.applicationState.MenuState;
-import ldts.pacman.applicationState.State;
+import ldts.pacman.model.menu.MainMenu;
+import ldts.pacman.application.state.State;
 
 import java.awt.*;
 import java.io.IOException;
@@ -16,18 +16,18 @@ public class Game {
     public Game() throws IOException, URISyntaxException, FontFormatException {
         int width = 20, height = 23;
         this.gui = new LanternaGUI(width, height);
-        this.state = new MenuState(new Menu());
+        this.state = new MainMenuState(new MainMenu());
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException{
         Game game = new Game();
         game.run();
     }
     public void setState(State state) {
         this.state = state;
     }
-    public void run() throws IOException {
-        int FPS = 60;
+    public void run() throws IOException{
+        int FPS = 10;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

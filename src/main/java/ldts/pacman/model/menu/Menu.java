@@ -1,14 +1,12 @@
 package ldts.pacman.model.menu;
 
-import java.util.Arrays;
 import java.util.List;
-public class Menu {
-    private final List<String> options;
+public abstract class Menu {
+    protected List<String> options;
     private int currentOption = 0;
-    public Menu(){
-        this.options = Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","OPTIONS", "EXIT");
+    public Menu() {
+        this.options = createOptions();
     }
-
     public void next_Op(){
         currentOption = (currentOption + 1) % options.size();
     }
@@ -19,16 +17,11 @@ public class Menu {
     public boolean isSelected(int i){
         return currentOption == i;
     }
-    public boolean isSelectedStart(){
-        return isSelected(0) || isSelected(1);
-    }
-    public boolean isSelectedExit(){
-        return isSelected(4);
-    }
     public int getNumberEntries(){
         return options.size();
     }
-    public boolean isSelectedScores() {
-        return isSelected(2);
+    public int getCurrentOption() {
+        return this.currentOption;
     }
+    protected abstract List<String> createOptions();
 }

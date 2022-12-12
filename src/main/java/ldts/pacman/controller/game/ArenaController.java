@@ -4,7 +4,9 @@ import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.applicationState.SaveScoreState;
+import ldts.pacman.application.state.SaveScoreState;
+
+import java.util.List;
 
 import java.io.IOException;
 import java.sql.Array;
@@ -22,16 +24,18 @@ public class ArenaController extends GameController {
     protected void addController(GameController controller) {
         controllers.add(controller);
     }
+
     @Override
-    public void step(Game game, GUI.OPTION option, long time) throws IOException {
-        if (option == GUI.OPTION.QUIT || getModel().getPacman().getHealth() == 0) {
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
+        if (options.contains(GUI.OPTION.QUIT) || getModel().getPacman().getHealth() == 0) {
             int score = getModel().getPacman().getScore();
             game.setState(new SaveScoreState(new SaveScore(score)));
         }
         else {
             for (GameController controller : controllers) {
-                controller.step(game, option, time);
+                controller.step(game, options, time);
             }
         }
     }
+
 }

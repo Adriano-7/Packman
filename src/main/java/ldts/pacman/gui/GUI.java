@@ -3,10 +3,11 @@ package ldts.pacman.gui;
 import ldts.pacman.model.game.Position;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface GUI {
-    OPTION getNextOption() throws IOException;
-    void drawPacman(Position position);
+    List<OPTION> getNextOptions() throws IOException;
+    void drawPacman(Position position, Position direction);
     void drawWall(Position position);
     void drawCoin(Position position);
     void drawMonster(Position position, String color);
@@ -17,5 +18,5 @@ public interface GUI {
     void clear();
     void refresh() throws IOException;
     void close() throws IOException;
-    enum OPTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, W, A, S, D}
+    enum OPTION {UP, RIGHT, DOWN, LEFT, QUIT, SELECT, UP2, RIGHT2, DOWN2, LEFT2}
 }

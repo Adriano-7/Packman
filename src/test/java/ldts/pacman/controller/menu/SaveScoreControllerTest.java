@@ -1,9 +1,9 @@
 package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
+import ldts.pacman.application.state.MainMenuState;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.applicationState.MenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -13,8 +13,8 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class SaveScoreControllerTest {
-    Game game;
-    SaveScoreController saveScoreController;
+    private Game game;
+    private SaveScoreController saveScoreController;
     @BeforeEach
     public void setUp() {
         game = Mockito.mock(Game.class);
@@ -47,6 +47,6 @@ public class SaveScoreControllerTest {
         }
 
         Mockito.verify(game, Mockito.times(2))
-                .setState(Mockito.any(MenuState.class));
+                .setState(Mockito.any(MainMenuState.class));
     }
 }

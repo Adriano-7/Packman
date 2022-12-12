@@ -1,25 +1,32 @@
 package ldts.pacman.gui;
 
+
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import ldts.pacman.model.game.Position;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.List;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
+    Set<Integer> pressedKeys = new HashSet<>();
 
     public LanternaGUI(Screen screen) {this.screen = screen;}
 
@@ -43,6 +50,18 @@ public class LanternaGUI implements GUI {
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
+        ((AWTTerminalFrame)terminal).getComponent(0).addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                pressedKeys.add(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                pressedKeys.remove(e.getKeyCode());
+            }
+        });
+
         return terminal;
     }
 
@@ -53,45 +72,46 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment g = GraphicsEnvironment.getLocalGraphicsEnvironment();
         g.registerFont(font);
 
-        Font loadFont =  font.deriveFont(Font.PLAIN, 25);
+        Font loadFont =  font.deriveFont(Font.PLAIN, 32);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
     @Override
-    public OPTION getNextOption() throws IOException {
-        KeyStroke keyStroke = screen.pollInput();
-        if (keyStroke == null) return OPTION.NONE;
-        KeyType keyType = keyStroke.getKeyType();
-        if ((keyType == KeyType.EOF) || (keyType == KeyType.Character && keyStroke.getCharacter() == 'q')) return OPTION.QUIT;
-        if (keyType == KeyType.ArrowUp) return OPTION.UP;
-        if (keyType == KeyType.ArrowDown) return OPTION.DOWN;
-        if (keyType == KeyType.ArrowLeft) return OPTION.LEFT;
-        if (keyType == KeyType.ArrowRight) return OPTION.RIGHT;
-        if (keyType == KeyType.Enter) return OPTION.SELECT;
-        if(keyType == KeyType.Character) {
-            switch(keyStroke.getCharacter()) {
-                case 'w': return OPTION.W;
-                case 's': return OPTION.S;
-                case 'a': return OPTION.A;
-                case 'd': return OPTION.D;
-            }
-        }
-        return OPTION.NONE;
+    public List<OPTION> getNextOptions() throws IOException {
+        List<OPTION> actions = new LinkedList<>();
+
+        if (pressedKeys.contains(KeyEvent.VK_Q)) actions.add(OPTION.QUIT);
+        if (pressedKeys.contains(KeyEvent.VK_UP)) actions.add(OPTION.UP);
+        if (pressedKeys.contains(KeyEvent.VK_RIGHT)) actions.add(OPTION.RIGHT);
+        if (pressedKeys.contains(KeyEvent.VK_DOWN)) actions.add(OPTION.DOWN);
+        if (pressedKeys.contains(KeyEvent.VK_LEFT)) actions.add(OPTION.LEFT);
+        if (pressedKeys.contains(KeyEvent.VK_ENTER)) actions.add(OPTION.SELECT);
+        if (pressedKeys.contains(KeyEvent.VK_W)) actions.add(OPTION.UP2);
+        if (pressedKeys.contains(KeyEvent.VK_D)) actions.add(OPTION.RIGHT2);
+        if (pressedKeys.contains(KeyEvent.VK_S)) actions.add(OPTION.DOWN2);
+        if (pressedKeys.contains(KeyEvent.VK_A)) actions.add(OPTION.LEFT2);
+
+        return actions;
     }
 
+
     @Override
-    public void drawPacman(Position position){
-        drawCharacter(position,'@', "#FFFF00");
+    public void drawPacman(Position position, Position direction) {
+        if(direction.equals(new Position(0,1))) {drawCharacter(position,',', "#FFFF00");}
+        if(direction.equals(new Position(0,-1))) {drawCharacter(position,'.', "#FFFF00");}
+        if(direction.equals(new Position(1,0))) {drawCharacter(position,'+', "#FFFF00");}
+        if(direction.equals(new Position(-1,0))) {drawCharacter(position,'-', "#FFFF00");}
     }
     @Override
     public void drawWall(Position position){
-        drawCharacter(position,'#', "#2424FF");
+        drawCharacter(position,'~', "#2424FF");
     }
     @Override
     public void drawCoin(Position position){
-        drawCharacter(position,'o', "#d4af37");
+        drawCharacter(position,'}', "#d4af37");
     }
     @Override
-    public void drawMonster(Position position,String color){drawCharacter(position,	'M',color);}
+    public void drawMonster(Position position,String color){drawCharacter(position,	'%',color);}
+
     @Override
     public void drawText(Position position, String text, String color){
         TextGraphics graphics = screen.newTextGraphics();
@@ -106,11 +126,14 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawScore(int score) {
-        drawText(new Position(0, 21), "Score: " + score, "#FFD700");
+        drawText(new Position(0, 22), "Score: " + score, "#FFFFFF");
     }
     @Override
     public void drawHealth(int health) {
-        drawText(new Position(0, 20), "Health: " + health, "#FFD700");
+        while (health > 0) {
+            drawCharacter(new Position(health, 21), '+', "#FFD700");
+            health--;
+        }
     }
 
     @Override
