@@ -1,5 +1,6 @@
-package ldts.pacman.controller.game.movement.strategy;
+package ldts.pacman.controller.game.movement.strategy.target;
 
+import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;

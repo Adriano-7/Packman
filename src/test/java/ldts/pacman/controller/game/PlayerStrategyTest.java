@@ -1,6 +1,6 @@
 package ldts.pacman.controller.game;
 
-import ldts.pacman.controller.game.movement.strategy.PlayerStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.PlayerStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
@@ -16,9 +16,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerStrategyTest {
+
     private PlayerStrategy playerStrategy;
     private Pacman pacman;
     private Arena arena;
+    /*
     @BeforeEach
     public void setUp() {
         this.arena = new Arena(10, 10);

@@ -1,4 +1,4 @@
-package ldts.pacman.controller.game.movement.strategy;
+package ldts.pacman.controller.game.movement.strategy.player;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
@@ -8,9 +8,6 @@ import ldts.pacman.model.game.elements.MovableElement;
 import java.util.List;
 
 public class MonsterPlayerStrategy extends PlayerStrategy {
-    public MonsterPlayerStrategy(Arena arena) {
-        super(arena);
-    }
     @Override
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
         for (GUI.OPTION option : options) {
@@ -29,5 +26,13 @@ public class MonsterPlayerStrategy extends PlayerStrategy {
                     break;
             }
         }
+    }
+    @Override
+    public boolean movePlayer(Position position, Arena arena) {
+        if (!arena.isWall(position)) {
+            arena.getMonsterPlayer().setPosition(position);
+            return true;
+        }
+        return false;
     }
 }

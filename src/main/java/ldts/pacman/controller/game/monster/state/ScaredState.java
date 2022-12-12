@@ -1,7 +1,7 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
-import ldts.pacman.controller.game.movement.strategy.RandomStrategy;
+import ldts.pacman.controller.game.movement.strategy.target.ScaredStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
@@ -11,7 +11,7 @@ import static java.lang.Math.pow;
 public class ScaredState extends MonsterState {
     @Override
     protected MovementStrategy createStrategy() {
-        return new RandomStrategy();
+        return new ScaredStrategy();
     }
     @Override
     protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {

@@ -1,6 +1,6 @@
 package ldts.pacman.model.game.elements;
 
-import ldts.pacman.controller.game.movementStrategy.MovementStrategy;
+import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.arena.Arena;
 
 public class MonsterPlayer extends MovableElement{
