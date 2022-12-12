@@ -7,17 +7,9 @@ import ldts.pacman.model.game.elements.MovableElement;
 import ldts.pacman.model.game.elements.Pacman;
 
 public class PlayerStrategy extends MovementStrategy {
-    public PlayerStrategy(Arena arena) {
-        super(arena);
-    }
-    public boolean movePlayer(Position position) {
+    public boolean movePlayer(Position position, Arena arena) {
         if (!arena.isWall(position)) {
             arena.getPacman().setPosition(position);
-            if (arena.isMonster(position)) {
-                Pacman pacman = arena.getPacman();
-                pacman.decreaseHealth();
-                super.resetPositions();
-            }
             // TODO: (for later) if getModel().isPowerUp(Position) -> ...
             return true;
         }
@@ -33,9 +25,9 @@ public class PlayerStrategy extends MovementStrategy {
         }
     }
     @Override
-    public boolean move(MovableElement element) {
+    public boolean move(MovableElement element, Arena arena) {
         if (element.getDirection().equals(new Position(0, 0))) return false;
         Position nextPosition = element.getPosition().plus(element.getDirection());
-        return movePlayer(nextPosition);
+        return movePlayer(nextPosition, arena);
     }
 }

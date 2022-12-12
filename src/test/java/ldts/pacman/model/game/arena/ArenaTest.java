@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ArenaTest {
     @Test
@@ -49,7 +50,6 @@ public class ArenaTest {
         Monster monster =new BlueMonster(10,30);
         arena.setMonsters(Arrays.asList(monster));
         Position position=new Position(10,30);
-        assertEquals(true,arena.isMonster(position));
-
+        assertEquals(monster, arena.getCollidingMonster(position));
     }
 }

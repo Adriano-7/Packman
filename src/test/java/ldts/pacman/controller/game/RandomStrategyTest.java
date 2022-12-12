@@ -26,7 +26,7 @@ public class RandomStrategyTest {
     public void setUp() {
         //Create arena mock using Mockito
         this.arena = Mockito.mock(Arena.class);
-        this.randomStrategy = new RandomStrategy(arena);
+        this.randomStrategy = new RandomStrategy();
     }
     @Test
     public void move4Options() {
@@ -35,7 +35,7 @@ public class RandomStrategyTest {
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
         Mockito.when(arena.getPacman()).thenReturn(new Pacman(0, 0));
 
-        randomStrategy.move(monster);
+        randomStrategy.move(monster, arena);
         List<Position> possible = Arrays.asList(new Position(6, 5), new Position(4, 5),
                 new Position(5, 6), new Position(5, 4));
         assertTrue(possible.contains(monster.getPosition()));
@@ -55,7 +55,7 @@ public class RandomStrategyTest {
             return walls.stream().anyMatch(wall -> wall.getPosition().equals(position));
         });
 
-        randomStrategy.move(monster);
+        randomStrategy.move(monster, arena);
         assertEquals(new Position(5, 4), monster.getPosition());
     }
 }
