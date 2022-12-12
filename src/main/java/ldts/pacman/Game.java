@@ -19,15 +19,15 @@ public class Game {
         this.state = new MainMenuState(new MainMenu());
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException{
         Game game = new Game();
         game.run();
     }
     public void setState(State state) {
         this.state = state;
     }
-    public void run() throws IOException {
-        int FPS = 60;
+    public void run() throws IOException{
+        int FPS = 10;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

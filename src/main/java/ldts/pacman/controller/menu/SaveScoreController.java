@@ -10,29 +10,31 @@ import ldts.pacman.application.state.MainMenuState;
 
 
 import java.io.IOException;
+import java.util.List;
 
 public class SaveScoreController extends Controller<SaveScore> {
     public SaveScoreController(SaveScore model) {
         super(model);
     }
     @Override
-    public void step(Game game, GUI.OPTION option, long time) throws IOException {
-        switch(option) {
-            case UP:
-                getModel().prev_Op();
-                break;
-            case DOWN:
-                getModel().next_Op();
-                break;
-            case SELECT:
-                if (getModel().isSelectedSave()){
-                    new ScoreMenu("/scores.txt")
-                            .addScore(getModel().getTimeStamp(), getModel().getScore());
-                }
-                // fall through
-            case QUIT:
-                game.setState(new MainMenuState(new MainMenu()));
-                break;
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
+        for (GUI.OPTION option: options) {
+            switch (option) {
+                case UP:
+                    getModel().prev_Op();
+                    break;
+                case DOWN:
+                    getModel().next_Op();
+                    break;
+                case SELECT:
+                    if (getModel().isSelectedSave()) {
+                        new ScoreMenu("/scores.txt").addScore(getModel().getTimeStamp(), getModel().getScore());
+                    }
+                    // fall through
+                case QUIT:
+                    game.setState(new MainMenuState(new MainMenu()));
+                    break;
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ package ldts.pacman.controller;
 
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
-
+import java.util.List;
 import java.io.IOException;
 
 public abstract class Controller<T> {
@@ -15,5 +15,5 @@ public abstract class Controller<T> {
         return model;
     }
 
-    public abstract void step(Game game, GUI.OPTION option, long time) throws IOException;
+    public abstract void step(Game game, List<GUI.OPTION> options, long time) throws IOException;
 }

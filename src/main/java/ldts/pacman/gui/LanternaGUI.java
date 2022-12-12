@@ -1,26 +1,32 @@
 package ldts.pacman.gui;
 
+
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import ldts.pacman.model.game.Position;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.List;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
+    Set<Integer> pressedKeys = new HashSet<>();
 
     public LanternaGUI(Screen screen) {this.screen = screen;}
 
@@ -44,6 +50,18 @@ public class LanternaGUI implements GUI {
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
+        ((AWTTerminalFrame)terminal).getComponent(0).addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                pressedKeys.add(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                pressedKeys.remove(e.getKeyCode());
+            }
+        });
+
         return terminal;
     }
 
@@ -57,19 +75,20 @@ public class LanternaGUI implements GUI {
         Font loadFont =  font.deriveFont(Font.PLAIN, 32);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
-    @Override
-    public OPTION getNextOption() throws IOException {
-        KeyStroke keyStroke = screen.pollInput();
-        if (keyStroke == null) return OPTION.NONE;
-        KeyType keyType = keyStroke.getKeyType();
-        if ((keyType == KeyType.EOF) || (keyType == KeyType.Character && keyStroke.getCharacter() == 'q')) return OPTION.QUIT;
-        if (keyType == KeyType.ArrowUp) return OPTION.UP;
-        if (keyType == KeyType.ArrowDown) return OPTION.DOWN;
-        if (keyType == KeyType.ArrowLeft) return OPTION.LEFT;
-        if (keyType == KeyType.ArrowRight) return OPTION.RIGHT;
-        if (keyType == KeyType.Enter) return OPTION.SELECT;
-        return OPTION.NONE;
+
+    public List<OPTION> getNextOptions() throws IOException {
+        List<OPTION> actions = new LinkedList<>();
+
+        if (pressedKeys.contains(KeyEvent.VK_Q)) actions.add(OPTION.QUIT);
+        if (pressedKeys.contains(KeyEvent.VK_UP)) actions.add(OPTION.UP);
+        if (pressedKeys.contains(KeyEvent.VK_RIGHT)) actions.add(OPTION.RIGHT);
+        if (pressedKeys.contains(KeyEvent.VK_DOWN)) actions.add(OPTION.DOWN);
+        if (pressedKeys.contains(KeyEvent.VK_LEFT)) actions.add(OPTION.LEFT);
+        if (pressedKeys.contains(KeyEvent.VK_ENTER)) actions.add(OPTION.SELECT);
+
+        return actions;
     }
+
 
     @Override
     public void drawPacman(Position position, Position direction) {

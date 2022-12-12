@@ -6,6 +6,7 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.view.Viewer;
 
 import java.io.IOException;
+import java.util.List;
 
 public abstract class State<T> {
     private final T model;
@@ -23,9 +24,9 @@ public abstract class State<T> {
     protected abstract Viewer<T> getViewer();
     protected abstract Controller<T> getController();
 
-    public void step(Game game, GUI gui, long time) throws IOException {
-        GUI.OPTION option = gui.getNextOption();
-        controller.step(game, option, time);
+    public void step(Game game, GUI gui, long time) throws IOException{
+        List<GUI.OPTION> options = gui.getNextOptions();
+        controller.step(game, options, time);
         viewer.draw(gui);
     }
 }

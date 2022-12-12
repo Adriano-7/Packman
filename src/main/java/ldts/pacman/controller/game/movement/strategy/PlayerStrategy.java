@@ -6,6 +6,8 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
 import ldts.pacman.model.game.elements.Pacman;
 
+import java.util.List;
+
 public class PlayerStrategy extends MovementStrategy {
     public boolean movePlayer(Position position, Arena arena) {
         if (!arena.isWall(position)) {
@@ -15,13 +17,22 @@ public class PlayerStrategy extends MovementStrategy {
         }
         return false;
     }
-    public void changeDirection(GUI.OPTION option, MovableElement element) {
-        switch (option) {
-            case UP -> element.setDirection(new Position(0, -1));
-            case DOWN -> element.setDirection(new Position(0, 1));
-            case LEFT -> element.setDirection(new Position(-1, 0));
-            case RIGHT -> element.setDirection(new Position(1, 0));
-            default -> {}
+    public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
+        for(GUI.OPTION option: options) {
+            switch (option) {
+                case UP:
+                    element.setDirection(new Position(0, -1));
+                    break;
+                case DOWN:
+                    element.setDirection(new Position(0, 1));
+                    break;
+                case LEFT:
+                    element.setDirection(new Position(-1, 0));
+                    break;
+                case RIGHT:
+                    element.setDirection(new Position(1, 0));
+                    break;
+            }
         }
     }
     @Override
