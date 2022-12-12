@@ -10,11 +10,6 @@ public class PlayerStrategy extends MovementStrategy {
     public boolean movePlayer(Position position, Arena arena) {
         if (!arena.isWall(position)) {
             arena.getPacman().setPosition(position);
-            if (arena.isMonster(position)) {
-                Pacman pacman = arena.getPacman();
-                pacman.decreaseHealth();
-                super.resetPositions(arena);
-            }
             // TODO: (for later) if getModel().isPowerUp(Position) -> ...
             return true;
         }

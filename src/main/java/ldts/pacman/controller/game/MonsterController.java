@@ -8,19 +8,17 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
 public class MonsterController extends GameController {
-    private long lastMovement;
     public MonsterController(Arena model) {
         super(model);
-        this.lastMovement = 0;
     }
     @Override
     public void step(Game game, GUI.OPTION option, long time) {
-        if (time - lastMovement > 500 ) {
-            for (Monster monster: getModel().getMonsters()) {
-                MonsterState monsterState = monster.getState();
-                monsterState.move(monster, getModel());
+        for (Monster monster: getModel().getMonsters()) {
+            MonsterState monsterState = monster.getState();
+            if (monsterState.move(monster, getModel(), time) &&
+                    monster.collidesWithPacman(getModel().getPacman())) {
+                monster.getHit(getModel());
             }
-            lastMovement = time;
         }
     }
 }

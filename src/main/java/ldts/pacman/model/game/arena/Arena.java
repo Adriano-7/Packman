@@ -1,10 +1,7 @@
 package ldts.pacman.model.game.arena;
 
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.elements.Coin;
-import ldts.pacman.model.game.elements.Monster;
-import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.model.game.elements.Wall;
+import ldts.pacman.model.game.elements.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,10 +55,19 @@ public class Arena {
         }
         return false;
     }
-    public boolean isMonster(Position position) {
+    public Monster getCollidingMonster(Position position) {
         for (Monster monster: monsters) {
-            if (monster.getPosition().equals(position)) return true;
+            if (monster.getPosition().equals(position)) return monster;
         }
-        return false;
+        return null;
+    }
+    public void resetPositions() {
+        for (Monster monster: monsters) {
+            resetPosition(monster);
+        }
+        resetPosition(pacman);
+    }
+    private void resetPosition(MovableElement element) {
+        element.setPosition(element.getInitialPosition());
     }
 }

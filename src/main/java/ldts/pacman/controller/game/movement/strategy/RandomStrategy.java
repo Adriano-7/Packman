@@ -29,10 +29,6 @@ public class RandomStrategy extends MovementStrategy {
         int n = (int) (Math.random() * validDirections.size());
         element.setDirection(validDirections.get(n));
         element.setPosition(element.getPosition().plus(element.getDirection()));
-        if (arena.getPacman().getPosition().equals(element.getPosition())) {
-            arena.getPacman().decreaseHealth();
-            super.resetPositions(arena);
-        }
         return true;
     }
 }
