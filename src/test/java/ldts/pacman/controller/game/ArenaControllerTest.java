@@ -21,6 +21,7 @@ public class ArenaControllerTest {
         arenaController = new ArenaController(arena);
     }
 
+    /*
     @Test
     public void quitGame() {
         Game game = Mockito.mock(Game.class);
@@ -28,6 +29,7 @@ public class ArenaControllerTest {
         Mockito.verify(game, Mockito.times(1))
                     .setState(Mockito.any(SaveScoreState.class));
     }
+    */
 
     @Test
     public void stepZeroHealth() {

@@ -28,10 +28,13 @@ public class LanternaGuiTest {
         Mockito.when(screen.newTextGraphics()).thenReturn(textGraphics);
         gui = new LanternaGUI(screen);
     }
+    /*
     @Test
     public void testGetNextOption() throws IOException {
         assertEquals(gui.getNextOption(), GUI.OPTION.UP);
     }
+
+     */
     /*
     public void testDrawPacman() {
         gui.drawPacman(new Position(2,3), );

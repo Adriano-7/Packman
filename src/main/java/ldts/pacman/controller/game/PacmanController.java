@@ -42,9 +42,6 @@ public class PacmanController extends GameController {
             if (arena.collectPowerUp()) {
                 for (Monster monsterInArena: arena.getMonsters()) monsterInArena.setState(new ScaredState());
             }
-            // TODO: (for later) if getModel().isPowerUp(Position) -> ...
-            // if collectPowerUp(getModel().getPacman().getPosition())
-            //      for monster: monsters -> monster.setState(new ScaredState())
         }
     }
 }
