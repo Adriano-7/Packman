@@ -1,5 +1,6 @@
 package ldts.pacman.model.game.arena;
 
+import ldts.pacman.controller.game.monster.state.ScaredState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 
@@ -76,5 +77,26 @@ public class Arena {
     }
     private void resetPosition(MovableElement element) {
         element.setPosition(element.getInitialPosition());
+    }
+    public void collectCoin() {
+        Position pacmanPos = pacman.getPosition();
+        for (Coin coin: coins) {
+            if (coin.getPosition().equals(pacmanPos)) {
+                coins.remove(coin);
+                pacman.increaseScore();
+                return;
+            }
+        }
+    }
+    public boolean collectPowerUp() {
+        Position pacmanPos = pacman.getPosition();
+        for (PowerUp powerUp: powerUps) {
+            if (powerUp.getPosition().equals(pacmanPos)) {
+                powerUps.remove(powerUp);
+                pacman.increaseScore();
+                return true;
+            }
+        }
+        return false;
     }
 }
