@@ -109,6 +109,10 @@ public class LanternaGUI implements GUI {
     public void drawMonster(Position position,String color){drawCharacter(position,	'%',color);}
 
     @Override
+    public void drawPowerUp(Position position) {
+        drawCharacter(position, 'P', "#ffffff");
+    }
+    @Override
     public void drawText(Position position, String text, String color){
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString(color));

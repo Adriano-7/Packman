@@ -13,6 +13,7 @@ public class Arena {
     private List<Coin> coins;
     private List<Monster> monsters;
     private List<Wall> walls;
+    private List<PowerUp> powerUps;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
@@ -36,6 +37,9 @@ public class Arena {
     public List<Wall> getWalls() {
         return walls;
     }
+    public List<PowerUp> getPowerUps() {
+        return powerUps;
+    }
 
     public void setPacman(Pacman pacman) {
         this.pacman = pacman;
@@ -48,6 +52,9 @@ public class Arena {
     }
     public void setCoins(List<Coin> coins) {
         this.coins = coins;
+    }
+    public void setPowerUps(List<PowerUp> powerUps) {
+        this.powerUps = powerUps;
     }
     public boolean isWall(Position position) {
         for (Wall wall: walls) {
