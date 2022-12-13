@@ -75,7 +75,7 @@ public class LanternaGUI implements GUI {
         Font loadFont =  font.deriveFont(Font.PLAIN, 32);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
-
+    @Override
     public List<OPTION> getNextOptions() throws IOException {
         List<OPTION> actions = new LinkedList<>();
 

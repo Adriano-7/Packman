@@ -13,6 +13,7 @@ public interface GUI {
     void drawMonster(Position position, String color);
     void drawScore(int score);
     void drawHealth(int health);
+    void drawPowerUp(Position position);
     void drawText(Position position, String text, String color);
     void drawCharacter(Position position, char ch, String color);
     void clear();
