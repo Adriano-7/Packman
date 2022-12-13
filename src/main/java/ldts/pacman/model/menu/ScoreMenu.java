@@ -23,6 +23,11 @@ public class ScoreMenu {
     public void addScore(String name, int scoreToAdd) throws IOException {
         if (lines.size() < 2) throw new IOException("File was empty");
         if (lines.size() > 12) throw new IOException("File had too many lines");
+
+        lines = getNewLines(name, scoreToAdd);
+        new ResourceFileWriter().writeLines(filePath, lines);
+    }
+    private List<String> getNewLines(String name, int scoreToAdd){
         String header = lines.get(0);
         String footer = lines.get(lines.size() - 1);
 
@@ -48,8 +53,7 @@ public class ScoreMenu {
         if (newLines.size() > 11) newLines.remove(newLines.size() - 1);
 
         newLines.add(footer);
-        lines = newLines;
-        new ResourceFileWriter().writeLines(filePath, lines);
+        return newLines;
     }
     private int getScore(String line) {
         return Integer.parseInt(line.substring(line.lastIndexOf('-') + 2));
