@@ -19,6 +19,9 @@ public class ArenaLoader {
     public ArenaLoader(int levelNumber) throws IOException {
         lines = new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
     }
+    protected List<String> getLines() {
+        return lines;
+    }
     private int getWidth() {
         int width = 0;
         for (String line: lines) {
@@ -56,7 +59,7 @@ public class ArenaLoader {
         }
         return null;
     }
-    private List<Monster> createMonsters() {
+    protected List<Monster> createMonsters() {
         List<Monster> monsters = new ArrayList<>();
         for (int y = 0; y < lines.size(); y++){
             for (int x = 0; x < lines.get(y).length(); x++) {
@@ -65,6 +68,7 @@ public class ArenaLoader {
                     case 'B' -> monsters.add(new BlueMonster(x, y));
                     case 'P' -> monsters.add(new PinkMonster(x, y));
                     case 'O' -> monsters.add(new OrangeMonster(x, y));
+                    case 'M' -> monsters.add(new MonsterPlayer(x, y));
                 }
             }
         }
