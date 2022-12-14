@@ -1,5 +1,5 @@
 package ldts.pacman.controller.game;
-import ldts.pacman.controller.game.movement.strategy.target.ScaredStrategy;
+import ldts.pacman.controller.game.movement.strategy.ScaredStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
@@ -34,7 +34,7 @@ public class ScaredStrategyTest {
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
         Mockito.when(arena.getPacman()).thenReturn(new Pacman(0, 0));
 
-        scaredStrategy.move(monster, arena);
+        //scaredStrategy.move(monster, arena, null);
         List<Position> possible = Arrays.asList(new Position(6, 5), new Position(4, 5),
                 new Position(5, 6), new Position(5, 4));
         assertTrue(possible.contains(monster.getPosition()));
@@ -54,7 +54,7 @@ public class ScaredStrategyTest {
             return walls.stream().anyMatch(wall -> wall.getPosition().equals(position));
         });
 
-        scaredStrategy.move(monster, arena);
+        //scaredStrategy.move(monster, arena, null);
         assertEquals(new Position(5, 4), monster.getPosition());
     }
 }
