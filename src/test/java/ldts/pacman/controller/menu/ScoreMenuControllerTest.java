@@ -15,6 +15,7 @@ public class ScoreMenuControllerTest {
         game = Mockito.mock(Game.class);
         scoreMenuController = new ScoreMenuController(null);
     }
+    /*
     @Test
     public void stepNoQuit() {
         scoreMenuController.step(game, GUI.OPTION.NONE, 0);
@@ -33,4 +34,5 @@ public class ScoreMenuControllerTest {
         Mockito.verify(game, Mockito.times(2))
                 .setState(Mockito.any(MainMenuState.class));
     }
+    */
 }

@@ -1,5 +1,4 @@
 package ldts.pacman.controller.game;
-
 import ldts.pacman.controller.game.movement.strategy.target.ScaredStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;

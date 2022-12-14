@@ -18,6 +18,9 @@ public class EatenState extends MonsterState {
 
     @Override
     protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {
+        if (monster.getPosition().equals(monster.getInitialPosition())) {
+            monster.setState(new ScatterState(monster.getBaseColor()));
+        }
         return time - getLastMovement() > 100;  // 0.1 seconds
     }
 

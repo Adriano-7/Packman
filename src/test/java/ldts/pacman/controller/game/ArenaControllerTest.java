@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ArenaControllerTest {
@@ -19,6 +21,7 @@ public class ArenaControllerTest {
         arenaController = new ArenaController(arena);
     }
 
+    /*
     @Test
     public void quitGame() {
         Game game = Mockito.mock(Game.class);
@@ -31,6 +34,7 @@ public class ArenaControllerTest {
             fail();
         }
     }
+    */
 
     @Test
     public void stepZeroHealth() {

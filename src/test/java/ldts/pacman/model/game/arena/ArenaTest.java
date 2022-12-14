@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaTest {
     @Test
@@ -28,6 +27,8 @@ public class ArenaTest {
         arena.setMonsters(Arrays.asList(monster));
         Wall wall = Mockito.mock(Wall.class);
         arena.setWalls(Arrays.asList(wall));
+        PowerUp powerUp =Mockito.mock(PowerUp.class);
+        arena.setPowerUps(Arrays.asList(powerUp));
 
         assertEquals(10, arena.getWidth());
         assertEquals(20, arena.getHeight());
@@ -35,6 +36,7 @@ public class ArenaTest {
         assertEquals(Arrays.asList(coin),arena.getCoins());
         assertEquals(Arrays.asList(monster),arena.getMonsters());
         assertEquals(Arrays.asList(wall),arena.getWalls());
+        assertEquals(Arrays.asList(powerUp),arena.getPowerUps());
     }
     @Test
     public void isWall() {
@@ -51,5 +53,51 @@ public class ArenaTest {
         arena.setMonsters(Arrays.asList(monster));
         Position position=new Position(10,30);
         assertEquals(monster, arena.getCollidingMonster(position));
+    }
+    @Test
+    public void collectCoin(){
+        Arena arena=new Arena(10,20);
+
+        Pacman pacman=new Pacman(10,20);
+        arena.setPacman(pacman);
+        int expectedScore = pacman.getScore() + 1;
+
+        Coin coin=new Coin(10,20);
+        List<Coin> coins = new ArrayList<>();
+        coins.add(coin);
+        arena.setCoins(coins);
+
+        arena.collectCoin();
+
+        assertEquals(expectedScore, arena.getPacman().getScore());
+        assertEquals(0, arena.getCoins().size());
+    }
+    @Test
+    public void collectPowerUp(){
+        Arena arena=new Arena(10,20);
+
+        Pacman pacman=new Pacman(10,20);
+        arena.setPacman(pacman);
+        int expectedScore = pacman.getScore() + 1;
+
+        PowerUp powerUp=new PowerUp(10,20);
+        List<PowerUp> powerUps = new ArrayList<>();
+        powerUps.add(powerUp);
+        arena.setPowerUps(powerUps);
+
+        boolean collectedTrue = arena.collectPowerUp();
+
+        assertEquals(expectedScore, arena.getPacman().getScore());
+        assertEquals(0, arena.getPowerUps().size());
+        assertTrue(collectedTrue);
+
+        PowerUp powerUp1=new PowerUp(10,30);
+        List<PowerUp> powerUps1 = new ArrayList<>();
+        powerUps1.add(powerUp1);
+        arena.setPowerUps(powerUps1);
+        boolean collectedFalse=arena.collectPowerUp();
+        assertEquals(expectedScore,arena.getPacman().getScore());
+        assertEquals(1, arena.getPowerUps().size());
+        assertFalse(collectedFalse);
     }
 }
