@@ -40,7 +40,7 @@ public class ScatterState extends MonsterState {
         return new ScatterCornerStrategy();
     }
     @Override
-    protected char createDrawingChar() {
-        return 0;
+    protected char[] createDrawingChar() {
+        return new char[]{'f', 'g', 'h', 'i'};
     }
 }

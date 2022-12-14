@@ -1,5 +1,6 @@
 package ldts.pacman.gui;
 
+import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.model.game.Position;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public interface GUI {
     void drawPacman(Position position, Position direction);
     void drawWall(Position position);
     void drawCoin(Position position);
-    void drawMonster(Position position, String color);
+    void drawMonster(Position position, Position direction, MonsterState state);
     void drawScore(int score);
     void drawHealth(int health);
     void drawPowerUp(Position position);

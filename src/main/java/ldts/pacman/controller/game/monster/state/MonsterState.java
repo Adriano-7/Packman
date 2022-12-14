@@ -6,7 +6,7 @@ import ldts.pacman.model.game.elements.Monster;
 
 public abstract class MonsterState {
     private final MovementStrategy movementStrategy;
-    private final char drawingChar;
+    private final char[] drawingChar;
     private long lastMovement;
     private final long stateStartTime;
     public MonsterState() {
@@ -27,8 +27,8 @@ public abstract class MonsterState {
     }
     protected abstract boolean enoughTimeElapsed(Monster monster, Arena arena, long time);
     public abstract void getHit(Monster monster, Arena arena);
-    protected abstract char createDrawingChar();
-    public char getDrawingChar() {
+    protected abstract char[] createDrawingChar();
+    public char[] getDrawingChar() {
         return drawingChar;
     }
     protected long getLastMovement() {

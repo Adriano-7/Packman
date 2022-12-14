@@ -9,7 +9,6 @@ import ldts.pacman.model.game.elements.Monster;
 import static java.lang.Math.pow;
 
 public class ChaseState extends MonsterState {
-    // needs color in constructor
     private final String color;
     public ChaseState(String color) {
         this.color = color;
@@ -42,7 +41,7 @@ public class ChaseState extends MonsterState {
     }
 
     @Override
-    protected char createDrawingChar() {
-        return 0;
+    protected char[] createDrawingChar() {
+        return new char[]{'f', 'g', 'h', 'i'};
     }
 }

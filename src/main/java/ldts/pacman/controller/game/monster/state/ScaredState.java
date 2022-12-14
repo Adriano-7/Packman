@@ -29,13 +29,10 @@ public class ScaredState extends MonsterState {
         monster.setState(new EatenState());
     }
     @Override
-    public String getColor() {
-        // TODO: Color and char
-        return "#46bfee";
-    }
+    public String getColor() {return "#2121ff";}
 
     @Override
-    protected char createDrawingChar() {
-        return 'b';
+    protected char[] createDrawingChar() {
+        return new char[]{'f', 'g', 'h', 'i'};
     }
 }

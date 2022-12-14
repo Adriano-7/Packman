@@ -11,24 +11,21 @@ public class EatenState extends MonsterState {
         return new EatenStrategy();
     }
     @Override
-    public String getColor() {
-        // TODO: Color and char
-        return "#FFFFFF";
-    }
+    public String getColor() {return "#2121ff";}
 
     @Override
     protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {
         if (monster.getPosition().equals(monster.getInitialPosition())) {
             monster.setState(new ScatterState(monster.getBaseColor()));
         }
-        return time - getLastMovement() > 100;  // 0.1 seconds
+        return time - getLastMovement() > 150;  // 0.1 seconds
     }
 
     @Override
     public void getHit(Monster monster, Arena arena) {}
 
     @Override
-    protected char createDrawingChar() {
-        return 0;
+    protected char[] createDrawingChar() {
+        return new char[]{'m', 'n', 'o', 'p'};
     }
 }
