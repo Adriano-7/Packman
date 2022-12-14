@@ -3,7 +3,7 @@ package ldts.pacman.controller.game;
 import ldts.pacman.Game;
 import ldts.pacman.controller.game.monster.state.EatenState;
 import ldts.pacman.controller.game.monster.state.ScaredState;
-import ldts.pacman.controller.game.movement.strategy.PlayerStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.PacmanStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
@@ -15,12 +15,10 @@ import ldts.pacman.model.game.elements.PowerUp;
 import java.util.List;
 
 public class PacmanController extends GameController {
-    private long lastMovement;
     private PacmanStrategy pacmanStrategy;
     public PacmanController(Arena model) {
         super(model);
         pacmanStrategy = new PacmanStrategy();
-        lastMovement = 0;
     }
     public Pacman getPacman() {
         return getModel().getPacman();
@@ -28,11 +26,9 @@ public class PacmanController extends GameController {
 
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) {
-        pacmanStrategy.changeDirection(options, getPacman());
         Arena arena = getModel();
-        if (time - lastMovement > 200 && playerStrategy.move(getPacman(), arena)) {
+        if (pacmanStrategy.move(getPacman(), arena, options, time)) {
             Position pacmanPos = getPacman().getPosition();
-            lastMovement = time;
             Monster monster = arena.getCollidingMonster(pacmanPos);
             if (monster != null) {
                 monster.getHit(arena);

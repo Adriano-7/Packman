@@ -7,7 +7,7 @@ import ldts.pacman.model.game.elements.Monster;
 
 public class EatenState extends MonsterState {
     @Override
-    protected MovementStrategy createStrategy() {
+    public MovementStrategy createStrategy() {
         return new EatenStrategy();
     }
     @Override
@@ -17,11 +17,12 @@ public class EatenState extends MonsterState {
     }
 
     @Override
-    protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {
+    protected boolean changeState(Monster monster, Arena arena, long time) {
         if (monster.getPosition().equals(monster.getInitialPosition())) {
             monster.setState(new ScatterState(monster.getBaseColor()));
+            return true;
         }
-        return time - getLastMovement() > 100;  // 0.1 seconds
+        return false;
     }
 
     @Override
@@ -31,4 +32,6 @@ public class EatenState extends MonsterState {
     protected char createDrawingChar() {
         return 0;
     }
+    @Override
+    public void setMovementStrategy(MovementStrategy movementStrategy) {}
 }

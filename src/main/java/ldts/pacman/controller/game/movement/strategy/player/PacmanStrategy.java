@@ -1,22 +1,14 @@
 package ldts.pacman.controller.game.movement.strategy.player;
 
-import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
 
 import java.util.List;
 
 public class PacmanStrategy extends PlayerStrategy {
-    @Override
-    public boolean movePlayer(Position position, Arena arena) {
-        if (!arena.isWall(position)) {
-            arena.getPacman().setPosition(position);
-            // TODO: (for later) if getModel().isPowerUp(Position) -> ...
-            return true;
-        }
-        return false;
+    public PacmanStrategy() {
+        super(200);
     }
     @Override
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {

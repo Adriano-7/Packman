@@ -17,7 +17,7 @@ public class MonsterController extends GameController {
     public void step(Game game, List<GUI.OPTION> options, long time) {
         for (Monster monster: getModel().getMonsters()) {
             MonsterState monsterState = monster.getState();
-            if (monsterState.move(monster, getModel(), time) && monster.collidesWithPacman(getModel().getPacman())) {
+            if (monsterState.move(monster, getModel(), options, time) && monster.collidesWithPacman(getModel().getPacman())) {
                 monster.getHit(getModel());
             }
         }

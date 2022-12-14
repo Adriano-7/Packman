@@ -6,7 +6,7 @@ import ldts.pacman.model.game.arena.Arena;
 
 public abstract class Monster extends MovableElement {
     private final Position cornerTarget;
-    private MonsterState state;
+    protected MonsterState state;
     protected Monster(int x, int y, Position cornerTarget) {
         super(x, y);
         this.state = createMonsterState();

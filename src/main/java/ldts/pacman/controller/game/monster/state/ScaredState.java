@@ -1,7 +1,7 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
-import ldts.pacman.controller.game.movement.strategy.target.ScaredStrategy;
+import ldts.pacman.controller.game.movement.strategy.ScaredStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
@@ -14,12 +14,12 @@ public class ScaredState extends MonsterState {
         return new ScaredStrategy();
     }
     @Override
-    protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {
-        if (time - getStateStartTime() > pow (10, 4)) { // 10 seconds
+    protected boolean changeState(Monster monster, Arena arena, long time) {
+        if (time - getStateStartTime() > pow(10, 4)) { // 10 seconds
             monster.setState(new ScatterState(monster.getBaseColor()));
-            return false;
+            return true;
         }
-        return time - getLastMovement() > 500;  // 0.5 seconds
+        return false;
     }
 
     @Override
