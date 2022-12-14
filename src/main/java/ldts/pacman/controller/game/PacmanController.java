@@ -36,7 +36,6 @@ public class PacmanController extends GameController {
             Monster monster = arena.getCollidingMonster(pacmanPos);
             if (monster != null) {
                 monster.getHit(arena);
-                return;
             }
             arena.collectCoin();
             if (arena.collectPowerUp()) {
