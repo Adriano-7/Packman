@@ -1,24 +1,28 @@
 package ldts.pacman.model.game.elements;
 
+import ldts.pacman.controller.game.monster.state.ChaseState;
+import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.MonsterPlayerStrategy;
 import ldts.pacman.model.game.arena.Arena;
 
-public class MonsterPlayer extends MovableElement{
-    private String color;
-    private MovementStrategy strategy;
-    public MonsterPlayer(int x, int y, String color) {
-        super(x, y);
-        this.color=color;
+public class MonsterPlayer extends Monster {
+    public MonsterPlayer(int x, int y) {
+        super(x, y, null);  // corner target not used -> should probably create another class MonsterComputer to have this field
     }
-    public MovementStrategy movementStrategy(Arena arena){
-        if (strategy==null){
-            // Modified Player Strategy
-            // this.strategy= new PlayerStrategy(arena);
-        }
-        return this.strategy;
+    @Override
+    protected MonsterState createMonsterState() {
+        MonsterState state = new ChaseState(getBaseColor());
+        state.setMovementStrategy(new MonsterPlayerStrategy());
+        return state;
     }
-
-    public void setColor(String color) {
-        this.color = color;
+    @Override
+    public void setState(MonsterState state) {
+        state.setMovementStrategy(new MonsterPlayerStrategy());
+        this.state = state;
+    }
+    @Override
+    public String getBaseColor() {
+        return "#FFFFFF";
     }
 }
