@@ -13,9 +13,6 @@ import java.util.List;
 
 public class ArenaLoaderMultiplayer extends ArenaLoader {
     public ArenaLoaderMultiplayer() {}
-    public ArenaLoaderMultiplayer(int levelNumber) throws IOException {
-        super(levelNumber);
-    }
     @Override
     protected List<Monster> createMonsters() {
         List<Monster> monsters = new ArrayList<>();

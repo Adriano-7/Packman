@@ -37,3 +37,4 @@ public class PacmanTest {
         assertEquals(health - 1, pacman.getHealth());
     }
 }
+

@@ -1,8 +1,10 @@
 package ldts.pacman.model.game.arena;
-
+import ldts.pacman.gui.GUI;
+import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
+import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ldts.pacman.model.game.elements.Monster;
@@ -55,14 +57,31 @@ public class ArenaTest {
         assertEquals(monster, arena.getCollidingMonster(position));
     }
     @Test
-    public void collectCoin(){
+    public void resetPositions() {
         Arena arena=new Arena(10,20);
+        Monster blueMonster=new BlueMonster(10,30);
+        Monster redMonster=new RedMonster(20,40);
+        Pacman pacman =new Pacman(20,30);
+        arena.setMonsters(Arrays.asList(blueMonster,redMonster));
+        arena.setPacman(pacman);
+        arena.getMonsters().get(0).getState().move(arena.getMonsters().get(0),arena,null,100);
+        arena.getMonsters().get(1).getState().move(arena.getMonsters().get(1),arena,null,100);
+        pacman.setPosition(new Position(-100, -100));
+        arena.resetPositions();
+        assertEquals(new Position(10,30),arena.getMonsters().get(0).getPosition());
+        assertEquals(new Position(20,40),arena.getMonsters().get(1).getPosition());
+        assertEquals(new Position(20,30),arena.getPacman().getPosition());
 
-        Pacman pacman=new Pacman(10,20);
+    }
+    @Test
+    public void collectCoin() {
+        Arena arena = new Arena(10, 20);
+
+        Pacman pacman = new Pacman(10, 20);
         arena.setPacman(pacman);
         int expectedScore = pacman.getScore() + 1;
 
-        Coin coin=new Coin(10,20);
+        Coin coin = new Coin(10, 20);
         List<Coin> coins = new ArrayList<>();
         coins.add(coin);
         arena.setCoins(coins);

@@ -28,20 +28,20 @@ public class ScaredStrategyTest {
         this.scaredStrategy = new ScaredStrategy();
     }
     @Test
-    public void move4Options() {
+    public void move4Options() {    // TODO: improve test
         Monster monster = new BlueMonster(5, 5);
 
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
         Mockito.when(arena.getPacman()).thenReturn(new Pacman(0, 0));
 
-        //scaredStrategy.move(monster, arena, null);
+        scaredStrategy.move(monster, arena, null, 1000);
         List<Position> possible = Arrays.asList(new Position(6, 5), new Position(4, 5),
                 new Position(5, 6), new Position(5, 4));
         assertTrue(possible.contains(monster.getPosition()));
     }
 
     @Test
-    public void moveOneOption() {
+    public void moveOneOption() {    // TODO: improve test
         Monster monster = new RedMonster(5, 5);
 
         List<Wall> walls = Arrays.asList(new Wall(5, 6), new Wall(6, 5), new Wall(4, 5));
@@ -54,7 +54,7 @@ public class ScaredStrategyTest {
             return walls.stream().anyMatch(wall -> wall.getPosition().equals(position));
         });
 
-        //scaredStrategy.move(monster, arena, null);
+        scaredStrategy.move(monster, arena, null, 1000);
         assertEquals(new Position(5, 4), monster.getPosition());
     }
 }

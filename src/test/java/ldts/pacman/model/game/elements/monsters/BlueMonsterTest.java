@@ -13,7 +13,7 @@ public class BlueMonsterTest {
     public void setUp() {blueMonster = new BlueMonster(5, 5);}
 
     @Test
-    public void testBlueMonsterMovementStrategy() {
+    public void testBlueMonsterState() {
         assertTrue(blueMonster.getState() instanceof ScatterState);
     }
 

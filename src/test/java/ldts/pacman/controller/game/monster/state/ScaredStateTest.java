@@ -21,11 +21,15 @@ public class ScaredStateTest {
     }
     @Test
     public void getColor(){
-        assertEquals("#46bfee", scaredState.getColor());
+        assertEquals("#2121ff", scaredState.getColor());
     }
     @Test
     public void getDrawingChar() {
-        assertEquals('b', scaredState.getDrawingChar());
+        char[] expected = {'f', 'g', 'h', 'i'};
+        char[] actual = scaredState.getDrawingChar();
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], actual[i]);
+        }
     }
     @Test
     public void getHit(){

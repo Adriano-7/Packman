@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ChooseLevel extends Menu {
-    private ArenaLoader arenaLoader;
+    private final ArenaLoader arenaLoader;
     public ChooseLevel(ArenaLoader arenaLoader) {
         this.arenaLoader = arenaLoader;
     }

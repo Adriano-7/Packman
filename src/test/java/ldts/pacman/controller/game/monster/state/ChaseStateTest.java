@@ -56,6 +56,10 @@ public class ChaseStateTest {
     }
     @Test
     public void getDrawingChar() {
-        assertEquals(0, chaseState.getDrawingChar());
+        char[] expected = {'f', 'g', 'h', 'i'};
+        char[] actual = chaseState.getDrawingChar();
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], actual[i]);
+        }
     }
 }

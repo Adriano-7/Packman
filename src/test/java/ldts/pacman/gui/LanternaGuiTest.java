@@ -6,6 +6,7 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 import ldts.pacman.model.game.Position;
+import ldts.pacman.model.game.elements.PowerUp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -87,5 +88,11 @@ public class LanternaGuiTest {
         gui.drawHealth(100);
         //Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 215, 0));
         //Mockito.verify(textGraphics, Mockito.times(1)).putString(0, 20, "Health: 100");
+    }
+    @Test
+    public void testDrawPowerups(){
+        gui.drawPowerUp(new Position(10, 5));
+        // Mockito.verify(textGraphics,Mockito.times(1)).setForegroundColor(new TextColor.RGB(255,215,0));
+       // Mockito.verify(textGraphics,Mockito.times(1)).putString(10,5,"j");
     }
 }

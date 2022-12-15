@@ -13,13 +13,16 @@ public class MainMenuTest {
     }
     @Test
     public void testNext_Op() {
+        assertEquals(0, mainMenu.getCurrentOption());
         mainMenu.next_Op();
-        assertEquals(true, mainMenu.isSelected(1));
+
+        assertTrue(mainMenu.isSelected(1));
+        assertEquals(1, mainMenu.getCurrentOption());
     }
     @Test
     public void testPrev_Op() {
         mainMenu.prev_Op();
-        assertEquals(true, mainMenu.isSelected(4));
+        assertTrue(mainMenu.isSelected(4));
     }
     @Test
     public void testGetOption() {
@@ -41,6 +44,14 @@ public class MainMenuTest {
         mainMenu.next_Op();
         boolean selected = mainMenu.isSelectedStartMulti();
         assertTrue(selected);
+    }
+    @Test
+    public void isSelectedScores() {
+        mainMenu.next_Op();mainMenu.next_Op();
+        assertTrue(mainMenu.isSelectedScores());
+
+        mainMenu.next_Op();
+        assertFalse(mainMenu.isSelectedScores());
     }
     @Test
     public void testIsSelectedExit() {

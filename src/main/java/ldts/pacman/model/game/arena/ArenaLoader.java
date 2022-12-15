@@ -19,9 +19,6 @@ public class ArenaLoader {
     public void setLevelNumber(int levelNumber) throws IOException {
         this.lines = getLines(levelNumber);
     }
-    public ArenaLoader(int levelNumber) throws IOException {
-        this.lines = getLines(levelNumber);
-    }
     private List<String> getLines(int levelNumber) throws IOException {
         return new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
     }

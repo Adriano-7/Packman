@@ -1,41 +1,116 @@
 package ldts.pacman.controller.menu;
 
+import ldts.pacman.Game;
+import ldts.pacman.application.state.ChooseLevelState;
+import ldts.pacman.application.state.ScoreMenuState;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.MainMenu;
-import ldts.pacman.model.menu.Menu;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.*;
 
 public class MainMenuControllerTest {
     private MainMenuController mainMenuController;
     private MainMenu mainMenu;
     @BeforeEach
     public void setUp() {
-        this.mainMenu = new MainMenu();
+        this.mainMenu = Mockito.mock(MainMenu.class);
         this.mainMenuController = new MainMenuController(mainMenu);
-
+    }
+    @Test
+    public void getModel() {
         assertEquals(mainMenu, mainMenuController.getModel());
     }
-    public void stepUp() {
-        int expectedOption = mainMenu.getCurrentOption();
+    private void stepMainMenuController(Game game, List<GUI.OPTION> options) {
         try {
-            mainMenuController.step(null, Arrays.asList(GUI.OPTION.UP), 0);
+            mainMenuController.step(game, options, 0);
         }
         catch (IOException e) {
             fail();
         }
-
-
     }
+    @Test
+    public void stepUp() {
+        stepMainMenuController(null, List.of(GUI.OPTION.UP));
+
+        verify(mainMenu, times(1)).prev_Op();
+    }
+    @Test
     public void stepDown() {
-        // TODO
+        stepMainMenuController(null, List.of(GUI.OPTION.DOWN));
+
+        verify(mainMenu, times(1)).next_Op();
     }
-    public void stepEnter() {
-        // TODO
+    @Test
+    public void stepNone() {
+        stepMainMenuController(null, List.of(GUI.OPTION.UP2));
+        stepMainMenuController(null, List.of(GUI.OPTION.DOWN2));
+        stepMainMenuController(null, List.of(GUI.OPTION.RIGHT2));
+        stepMainMenuController(null, List.of(GUI.OPTION.LEFT2));
+        verifyNoInteractions(mainMenu);
+    }
+    private Game mockGame() {
+        return Mockito.mock(Game.class);
+    }
+    private void allReturnFalse(MainMenu mainMenu) {
+        Mockito.when(mainMenu.isSelectedExit()).thenReturn(false);
+        Mockito.when(mainMenu.isSelectedStartSingle()).thenReturn(false);
+        Mockito.when(mainMenu.isSelectedStartMulti()).thenReturn(false);
+        Mockito.when(mainMenu.isSelectedScores()).thenReturn(false);
+    }
+    @Test
+    public void stepSelectExit() {
+        Game game = mockGame();
+
+        allReturnFalse(mainMenu);
+        Mockito.when(mainMenu.isSelectedExit()).thenReturn(true);
+
+        stepMainMenuController(game, List.of(GUI.OPTION.SELECT));
+
+        verify(mainMenu, times(1)).isSelectedExit();
+        verify(game, times(1)).setState(null);
+    }
+    @Test
+    public void stepSelectStartSingle() {
+        Game game = mockGame();
+
+        allReturnFalse(mainMenu);
+        Mockito.when(mainMenu.isSelectedStartSingle()).thenReturn(true);
+
+        stepMainMenuController(game, List.of(GUI.OPTION.SELECT));
+
+        verify(mainMenu, times(1)).isSelectedStartSingle();
+        verify(game, times(1)).setState(any(ChooseLevelState.class));
+    }
+    @Test
+    public void stepSelectStartMulti() {
+        Game game = mockGame();
+
+        allReturnFalse(mainMenu);
+        Mockito.when(mainMenu.isSelectedStartMulti()).thenReturn(true);
+
+        stepMainMenuController(game, List.of(GUI.OPTION.SELECT));
+
+        verify(mainMenu, times(1)).isSelectedStartMulti();
+        verify(game, times(1)).setState(any(ChooseLevelState.class));
+    }
+    @Test
+    public void stepSelectScores() {
+        Game game = mockGame();
+
+        allReturnFalse(mainMenu);
+        Mockito.when(mainMenu.isSelectedScores()).thenReturn(true);
+
+        stepMainMenuController(game, List.of(GUI.OPTION.SELECT));
+
+        verify(mainMenu, times(1)).isSelectedScores();
+        verify(game, times(1)).setState(any(ScoreMenuState.class));
     }
 }
