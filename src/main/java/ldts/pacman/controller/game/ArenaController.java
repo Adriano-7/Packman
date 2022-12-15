@@ -17,15 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends GameController {
-    private List<GameController> controllers;
+    private final List<GameController> controllers;
     public ArenaController(Arena arena) {
         super(arena);
         controllers = new ArrayList<>();
         controllers.add(new PacmanController(arena));
         controllers.add(new MonsterController(arena));
-    }
-    protected void addController(GameController controller) {
-        controllers.add(controller);
     }
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
@@ -33,8 +30,11 @@ public class ArenaController extends GameController {
             int score = getModel().getPacman().getScore();
             game.setState(new SaveScoreState(new SaveScore(score)));
         }
-        if(getModel().getCoins().isEmpty()) {
-            Arena arena = new ArenaLoader(getModel().getLevel()).createArena(getModel().getPacman().getHealth(), getModel().getPacman().getScore());
+        else if(getModel().getCoins().isEmpty()) {
+            ArenaLoader arenaLoader = new ArenaLoader();
+            arenaLoader.setLevelNumber(getModel().getLevel());
+
+            Arena arena = arenaLoader.createArena(getModel().getPacman().getHealth(), getModel().getPacman().getScore());
             game.setState(new GameState(arena));
         }
         else {

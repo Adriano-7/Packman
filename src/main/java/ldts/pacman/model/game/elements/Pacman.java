@@ -4,9 +4,7 @@ public class Pacman extends MovableElement {
     private int health;
     private int score;
     public Pacman(int x, int y) {
-        super(x, y);
-        this.health = 3;
-        this.score = 0;
+        this(x, y, 3, 0);
     }
     public Pacman(int x, int y, int health, int score) {
         super(x, y);
