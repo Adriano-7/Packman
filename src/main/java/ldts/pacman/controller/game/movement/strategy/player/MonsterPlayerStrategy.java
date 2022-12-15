@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MonsterPlayerStrategy extends PlayerStrategy {
     public MonsterPlayerStrategy() {
-        super(400);
+        super(250);
     }
     @Override
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
