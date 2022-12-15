@@ -37,8 +37,20 @@ public class ArenaLoader {
     }
     public Arena createArena() {
         Arena arena = new Arena(getWidth(), getHeight());
-
+        arena.setLevel(level);
         arena.setPacman(createPacman());
+        arena.setMonsters(createMonsters());
+        arena.setWalls(createWalls());
+        arena.setCoins(createCoins());
+        arena.setPowerUps(createPowerUps());
+        return arena;
+    }
+    public Arena createArena(int health, int score) {
+        Arena arena = new Arena(getWidth(), getHeight());
+        arena.setLevel(level);
+        arena.setPacman(createPacman());
+        arena.getPacman().setScore(score);
+        arena.getPacman().setHealth(health);
         arena.setMonsters(createMonsters());
         arena.setWalls(createWalls());
         arena.setCoins(createCoins());

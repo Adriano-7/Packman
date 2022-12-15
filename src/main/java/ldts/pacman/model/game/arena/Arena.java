@@ -16,6 +16,7 @@ public class Arena {
     private List<Monster> monsters;
     private List<Wall> walls;
     private List<PowerUp> powerUps;
+    private int level;
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
@@ -59,12 +60,15 @@ public class Arena {
     public void setPowerUps(List<PowerUp> powerUps) {
         this.powerUps = powerUps;
     }
+    public void setLevel(int level){this.level=level;}
+
     public boolean isWall(Position position) {
         for (Wall wall: walls) {
             if (wall.getPosition().equals(position)) return true;
         }
         return false;
     }
+    public int getLevel(){return this.level;}
     public Monster getCollidingMonster(Position position) {
         for (Monster monster: monsters) {
             if (monster.getPosition().equals(position)) return monster;
