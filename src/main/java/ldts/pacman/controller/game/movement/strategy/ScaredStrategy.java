@@ -1,6 +1,8 @@
 package ldts.pacman.controller.game.movement.strategy;
 
 
+import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
+import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
@@ -8,7 +10,10 @@ import ldts.pacman.model.game.elements.MovableElement;
 import java.util.*;
 
 public class ScaredStrategy extends MovementStrategy {
-    @Override
+    public ScaredStrategy() {
+        super(400);
+    }
+
     public boolean move(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1),
                 new Position(1, 0), new Position(-1, 0));
@@ -30,5 +35,13 @@ public class ScaredStrategy extends MovementStrategy {
         element.setDirection(validDirections.get(n));
         element.setPosition(element.getPosition().plus(element.getDirection()));
         return true;
+    }
+    @Override
+    public boolean move(MovableElement element, Arena arena, List<GUI.OPTION> options, long time) {
+        if (enoughTimeElapsed(time)) {
+            setLastMovement(time);
+            return move(element, arena);
+        }
+        return false;
     }
 }

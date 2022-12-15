@@ -1,12 +1,13 @@
-package ldts.pacman.controller.game.movement.strategy;
+package ldts.pacman.controller.game.movement.strategy.target;
 
-import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.MovableElement;
 
 public class EatenStrategy extends TargetStrategy {
+    public EatenStrategy() {
+        super(100);
+    }
     @Override
     protected Position getTarget(MovableElement element, Arena arena) {
         return element.getInitialPosition();

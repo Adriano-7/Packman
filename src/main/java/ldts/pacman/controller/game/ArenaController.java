@@ -8,24 +8,34 @@ import ldts.pacman.application.state.SaveScoreState;
 
 import java.util.List;
 
+import java.io.IOException;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArenaController extends GameController {
-    private PacmanController pacmanController;
-    private MonsterController monsterController;
+    private List<GameController> controllers;
     public ArenaController(Arena arena) {
         super(arena);
-        this.pacmanController = new PacmanController(arena);
-        this.monsterController = new MonsterController(arena);
+        controllers = new ArrayList<>();
+        controllers.add(new PacmanController(arena));
+        controllers.add(new MonsterController(arena));
+    }
+    protected void addController(GameController controller) {
+        controllers.add(controller);
     }
 
     @Override
-    public void step(Game game, List<GUI.OPTION> options, long time) {
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
         if (options.contains(GUI.OPTION.QUIT) || getModel().getPacman().getHealth() == 0) {
             int score = getModel().getPacman().getScore();
             game.setState(new SaveScoreState(new SaveScore(score)));
         }
         else {
-            pacmanController.step(game, options, time);
-            monsterController.step(game, options, time);
+            for (GameController controller : controllers) {
+                controller.step(game, options, time);
+            }
         }
     }
+
 }

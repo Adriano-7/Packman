@@ -1,5 +1,7 @@
 package ldts.pacman.controller.game.monster.state;
 
+import ldts.pacman.controller.game.monster.state.ChaseState;
+import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;

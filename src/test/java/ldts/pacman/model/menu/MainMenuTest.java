@@ -32,8 +32,14 @@ public class MainMenuTest {
         assertTrue(selected);
     }
     @Test
-    public void testIsSelectedStart() {
-        boolean selected = mainMenu.isSelectedStart();
+    public void testIsSelectedStartSingle() {
+        boolean selected = mainMenu.isSelectedStartSingle();
+        assertTrue(selected);
+    }
+    @Test
+    public void testIsSelectedStartMulti() {
+        mainMenu.next_Op();
+        boolean selected = mainMenu.isSelectedStartMulti();
         assertTrue(selected);
     }
     @Test

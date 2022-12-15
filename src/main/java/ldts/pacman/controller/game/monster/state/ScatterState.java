@@ -1,7 +1,7 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
-import ldts.pacman.controller.game.movement.strategy.ScatterCornerStrategy;
+import ldts.pacman.controller.game.movement.strategy.target.ScatterCornerStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
@@ -14,12 +14,12 @@ public class ScatterState extends MonsterState {
         this.color = color;
     }
     @Override
-    protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {
+    protected boolean changeState(Monster monster, Arena arena, long time) {
         if (time - getStateStartTime() > pow (10, 4)) { // 10 seconds
             monster.setState(new ChaseState(monster.getBaseColor()));
-            return false;
+            return true;
         }
-        return time - getLastMovement() > 400;  // 0.4 seconds
+        return false;
     }
 
     @Override

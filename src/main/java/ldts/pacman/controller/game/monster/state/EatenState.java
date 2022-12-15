@@ -1,24 +1,25 @@
 package ldts.pacman.controller.game.monster.state;
 
-import ldts.pacman.controller.game.movement.strategy.EatenStrategy;
+import ldts.pacman.controller.game.movement.strategy.target.EatenStrategy;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 
 public class EatenState extends MonsterState {
     @Override
-    protected MovementStrategy createStrategy() {
+    public MovementStrategy createStrategy() {
         return new EatenStrategy();
     }
     @Override
     public String getColor() {return "#2121ff";}
 
     @Override
-    protected boolean enoughTimeElapsed(Monster monster, Arena arena, long time) {
+    protected boolean changeState(Monster monster, Arena arena, long time) {
         if (monster.getPosition().equals(monster.getInitialPosition())) {
             monster.setState(new ScatterState(monster.getBaseColor()));
+            return true;
         }
-        return time - getLastMovement() > 150;  // 0.1 seconds
+        return false;
     }
 
     @Override
@@ -28,4 +29,6 @@ public class EatenState extends MonsterState {
     protected char[] createDrawingChar() {
         return new char[]{'m', 'n', 'o', 'p'};
     }
+    @Override
+    public void setMovementStrategy(MovementStrategy movementStrategy) {}
 }

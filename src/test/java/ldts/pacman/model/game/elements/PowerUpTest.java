@@ -18,7 +18,7 @@ public class PowerUpTest {
     }
     @Test
     public void testSetPosition() {
-        powerUp.setPosition(new Position(-5, 2));
+        powerUp.setPosition(new Position(0, 2));
         assertEquals(new Position(0, 2), powerUp.getPosition());
     }
 }

@@ -20,5 +20,5 @@ public interface GUI {
     void clear();
     void refresh() throws IOException;
     void close() throws IOException;
-    enum OPTION {UP, RIGHT, DOWN, LEFT, QUIT, SELECT}
+    enum OPTION {UP, RIGHT, DOWN, LEFT, QUIT, SELECT, UP2, RIGHT2, DOWN2, LEFT2}
 }

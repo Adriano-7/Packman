@@ -14,10 +14,19 @@ import java.util.List;
 
 
 public class ArenaLoader {
-    private final List<String> lines;
-
+    private List<String> lines;
+    public ArenaLoader() {}
+    public void setLevelNumber(int levelNumber) throws IOException {
+        this.lines = getLines(levelNumber);
+    }
     public ArenaLoader(int levelNumber) throws IOException {
-        lines = new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
+        this.lines = getLines(levelNumber);
+    }
+    private List<String> getLines(int levelNumber) throws IOException {
+        return new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
+    }
+    protected List<String> getLines() {
+        return lines;
     }
     private int getWidth() {
         int width = 0;
@@ -56,7 +65,7 @@ public class ArenaLoader {
         }
         return null;
     }
-    private List<Monster> createMonsters() {
+    protected List<Monster> createMonsters() {
         List<Monster> monsters = new ArrayList<>();
         for (int y = 0; y < lines.size(); y++){
             for (int x = 0; x < lines.get(y).length(); x++) {

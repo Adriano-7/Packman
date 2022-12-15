@@ -11,6 +11,7 @@ public class Arena {
     private final int width;
     private final int height;
     private Pacman pacman;
+    private MonsterPlayer monsterPlayer;
     private List<Coin> coins;
     private List<Monster> monsters;
     private List<Wall> walls;
@@ -29,6 +30,7 @@ public class Arena {
     public Pacman getPacman() {
         return pacman;
     }
+    public MonsterPlayer getMonsterPlayer(){return monsterPlayer;}
     public List<Coin> getCoins() {
         return coins;
     }

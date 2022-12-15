@@ -78,6 +78,10 @@ public class LanternaGUI implements GUI {
         if (pressedKeys.contains(KeyEvent.VK_DOWN)) actions.add(OPTION.DOWN);
         if (pressedKeys.contains(KeyEvent.VK_LEFT)) actions.add(OPTION.LEFT);
         if (pressedKeys.contains(KeyEvent.VK_ENTER)) actions.add(OPTION.SELECT);
+        if (pressedKeys.contains(KeyEvent.VK_W)) actions.add(OPTION.UP2);
+        if (pressedKeys.contains(KeyEvent.VK_D)) actions.add(OPTION.RIGHT2);
+        if (pressedKeys.contains(KeyEvent.VK_S)) actions.add(OPTION.DOWN2);
+        if (pressedKeys.contains(KeyEvent.VK_A)) actions.add(OPTION.LEFT2);
         clearKeys();
         return actions;
     }
