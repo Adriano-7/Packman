@@ -82,15 +82,16 @@ public class Arena {
     private void resetPosition(MovableElement element) {
         element.setPosition(element.getInitialPosition());
     }
-    public void collectCoin() {
+    public boolean collectCoin() {
         Position pacmanPos = pacman.getPosition();
         for (Coin coin: coins) {
             if (coin.getPosition().equals(pacmanPos)) {
                 coins.remove(coin);
                 pacman.increaseScore();
-                return;
+                return true;
             }
         }
+        return false;
     }
     public boolean collectPowerUp() {
         Position pacmanPos = pacman.getPosition();
