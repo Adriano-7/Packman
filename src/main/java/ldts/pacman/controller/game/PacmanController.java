@@ -1,16 +1,13 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.controller.game.monster.state.EatenState;
 import ldts.pacman.controller.game.monster.state.ScaredState;
 import ldts.pacman.controller.game.movement.strategy.PlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Coin;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.model.game.elements.PowerUp;
 
 import java.util.List;
 

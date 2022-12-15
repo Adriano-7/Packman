@@ -59,6 +59,7 @@ public class Arena {
         this.powerUps = powerUps;
     }
     public void setLevel(int level){this.level=level;}
+
     public boolean isWall(Position position) {
         for (Wall wall: walls) {
             if (wall.getPosition().equals(position)) return true;
