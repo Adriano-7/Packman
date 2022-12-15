@@ -4,6 +4,8 @@ import ldts.pacman.Game;
 import ldts.pacman.application.state.ChooseLevelState;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
+import ldts.pacman.model.game.arena.ArenaLoader;
+import ldts.pacman.model.game.arena.ArenaLoaderMultiplayer;
 import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
@@ -31,9 +33,13 @@ public class MainMenuController extends Controller<MainMenu> {
                     break;
                 case SELECT:
                     if (getModel().isSelectedExit()) game.setState(null);
-                    else if (getModel().isSelectedStart()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel()));
-                    } else if (getModel().isSelectedScores()) {
+                    else if (getModel().isSelectedStartSingle()) {
+                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoader())));
+                    }
+                    else if (getModel().isSelectedStartMulti()) {
+                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoaderMultiplayer())));
+                    }
+                    else if (getModel().isSelectedScores()) {
                         game.setState(new ScoreMenuState(new ScoreMenu()));
                     }
                     break;
