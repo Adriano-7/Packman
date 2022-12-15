@@ -13,12 +13,17 @@ public abstract class SoundObserver {
         clip.open(audioInputStream);
         clip.setFramePosition(0);
         FloatControl floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        floatControl.setValue(-10.0f);
+        floatControl.setValue(-15.5f);
         clip.start();
     }
 
-    protected void playLoopSound(String soundPath){
-
+    protected void playLoopSound(String soundPath) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundPath));
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.setFramePosition(0);
+        FloatControl floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        floatControl.setValue(-20.0f);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
-
 }

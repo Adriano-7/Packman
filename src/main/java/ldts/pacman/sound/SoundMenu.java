@@ -4,9 +4,10 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
-public class SoundPacCoin extends SoundObserver{
+public class SoundMenu extends SoundObserver{
     @Override
     public void onSoundEvent() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        playSingleSound("src/main/resources/sounds/pacCoin.wav");
+        playLoopSound("src/main/resources/sounds/pacmanSong.wav");
     }
 }
+

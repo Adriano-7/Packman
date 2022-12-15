@@ -8,20 +8,28 @@ import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.application.state.ScoreMenuState;
+import ldts.pacman.sound.SoundMenu;
+import ldts.pacman.sound.SoundObserver;
+import ldts.pacman.sound.SoundSelection;
 
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 
 public class MainMenuController extends Controller<MainMenu> {
+    SoundObserver soundSelection;
     public MainMenuController(MainMenu model) {
         super(model);
+        soundSelection = new SoundSelection();
     }
     @Override
-    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException{
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (GUI.OPTION option: options) {
+            playSingleSound(soundSelection);
             switch (option) {
                 case UP:
                     getModel().prev_Op();

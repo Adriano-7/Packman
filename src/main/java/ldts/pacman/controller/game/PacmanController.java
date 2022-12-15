@@ -11,35 +11,24 @@ import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.sound.SoundObserver;
 import ldts.pacman.sound.SoundPacCoin;
 import ldts.pacman.sound.SoundPacDies;
-import ldts.pacman.sound.SoundPlayer;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Observer;
 
 public class PacmanController extends GameController{
     private long lastMovement;
     private PlayerStrategy playerStrategy;
-    private List<SoundObserver> observers = new LinkedList<>();
-    public void addObserver(SoundObserver observer){
-        observers.add(observer);
-    }
-    public void removeObserver(SoundObserver observer){
-        observers.remove(observer);
-    }
-    public void notifyObservers() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        for(SoundObserver observer : observers){
-            observer.onSoundEvent();
-        }
-    }
+    SoundObserver soundPacCoin;
+    SoundObserver soundPacDies;
 
     public PacmanController(Arena model) {
         super(model);
         playerStrategy = new PlayerStrategy();
         lastMovement = 0;
+        soundPacCoin = new SoundPacCoin();
+        soundPacDies = new SoundPacDies();
     }
     public Pacman getPacman() {
         return getModel().getPacman();
@@ -55,9 +44,11 @@ public class PacmanController extends GameController{
             Monster monster = arena.getCollidingMonster(pacmanPos);
             if (monster != null) {
                 monster.getHit(arena);
-                SoundPacDies soundPacDies = new SoundPacDies(); addObserver(soundPacDies); notifyObservers();removeObserver(soundPacDies);
+                playSingleSound(soundPacDies);
+               }
+            if(arena.collectCoin()){
+                playSingleSound(soundPacCoin);
             }
-            if(arena.collectCoin()){SoundPacCoin sound = new SoundPacCoin();addObserver(sound);notifyObservers();removeObserver(sound);}
             if (arena.collectPowerUp()) {
                 for (Monster monsterInArena: arena.getMonsters()) monsterInArena.setState(new ScaredState());
             }
