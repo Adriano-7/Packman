@@ -54,11 +54,6 @@ public class LanternaGUI implements GUI {
             public void keyPressed(KeyEvent e) {
                 pressedKeys.add(e.getKeyCode());
             }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                pressedKeys.remove(e.getKeyCode());
-            }
         });
 
         return terminal;
@@ -83,10 +78,12 @@ public class LanternaGUI implements GUI {
         if (pressedKeys.contains(KeyEvent.VK_DOWN)) actions.add(OPTION.DOWN);
         if (pressedKeys.contains(KeyEvent.VK_LEFT)) actions.add(OPTION.LEFT);
         if (pressedKeys.contains(KeyEvent.VK_ENTER)) actions.add(OPTION.SELECT);
-
+        clearKeys();
         return actions;
     }
-
+    private void clearKeys() {
+        pressedKeys.clear();
+    }
     @Override
     public void drawPacman(Position position, Position direction) {
         if(direction.equals(new Position(0,1))) {drawCharacter(position,'b', "#FFFF00");}
