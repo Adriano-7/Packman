@@ -25,7 +25,6 @@ public class SaveScoreController extends Controller<SaveScore> {
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (GUI.OPTION option: options) {
-            soundSubject.playSingleSound(soundSelection);
             switch (option) {
                 case UP:
                     getModel().prev_Op();

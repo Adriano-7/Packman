@@ -20,22 +20,18 @@ import java.util.List;
 public class PacmanController extends GameController{
     private long lastMovement;
     private PlayerStrategy playerStrategy;
-    SoundObserver soundPacCoin;
-    SoundObserver soundPacDies;
 
     public PacmanController(Arena model) {
         super(model);
         playerStrategy = new PlayerStrategy();
         lastMovement = 0;
-        soundPacCoin = new SoundPacCoin();
-        soundPacDies = new SoundPacDies();
     }
     public Pacman getPacman() {
         return getModel().getPacman();
     }
 
     @Override
-    public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         playerStrategy.changeDirection(options, getPacman());
         Arena arena = getModel();
         if (time - lastMovement > 200 && playerStrategy.move(getPacman(), arena)) {
@@ -44,11 +40,8 @@ public class PacmanController extends GameController{
             Monster monster = arena.getCollidingMonster(pacmanPos);
             if (monster != null) {
                 monster.getHit(arena);
-                soundSubject.playSingleSound(soundPacDies);
                }
-            if(arena.collectCoin()){
-                soundSubject.playSingleSound(soundPacCoin);
-            }
+            arena.collectCoin();
             if (arena.collectPowerUp()) {
                 for (Monster monsterInArena: arena.getMonsters()) monsterInArena.setState(new ScaredState());
             }

@@ -9,6 +9,9 @@ import ldts.pacman.model.game.elements.Monster;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +50,7 @@ public class ArenaTest {
     }
 
     @Test
-    public void isMonster(){
+    public void isMonster() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = new Arena(10,20);
         Monster monster =new BlueMonster(10,30);
         arena.setMonsters(Arrays.asList(monster));
@@ -55,7 +58,7 @@ public class ArenaTest {
         assertEquals(monster, arena.getCollidingMonster(position));
     }
     @Test
-    public void collectCoin(){
+    public void collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena=new Arena(10,20);
 
         Pacman pacman=new Pacman(10,20);

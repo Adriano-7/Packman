@@ -20,15 +20,12 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 public class MainMenuController extends Controller<MainMenu> {
-    SoundObserver soundSelection;
     public MainMenuController(MainMenu model) {
         super(model);
-        soundSelection = new SoundSelection();
     }
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (GUI.OPTION option: options) {
-            soundSubject.playSingleSound(soundSelection);
             switch (option) {
                 case UP:
                     getModel().prev_Op();

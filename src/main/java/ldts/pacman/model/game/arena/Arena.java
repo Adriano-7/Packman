@@ -3,7 +3,15 @@ package ldts.pacman.model.game.arena;
 import ldts.pacman.controller.game.monster.state.ScaredState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
+import ldts.pacman.sound.observer.SoundPacCoin;
+import ldts.pacman.sound.observer.SoundPacDies;
+import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.observer.SoundStartLevel;
+import ldts.pacman.sound.subject.SoundSubject;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +24,18 @@ public class Arena {
     private List<Wall> walls;
     private List<PowerUp> powerUps;
     private int level;
-    public Arena(int width, int height) {
+
+    private SoundPacCoin soundPacCoin;
+    private SoundPacDies soundPacDies;
+    protected SoundSubject soundSubject;
+    public Arena(int width, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.width = width;
         this.height = height;
         pacman = new Pacman(5, 5);
+        soundSubject = new SoundSubject();
+        soundPacCoin = new SoundPacCoin();
+        soundPacDies = new SoundPacDies();
+        soundSubject.playSingleSound(new SoundStartLevel());
     }
     public int getWidth() {
         return width;
@@ -67,9 +83,11 @@ public class Arena {
         return false;
     }
     public int getLevel(){return this.level;}
-    public Monster getCollidingMonster(Position position) {
+    public Monster getCollidingMonster(Position position) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (Monster monster: monsters) {
-            if (monster.getPosition().equals(position)) return monster;
+            if (monster.getPosition().equals(position)) {
+                soundSubject.playSingleSound(soundPacDies);
+                return monster;}
         }
         return null;
     }
@@ -82,12 +100,13 @@ public class Arena {
     private void resetPosition(MovableElement element) {
         element.setPosition(element.getInitialPosition());
     }
-    public boolean collectCoin() {
+    public boolean collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Position pacmanPos = pacman.getPosition();
         for (Coin coin: coins) {
             if (coin.getPosition().equals(pacmanPos)) {
                 coins.remove(coin);
                 pacman.increaseScore();
+                soundSubject.playSingleSound(soundPacCoin);
                 return true;
             }
         }

@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public abstract class SoundObserver {
     public abstract void onSoundEvent() throws UnsupportedAudioFileException, LineUnavailableException, IOException;
-
     protected void playSingleSound(String soundPath) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundPath));
         Clip clip = AudioSystem.getClip();
@@ -16,7 +15,6 @@ public abstract class SoundObserver {
         floatControl.setValue(-15.5f);
         clip.start();
     }
-
     protected void playLoopSound(String soundPath) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundPath));
         Clip clip = AudioSystem.getClip();

@@ -20,12 +20,11 @@ public class MonsterController extends GameController {
     }
     SoundObserver soundPacDies;
     @Override
-    public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
         for (Monster monster: getModel().getMonsters()) {
             MonsterState monsterState = monster.getState();
             if (monsterState.move(monster, getModel(), time) && monster.collidesWithPacman(getModel().getPacman())) {
                 monster.getHit(getModel());
-                soundSubject.playSingleSound(soundPacDies);
             }
         }
     }

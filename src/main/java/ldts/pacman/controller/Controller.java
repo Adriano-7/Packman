@@ -13,10 +13,8 @@ import java.io.IOException;
 
 public abstract class Controller<T> {
     private final T model;
-    protected final SoundSubject soundSubject;
     public Controller(T model) {
         this.model = model;
-        soundSubject = new SoundSubject();
     }
     public T getModel() {
         return model;
