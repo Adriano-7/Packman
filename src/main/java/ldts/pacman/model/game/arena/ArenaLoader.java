@@ -15,9 +15,11 @@ import java.util.List;
 
 public class ArenaLoader {
     private final List<String> lines;
+    private final int level;
 
-    public ArenaLoader(int levelNumber) throws IOException {
-        lines = new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
+    public ArenaLoader(int level) throws IOException {
+        this.level = level;
+        lines = new ResourceFileReader().readLines("/maps/level" + level + ".lvl");
     }
     private int getWidth() {
         int width = 0;
@@ -31,7 +33,7 @@ public class ArenaLoader {
     }
     public Arena createArena() {
         Arena arena = new Arena(getWidth(), getHeight());
-
+        arena.setLevel(level);
         arena.setPacman(createPacman());
         arena.setMonsters(createMonsters());
         arena.setWalls(createWalls());
