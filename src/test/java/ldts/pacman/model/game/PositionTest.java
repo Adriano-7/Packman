@@ -75,6 +75,11 @@ public class PositionTest {
         assertEquals(first.distanceTo(second), second.distanceTo(first));
     }
     @Property
+    public void distanceToItself(@ForAll("generatePosition") Position pos){
+        System.out.println("(" + pos.getX() + ", " + pos.getY() + ")");
+        assertEquals(0, pos.distanceTo(pos));
+    }
+    @Property
     public void comutativeSum(@ForAll("generatePosition") Position first, @ForAll("generatePosition") Position second) {
         assertEquals(first.plus(second), second.plus(first));
     }
