@@ -2,12 +2,11 @@ package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
 import ldts.pacman.controller.game.monster.state.MonsterState;
-import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
-import ldts.pacman.sound.SoundObserver;
-import ldts.pacman.sound.SoundPacDies;
+import ldts.pacman.sound.observer.SoundObserver;
+import ldts.pacman.sound.observer.SoundPacDies;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -26,7 +25,7 @@ public class MonsterController extends GameController {
             MonsterState monsterState = monster.getState();
             if (monsterState.move(monster, getModel(), time) && monster.collidesWithPacman(getModel().getPacman())) {
                 monster.getHit(getModel());
-                playSingleSound(soundPacDies);
+                soundSubject.playSingleSound(soundPacDies);
             }
         }
     }

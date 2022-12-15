@@ -8,9 +8,8 @@ import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.application.state.ScoreMenuState;
-import ldts.pacman.sound.SoundMenu;
-import ldts.pacman.sound.SoundObserver;
-import ldts.pacman.sound.SoundSelection;
+import ldts.pacman.sound.observer.SoundObserver;
+import ldts.pacman.sound.observer.SoundSelection;
 
 
 import javax.sound.sampled.LineUnavailableException;
@@ -29,7 +28,7 @@ public class MainMenuController extends Controller<MainMenu> {
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (GUI.OPTION option: options) {
-            playSingleSound(soundSelection);
+            soundSubject.playSingleSound(soundSelection);
             switch (option) {
                 case UP:
                     getModel().prev_Op();

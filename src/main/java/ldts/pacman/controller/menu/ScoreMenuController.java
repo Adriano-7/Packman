@@ -6,8 +6,8 @@ import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.sound.SoundObserver;
-import ldts.pacman.sound.SoundSelection;
+import ldts.pacman.sound.observer.SoundObserver;
+import ldts.pacman.sound.observer.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -24,7 +24,7 @@ public class ScoreMenuController extends Controller<ScoreMenu> {
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (GUI.OPTION option: options) {
-            playSingleSound(soundSelection);
+            soundSubject.playSingleSound(soundSelection);
             if (option == GUI.OPTION.QUIT || option == GUI.OPTION.SELECT) {
                 game.setState(new MainMenuState(new MainMenu()));
             }

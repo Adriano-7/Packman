@@ -1,12 +1,13 @@
-package ldts.pacman.sound;
+package ldts.pacman.sound.observer;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
-public class SoundPacCoin extends SoundObserver{
+public class SoundPacDies extends SoundObserver{
+    public SoundPacDies() {;}
     @Override
     public void onSoundEvent() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        playSingleSound("src/main/resources/sounds/pacCoin.wav");
+        playSingleSound("src/main/resources/sounds/pacDeath.wav");
     }
 }

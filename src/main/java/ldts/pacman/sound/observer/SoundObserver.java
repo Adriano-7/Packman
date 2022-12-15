@@ -1,4 +1,4 @@
-package ldts.pacman.sound;
+package ldts.pacman.sound.observer;
 
 import javax.sound.sampled.*;
 import java.io.File;

@@ -8,9 +8,9 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.sound.SoundObserver;
-import ldts.pacman.sound.SoundPacCoin;
-import ldts.pacman.sound.SoundPacDies;
+import ldts.pacman.sound.observer.SoundObserver;
+import ldts.pacman.sound.observer.SoundPacCoin;
+import ldts.pacman.sound.observer.SoundPacDies;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -44,10 +44,10 @@ public class PacmanController extends GameController{
             Monster monster = arena.getCollidingMonster(pacmanPos);
             if (monster != null) {
                 monster.getHit(arena);
-                playSingleSound(soundPacDies);
+                soundSubject.playSingleSound(soundPacDies);
                }
             if(arena.collectCoin()){
-                playSingleSound(soundPacCoin);
+                soundSubject.playSingleSound(soundPacCoin);
             }
             if (arena.collectPowerUp()) {
                 for (Monster monsterInArena: arena.getMonsters()) monsterInArena.setState(new ScaredState());
