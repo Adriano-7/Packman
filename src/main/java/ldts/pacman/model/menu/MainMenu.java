@@ -8,7 +8,7 @@ import java.util.List;
 public class MainMenu extends Menu {
     @Override
     protected List<String> createOptions() {
-        return Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","OPTIONS","EXIT");
+        return Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","EXIT");
     }
     public boolean isSelectedStartSingle(){
         return isSelected(0);
@@ -17,7 +17,7 @@ public class MainMenu extends Menu {
         return isSelected(1);
     }
     public boolean isSelectedExit(){
-        return isSelected(4);
+        return isSelected(3);
     }
     public boolean isSelectedScores() {
         return isSelected(2);
