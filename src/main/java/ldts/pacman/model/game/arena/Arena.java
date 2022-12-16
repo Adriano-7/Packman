@@ -16,6 +16,8 @@ public class Arena {
     private List<Monster> monsters;
     private List<Wall> walls;
     private List<PowerUp> powerUps;
+    private List<Coin> initialCoins;
+    private List<PowerUp> initialPowerUps;
     private int level;
     public Arena(int width, int height) {
         this.width = width;
@@ -56,9 +58,11 @@ public class Arena {
     }
     public void setCoins(List<Coin> coins) {
         this.coins = coins;
+        this.initialCoins = new ArrayList<>(coins);
     }
     public void setPowerUps(List<PowerUp> powerUps) {
         this.powerUps = powerUps;
+        this.initialPowerUps = new ArrayList<>(powerUps);
     }
     public void setLevel(int level){this.level=level;}
 
@@ -104,5 +108,9 @@ public class Arena {
             }
         }
         return false;
+    }
+    public void resetLevel() {
+        this.coins = new ArrayList<>(initialCoins);
+        this.powerUps = new ArrayList<>(initialPowerUps);
     }
 }

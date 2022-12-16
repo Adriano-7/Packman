@@ -31,11 +31,15 @@ public class ArenaController extends GameController {
             game.setState(new SaveScoreState(new SaveScore(score)));
         }
         else if(getModel().getCoins().isEmpty()) {
+            getModel().resetLevel();
+            /*
             ArenaLoader arenaLoader = new ArenaLoader();
             arenaLoader.setLevelNumber(getModel().getLevel());
 
             Arena arena = arenaLoader.createArena(getModel().getPacman().getHealth(), getModel().getPacman().getScore());
             game.setState(new GameState(arena));
+
+             */
         }
         else {
             for (GameController controller : controllers) {
