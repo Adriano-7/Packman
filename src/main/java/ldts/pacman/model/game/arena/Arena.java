@@ -1,6 +1,5 @@
 package ldts.pacman.model.game.arena;
 
-import ldts.pacman.controller.game.monster.state.ScaredState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 
@@ -11,7 +10,6 @@ public class Arena {
     private final int width;
     private final int height;
     private Pacman pacman;
-    private MonsterPlayer monsterPlayer;
     private List<Coin> coins;
     private List<Monster> monsters;
     private List<Wall> walls;
@@ -33,7 +31,6 @@ public class Arena {
     public Pacman getPacman() {
         return pacman;
     }
-    public MonsterPlayer getMonsterPlayer(){return monsterPlayer;}
     public List<Coin> getCoins() {
         return coins;
     }
@@ -64,15 +61,12 @@ public class Arena {
         this.powerUps = powerUps;
         this.initialPowerUps = new ArrayList<>(powerUps);
     }
-    public void setLevel(int level){this.level=level;}
-
     public boolean isWall(Position position) {
         for (Wall wall: walls) {
             if (wall.getPosition().equals(position)) return true;
         }
         return false;
     }
-    public int getLevel(){return this.level;}
     public Monster getCollidingMonster(Position position) {
         for (Monster monster: monsters) {
             if (monster.getPosition().equals(position)) return monster;

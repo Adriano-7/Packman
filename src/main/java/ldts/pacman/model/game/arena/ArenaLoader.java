@@ -15,13 +15,11 @@ import java.util.List;
 
 public class ArenaLoader {
     private List<String> lines;
-    private int levelNumber;
     public ArenaLoader() {}
     public void setLevelNumber(int levelNumber) throws IOException {
-        this.lines = getLines(levelNumber);
+        this.lines = readLines(levelNumber);
     }
-    private List<String> getLines(int levelNumber) throws IOException {
-        this.levelNumber = levelNumber;
+    private List<String> readLines(int levelNumber) throws IOException {
         return new ResourceFileReader().readLines("/maps/level" + levelNumber + ".lvl");
     }
     protected List<String> getLines() {
@@ -40,19 +38,11 @@ public class ArenaLoader {
     public Arena createArena() {
         Arena arena = new Arena(getWidth(), getHeight());
 
-        arena.setLevel(levelNumber);
         arena.setPacman(createPacman());
         arena.setMonsters(createMonsters());
         arena.setWalls(createWalls());
         arena.setCoins(createCoins());
         arena.setPowerUps(createPowerUps());
-        return arena;
-    }
-    public Arena createArena(int health, int score) {
-        Arena arena = createArena();
-
-        arena.getPacman().setScore(score);
-        arena.getPacman().setHealth(health);
         return arena;
     }
     private List<Coin> createCoins() {
