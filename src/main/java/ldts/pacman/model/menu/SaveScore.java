@@ -11,7 +11,7 @@ public class SaveScore extends Menu {
     private final String timeStamp;
     public SaveScore(int score) {
         this.score = score;
-        this.timeStamp = new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(new Date());
+        this.timeStamp = new SimpleDateFormat("dd/MM").format(new Date());
     }
     @Override
     protected List<String> createOptions() {
