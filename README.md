@@ -27,11 +27,5 @@ For a more detailed versin of this description, click [here](./docs/README.md).
 >- ** The Pattern** - State pattern was used to modify the behaviour of monsters according to their state. The monsters can have the following states : Eaten state,
 >- ChaseState,MonsterState,ScaredState,ScatterState. This states can interfere with the algorithms to move these defined in the movement strategy. All of this states are valid
 >- for all kind of monsters (playable and non-playable monsters).
->- 
->- 
-<p align="center" justify="center">
-  <img src="docs/gifs/game.gif"/>
-</p>
-<p align="center">
-  <b><i>Gif 1. Game Preview </i></b>
-</p>  
+
+![SinglePlayerGame](https://user-images.githubusercontent.com/93844395/208137735-5112e3ae-c75d-4148-b4d9-2d65421081cc.gif)
