@@ -4,6 +4,8 @@ import ldts.pacman.model.game.elements.MonsterPlayer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +19,7 @@ public class ArenaLoaderMultiplayerTest {
             arenaLoader.setLevelNumber(3);
             this.arena = arenaLoader.createArena();
         }
-        catch (IOException e) {
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
     }

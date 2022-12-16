@@ -11,15 +11,25 @@ import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class PacmanControllerTest {
     private PacmanController pacmanController;
     @BeforeEach
     public void setUp() {
-        Arena arena = new Arena(10, 10);
+        Arena arena = null;
+        try {
+            arena = new Arena(10, 10);
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
+        
         arena.setPacman(new Pacman(2, -1));
         arena.setCoins(Arrays.asList(new Coin(10, 10)));
         arena.setWalls(Arrays.asList(new Wall(7, 7)));

@@ -8,10 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.times;
 
 public class ScatterStateTest {
@@ -44,7 +48,12 @@ public class ScatterStateTest {
         Mockito.verify(monster, times(1)).setState(Mockito.any(ScatterState.class));
     }
     private Arena setUpArena(List<Monster> monsters, Pacman pacman) {
-        Arena arena = new Arena(10, 10);
+        Arena arena = null;
+        try {
+            arena = new Arena(10, 10);
+        }  catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
 
         arena.setPacman(pacman);
         arena.setMonsters(monsters);

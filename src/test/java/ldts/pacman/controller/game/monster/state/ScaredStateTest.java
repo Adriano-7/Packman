@@ -7,9 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.times;
 
 public class ScaredStateTest {
@@ -33,8 +37,12 @@ public class ScaredStateTest {
     }
     @Test
     public void getHit(){
-        Arena arena = new Arena(10, 10);
-
+        Arena arena = null;
+        try {
+            arena = new Arena(10, 10);
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
         Pacman pacman = Mockito.mock(Pacman.class);
         arena.setPacman(pacman);
 

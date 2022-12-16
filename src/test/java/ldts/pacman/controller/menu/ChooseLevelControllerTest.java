@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -40,12 +42,13 @@ public class ChooseLevelControllerTest {
         Game game = mockGame();
         try {
             chooseLevelController.step(game, Arrays.asList(GUI.OPTION.UP, GUI.OPTION.DOWN, GUI.OPTION.QUIT), 0);
+            Mockito.verify(chooseLevel, times(1)).next_Op();
+            Mockito.verify(chooseLevel, times(1)).prev_Op();
         }
-        catch (IOException e) {
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
-        Mockito.verify(chooseLevel, times(1)).next_Op();
-        Mockito.verify(chooseLevel, times(1)).prev_Op();
+
         Mockito.verify(game, times(1)).setState(any(MainMenuState.class));
     }
     @Test
@@ -56,7 +59,7 @@ public class ChooseLevelControllerTest {
         try {
             chooseLevelController.step(game, List.of(GUI.OPTION.SELECT), 0);
         }
-        catch (IOException e) {
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
         Mockito.verify(chooseLevel, times(1)).isSelectedExit();
@@ -71,13 +74,14 @@ public class ChooseLevelControllerTest {
         Mockito.when(chooseLevel.getArenaLoader()).thenReturn(arenaLoader);
         try {
             chooseLevelController.step(game, List.of(GUI.OPTION.SELECT), 0);
+
+            Mockito.verify(arenaLoader, times(1)).createArena();
         }
-        catch (IOException e) {
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
-        Mockito.verify(chooseLevel, times(1)).isSelectedExit();
 
-        Mockito.verify(arenaLoader, times(1)).createArena();
+        Mockito.verify(chooseLevel, times(1)).isSelectedExit();
         Mockito.verify(game, times(1)).setState(any(GameState.class));
     }
 

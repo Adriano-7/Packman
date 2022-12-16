@@ -26,7 +26,7 @@ public class MainMenuTest {
     @Test
     public void testPrev_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         mainMenu.prev_Op();
-        assertTrue(mainMenu.isSelected(4));
+        assertTrue(mainMenu.isSelected(3));
     }
     @Test
     public void testGetOption() {
@@ -59,7 +59,7 @@ public class MainMenuTest {
     }
     @Test
     public void testIsSelectedExit() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        mainMenu.next_Op();mainMenu.next_Op();mainMenu.next_Op();mainMenu.next_Op();
+        mainMenu.next_Op();mainMenu.next_Op();mainMenu.next_Op();
         assertTrue(mainMenu.isSelectedExit());
         mainMenu.next_Op();
         assertFalse(mainMenu.isSelectedExit());
@@ -67,6 +67,6 @@ public class MainMenuTest {
     @Test
     public void testGetNumberEntries() {
         int number = mainMenu.getNumberEntries();
-        assertEquals(5, number);
+        assertEquals(4, number);
     }
 }

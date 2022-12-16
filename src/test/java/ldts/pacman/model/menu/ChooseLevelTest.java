@@ -4,8 +4,11 @@ import ldts.pacman.model.game.arena.ArenaLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ChooseLevelTest {
     private ArenaLoader arenaLoader;
@@ -21,7 +24,14 @@ public class ChooseLevelTest {
     }
     @Test
     public void isSelectedExit() {
-        chooseLevel.next_Op(); chooseLevel.next_Op(); chooseLevel.next_Op();
+        try {
+            chooseLevel.next_Op();
+            chooseLevel.next_Op();
+            chooseLevel.next_Op();
+        }
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
         assertTrue(chooseLevel.isSelectedExit());
     }
     @Test
@@ -30,26 +40,34 @@ public class ChooseLevelTest {
     }
     @Test
     public void isSelectedNext() {
-        assertTrue(chooseLevel.isSelected(0));
-        chooseLevel.next_Op();
-        assertTrue(chooseLevel.isSelected(1));
-        chooseLevel.next_Op();
-        assertTrue(chooseLevel.isSelected(2));
-        chooseLevel.next_Op();
-        assertTrue(chooseLevel.isSelected(3));
-        chooseLevel.next_Op();
-        assertTrue(chooseLevel.isSelected(0));
+        try {
+            assertTrue(chooseLevel.isSelected(0));
+            chooseLevel.next_Op();
+            assertTrue(chooseLevel.isSelected(1));
+            chooseLevel.next_Op();
+            assertTrue(chooseLevel.isSelected(2));
+            chooseLevel.next_Op();
+            assertTrue(chooseLevel.isSelected(3));
+            chooseLevel.next_Op();
+            assertTrue(chooseLevel.isSelected(0));
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
     }
     @Test
     public void isSelectedPrev() {
-        assertTrue(chooseLevel.isSelected(0));
-        chooseLevel.prev_Op();
-        assertTrue(chooseLevel.isSelected(3));
-        chooseLevel.prev_Op();
-        assertTrue(chooseLevel.isSelected(2));
-        chooseLevel.prev_Op();
-        assertTrue(chooseLevel.isSelected(1));
-        chooseLevel.prev_Op();
-        assertTrue(chooseLevel.isSelected(0));
+        try {
+            assertTrue(chooseLevel.isSelected(0));
+            chooseLevel.prev_Op();
+            assertTrue(chooseLevel.isSelected(3));
+            chooseLevel.prev_Op();
+            assertTrue(chooseLevel.isSelected(2));
+            chooseLevel.prev_Op();
+            assertTrue(chooseLevel.isSelected(1));
+            chooseLevel.prev_Op();
+            assertTrue(chooseLevel.isSelected(0));
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
     }
 }
