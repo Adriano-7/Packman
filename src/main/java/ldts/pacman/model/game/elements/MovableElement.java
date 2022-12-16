@@ -8,7 +8,7 @@ public abstract class MovableElement extends Element {
     public MovableElement(int x, int y) {
         super(x, y);
         this.initialPosition = new Position(x, y);
-        this.direction = new Position(1, 0);
+        this.direction = new Position(0, 0);
     }
     public Position getInitialPosition() {
         return this.initialPosition;

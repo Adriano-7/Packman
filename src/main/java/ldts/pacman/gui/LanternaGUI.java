@@ -66,7 +66,7 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment g = GraphicsEnvironment.getLocalGraphicsEnvironment();
         g.registerFont(font);
 
-        Font loadFont =  font.deriveFont(Font.PLAIN, 32);
+        Font loadFont =  font.deriveFont(Font.PLAIN, 28);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
     @Override
@@ -91,9 +91,10 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawPacman(Position position, Position direction) {
         if(direction.equals(new Position(0,1))) {drawCharacter(position,'b', "#FFFF00");}
-        if(direction.equals(new Position(0,-1))) {drawCharacter(position,'d', "#FFFF00");}
-        if(direction.equals(new Position(1,0))) {drawCharacter(position,'a', "#FFFF00");}
-        if(direction.equals(new Position(-1,0))) {drawCharacter(position,'c', "#FFFF00");}
+        else if(direction.equals(new Position(0,-1))) {drawCharacter(position,'d', "#FFFF00");}
+        else if(direction.equals(new Position(1,0))) {drawCharacter(position,'a', "#FFFF00");}
+        else if(direction.equals(new Position(-1,0))) {drawCharacter(position,'c', "#FFFF00");}
+        else drawCharacter(position, 'e', "#FFFF00");
     }
     @Override
     public void drawWall(Position position){
@@ -108,8 +109,11 @@ public class LanternaGUI implements GUI {
         Map<Position, Integer> index= new HashMap<>();
         index.put(new Position(0, 1),0); index.put(new Position(0, -1), 1);
         index.put(new Position(1, 0), 2); index.put(new Position(-1, 0), 3);
-
-        drawCharacter(position, state.getDrawingChar()[index.get(direction)], state.getColor());
+        if (direction.equals(new Position(0, 0))) {
+            char upChar = 'g';
+            drawCharacter(position, upChar, state.getColor());
+        }
+        else drawCharacter(position, state.getDrawingChar()[index.get(direction)], state.getColor());
     }
 
     @Override
