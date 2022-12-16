@@ -16,15 +16,8 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 > ![Game](https://user-images.githubusercontent.com/93844395/204083448-e0a45342-ce44-46d8-b204-686bc19dc1c8.png)
 
 ### PLANNED FEATURES
+All planned features were implemented.
 
->- **Multiplayer** - one of the players will be a pacman and the other a monster
->- **PowerUps for** - pacman - makes ghosts "scared" (change behaviour) and is able to eat them for points
->- **Different** - movement algorithms for different monsters
->- **Menu** - to choose the level to play
->- **Menu** - to see the best scores
->
-> Conceptual mock-ups of the planned features:
-> 
 > <img src="https://user-images.githubusercontent.com/93844395/204063857-afe1e54a-b2d7-45c2-a558-3914241dc886.jpg" height="664,8" width="806,4" >
 
 ### DESIGN
@@ -161,6 +154,10 @@ Using this pattern makes existing states explicit and easier to comprehend.
 There's no need for conditional statements in relation to application state, used polymorphism instead.
 Passing input to the controllers is now done by states using the factory method.
 
+MORE PATTERNS:
+MONSTER STATE PATTERN
+OBSERVER?
+
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
@@ -177,7 +174,7 @@ As such, defining the direction would allow us to only call that method and not 
 The conditional logic (switches) would be substituted by polymorphism (refactor called Replace Type Code with Subclasses)
 However, this would result in a "class explosion" (too many classes), especially in the long run.
 
-#### Speculative Generality
+#### Speculative Generality (remove this)
 Several options in Menu are not implemented and are unused ("MULTIPLAYER", "SCORES", "OPTIONS").
 In fact, Multiplayer for now does the same as single player.
 A possibly refactor would be to remove these options and only adding them when the features for these options are implemented (or are in the work)
@@ -188,12 +185,15 @@ However, the attribute for color is present in each of the monsters and not even
 A simple refactor would be to move that attribute to the Monster class and to make the constructor initiate that element with the return value of getColor.
 Another possible solution would be to delete that attribute and implement the getColor logic directly with the raw return value for each subclass of monster.
 
-#### Refused Bequest
+#### Refused Bequest (adapt this)
 Class Controller has abstract function step with parameters Game, GUI.OPTION, time.
 There exist many controllers that extend this class, but not all of them use all of those parameters in their implementation of step.
 For example, MenuController's step doesn't use time and MonsterController's step does not need the option.
 A solution for this would be splitting the "interfaces" of said Controllers. This does not deem necessary in this simple case, where only one attribute is not used.
 
+#### Data/Lazy classes (ver relatório exemplo: justificação MVC)
+
+#### Feature envy (ver relatório exemplo: justificação MVC) controller envies its model
 
 ### TESTING
 **Coverage Report**
@@ -204,6 +204,6 @@ A solution for this would be splitting the "interfaces" of said Controllers. Thi
 
 ### SELF-EVALUATION
 
-- Adriano Machado: 37%
-- Félix Martins: 37%
-- Tomás Pereira: 26%
+- Adriano Machado: %
+- Félix Martins: %
+- Tomás Pereira: %

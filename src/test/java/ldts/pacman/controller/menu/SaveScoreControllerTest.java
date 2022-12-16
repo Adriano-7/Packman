@@ -18,7 +18,7 @@ public class SaveScoreControllerTest {
     @BeforeEach
     public void setUp() {
         game = Mockito.mock(Game.class);
-        SaveScore saveScore = new SaveScore(5);
+        SaveScore saveScore = Mockito.mock(SaveScore.class);
         saveScoreController = new SaveScoreController(saveScore);
     }
     /*

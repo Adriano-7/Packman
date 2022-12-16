@@ -7,9 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.times;
 
 public class ScaredStateTest {
@@ -33,16 +38,22 @@ public class ScaredStateTest {
     }
     @Test
     public void getHit(){
-        Arena arena = new Arena(10, 10);
-
-        Pacman pacman = Mockito.mock(Pacman.class);
-        arena.setPacman(pacman);
-
         Monster monster = Mockito.mock(Monster.class);
-        arena.setMonsters(Arrays.asList(monster));
+        Pacman pacman = Mockito.mock(Pacman.class);
+        Arena arenaMock = setUpArena(List.of(monster), pacman);
 
-        scaredState.getHit(monster, arena);
+        scaredState.getHit(monster, arenaMock);
+
         Mockito.verify(monster, times(1)).setState(Mockito.any(EatenState.class));
         Mockito.verify(pacman, times(1)).setScore(Mockito.anyInt());
+    }
+    private Arena setUpArena(List<Monster> monsters, Pacman pacman) {
+
+        Arena arena = Mockito.mock(Arena.class);
+
+        Mockito.when(arena.getPacman()).thenReturn(pacman);
+        Mockito.when(arena.getMonsters()).thenReturn(monsters);
+
+        return arena;
     }
 }

@@ -1,7 +1,6 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.monster.state.ChaseState;
-import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
@@ -33,11 +32,11 @@ public class ChaseStateTest {
         Monster monster2 = Mockito.mock(Monster.class);
         Pacman pacman = Mockito.mock(Pacman.class);
 
-        Arena arenaSpy = setUpArena(Arrays.asList(monster1, monster2), pacman);
+        Arena arenaMock = setUpArena(Arrays.asList(monster1, monster2), pacman);
 
-        chaseState.getHit(null, arenaSpy);
+        chaseState.getHit(null, arenaMock);
 
-        Mockito.verify(arenaSpy, times(1)).resetPositions();
+        Mockito.verify(arenaMock, times(1)).resetPositions();
         Mockito.verify(pacman, times(1)).decreaseHealth();
         verifySetStateOnce(monster1);
         verifySetStateOnce(monster2);
@@ -47,12 +46,13 @@ public class ChaseStateTest {
         Mockito.verify(monster, times(1)).setState(Mockito.any(ScatterState.class));
     }
     private Arena setUpArena(List<Monster> monsters, Pacman pacman) {
-        Arena arena = new Arena(10, 10);
 
-        arena.setPacman(pacman);
-        arena.setMonsters(monsters);
+        Arena arena = Mockito.mock(Arena.class);
 
-        return Mockito.spy(arena);
+        Mockito.when(arena.getPacman()).thenReturn(pacman);
+        Mockito.when(arena.getMonsters()).thenReturn(monsters);
+
+        return arena;
     }
     @Test
     public void getDrawingChar() {

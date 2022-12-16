@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,21 +34,30 @@ public class MainMenuControllerTest {
         try {
             mainMenuController.step(game, options, 0);
         }
-        catch (IOException e) {
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
     }
     @Test
     public void stepUp() {
         stepMainMenuController(null, List.of(GUI.OPTION.UP));
+        try {
+            verify(mainMenu, times(1)).prev_Op();
+        }
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
 
-        verify(mainMenu, times(1)).prev_Op();
     }
     @Test
     public void stepDown() {
         stepMainMenuController(null, List.of(GUI.OPTION.DOWN));
-
-        verify(mainMenu, times(1)).next_Op();
+        try {
+            verify(mainMenu, times(1)).next_Op();
+        }
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            fail();
+        }
     }
     @Test
     public void stepNone() {

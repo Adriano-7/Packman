@@ -5,6 +5,10 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
+import ldts.pacman.sound.observer.SoundPacCoin;
+import ldts.pacman.sound.observer.SoundPacDies;
+import ldts.pacman.sound.observer.SoundStartLevel;
+import ldts.pacman.sound.subject.SoundSubject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ldts.pacman.model.game.elements.Monster;
@@ -21,9 +25,22 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaTest {
+    private Arena arena;
+    private SoundSubject soundSubject;
+    private SoundPacCoin soundPacCoin;
+    private SoundPacDies soundPacDies;
+    private SoundStartLevel soundStartLevel;
+
+    @BeforeEach
+    public void setUp() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        soundSubject = Mockito.mock(SoundSubject.class);
+        soundPacCoin = Mockito.mock(SoundPacCoin.class);
+        soundPacDies = Mockito.mock(SoundPacDies.class);
+        soundStartLevel = Mockito.mock(SoundStartLevel.class);
+        this.arena = new Arena(10, 20, soundSubject, soundPacCoin, soundPacDies, soundStartLevel);
+    }
     @Test
     public void getters() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Arena arena = new Arena(10, 20);
         Pacman pacman = Mockito.mock(Pacman.class);
         arena.setPacman(pacman);
         Coin coin = Mockito.mock(Coin.class);
@@ -45,7 +62,6 @@ public class ArenaTest {
     }
     @Test
     public void isWall() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Arena arena = new Arena(10,20);
         arena.setWalls(Arrays.asList(new Wall(10, 30)));
         Position position =new Position(10,30);
         assertEquals(true, arena.isWall(position));
@@ -53,7 +69,6 @@ public class ArenaTest {
 
     @Test
     public void isMonster() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Arena arena = new Arena(10,20);
         Monster monster =new BlueMonster(10,30);
         arena.setMonsters(Arrays.asList(monster));
         Position position=new Position(10,30);
@@ -61,8 +76,6 @@ public class ArenaTest {
     }
     @Test
     public void collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Arena arena = new Arena(10, 20);
-
         Pacman pacman = new Pacman(10, 20);
         arena.setPacman(pacman);
         int expectedScore = pacman.getScore() + 1;
@@ -79,8 +92,6 @@ public class ArenaTest {
     }
     @Test
     public void collectPowerUp() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Arena arena=new Arena(10,20);
-
         Pacman pacman=new Pacman(10,20);
         arena.setPacman(pacman);
         int expectedScore = pacman.getScore() + 1;

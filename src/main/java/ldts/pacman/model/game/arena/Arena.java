@@ -29,14 +29,12 @@ public class Arena {
     private SoundPacDies soundPacDies;
     private SoundStartLevel soundStartLevel;
     protected SoundSubject soundSubject;
-    public Arena(int width, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public Arena(int width, int height, SoundSubject soundSubject, SoundPacCoin soundPacCoin, SoundPacDies soundPacDies, SoundStartLevel soundStartLevel) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.width = width;
         this.height = height;
-        pacman = new Pacman(5, 5);
-        soundSubject = new SoundSubject();
-        soundPacCoin = new SoundPacCoin();
-        soundPacDies = new SoundPacDies();
-        soundStartLevel = new SoundStartLevel();
+        this.soundSubject = soundSubject;
+        this.soundPacCoin = soundPacCoin;
+        this.soundPacDies = soundPacDies;
         soundSubject.playSingleSound(soundStartLevel);
     }
     public int getWidth() {

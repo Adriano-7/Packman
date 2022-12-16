@@ -1,11 +1,15 @@
 package ldts.pacman.model.menu;
 
 import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainMenu extends Menu {
+    public MainMenu(SoundSelection soundSelection, SoundSubject soundSubject) {
+        super(soundSelection, soundSubject);
+    }
     @Override
     protected List<String> createOptions() {
         return Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","EXIT");

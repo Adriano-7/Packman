@@ -76,7 +76,6 @@ public class PositionTest {
     }
     @Property
     public void distanceToItself(@ForAll("generatePosition") Position pos){
-        System.out.println("(" + pos.getX() + ", " + pos.getY() + ")");
         assertEquals(0, pos.distanceTo(pos));
     }
     @Property

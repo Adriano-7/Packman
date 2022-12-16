@@ -1,6 +1,7 @@
 package ldts.pacman.model.menu;
 
 import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -11,7 +12,8 @@ import java.util.List;
 public class SaveScore extends Menu {
     private final int score;
     private final String timeStamp;
-    public SaveScore(int score) {
+    public SaveScore(SoundSelection soundSelection, SoundSubject soundSubject, int score) {
+        super(soundSelection, soundSubject);
         this.score = score;
         this.timeStamp = new SimpleDateFormat("dd/MM").format(new Date());
     }
