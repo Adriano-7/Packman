@@ -154,6 +154,12 @@ Using this pattern makes existing states explicit and easier to comprehend.
 There's no need for conditional statements in relation to application state, used polymorphism instead.
 Passing input to the controllers is now done by states using the factory method.
 
+
+>- **Problem in context**-
+>- ** The Pattern** - State pattern was used to modify the behaviour of monsters according to their state. The monsters can have the following states : Eaten state,
+>- ChaseState,MonsterState,ScaredState,ScatterState. This states can interfere with the algorithms to move these defined in the movement strategy. All of this states are valid
+>- for all kind of monsters (playable and non-playable monsters).
+
 MORE PATTERNS:
 MONSTER STATE PATTERN
 OBSERVER?
