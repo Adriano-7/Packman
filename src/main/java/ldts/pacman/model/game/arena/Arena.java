@@ -24,7 +24,6 @@ public class Arena {
     private List<PowerUp> powerUps;
     private List<Coin> initialCoins;
     private List<PowerUp> initialPowerUps;
-    private int level;
     private SoundPacCoin soundPacCoin;
     private SoundPacDies soundPacDies;
     private SoundStartLevel soundStartLevel;
@@ -35,6 +34,7 @@ public class Arena {
         this.soundSubject = soundSubject;
         this.soundPacCoin = soundPacCoin;
         this.soundPacDies = soundPacDies;
+        this.soundStartLevel = soundStartLevel;
         soundSubject.playSingleSound(soundStartLevel);
     }
     public int getWidth() {
