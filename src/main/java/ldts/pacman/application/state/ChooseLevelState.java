@@ -2,7 +2,6 @@ package ldts.pacman.application.state;
 
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.ChooseLevelController;
-import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.view.Viewer;
 import ldts.pacman.view.menu.ChooseLevelViewer;

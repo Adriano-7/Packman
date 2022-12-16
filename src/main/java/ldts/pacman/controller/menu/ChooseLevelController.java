@@ -9,8 +9,6 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.model.menu.MainMenu;
-import ldts.pacman.sound.observer.SoundObserver;
-import ldts.pacman.sound.observer.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

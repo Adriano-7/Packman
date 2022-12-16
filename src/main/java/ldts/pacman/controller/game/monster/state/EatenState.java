@@ -12,7 +12,7 @@ public class EatenState extends MonsterState {
         return new EatenStrategy();
     }
     @Override
-    public String getColor() {return "#2121ff";}
+    public String getColor() {return "#FFFFFF";}
 
     @Override
     protected boolean changeState(Monster monster, Arena arena, long time) {

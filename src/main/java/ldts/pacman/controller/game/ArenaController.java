@@ -5,12 +5,10 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.SaveScore;
 import ldts.pacman.application.state.SaveScoreState;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
-
 import java.util.ArrayList;
 
 public class ArenaController extends GameController {

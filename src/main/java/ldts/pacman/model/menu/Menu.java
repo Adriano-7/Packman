@@ -7,7 +7,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
-public abstract class Menu {
+public abstract class Menu{
     protected List<String> options;
     private int currentOption = 0;
     public Menu() {

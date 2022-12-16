@@ -6,12 +6,6 @@ import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.sound.observer.SoundObserver;
-import ldts.pacman.sound.observer.SoundSelection;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.List;
 
 
