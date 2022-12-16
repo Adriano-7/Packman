@@ -22,7 +22,13 @@ For a more detailed versin of this description, click [here](./docs/README.md).
 >- **PowerUps** for pacman - makes ghosts "scared" and is able to eat them on collision for points
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
 
-
+### Design
+>- **Problem in context**- 
+>- ** The Pattern** - State pattern was used to modify the behaviour of monsters according to their state. The monsters can have the following states : Eaten state,
+>- ChaseState,MonsterState,ScaredState,ScatterState. This states can interfere with the algorithms to move these defined in the movement strategy. All of this states are valid
+>- for all kind of monsters (playable and non-playable monsters).
+>- 
+>- 
 <p align="center" justify="center">
   <img src="docs/gifs/game.gif"/>
 </p>
