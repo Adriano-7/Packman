@@ -92,6 +92,13 @@ public class Arena {
         }
         return null;
     }
+    public boolean collidesWithPacman(Monster monster) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        if (monster.collidesWithPacman(pacman)) {
+            soundSubject.playSingleSound(soundPacDies);
+            return true;
+        }
+        return false;
+    }
     public void resetPositions() {
         for (Monster monster: monsters) {
             resetPosition(monster);

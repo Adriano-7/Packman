@@ -31,7 +31,7 @@ public class MonsterControllerTest {
     public void stepAllMonstersMove() {
         try {
             monsterController.step(null, null, 700);
-        } catch (IOException e) {
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
         assertNotEquals(new Position(5, 5), monsterController.getModel().getMonsters().get(0).getPosition());
@@ -40,7 +40,7 @@ public class MonsterControllerTest {
     public void stepAllMonstersDontMove() {
         try {
             monsterController.step(null, null, 400);
-        } catch (IOException e) {
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
         }
         assertEquals(new Position(5, 5), monsterController.getModel().getMonsters().get(0).getPosition());

@@ -7,6 +7,9 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.sound.observer.SoundObserver;
 import ldts.pacman.sound.observer.SoundPacDies;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,10 +18,10 @@ public class MonsterController extends GameController {
         super(model);
     }
     @Override
-    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
+    public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (Monster monster: getModel().getMonsters()) {
             MonsterState monsterState = monster.getState();
-            if (monsterState.move(monster, getModel(), options, time) && monster.collidesWithPacman(getModel().getPacman())) {
+            if (monsterState.move(monster, getModel(), options, time) && getModel().collidesWithPacman(monster)) {
                 monster.getHit(getModel());
             }
         }

@@ -15,7 +15,7 @@ public class EatenStateTest {
     }
     @Test
     public void getColor(){
-        assertEquals("#2121ff", eatenState.getColor());
+        assertEquals("#FFFFFF", eatenState.getColor());
     }
     @Test
     public void getHit(){
