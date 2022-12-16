@@ -27,6 +27,7 @@ public class Arena {
     private int level;
     private SoundPacCoin soundPacCoin;
     private SoundPacDies soundPacDies;
+    private SoundStartLevel soundStartLevel;
     protected SoundSubject soundSubject;
     public Arena(int width, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.width = width;
@@ -35,7 +36,8 @@ public class Arena {
         soundSubject = new SoundSubject();
         soundPacCoin = new SoundPacCoin();
         soundPacDies = new SoundPacDies();
-        soundSubject.playSingleSound(new SoundStartLevel());
+        soundStartLevel = new SoundStartLevel();
+        soundSubject.playSingleSound(soundStartLevel);
     }
     public int getWidth() {
         return width;
@@ -124,8 +126,9 @@ public class Arena {
         }
         return false;
     }
-    public void resetLevel() {
+    public void resetLevel() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.coins = new ArrayList<>(initialCoins);
         this.powerUps = new ArrayList<>(initialPowerUps);
+        soundSubject.playSingleSound(soundStartLevel);
     }
 }
