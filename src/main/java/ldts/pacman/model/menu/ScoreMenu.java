@@ -21,46 +21,42 @@ public class ScoreMenu {
         return lines;
     }
     public void addScore(String name, int scoreToAdd) throws IOException {
-        if (lines.size() < 2) throw new IOException("File was empty");
-        if (lines.size() > 12) throw new IOException("File had too many lines");
+        if (lines.isEmpty()) throw new IOException("File was empty");
+        if (lines.size() > 10) throw new IOException("File had too many lines");
 
         lines = getNewLines(name, scoreToAdd);
         new ResourceFileWriter().writeLines(filePath, lines);
     }
     private List<String> getNewLines(String name, int scoreToAdd){
-        String header = lines.get(0);
-        String footer = lines.get(lines.size() - 1);
-
         List<String> newLines = new ArrayList<>();
-        newLines.add(header);
 
         boolean newLineAdded = false;
-        int i = 1;
-        for ( ; i < lines.size() - 1; i++) {
+        System.out.println(lines);
+        int i = 0;
+        for ( ; i < lines.size(); i++) {
+            int place = i + 1;
             if(getScore(lines.get(i)) < scoreToAdd && !newLineAdded) {
-                newLines.add("  " + i + ". " + scoreToAdd + " - " + name);
+
+                newLines.add("  " + place + ". " + name + " - " + scoreToAdd);
                 newLineAdded = true;
+                System.out.println("Added" + newLines.get(i));
             }
             if (newLineAdded) {
-                newLines.add(lines.get(i).replaceFirst(Integer.toString(i),
-                        Integer.toString(i + 1)));
+                newLines.add(lines.get(i).replaceFirst(Integer.toString(place),
+                        Integer.toString(place + 1)));
             }
             else newLines.add(lines.get(i));
         }
         if (!newLineAdded) {
-            lines.add("  " + i + ". " + scoreToAdd + " - " + name);
+            newLines.add("  " + (i + 1) + ". " + name + " - " + scoreToAdd);
         }
+        System.out.println(newLines);
         if (newLines.size() > 10) newLines.remove(newLines.size() - 1);
 
-        newLines.add(footer);
         return newLines;
     }
     private int getScore(String line) {
-        int firstSpace = line.indexOf(" ");
-        int secondSpace = line.indexOf(" ", firstSpace + 1);
-        int thirdSpace = line.indexOf(" ", secondSpace + 1);
-        int fourthSpace = line.indexOf(" ", thirdSpace + 1);
-        int fifthSpace = line.indexOf(" ", fourthSpace + 1);
-        return Integer.parseInt(line.substring(fourthSpace + 1, fifthSpace));
+        int start = line.indexOf("-") + 2;
+        return Integer.parseInt(line.substring(start));
     }
 }

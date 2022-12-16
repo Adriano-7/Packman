@@ -31,8 +31,7 @@ public class ScoreMenuTest {
         int score = 100;
         int beforeSize = scoreMenu.getLines().size();
 
-        assertTrue(beforeSize >= 2 && beforeSize <= 12);
-        assertTrue(userName.length() <= 9);
+        assertTrue(beforeSize <= 10);
         try {
             scoreMenu.addScore(userName, score);
         }
@@ -40,7 +39,7 @@ public class ScoreMenuTest {
 
         int afterSize = scoreMenu.getLines().size();
 
-        if (beforeSize == 12) assertEquals(beforeSize, afterSize);
+        if (beforeSize == 10) assertEquals(beforeSize, afterSize);
         else assertEquals(beforeSize + 1, afterSize);
 
         System.out.println(scoreMenu.getLines());
@@ -51,8 +50,7 @@ public class ScoreMenuTest {
         int score = 0;
         int beforeSize = scoreMenu.getLines().size();
 
-        assertTrue(beforeSize >= 2 && beforeSize <= 12);
-        assertTrue(userName.length() <= 9);
+        assertTrue(beforeSize <= 10);
         try {
             scoreMenu.addScore(userName, score);
         }
@@ -60,7 +58,7 @@ public class ScoreMenuTest {
 
         int afterSize = scoreMenu.getLines().size();
 
-        if (beforeSize == 12) assertEquals(beforeSize, afterSize);
+        if (beforeSize == 10) assertEquals(beforeSize, afterSize);
         else assertEquals(beforeSize + 1, afterSize);
 
         System.out.println(scoreMenu.getLines());

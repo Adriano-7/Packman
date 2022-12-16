@@ -8,7 +8,7 @@ public class SaveScoreTest {
     @Test
     public void getters() {
         SaveScore s = new SaveScore(100);
-        int expectedSizeOfTimeStamp = 17;
+        int expectedSizeOfTimeStamp = 5;
 
         assertEquals(100, s.getScore());
         assertEquals(expectedSizeOfTimeStamp, s.getTimeStamp().length());
