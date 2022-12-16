@@ -5,6 +5,8 @@ import ldts.pacman.model.game.elements.Pacman;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +22,10 @@ public class ArenaLoaderTest {
         }
         catch (IOException e) {
             fail();
+        } catch (UnsupportedAudioFileException e) {
+            throw new RuntimeException(e);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
         }
     }
     @Test

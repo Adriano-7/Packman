@@ -11,6 +11,9 @@ import ldts.pacman.model.game.elements.Monster;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaTest {
     @Test
-    public void getters() {
+    public void getters() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = new Arena(10, 20);
         Pacman pacman = Mockito.mock(Pacman.class);
         arena.setPacman(pacman);
@@ -41,7 +44,7 @@ public class ArenaTest {
         assertEquals(Arrays.asList(powerUp),arena.getPowerUps());
     }
     @Test
-    public void isWall() {
+    public void isWall() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = new Arena(10,20);
         arena.setWalls(Arrays.asList(new Wall(10, 30)));
         Position position =new Position(10,30);
@@ -49,7 +52,7 @@ public class ArenaTest {
     }
 
     @Test
-    public void isMonster(){
+    public void isMonster() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = new Arena(10,20);
         Monster monster =new BlueMonster(10,30);
         arena.setMonsters(Arrays.asList(monster));
@@ -57,24 +60,7 @@ public class ArenaTest {
         assertEquals(monster, arena.getCollidingMonster(position));
     }
     @Test
-    public void resetPositions() {
-        Arena arena=new Arena(10,20);
-        Monster blueMonster=new BlueMonster(10,30);
-        Monster redMonster=new RedMonster(20,40);
-        Pacman pacman =new Pacman(20,30);
-        arena.setMonsters(Arrays.asList(blueMonster,redMonster));
-        arena.setPacman(pacman);
-        arena.getMonsters().get(0).getState().move(arena.getMonsters().get(0),arena,null,100);
-        arena.getMonsters().get(1).getState().move(arena.getMonsters().get(1),arena,null,100);
-        pacman.setPosition(new Position(-100, -100));
-        arena.resetPositions();
-        assertEquals(new Position(10,30),arena.getMonsters().get(0).getPosition());
-        assertEquals(new Position(20,40),arena.getMonsters().get(1).getPosition());
-        assertEquals(new Position(20,30),arena.getPacman().getPosition());
-
-    }
-    @Test
-    public void collectCoin() {
+    public void collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = new Arena(10, 20);
 
         Pacman pacman = new Pacman(10, 20);
@@ -92,7 +78,7 @@ public class ArenaTest {
         assertEquals(0, arena.getCoins().size());
     }
     @Test
-    public void collectPowerUp(){
+    public void collectPowerUp() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena=new Arena(10,20);
 
         Pacman pacman=new Pacman(10,20);

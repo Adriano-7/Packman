@@ -5,6 +5,8 @@ import ldts.pacman.gui.LanternaGUI;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.application.state.State;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,14 +21,14 @@ public class Game {
         this.state = new MainMenuState(new MainMenu());
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException{
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException, UnsupportedAudioFileException, LineUnavailableException {
         Game game = new Game();
         game.run();
     }
     public void setState(State state) {
         this.state = state;
     }
-    public void run() throws IOException{
+    public void run() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         int FPS = 60;
         int frameTime = 1000 / FPS;
 

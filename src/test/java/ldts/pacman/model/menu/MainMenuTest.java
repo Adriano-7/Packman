@@ -3,6 +3,10 @@ package ldts.pacman.model.menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainMenuTest {
@@ -12,7 +16,7 @@ public class MainMenuTest {
         mainMenu = new MainMenu();
     }
     @Test
-    public void testNext_Op() {
+    public void testNext_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assertEquals(0, mainMenu.getCurrentOption());
         mainMenu.next_Op();
 
@@ -20,7 +24,7 @@ public class MainMenuTest {
         assertEquals(1, mainMenu.getCurrentOption());
     }
     @Test
-    public void testPrev_Op() {
+    public void testPrev_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         mainMenu.prev_Op();
         assertTrue(mainMenu.isSelected(4));
     }
@@ -40,13 +44,13 @@ public class MainMenuTest {
         assertTrue(selected);
     }
     @Test
-    public void testIsSelectedStartMulti() {
+    public void testIsSelectedStartMulti() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         mainMenu.next_Op();
         boolean selected = mainMenu.isSelectedStartMulti();
         assertTrue(selected);
     }
     @Test
-    public void isSelectedScores() {
+    public void isSelectedScores() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         mainMenu.next_Op();mainMenu.next_Op();
         assertTrue(mainMenu.isSelectedScores());
 
@@ -54,7 +58,7 @@ public class MainMenuTest {
         assertFalse(mainMenu.isSelectedScores());
     }
     @Test
-    public void testIsSelectedExit() {
+    public void testIsSelectedExit() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         mainMenu.next_Op();mainMenu.next_Op();mainMenu.next_Op();mainMenu.next_Op();
         assertTrue(mainMenu.isSelectedExit());
         mainMenu.next_Op();

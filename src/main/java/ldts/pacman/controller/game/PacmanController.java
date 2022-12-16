@@ -8,7 +8,13 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.sound.observer.SoundObserver;
+import ldts.pacman.sound.observer.SoundPacCoin;
+import ldts.pacman.sound.observer.SoundPacDies;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.List;
 
 public class PacmanController extends GameController {
@@ -22,18 +28,19 @@ public class PacmanController extends GameController {
     }
 
     @Override
-    public void step(Game game, List<GUI.OPTION> options, long time) {
+    public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = getModel();
         if (pacmanStrategy.move(getPacman(), arena, options, time)) {
             Position pacmanPos = getPacman().getPosition();
             Monster monster = arena.getCollidingMonster(pacmanPos);
             if (monster != null) {
                 monster.getHit(arena);
-            }
+               }
             arena.collectCoin();
             if (arena.collectPowerUp()) {
                 for (Monster monsterInArena: arena.getMonsters()) monsterInArena.setState(new ScaredState());
             }
         }
+
     }
 }
