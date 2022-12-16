@@ -17,15 +17,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ArenaControllerTest {
+    private Arena arena;
     private ArenaController arenaController;
     @BeforeEach
     public void setUp() {
-        Arena arena = null;
-        try {
-            arena = new Arena(10, 10);
-        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-            fail();
-        }
+        this.arena = Mockito.mock(Arena.class);
 
         arenaController = new ArenaController(arena);
     }

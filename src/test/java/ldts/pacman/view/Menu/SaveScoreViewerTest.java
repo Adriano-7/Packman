@@ -3,9 +3,9 @@ package ldts.pacman.view.Menu;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.model.menu.ScoreMenu;
+import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
 import ldts.pacman.view.menu.SaveScoreViewer;
-import ldts.pacman.view.menu.ScoreMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -24,7 +24,9 @@ public class SaveScoreViewerTest {
     private GUI gui;
     @BeforeEach
     public void setUp() {
-        saveScore = new SaveScore(100);
+        SoundSelection soundSelection = Mockito.mock(SoundSelection.class);
+        SoundSubject soundSubject = Mockito.mock(SoundSubject.class);
+        saveScore = new SaveScore(soundSelection, soundSubject, 100);
         saveScoreViewer = new SaveScoreViewer(saveScore);
         gui = Mockito.mock(GUI.class);
     }

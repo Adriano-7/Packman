@@ -16,9 +16,7 @@ import java.util.List;
 public class MonsterController extends GameController {
     public MonsterController(Arena model) {
         super(model);
-        soundPacDies = new SoundPacDies();
     }
-    SoundObserver soundPacDies;
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException {
         for (Monster monster: getModel().getMonsters()) {

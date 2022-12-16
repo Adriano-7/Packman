@@ -10,6 +10,7 @@ import ldts.pacman.model.game.elements.Wall;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -23,12 +24,13 @@ public class PacmanControllerTest {
     private PacmanController pacmanController;
     @BeforeEach
     public void setUp() {
-        Arena arena = null;
-        try {
-            arena = new Arena(10, 10);
-        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-            fail();
-        }
+        //Arena arena = null;
+        //try {
+            //arena = new Arena(10, 10);
+        Arena arena = Mockito.mock(Arena.class);
+        //} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+        //    fail();
+        //}
         
         arena.setPacman(new Pacman(2, -1));
         arena.setCoins(Arrays.asList(new Coin(10, 10)));

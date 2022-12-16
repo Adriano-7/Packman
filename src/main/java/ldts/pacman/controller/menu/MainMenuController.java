@@ -12,6 +12,7 @@ import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.application.state.ScoreMenuState;
 import ldts.pacman.sound.observer.SoundObserver;
 import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
 
 
 import javax.sound.sampled.LineUnavailableException;
@@ -38,10 +39,10 @@ public class MainMenuController extends Controller<MainMenu> {
                 case SELECT:
                     if (getModel().isSelectedExit()) game.setState(null);
                     else if (getModel().isSelectedStartSingle()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoader())));
+                        game.setState(new ChooseLevelState(new ChooseLevel(new SoundSelection(), new SoundSubject(), new ArenaLoader())));
                     }
                     else if (getModel().isSelectedStartMulti()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoaderMultiplayer())));
+                        game.setState(new ChooseLevelState(new ChooseLevel(new SoundSelection(), new SoundSubject(), new ArenaLoaderMultiplayer())));
                     }
                     else if (getModel().isSelectedScores()) {
                         game.setState(new ScoreMenuState(new ScoreMenu()));

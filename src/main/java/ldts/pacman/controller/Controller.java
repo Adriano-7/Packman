@@ -19,6 +19,5 @@ public abstract class Controller<T> {
     public T getModel() {
         return model;
     }
-//We need to refactor this
     public abstract void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException;
 }

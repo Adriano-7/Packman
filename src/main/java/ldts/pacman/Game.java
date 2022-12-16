@@ -4,6 +4,8 @@ import ldts.pacman.application.state.MainMenuState;
 import ldts.pacman.gui.LanternaGUI;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.application.state.State;
+import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -18,7 +20,7 @@ public class Game {
     public Game() throws IOException, URISyntaxException, FontFormatException {
         int width = 20, height = 23;
         this.gui = new LanternaGUI(width, height);
-        this.state = new MainMenuState(new MainMenu());
+        this.state = new MainMenuState(new MainMenu(new SoundSelection(), new SoundSubject()));
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException, UnsupportedAudioFileException, LineUnavailableException {

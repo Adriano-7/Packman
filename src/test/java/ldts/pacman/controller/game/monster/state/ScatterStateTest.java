@@ -48,12 +48,13 @@ public class ScatterStateTest {
         Mockito.verify(monster, times(1)).setState(Mockito.any(ScatterState.class));
     }
     private Arena setUpArena(List<Monster> monsters, Pacman pacman) {
-        Arena arena = null;
-        try {
-            arena = new Arena(10, 10);
-        }  catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-            fail();
-        }
+        //Arena arena = null;
+        //try {
+        // arena = new Arena(10, 10);
+        Arena arena = Mockito.mock(Arena.class);
+        //}  catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+        //    fail();
+        // }
 
         arena.setPacman(pacman);
         arena.setMonsters(monsters);

@@ -10,13 +10,14 @@ import java.util.List;
 public abstract class Menu {
     protected List<String> options;
     private int currentOption = 0;
-    public Menu() {
+    public Menu(SoundSelection soundSelection, SoundSubject soundSubject) {
         this.options = createOptions();
-        soundSelection = new SoundSelection();
-        soundSubject = new SoundSubject();
+        this.soundSelection = soundSelection;
+        this.soundSubject = soundSubject;
     }
     public void next_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        currentOption = (currentOption + 1) % options.size(); soundSubject.playSingleSound(soundSelection);
+        currentOption = (currentOption + 1) % options.size();
+        soundSubject.playSingleSound(soundSelection);
     }
     public void prev_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         currentOption--;

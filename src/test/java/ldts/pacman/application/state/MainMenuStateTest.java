@@ -5,6 +5,7 @@ import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.view.menu.MainMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +14,7 @@ public class MainMenuStateTest {
     private MainMenuState mainMenuState;
     @BeforeEach
     public void setUp() {
-        mainMenu = new MainMenu();
+        mainMenu = Mockito.mock(MainMenu.class);
         mainMenuState = new MainMenuState(mainMenu);
     }
     @Test

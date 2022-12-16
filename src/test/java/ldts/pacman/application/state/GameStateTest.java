@@ -6,6 +6,7 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.view.game.ArenaViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -21,12 +22,9 @@ public class GameStateTest {
 
     @BeforeEach
     public void setGameState(){
-        try {
-            arena = new Arena(5,5);
-        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-            fail();
-        }
-        gameState=new GameState(arena);
+        this.arena = Mockito.mock(Arena.class);
+
+        this.gameState = new GameState(arena);
     }
     @Test
     public void testGetModel(){
