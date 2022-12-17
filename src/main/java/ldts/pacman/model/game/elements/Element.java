@@ -13,4 +13,7 @@ public abstract class Element {
     public void setPosition(Position position) {
         this.position = position;
     }
+    public boolean collides(Element other) {
+        return this.getPosition().equals(other.getPosition());
+    }
 }

@@ -90,7 +90,7 @@ public class Arena extends SoundSubject {
         return null;
     }
     public boolean collidesWithPacman(Monster monster) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        if (monster.collidesWithPacman(pacman)) {
+        if (monster.collides(pacman)) {
             playSingleSound(soundPacDies);
             return true;
         }
@@ -106,9 +106,8 @@ public class Arena extends SoundSubject {
         element.setPosition(element.getInitialPosition());
     }
     public boolean collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Position pacmanPos = pacman.getPosition();
         for (Coin coin: coins) {
-            if (coin.getPosition().equals(pacmanPos)) {
+            if(coin.collides(pacman)) {
                 coins.remove(coin);
                 pacman.increaseScore();
                 playSingleSound(soundPacCoin);
@@ -118,11 +117,9 @@ public class Arena extends SoundSubject {
         return false;
     }
     public boolean collectPowerUp() {
-        Position pacmanPos = pacman.getPosition();
         for (PowerUp powerUp: powerUps) {
-            if (powerUp.getPosition().equals(pacmanPos)) {
+            if(powerUp.collides(pacman)) {
                 powerUps.remove(powerUp);
-                pacman.increaseScore();
                 return true;
             }
         }

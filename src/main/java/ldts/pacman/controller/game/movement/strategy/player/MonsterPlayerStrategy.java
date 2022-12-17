@@ -25,8 +25,6 @@ public class MonsterPlayerStrategy extends PlayerStrategy {
                 case RIGHT2:
                     element.setDirection(new Position(1, 0));
                     break;
-                default:
-                    break;
             }
         }
     }
