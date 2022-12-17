@@ -22,12 +22,8 @@ public class ArenaLoaderMultiplayerTest {
         try {
             ArenaLoader arenaLoader = new ArenaLoaderMultiplayer();
             arenaLoader.setLevelNumber(3);
-            SoundSubject soundSubject = Mockito.mock(SoundSubject.class);
-            SoundPacCoin soundPacCoin = Mockito.mock(SoundPacCoin.class);
-            SoundPacDies soundPacDies = Mockito.mock(SoundPacDies.class);
-            SoundStartLevel soundStartLevel = Mockito.mock(SoundStartLevel.class);
 
-            this.arena = arenaLoader.createArena(soundSubject, soundPacCoin, soundPacDies, soundStartLevel);
+            this.arena = arenaLoader.createArena();
         }
         catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();

@@ -10,13 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SaveScoreTest {
     private SaveScore saveScore;
-    private SoundSelection soundSelection;
-    private SoundSubject soundSubject;
     @BeforeEach
     public void setUp() {
-        this.soundSelection = Mockito.mock(SoundSelection.class);
-        this.soundSubject = Mockito.mock(SoundSubject.class);
-        this.saveScore = new SaveScore(soundSelection, soundSubject,100);
+        this.saveScore = new SaveScore(100);
     }
     @Test
     public void getters() {

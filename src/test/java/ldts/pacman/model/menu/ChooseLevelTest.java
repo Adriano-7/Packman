@@ -16,14 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ChooseLevelTest {
     private ArenaLoader arenaLoader;
     private ChooseLevel chooseLevel;
-    private SoundSelection soundSelection;
-    private SoundSubject soundSubject;
     @BeforeEach
     public void setUp() {
         this.arenaLoader = Mockito.mock(ArenaLoader.class);
-        this.soundSelection = Mockito.mock(SoundSelection.class);
-        this.soundSubject = Mockito.mock(SoundSubject.class);
-        this.chooseLevel = new ChooseLevel(soundSelection, soundSubject, arenaLoader);
+        this.chooseLevel = new ChooseLevel(arenaLoader);
     }
     @Test
     public void getArenaLoader() {

@@ -26,7 +26,7 @@ public class SaveScoreViewerTest {
     public void setUp() {
         SoundSelection soundSelection = Mockito.mock(SoundSelection.class);
         SoundSubject soundSubject = Mockito.mock(SoundSubject.class);
-        saveScore = new SaveScore(soundSelection, soundSubject, 100);
+        saveScore = new SaveScore(100);
         saveScoreViewer = new SaveScoreViewer(saveScore);
         gui = Mockito.mock(GUI.class);
     }

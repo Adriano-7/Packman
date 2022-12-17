@@ -14,19 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MainMenuTest {
     private MainMenu mainMenu;
-    private SoundSelection soundSelection;
-    private SoundSubject soundSubject;
     @BeforeEach
     public void setUp() {
-        this.soundSelection = Mockito.mock(SoundSelection.class);
-        this.soundSubject = Mockito.mock(SoundSubject.class);
-        mainMenu = new MainMenu(soundSelection, soundSubject);
+        mainMenu = new MainMenu();
     }
     @Test
     public void testNext_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assertEquals(0, mainMenu.getCurrentOption());
         mainMenu.next_Op();
-
         assertTrue(mainMenu.isSelected(1));
         assertEquals(1, mainMenu.getCurrentOption());
     }

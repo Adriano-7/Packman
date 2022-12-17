@@ -25,7 +25,7 @@ public class ArenaLoaderTest {
         SoundPacDies soundPacDies = Mockito.mock(SoundPacDies.class);
         SoundStartLevel soundStartLevel = Mockito.mock(SoundStartLevel.class);
 
-        this.arena = arenaLoader.createArena(soundSubject, soundPacCoin, soundPacDies, soundStartLevel);
+        this.arena = arenaLoader.createArena();
     }
     @Test
     public void arenaElements() {

@@ -75,7 +75,7 @@ public class ChooseLevelControllerTest {
         try {
             chooseLevelController.step(game, List.of(GUI.OPTION.SELECT), 0);
 
-            Mockito.verify(arenaLoader, times(1)).createArena(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any());
+            Mockito.verify(arenaLoader, times(1)).createArena();
         }
         catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();
