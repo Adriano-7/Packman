@@ -39,10 +39,10 @@ public class MainMenuController extends Controller<MainMenu> {
                 case SELECT:
                     if (getModel().isSelectedExit()) game.setState(null);
                     else if (getModel().isSelectedStartSingle()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel(new SoundSelection(), new SoundSubject(), new ArenaLoader())));
+                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoader())));
                     }
                     else if (getModel().isSelectedStartMulti()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel(new SoundSelection(), new SoundSubject(), new ArenaLoaderMultiplayer())));
+                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoaderMultiplayer())));
                     }
                     else if (getModel().isSelectedScores()) {
                         game.setState(new ScoreMenuState(new ScoreMenu()));

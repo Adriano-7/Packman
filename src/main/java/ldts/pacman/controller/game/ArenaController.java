@@ -27,7 +27,7 @@ public class ArenaController extends GameController {
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         if (options.contains(GUI.OPTION.QUIT) || getModel().getPacman().getHealth() == 0) {
             int score = getModel().getPacman().getScore();
-            game.setState(new SaveScoreState(new SaveScore(new SoundSelection(), new SoundSubject(), score)));
+            game.setState(new SaveScoreState(new SaveScore(score)));
         }
         else if(getModel().getCoins().isEmpty()) {
             getModel().resetLevel();

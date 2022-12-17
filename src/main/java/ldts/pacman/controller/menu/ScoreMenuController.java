@@ -19,7 +19,7 @@ public class ScoreMenuController extends Controller<ScoreMenu> {
     public void step(Game game, List<GUI.OPTION> options, long time){
         for (GUI.OPTION option: options) {
             if (option == GUI.OPTION.QUIT || option == GUI.OPTION.SELECT) {
-                game.setState(new MainMenuState(new MainMenu(new SoundSelection(), new SoundSubject())));
+                game.setState(new MainMenuState(new MainMenu()));
             }
         }
     }

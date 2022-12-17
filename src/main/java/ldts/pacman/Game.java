@@ -20,7 +20,7 @@ public class Game {
     public Game() throws IOException, URISyntaxException, FontFormatException {
         int width = 20, height = 23;
         this.gui = new LanternaGUI(width, height);
-        this.state = new MainMenuState(new MainMenu(new SoundSelection(), new SoundSubject()));
+        this.state = new MainMenuState(new MainMenu());
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException, UnsupportedAudioFileException, LineUnavailableException {

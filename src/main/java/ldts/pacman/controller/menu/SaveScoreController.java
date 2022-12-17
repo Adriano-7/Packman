@@ -33,7 +33,7 @@ public class SaveScoreController extends Controller<SaveScore> {
                         new ScoreMenu("/scores.txt").addScore(getModel().getTimeStamp(), getModel().getScore());
                     }
                 case QUIT:
-                    game.setState(new MainMenuState(new MainMenu(new SoundSelection(), new SoundSubject())));
+                    game.setState(new MainMenuState(new MainMenu()));
                     break;
             }
         }

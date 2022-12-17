@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Arena {
+public class Arena extends SoundSubject {
     private final int width;
     private final int height;
     private Pacman pacman;
@@ -27,15 +27,14 @@ public class Arena {
     private SoundPacCoin soundPacCoin;
     private SoundPacDies soundPacDies;
     private SoundStartLevel soundStartLevel;
-    protected SoundSubject soundSubject;
-    public Arena(int width, int height, SoundSubject soundSubject, SoundPacCoin soundPacCoin, SoundPacDies soundPacDies, SoundStartLevel soundStartLevel) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public Arena(int width, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.width = width;
         this.height = height;
-        this.soundSubject = soundSubject;
-        this.soundPacCoin = soundPacCoin;
-        this.soundPacDies = soundPacDies;
-        this.soundStartLevel = soundStartLevel;
-        soundSubject.playSingleSound(soundStartLevel);
+
+        this.soundPacCoin = new SoundPacCoin();
+        this.soundPacDies = new SoundPacDies();
+        this.soundStartLevel = new SoundStartLevel();
+        playSingleSound(soundStartLevel);
     }
     public int getWidth() {
         return width;
@@ -86,7 +85,7 @@ public class Arena {
     public Monster getCollidingMonster(Position position) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (Monster monster: monsters) {
             if (monster.getPosition().equals(position)) {
-                soundSubject.playSingleSound(soundPacDies);
+                playSingleSound(soundPacDies);
                 return monster;
             }
         }
@@ -94,7 +93,7 @@ public class Arena {
     }
     public boolean collidesWithPacman(Monster monster) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         if (monster.collidesWithPacman(pacman)) {
-            soundSubject.playSingleSound(soundPacDies);
+            playSingleSound(soundPacDies);
             return true;
         }
         return false;
@@ -114,7 +113,7 @@ public class Arena {
             if (coin.getPosition().equals(pacmanPos)) {
                 coins.remove(coin);
                 pacman.increaseScore();
-                soundSubject.playSingleSound(soundPacCoin);
+                playSingleSound(soundPacCoin);
                 return true;
             }
         }
@@ -134,6 +133,6 @@ public class Arena {
     public void resetLevel() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.coins = new ArrayList<>(initialCoins);
         this.powerUps = new ArrayList<>(initialPowerUps);
-        soundSubject.playSingleSound(soundStartLevel);
+        playSingleSound(soundStartLevel);
     }
 }

@@ -9,8 +9,7 @@ import java.util.List;
 
 public class ChooseLevel extends Menu {
     private final ArenaLoader arenaLoader;
-    public ChooseLevel(SoundSelection soundSelection, SoundSubject soundSubject, ArenaLoader arenaLoader) {
-        super(soundSelection, soundSubject);
+    public ChooseLevel(ArenaLoader arenaLoader) {
         this.arenaLoader = arenaLoader;
     }
     public ArenaLoader getArenaLoader() {

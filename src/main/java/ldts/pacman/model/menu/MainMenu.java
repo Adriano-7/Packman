@@ -7,9 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainMenu extends Menu {
-    public MainMenu(SoundSelection soundSelection, SoundSubject soundSubject) {
-        super(soundSelection, soundSubject);
-    }
     @Override
     protected List<String> createOptions() {
         return Arrays.asList("SINGLE PLAYER","MULTIPLAYER","SCORES","EXIT");

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoundSubject {
+public abstract class SoundSubject {
     private List<SoundObserver> observers = new ArrayList<>();
 
     public void addObserver(SoundObserver observer) {
@@ -17,10 +17,6 @@ public class SoundSubject {
 
     public void removeObserver(SoundObserver observer) {
         observers.remove(observer);
-    }
-
-    public void removeObservers() {
-        observers.clear();
     }
 
     public void playSingleSound(SoundObserver observer) throws UnsupportedAudioFileException, LineUnavailableException, IOException {

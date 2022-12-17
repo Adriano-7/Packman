@@ -41,8 +41,8 @@ public class ArenaLoader {
     private int getHeight() {
         return lines.size();
     }
-    public Arena createArena(SoundSubject soundSubject, SoundPacCoin soundPacCoin, SoundPacDies soundPacDies, SoundStartLevel soundStartLevel) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Arena arena = new Arena(getWidth(), getHeight(), soundSubject, soundPacCoin, soundPacDies, soundStartLevel);
+    public Arena createArena() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Arena arena = new Arena(getWidth(), getHeight());
 
         arena.setPacman(createPacman());
         arena.setMonsters(createMonsters());
