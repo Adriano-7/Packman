@@ -52,11 +52,11 @@ public class MonsterPlayerStrategyTest {
         monsterPlayerStrategy = Mockito.spy(monsterPlayerStrategy);
         Mockito.doNothing().when(monsterPlayerStrategy).changeDirection(Mockito.any(), Mockito.any());
 
-
-        monsterPlayerStrategy.move(monster, null, null, 0);
-        monsterPlayerStrategy.move(monster, null, null, 100);
-        monsterPlayerStrategy.move(monster, null, null, 250);
-        monsterPlayerStrategy.move(monster, null, null, -100);
+        long timeLimit = 250;
+        for (long time = -100; time < timeLimit; time += 11) {
+            boolean moved = monsterPlayerStrategy.move(monster, null, null, time);
+            assertFalse(moved);
+        }
 
         Mockito.verifyNoInteractions(monster);
     }
