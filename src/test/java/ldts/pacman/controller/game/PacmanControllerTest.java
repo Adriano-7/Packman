@@ -1,10 +1,13 @@
 package ldts.pacman.controller.game;
 
 
+import ldts.pacman.controller.game.monster.state.ScaredState;
+import ldts.pacman.controller.game.movement.strategy.player.PacmanStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Coin;
+import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.model.game.elements.Wall;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
@@ -16,71 +19,86 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 public class PacmanControllerTest {
     private PacmanController pacmanController;
+    private Arena arena;
+    private PacmanStrategy pacmanStrategy;
     @BeforeEach
     public void setUp() {
-        //Arena arena = null;
-        //try {
-            //arena = new Arena(10, 10);
-        Arena arena = Mockito.mock(Arena.class);
-        //} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-        //    fail();
-        //}
-        
-        arena.setPacman(new Pacman(2, -1));
-        arena.setCoins(Arrays.asList(new Coin(10, 10)));
-        arena.setWalls(Arrays.asList(new Wall(7, 7)));
-        arena.setMonsters(Arrays.asList(new RedMonster(9, 5)));
-        this.pacmanController = new PacmanController(arena);
+        this.arena = Mockito.mock(Arena.class);
+        this.pacmanStrategy = Mockito.mock(PacmanStrategy.class);
+        this.pacmanController = new PacmanController(arena, pacmanStrategy);
     }
-    /*
     @Test
-    public void stepNoMovement() {
-        Pacman pacman = pacmanController.getModel().getPacman();
-        Position initial = pacman.getPosition();
+    public void stepNothing() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Mockito.when(pacmanStrategy.move(any(), any(), any(), anyLong())).thenReturn(false);
 
-        pacmanController.step(null, GUI.OPTION.NONE, 1000);
-        assertEquals(initial, pacman.getPosition());
+        pacmanController.step(null, null, 0);
 
-        pacmanController.step(null, GUI.OPTION.UP, 200);
-        assertEquals(initial, pacman.getPosition());
+        Mockito.verify(pacmanStrategy, times(1)).move(any(), any(), any(), anyLong());
+        Mockito.verify(arena, times(1)).getPacman();
 
-        pacmanController.step(null, GUI.OPTION.LEFT, -1000);
-        assertEquals(initial, pacman.getPosition());
+        Mockito.verifyNoMoreInteractions(pacmanStrategy, arena);
     }
+    private void setUpAllTrue(Monster monster) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Mockito.when(pacmanStrategy.move(any(), any(), any(), anyLong())).thenReturn(true);
 
+        Pacman notNullPacman = Mockito.mock(Pacman.class);
+        Mockito.when(arena.getPacman()).thenReturn(notNullPacman);
 
+        Mockito.when(arena.getCollidingMonster(Mockito.any())).thenReturn(monster);
+        Mockito.when(arena.getMonsters()).thenReturn(List.of(monster));
+
+        Mockito.when(arena.collectPowerUp()).thenReturn(true);
+    }
     @Test
-    public void stepWithMovement() {
-        Pacman pacman = pacmanController.getModel().getPacman();
-        Position initial = pacman.getPosition();
+    public void stepAllTrueBranch() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Monster monster = Mockito.mock(Monster.class);
+        setUpAllTrue(monster);
 
-        // TODO: fix error in test (known error because of how way direction works)
-        // Direction doesn't start at (0, 0) but at (1, 0)
-        pacmanController.step(null, GUI.OPTION.UP, 501);
-        assertEquals(initial.getUp(), pacman.getPosition());
+        pacmanController.step(null, null, 0);
 
-        pacmanController.step(null, GUI.OPTION.NONE, 1002);
-        assertEquals(initial.getUp().getUp(), pacman.getPosition());
+        Mockito.verify(monster, times(1)).getHit(arena);
+        Mockito.verify(arena, times(1)).collectCoin();
+        Mockito.verify(arena, times(1)).collectPowerUp();
+        Mockito.verify(monster, times(1))
+                .setState(Mockito.any(ScaredState.class));
 
     }
     @Test
-    public void stepTimeTesting() {
-        Pacman pacman = pacmanController.getModel().getPacman();
-        Position initial = pacman.getPosition();
+    public void stepFirstFalseBranch() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Monster monster = Mockito.mock(Monster.class);
+        setUpAllTrue(monster);
+        Mockito.when(arena.getCollidingMonster(Mockito.any())).thenReturn(null);
 
-        // TODO: fix error in test (known error because of the way direction works)
-        // Direction doesn't start at (0, 0) but at (1, 0)
-        pacmanController.step(null, GUI.OPTION.NONE, 1000);
-        assertEquals(initial, pacman.getPosition());
+        pacmanController.step(null, null, 0);
 
-        pacmanController.step(null, GUI.OPTION.DOWN, 501);
-        assertEquals(initial.getDown(), pacman.getPosition());
+        Mockito.verify(monster, never()).getHit(arena);
+        Mockito.verify(arena, times(1)).collectCoin();
+        Mockito.verify(arena, times(1)).collectPowerUp();
+        Mockito.verify(monster, times(1))
+                .setState(Mockito.any(ScaredState.class));
     }
-    */
+    @Test
+    public void stepSecondFalseBranch() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Monster monster = Mockito.mock(Monster.class);
+        setUpAllTrue(monster);
+
+        Mockito.when(arena.collectPowerUp()).thenReturn(false);
+
+        pacmanController.step(null, null, 0);
+
+        Mockito.verify(monster, times(1)).getHit(arena);
+        Mockito.verify(arena, times(1)).collectCoin();
+        Mockito.verify(arena, times(1)).collectPowerUp();
+        Mockito.verify(monster, never()).setState(Mockito.any());
+    }
 }
