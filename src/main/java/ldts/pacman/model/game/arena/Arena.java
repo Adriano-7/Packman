@@ -4,10 +4,8 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.sound.observer.SoundPacCoin;
 import ldts.pacman.sound.observer.SoundPacDies;
-import ldts.pacman.sound.observer.SoundSelection;
 import ldts.pacman.sound.observer.SoundStartLevel;
 import ldts.pacman.sound.subject.SoundSubject;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;

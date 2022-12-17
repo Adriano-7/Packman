@@ -38,8 +38,7 @@ public class SaveScoreViewerTest {
     public void drawElements() {
         saveScoreViewer.drawElements(gui);
 
-        Mockito.verify(gui, atLeastOnce())
-                .drawText(any(Position.class), any(String.class), any(String.class));
+        Mockito.verify(gui, atLeastOnce()).drawText(any(Position.class), any(String.class), any(String.class));
     }
     @Test
     public void draw() {

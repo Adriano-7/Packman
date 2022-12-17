@@ -5,8 +5,6 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
-import ldts.pacman.model.game.elements.Pacman;
-
 import java.util.List;
 
 public abstract class PlayerStrategy extends MovementStrategy {

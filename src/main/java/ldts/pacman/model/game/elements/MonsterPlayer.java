@@ -2,9 +2,7 @@ package ldts.pacman.model.game.elements;
 
 import ldts.pacman.controller.game.monster.state.ChaseState;
 import ldts.pacman.controller.game.monster.state.MonsterState;
-import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.controller.game.movement.strategy.player.MonsterPlayerStrategy;
-import ldts.pacman.model.game.arena.Arena;
 
 public class MonsterPlayer extends Monster {
     public MonsterPlayer(int x, int y) {

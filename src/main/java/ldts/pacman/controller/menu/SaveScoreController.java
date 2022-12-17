@@ -7,8 +7,6 @@ import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.SaveScore;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.application.state.MainMenuState;
-import ldts.pacman.sound.observer.SoundSelection;
-import ldts.pacman.sound.subject.SoundSubject;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -34,6 +32,8 @@ public class SaveScoreController extends Controller<SaveScore> {
                     }
                 case QUIT:
                     game.setState(new MainMenuState(new MainMenu()));
+                    break;
+                default:
                     break;
             }
         }

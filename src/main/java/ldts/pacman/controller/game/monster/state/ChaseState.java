@@ -4,7 +4,6 @@ import ldts.pacman.controller.game.movement.strategy.target.ChasePacmanStrategy;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
-
 import static java.lang.Math.pow;
 
 public class ChaseState extends MonsterState {

@@ -22,7 +22,6 @@ public class PacmanController extends GameController {
     public Pacman getPacman() {
         return getModel().getPacman();
     }
-
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = getModel();

@@ -3,7 +3,6 @@ package ldts.pacman.controller.game.movement.strategy.player;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.MovableElement;
-
 import java.util.List;
 
 public class PacmanStrategy extends PlayerStrategy {
@@ -25,6 +24,8 @@ public class PacmanStrategy extends PlayerStrategy {
                     break;
                 case RIGHT:
                     element.setDirection(new Position(1, 0));
+                    break;
+                default:
                     break;
             }
         }

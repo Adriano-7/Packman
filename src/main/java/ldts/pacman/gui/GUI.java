@@ -2,7 +2,6 @@ package ldts.pacman.gui;
 
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.model.game.Position;
-
 import java.io.IOException;
 import java.util.List;
 

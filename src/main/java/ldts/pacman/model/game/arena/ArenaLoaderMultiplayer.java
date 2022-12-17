@@ -6,8 +6,6 @@ import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;
 import ldts.pacman.model.game.elements.monsters.PinkMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

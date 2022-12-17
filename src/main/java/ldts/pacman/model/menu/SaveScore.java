@@ -29,7 +29,4 @@ public class SaveScore extends Menu {
     public boolean isSelectedSave(){
         return  isSelected(0);
     }
-    public boolean isSelectedExit(){
-        return isSelected(1);
-    }   // TODO: might delete if not needed
 }

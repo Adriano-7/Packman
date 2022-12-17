@@ -1,8 +1,5 @@
 package ldts.pacman.model.menu;
 
-import ldts.pacman.sound.observer.SoundSelection;
-import ldts.pacman.sound.subject.SoundSubject;
-
 import java.util.Arrays;
 import java.util.List;
 

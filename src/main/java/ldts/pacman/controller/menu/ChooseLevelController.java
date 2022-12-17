@@ -9,9 +9,6 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.model.menu.MainMenu;
-import ldts.pacman.sound.observer.*;
-import ldts.pacman.sound.subject.SoundSubject;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -25,23 +22,21 @@ public class ChooseLevelController extends Controller<ChooseLevel> {
     public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (GUI.OPTION option: options) {
             switch (option) {
-                case UP -> getModel().prev_Op();
-                case DOWN -> getModel().next_Op();
-                case QUIT -> game.setState(new MainMenuState(new MainMenu()));
-                case SELECT -> {
+                case UP: getModel().prev_Op();
+                case DOWN: getModel().next_Op();
+                case QUIT: game.setState(new MainMenuState(new MainMenu()));
+                case SELECT: {
                     if (getModel().isSelectedExit()) {
                         game.setState(new MainMenuState(new MainMenu()));
                         break;
                     }
                     int levelNumber = getModel().getCurrentOption() + 1;
-
                     ArenaLoader arenaLoader = getModel().getArenaLoader();
-
                     arenaLoader.setLevelNumber(levelNumber);
                     Arena arena = arenaLoader.createArena();
-
                     game.setState(new GameState(arena));
-                }
+                    }
+                default: break;
             }
         }
     }
