@@ -23,7 +23,6 @@ public class EatenState extends MonsterState {
         }
         return false;
     }
-
     @Override
     public void getHit(Monster monster, Arena arena) {}
 

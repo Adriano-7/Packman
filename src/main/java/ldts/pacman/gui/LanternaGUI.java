@@ -65,7 +65,7 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public List<OPTION> getNextOptions(){
-        List<OPTION> actions = new LinkedList<>();
+        List<OPTION> actions = new ArrayList<>();
         if (pressedKeys.contains(KeyEvent.VK_Q)) actions.add(OPTION.QUIT);
         if (pressedKeys.contains(KeyEvent.VK_UP)) actions.add(OPTION.UP);
         if (pressedKeys.contains(KeyEvent.VK_RIGHT)) actions.add(OPTION.RIGHT);

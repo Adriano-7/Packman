@@ -25,8 +25,6 @@ public class PacmanStrategy extends PlayerStrategy {
                 case RIGHT:
                     element.setDirection(new Position(1, 0));
                     break;
-                default:
-                    break;
             }
         }
     }
