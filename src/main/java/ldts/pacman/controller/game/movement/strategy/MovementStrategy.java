@@ -24,10 +24,4 @@ public abstract class MovementStrategy {
     public void setLastMovement(long lastMovement) {
         this.lastMovement = lastMovement;
     }
-    public long getLastMovement() {
-        return lastMovement;
-    }
-    public long getTimeBetweenMoves() {
-        return timeBetweenMoves;
-    }
 }
