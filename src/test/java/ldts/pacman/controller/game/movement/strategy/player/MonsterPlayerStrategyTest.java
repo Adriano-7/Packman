@@ -109,14 +109,12 @@ public class MonsterPlayerStrategyTest {
     @Test
     public void noMoveAllWalls() {
         setUpFieldMocks();
-
-        long timeTest = 1000;
-        Mockito.when(monsterPlayerStrategy.enoughTimeElapsed(timeTest)).thenReturn(true);
+        long enoughTime = 1000;
 
         Arena arena = Mockito.mock(Arena.class);
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(true);
 
-        boolean moved = monsterPlayerStrategy.move(monster, arena, null, timeTest);
+        boolean moved = monsterPlayerStrategy.move(monster, arena, null, enoughTime);
         assertFalse(moved);
 
         Mockito.verify(monster, times(0)).setPosition(Mockito.any(Position.class));

@@ -23,10 +23,10 @@ public class ScaredStrategyTest {
     private Arena arena;
     @BeforeEach
     public void setUp() {
-        //Create arena mock using Mockito
         this.arena = Mockito.mock(Arena.class);
         this.scaredStrategy = new ScaredStrategy();
     }
+
     @Test
     public void move4Options() {    // TODO: improve test
         Monster monster = new BlueMonster(5, 5);

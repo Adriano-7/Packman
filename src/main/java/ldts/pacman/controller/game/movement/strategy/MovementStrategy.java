@@ -18,7 +18,7 @@ public abstract class MovementStrategy {
         this.timeBetweenMoves = time;
     }
     public abstract boolean move(MovableElement element, Arena arena, List<GUI.OPTION> options, long time);
-    public boolean enoughTimeElapsed(long time) {
+    protected boolean enoughTimeElapsed(long time) {
         return time - lastMovement > timeBetweenMoves;
     }
     protected void setLastMovement(long lastMovement) {
