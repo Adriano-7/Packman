@@ -14,12 +14,14 @@ public class ScaredStrategy extends MovementStrategy {
         super(400);
     }
 
-    public boolean move(MovableElement element, Arena arena) {
+    private boolean move(MovableElement element, Arena arena) {
         List<Position> validDirections = getValidDirections(element, arena);
 
         int n = (int) (Math.random() * validDirections.size());
-        element.setDirection(validDirections.get(n));
-        element.setPosition(element.getPosition().plus(element.getDirection()));
+        Position nextDirection = validDirections.get(n);
+
+        element.setDirection(nextDirection);
+        element.setPosition(element.getPosition().plus(nextDirection));
         return true;
     }
 
