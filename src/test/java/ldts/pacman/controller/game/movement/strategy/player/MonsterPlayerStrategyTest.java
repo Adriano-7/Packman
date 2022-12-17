@@ -4,6 +4,7 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
+import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -59,17 +60,21 @@ public class MonsterPlayerStrategyTest {
 
         Mockito.verifyNoInteractions(monster);
     }
-    private void setUpFieldMocks() {
+    private void setUpFieldMocks(Position begin, Position direction) {
         monsterPlayerStrategy = Mockito.spy(monsterPlayerStrategy);
         Mockito.doNothing().when(monsterPlayerStrategy).changeDirection(Mockito.any(), Mockito.any());
 
         Position down = new Position(0, 1);
-        Mockito.when(monster.getDirection()).thenReturn(down);
-        Mockito.when(monster.getPosition()).thenReturn(new Position(5, 5));
+        Mockito.when(monster.getDirection()).thenReturn(direction);
+        Mockito.when(monster.getPosition()).thenReturn(begin);
     }
     @Test
     public void moveEnoughTime() {
-        setUpFieldMocks();
+        Position begin = new Position(5, 5);
+        Position directionDown = new Position(0, 1);
+        setUpFieldMocks(begin, directionDown);
+
+        Position expected = new Position(5, 6);
 
         Arena arena = Mockito.mock(Arena.class);
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
@@ -77,7 +82,7 @@ public class MonsterPlayerStrategyTest {
         boolean moved = monsterPlayerStrategy.move(monster, arena, null, 251);
         assertTrue(moved);
 
-        Mockito.verify(monster, times(1)).setPosition(Mockito.any(Position.class));
+        Mockito.verify(monster, times(1)).setPosition(expected);
         Mockito.verify(monster, atLeastOnce()).getDirection();
         Mockito.verify(monster, atLeastOnce()).getPosition();
         Mockito.verifyNoMoreInteractions(monster);
@@ -94,21 +99,26 @@ public class MonsterPlayerStrategyTest {
 
     @Test
     public void moveEnoughTimeTwice() {
-        setUpFieldMocks();
+        Position begin = new Position(5, 5);
+        Position directionDown = new Position(0, 1);
+        setUpFieldMocks(begin, directionDown);
+
+        Position expected = new Position(5, 6);
 
         Arena arena = Mockito.mock(Arena.class);
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
 
         boolean movedOnce = monsterPlayerStrategy.move(monster, arena, null, 300);
         boolean movedAgain = monsterPlayerStrategy.move(monster, arena, null, 560);
+
         assertTrue(movedOnce);
         assertTrue(movedAgain);
-        Mockito.verify(monster, times(2)).setPosition(Mockito.any(Position.class));
+        Mockito.verify(monster, times(2)).setPosition(expected);
 
     }
     @Test
     public void noMoveAllWalls() {
-        setUpFieldMocks();
+        setUpFieldMocks(new Position(5, 5), new Position(0, 1));
         long enoughTime = 1000;
 
         Arena arena = Mockito.mock(Arena.class);

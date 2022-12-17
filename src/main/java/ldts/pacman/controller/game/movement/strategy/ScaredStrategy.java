@@ -15,9 +15,17 @@ public class ScaredStrategy extends MovementStrategy {
     }
 
     public boolean move(MovableElement element, Arena arena) {
+        List<Position> validDirections = getValidDirections(element, arena);
+
+        int n = (int) (Math.random() * validDirections.size());
+        element.setDirection(validDirections.get(n));
+        element.setPosition(element.getPosition().plus(element.getDirection()));
+        return true;
+    }
+
+    private static List<Position> getValidDirections(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1),
                 new Position(1, 0), new Position(-1, 0));
-
         List<Position> validDirections = new ArrayList<>();
         Position oppositeDirection = new Position(-element.getDirection().getX(), -element.getDirection().getY());
 
@@ -30,11 +38,7 @@ public class ScaredStrategy extends MovementStrategy {
         if (validDirections.isEmpty()){
             validDirections.add(oppositeDirection);
         }
-
-        int n = (int) (Math.random() * validDirections.size());
-        element.setDirection(validDirections.get(n));
-        element.setPosition(element.getPosition().plus(element.getDirection()));
-        return true;
+        return validDirections;
     }
     @Override
     public boolean move(MovableElement element, Arena arena, List<GUI.OPTION> options, long time) {
