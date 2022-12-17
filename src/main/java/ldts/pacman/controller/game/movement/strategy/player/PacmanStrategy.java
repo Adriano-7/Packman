@@ -2,30 +2,19 @@ package ldts.pacman.controller.game.movement.strategy.player;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.elements.MovableElement;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class PacmanStrategy extends PlayerStrategy {
+public class PacmanStrategy extends PlayerMovementStrategy {
     public PacmanStrategy() {
-        super(200);
+        super(createPacmanOptionToDirectionMap(), 200);
     }
-    @Override
-    public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
-        for(GUI.OPTION option: options) {
-            switch (option) {
-                case UP:
-                    element.setDirection(new Position(0, -1));
-                    break;
-                case DOWN:
-                    element.setDirection(new Position(0, 1));
-                    break;
-                case LEFT:
-                    element.setDirection(new Position(-1, 0));
-                    break;
-                case RIGHT:
-                    element.setDirection(new Position(1, 0));
-                    break;
-            }
-        }
+    private static Map<GUI.OPTION, Position> createPacmanOptionToDirectionMap() {
+        Map<GUI.OPTION, Position> pacmanOptionToDirection = new HashMap<>();
+        pacmanOptionToDirection.put(GUI.OPTION.UP, new Position(0, -1));
+        pacmanOptionToDirection.put(GUI.OPTION.DOWN, new Position(0, 1));
+        pacmanOptionToDirection.put(GUI.OPTION.LEFT, new Position(-1, 0));
+        pacmanOptionToDirection.put(GUI.OPTION.RIGHT, new Position(1, 0));
+        return pacmanOptionToDirection;
     }
 }

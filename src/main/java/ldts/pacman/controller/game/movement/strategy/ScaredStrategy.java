@@ -10,7 +10,6 @@ public class ScaredStrategy extends MovementStrategy {
     public ScaredStrategy() {
         super(400);
     }
-
     public boolean move(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1),
                 new Position(1, 0), new Position(-1, 0));
