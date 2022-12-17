@@ -33,17 +33,18 @@ public class MonsterPlayerStrategyTest {
     }
     @Test
     public void changeDirection() {
-        monsterPlayerStrategy.changeDirection(List.of(GUI.OPTION.DOWN2), monster);
-        Mockito.verify(monster, times(1)).setDirection(new Position(0, 1));
+        GUI.OPTION[] options = { GUI.OPTION.DOWN2, GUI.OPTION.UP2, GUI.OPTION.LEFT2, GUI.OPTION.RIGHT2 };
+        Position[] correspondingDirections = { new Position(0, 1), new Position(0, -1), new Position(-1, 0), new Position(1, 0) };
 
-        monsterPlayerStrategy.changeDirection(List.of(GUI.OPTION.UP2), monster);
-        Mockito.verify(monster, times(1)).setDirection(new Position(0, -1));
+        boolean precondition = options.length == correspondingDirections.length;
+        assertTrue(precondition);
 
-        monsterPlayerStrategy.changeDirection(List.of(GUI.OPTION.LEFT2), monster);
-        Mockito.verify(monster, times(1)).setDirection(new Position(-1, 0));
-
-        monsterPlayerStrategy.changeDirection(List.of(GUI.OPTION.RIGHT2), monster);
-        Mockito.verify(monster, times(1)).setDirection(new Position(1, 0));
+        int arraySize = options.length;
+        for (int i = 0; i < arraySize; i++) {
+            monsterPlayerStrategy.changeDirection(List.of(options[i]), monster);
+            Mockito.verify(monster, times(1)).setDirection(correspondingDirections[i]);
+            Mockito.verifyNoMoreInteractions(monster);
+        }
     }
     @Test
     public void moveNoTime() {
@@ -58,14 +59,17 @@ public class MonsterPlayerStrategyTest {
 
         Mockito.verifyNoInteractions(monster);
     }
-    @Test
-    public void moveEnoughTime() {
+    private void setUpFieldMocks() {
         monsterPlayerStrategy = Mockito.spy(monsterPlayerStrategy);
         Mockito.doNothing().when(monsterPlayerStrategy).changeDirection(Mockito.any(), Mockito.any());
 
         Position down = new Position(0, 1);
         Mockito.when(monster.getDirection()).thenReturn(down);
         Mockito.when(monster.getPosition()).thenReturn(new Position(5, 5));
+    }
+    @Test
+    public void moveEnoughTime() {
+        setUpFieldMocks();
 
         Arena arena = Mockito.mock(Arena.class);
         Mockito.when(arena.isWall(Mockito.any(Position.class))).thenReturn(false);
@@ -86,14 +90,6 @@ public class MonsterPlayerStrategyTest {
         Mockito.verify(monster, atLeastOnce()).getPosition();
 
         Mockito.verifyNoMoreInteractions(monster);
-    }
-    private void setUpFieldMocks() {
-        monsterPlayerStrategy = Mockito.spy(monsterPlayerStrategy);
-        Mockito.doNothing().when(monsterPlayerStrategy).changeDirection(Mockito.any(), Mockito.any());
-
-        Position down = new Position(0, 1);
-        Mockito.when(monster.getDirection()).thenReturn(down);
-        Mockito.when(monster.getPosition()).thenReturn(new Position(5, 5));
     }
 
     @Test

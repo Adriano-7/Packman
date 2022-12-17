@@ -21,7 +21,7 @@ public abstract class MovementStrategy {
     public boolean enoughTimeElapsed(long time) {
         return time - lastMovement > timeBetweenMoves;
     }
-    public void setLastMovement(long lastMovement) {
+    protected void setLastMovement(long lastMovement) {
         this.lastMovement = lastMovement;
     }
 }
