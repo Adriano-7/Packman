@@ -22,8 +22,7 @@ public class SaveScoreViewerTest {
     private GUI gui;
     @BeforeEach
     public void setUp() {
-        SoundSelection soundSelection = Mockito.mock(SoundSelection.class);
-        saveScore = new SaveScore(soundSelection, 100);
+        this.saveScore = Mockito.mock(SaveScore.class);
         saveScoreViewer = new SaveScoreViewer(saveScore);
         gui = Mockito.mock(GUI.class);
     }
@@ -35,7 +34,7 @@ public class SaveScoreViewerTest {
     public void drawElements() {
         saveScoreViewer.drawElements(gui);
 
-        Mockito.verify(gui, atLeastOnce()).drawText(any(Position.class), any(String.class), any(String.class));
+        Mockito.verify(gui, atLeastOnce()).drawText(any(), any(), any());
     }
     @Test
     public void draw() {
