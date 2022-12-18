@@ -1,78 +1,155 @@
 package ldts.pacman.model.game.arena;
-import ldts.pacman.gui.GUI;
-import ldts.pacman.controller.game.monster.state.MonsterState;
+
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
+import ldts.pacman.model.game.elements.monsters.OrangeMonster;
+import ldts.pacman.model.game.elements.monsters.PinkMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
-import ldts.pacman.sound.observer.SoundPacCoin;
-import ldts.pacman.sound.observer.SoundPacDies;
-import ldts.pacman.sound.observer.SoundStartLevel;
-import ldts.pacman.sound.subject.SoundSubject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ldts.pacman.model.game.elements.Monster;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaTest {
     private Arena arena;
-    private SoundSubject soundSubject;
-    private SoundPacCoin soundPacCoin;
-    private SoundPacDies soundPacDies;
-    private SoundStartLevel soundStartLevel;
-
     @BeforeEach
     public void setUp() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        soundSubject = Mockito.mock(SoundSubject.class);
-        soundPacCoin = Mockito.mock(SoundPacCoin.class);
-        soundPacDies = Mockito.mock(SoundPacDies.class);
-        soundStartLevel = Mockito.mock(SoundStartLevel.class);
-        this.arena = new Arena(10, 20, soundSubject, soundPacCoin, soundPacDies, soundStartLevel);
+        this.arena = new Arena(10, 20);
     }
     @Test
-    public void getters() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Pacman pacman = Mockito.mock(Pacman.class);
-        arena.setPacman(pacman);
-        Coin coin = Mockito.mock(Coin.class);
-        arena.setCoins(Arrays.asList(coin));
-        Monster monster = Mockito.mock(Monster.class);
-        arena.setMonsters(Arrays.asList(monster));
-        Wall wall = Mockito.mock(Wall.class);
-        arena.setWalls(Arrays.asList(wall));
-        PowerUp powerUp =Mockito.mock(PowerUp.class);
-        arena.setPowerUps(Arrays.asList(powerUp));
-
+    public void testGetWidth() {
         assertEquals(10, arena.getWidth());
-        assertEquals(20, arena.getHeight());
-        assertEquals(pacman,arena.getPacman());
-        assertEquals(Arrays.asList(coin),arena.getCoins());
-        assertEquals(Arrays.asList(monster),arena.getMonsters());
-        assertEquals(Arrays.asList(wall),arena.getWalls());
-        assertEquals(Arrays.asList(powerUp),arena.getPowerUps());
     }
     @Test
-    public void isWall() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        arena.setWalls(Arrays.asList(new Wall(10, 30)));
-        Position position =new Position(10,30);
-        assertEquals(true, arena.isWall(position));
+    public void testGetHeight() {
+        assertEquals(20, arena.getHeight());
+    }
+    @Test void testSetGetPacman(){
+        Pacman mockPacman = Mockito.mock(Pacman.class);
+        arena.setPacman(mockPacman);
+        assertEquals(mockPacman, arena.getPacman());
+    }
+    @Test
+    public void testSetGetCois(){
+        List<Coin> mockCoins = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            mockCoins.add(Mockito.mock(Coin.class));
+        }
+        arena.setCoins(mockCoins);
+        assertEquals(mockCoins, arena.getCoins());
+        assertEquals(10, arena.getCoins().size());
+    }
+    @Test
+    public void testSetGetMonsters(){
+        List<Monster> mockMonsters = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            mockMonsters.add(Mockito.mock(Monster.class));
+        }
+        arena.setMonsters(mockMonsters);
+        assertEquals(mockMonsters, arena.getMonsters());
+        assertEquals(10, arena.getMonsters().size());
+    }
+    @Test
+    public void testSetGetWalls() {
+        List<Wall> mockWalls = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            mockWalls.add(Mockito.mock(Wall.class));
+        }
+        arena.setWalls(mockWalls);
+        assertEquals(mockWalls, arena.getWalls());
+        assertEquals(20, arena.getWalls().size());
+    }
+    @Test
+    public void testSetGetPowerUp(){
+        PowerUp mockPowerUp =Mockito.mock(PowerUp.class);
+        arena.setPowerUps(Arrays.asList(mockPowerUp));
+        assertEquals(Arrays.asList(mockPowerUp),arena.getPowerUps());
+    }
+    @Test
+    public void testIsWall(){
+        Wall mockWall1  = Mockito.mock(Wall.class);
+        Wall mockWall2  = Mockito.mock(Wall.class);
+        Wall mockWall3  = Mockito.mock(Wall.class);
+        Mockito.when(mockWall1.getPosition()).thenReturn(new Position(1,7));
+        Mockito.when(mockWall2.getPosition()).thenReturn(new Position(1,2));
+        Mockito.when(mockWall3.getPosition()).thenReturn(new Position(8,3));
+
+        List<Wall> mockWalls = Arrays.asList(mockWall1, mockWall2, mockWall3);
+        arena.setWalls(mockWalls);
+        assertTrue(arena.isWall(new Position(1,7)));
+        assertTrue(arena.isWall(new Position(1,2)));
+        assertTrue(arena.isWall(new Position(8,3)));
+        assertFalse(arena.isWall(new Position(1,1)));
+        assertFalse(arena.isWall(new Position(1,3)));
     }
 
     @Test
-    public void isMonster() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Monster monster =new BlueMonster(10,30);
-        arena.setMonsters(Arrays.asList(monster));
-        Position position=new Position(10,30);
-        assertEquals(monster, arena.getCollidingMonster(position));
+    public void testGetCollidingMonster() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Monster mockMonster1 = Mockito.mock(RedMonster.class);
+        Mockito.when(mockMonster1.getPosition()).thenReturn(new Position(4,6));
+        Monster mockMonster2 = Mockito.mock(BlueMonster.class);
+        Mockito.when(mockMonster2.getPosition()).thenReturn(new Position(8,2));
+        Monster mockMonster3 = Mockito.mock(OrangeMonster.class);
+        Mockito.when(mockMonster3.getPosition()).thenReturn(new Position(5,7));
+        Monster mockMonster4 = Mockito.mock(PinkMonster.class);
+        Mockito.when(mockMonster4.getPosition()).thenReturn(new Position(7,3));
+
+
+        arena.setMonsters(Arrays.asList(mockMonster1, mockMonster2, mockMonster3, mockMonster4));
+        assertEquals(mockMonster1, arena.getCollidingMonster(new Position(4, 6)));
+        assertEquals(mockMonster2, arena.getCollidingMonster(new Position(8, 2)));
+        assertEquals(mockMonster3, arena.getCollidingMonster(new Position(5, 7)));
+        assertEquals(mockMonster4, arena.getCollidingMonster(new Position(7, 3)));
+        assertNull(arena.getCollidingMonster(new Position(1, 1)));
+    }
+    /*
+    @Test
+    public void testCollidesWithPacman() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Pacman mockPacman = Mockito.mock(Pacman.class);
+        Mockito.when(mockPacman.getPosition()).thenReturn(new Position(4,6));
+        arena.setPacman(mockPacman);
+
+        Monster mockMonster1 = Mockito.mock(RedMonster.class);
+        Mockito.when(mockMonster1.collidesWithPacman(mockPacman)).thenReturn(true);
+
+        Monster mockMonster2 = Mockito.mock(BlueMonster.class);
+        Mockito.when(mockMonster2.collidesWithPacman(mockPacman)).thenReturn(false);
+
+        arena.setMonsters(Arrays.asList(mockMonster1, mockMonster2));
+        assertTrue(arena.collidesWithPacman(mockMonster1));
+        assertFalse(arena.collidesWithPacman(mockMonster2));
+    }
+*/
+    @Test
+    public void testResetPositions(){
+        Pacman mockPacman = Mockito.mock(Pacman.class);
+        Mockito.when(mockPacman.getPosition ()).thenReturn(new Position(4,6));
+        arena.setPacman(mockPacman);
+
+        Monster mockMonster1 = Mockito.mock(RedMonster.class);
+        Mockito.when(mockMonster1.getPosition()).thenReturn(new Position(4,6));
+        Monster mockMonster2 = Mockito.mock(BlueMonster.class);
+        Mockito.when(mockMonster2.getPosition()).thenReturn(new Position(8,2));
+        Monster mockMonster3 = Mockito.mock(OrangeMonster.class);
+        Mockito.when(mockMonster3.getPosition()).thenReturn(new Position(5,7));
+        Monster mockMonster4 = Mockito.mock(PinkMonster.class);
+        Mockito.when(mockMonster4.getPosition()).thenReturn(new Position(7,3));
+
+        arena.setMonsters(Arrays.asList(mockMonster1, mockMonster2, mockMonster3, mockMonster4));
+        arena.resetPositions();
+        assertEquals(new Position(4,6), mockPacman.getPosition());
+        assertEquals(new Position(4,6), mockMonster1.getPosition());
+        assertEquals(new Position(8,2), mockMonster2.getPosition());
+        assertEquals(new Position(5,7), mockMonster3.getPosition());
+        assertEquals(new Position(7,3), mockMonster4.getPosition());
     }
     @Test
     public void collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -91,7 +168,7 @@ public class ArenaTest {
         assertEquals(0, arena.getCoins().size());
     }
     @Test
-    public void collectPowerUp() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void collectPowerUp() {
         Pacman pacman=new Pacman(10,20);
         arena.setPacman(pacman);
         int expectedScore = pacman.getScore() + 1;
@@ -102,10 +179,10 @@ public class ArenaTest {
         arena.setPowerUps(powerUps);
 
         boolean collectedTrue = arena.collectPowerUp();
+        assertTrue(collectedTrue);
 
         assertEquals(expectedScore, arena.getPacman().getScore());
         assertEquals(0, arena.getPowerUps().size());
-        assertTrue(collectedTrue);
 
         PowerUp powerUp1=new PowerUp(10,30);
         List<PowerUp> powerUps1 = new ArrayList<>();

@@ -1,4 +1,5 @@
 package ldts.pacman.model.game.elements.monsters;
+
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.Position;
@@ -12,7 +13,6 @@ public class RedMonster extends Monster {
     protected MonsterState createMonsterState() {
         return new ScatterState(getBaseColor());
     }
-
     @Override
     public String getBaseColor() {
         return "#d03e19";

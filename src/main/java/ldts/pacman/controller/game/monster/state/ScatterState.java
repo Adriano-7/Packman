@@ -21,7 +21,6 @@ public class ScatterState extends MonsterState {
         }
         return false;
     }
-
     @Override
     public void getHit(Monster monster, Arena arena) {
         arena.resetPositions();
@@ -30,7 +29,6 @@ public class ScatterState extends MonsterState {
             monsterInArena.setState(new ScatterState(monsterInArena.getBaseColor()));
         }
     }
-
     @Override
     public String getColor() {
         return this.color;

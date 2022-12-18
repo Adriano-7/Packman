@@ -1,6 +1,5 @@
 package ldts.pacman.gui;
 
-
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -12,7 +11,6 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.model.game.Position;
-
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -26,15 +24,12 @@ import java.util.List;
 public class LanternaGUI implements GUI {
     private final Screen screen;
     Set<Integer> pressedKeys = new HashSet<>();
-
     public LanternaGUI(Screen screen) {this.screen = screen;}
-
     public LanternaGUI(int width, int height) throws IOException, URISyntaxException, FontFormatException {
         AWTTerminalFontConfiguration fontConfig = loadFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
-
     private Screen createScreen(Terminal terminal) throws IOException{
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -55,7 +50,6 @@ public class LanternaGUI implements GUI {
                 pressedKeys.add(e.getKeyCode());
             }
         });
-
         return terminal;
     }
 
@@ -66,12 +60,12 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment g = GraphicsEnvironment.getLocalGraphicsEnvironment();
         g.registerFont(font);
 
-        Font loadFont =  font.deriveFont(Font.PLAIN, 28);
+        Font loadFont =  font.deriveFont(Font.PLAIN, 32);
         return AWTTerminalFontConfiguration.newInstance(loadFont);
     }
     @Override
-    public List<OPTION> getNextOptions() throws IOException {
-        List<OPTION> actions = new LinkedList<>();
+    public List<OPTION> getNextOptions(){
+        List<OPTION> actions = new ArrayList<>();
         if (pressedKeys.contains(KeyEvent.VK_Q)) actions.add(OPTION.QUIT);
         if (pressedKeys.contains(KeyEvent.VK_UP)) actions.add(OPTION.UP);
         if (pressedKeys.contains(KeyEvent.VK_RIGHT)) actions.add(OPTION.RIGHT);
@@ -115,7 +109,6 @@ public class LanternaGUI implements GUI {
         }
         else drawCharacter(position, state.getDrawingChar()[index.get(direction)], state.getColor());
     }
-
     @Override
     public void drawPowerUp(Position position) {
         drawCharacter(position, 'j', "#ffffff");
@@ -143,17 +136,14 @@ public class LanternaGUI implements GUI {
             health--;
         }
     }
-
     @Override
     public void clear(){
         screen.clear();
     }
-
     @Override
     public void refresh() throws IOException{
         screen.refresh();
     }
-
     @Override
     public void close() throws IOException {
         screen.close();
