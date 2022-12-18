@@ -29,7 +29,7 @@ public class PacmanPlayerStrategyTest {
         arena.setPacman(pacman);
 
         List<Wall> walls = new ArrayList<>();
-        walls.add(new Wall(7, 7));
+        walls.add(new Wall(5, 2));
         arena.setWalls(walls);
 
         List<Monster> monsters = new ArrayList<>();
@@ -46,6 +46,26 @@ public class PacmanPlayerStrategyTest {
 
         pacmanStrategy.move(pacman, arena, options, 0);
         assertTrue(expected.equals(pacman.getPosition()));
+    }
+
+    @Test
+    public void notEnoughTimeElapsed() {
+        List<GUI.OPTION> options = new ArrayList<>();
+        options.add(GUI.OPTION.RIGHT);
+        boolean moved = pacmanStrategy.move(pacman, arena, options, 100);
+        assertTrue(!moved);
+    }
+    @Test
+    public void doesNotMoveIntoWall() {
+        List<GUI.OPTION> options = new ArrayList<>();
+        options.add(GUI.OPTION.RIGHT);
+        boolean moved = pacmanStrategy.move(pacman, arena, options, 300);
+        assertTrue(moved);
+        options.clear();
+
+        options.add(GUI.OPTION.DOWN);
+        moved = pacmanStrategy.move(pacman, arena, options, 600);
+        assertTrue(!moved);
     }
 
     @Test
@@ -100,13 +120,6 @@ public class PacmanPlayerStrategyTest {
         assertTrue(expectedPosition.equals(pacman.getPosition()));
     }
 
-    @Test
-    public void notEnoughTimeElapsed() {
-        List<GUI.OPTION> options = new ArrayList<>();
-        options.add(GUI.OPTION.RIGHT);
-        boolean moved = pacmanStrategy.move(pacman, arena, options, 100);
-        assertTrue(!moved);
-    }
 
     @Test
     public void continueMovingInSameDirection() {
