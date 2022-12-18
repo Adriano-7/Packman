@@ -3,6 +3,7 @@ package ldts.pacman.file.manipulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 

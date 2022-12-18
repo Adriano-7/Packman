@@ -1,22 +1,32 @@
 package ldts.pacman.model.menu;
 
+import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainMenuTest {
     private MainMenu mainMenu;
+    private SoundSelection soundSelection;
+    private SoundSubject soundSubject;
     @BeforeEach
     public void setUp() {
-        mainMenu = new MainMenu();
+        this.soundSelection = Mockito.mock(SoundSelection.class);
+        this.soundSubject = Mockito.mock(SoundSubject.class);
+        mainMenu = new MainMenu(soundSelection, soundSubject);
     }
     @Test
     public void testNext_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assertEquals(0, mainMenu.getCurrentOption());
         mainMenu.next_Op();
+
         assertTrue(mainMenu.isSelected(1));
         assertEquals(1, mainMenu.getCurrentOption());
     }

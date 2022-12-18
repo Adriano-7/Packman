@@ -1,8 +1,11 @@
 package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
+import ldts.pacman.application.state.MainMenuState;
+import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.SaveScore;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import javax.sound.sampled.LineUnavailableException;

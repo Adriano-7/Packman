@@ -2,26 +2,27 @@ package ldts.pacman.model.menu;
 
 import ldts.pacman.sound.observer.SoundSelection;
 import ldts.pacman.sound.subject.SoundSubject;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
-public abstract class Menu extends SoundSubject {
+public abstract class Menu{
     protected List<String> options;
-    protected SoundSelection soundSelection;
     private int currentOption = 0;
-    public Menu() {
+    public Menu(SoundSelection soundSelection, SoundSubject soundSubject) {
         this.options = createOptions();
-        this.soundSelection = new SoundSelection();
+        this.soundSelection = soundSelection;
+        this.soundSubject = soundSubject;
     }
     public void next_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         currentOption = (currentOption + 1) % options.size();
-        playSingleSound(soundSelection);
+        soundSubject.playSingleSound(soundSelection);
     }
     public void prev_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         currentOption--;
         if (currentOption < 0) currentOption = this.options.size() - 1;
-        playSingleSound(soundSelection);
+        soundSubject.playSingleSound(soundSelection);
     }
     public String getOption(int i){
         return this.options.get(i);
@@ -36,4 +37,6 @@ public abstract class Menu extends SoundSubject {
         return this.currentOption;
     }
     protected abstract List<String> createOptions();
+    private SoundSubject soundSubject;
+    protected SoundSelection soundSelection;
 }

@@ -4,6 +4,7 @@ import ldts.pacman.Game;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.view.Viewer;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -24,6 +25,7 @@ public abstract class State<T> {
     }
     protected abstract Viewer<T> getViewer();
     protected abstract Controller<T> getController();
+
     public void step(Game game, GUI gui, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         List<GUI.OPTION> options = gui.getNextOptions();
         controller.step(game, options, time);

@@ -6,24 +6,24 @@ import ldts.pacman.model.game.elements.MovableElement;
 
 import java.util.List;
 
-public class MonsterPlayerStrategy extends PlayerStrategy {
-    public MonsterPlayerStrategy() {
-        super(250);
+public class PacmanStrategy extends PlayerStrategy {
+    public PacmanStrategy() {
+        super(200);
     }
     @Override
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
-        for (GUI.OPTION option : options) {
+        for(GUI.OPTION option: options) {
             switch (option) {
-                case UP2:
+                case UP:
                     element.setDirection(new Position(0, -1));
                     break;
-                case DOWN2:
+                case DOWN:
                     element.setDirection(new Position(0, 1));
                     break;
-                case LEFT2:
+                case LEFT:
                     element.setDirection(new Position(-1, 0));
                     break;
-                case RIGHT2:
+                case RIGHT:
                     element.setDirection(new Position(1, 0));
                     break;
             }

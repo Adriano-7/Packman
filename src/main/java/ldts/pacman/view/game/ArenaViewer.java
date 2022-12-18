@@ -1,9 +1,11 @@
 package ldts.pacman.view.game;
 
 import ldts.pacman.gui.GUI;
+import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Element;
 import ldts.pacman.view.Viewer;
+
 import java.util.List;
 
 public class ArenaViewer extends Viewer<Arena> {

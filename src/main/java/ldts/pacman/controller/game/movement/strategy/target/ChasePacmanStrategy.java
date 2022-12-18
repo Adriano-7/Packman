@@ -8,6 +8,7 @@ public class ChasePacmanStrategy extends TargetStrategy {
     public ChasePacmanStrategy() {
         super(500);
     }
+
     @Override
     protected Position getTarget(MovableElement element, Arena arena) {
         return arena.getPacman().getPosition();

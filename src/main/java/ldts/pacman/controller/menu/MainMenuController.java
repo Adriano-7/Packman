@@ -10,10 +10,17 @@ import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.application.state.ScoreMenuState;
+import ldts.pacman.sound.observer.SoundObserver;
+import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.subject.SoundSubject;
+
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class MainMenuController extends Controller<MainMenu> {
     public MainMenuController(MainMenu model) {
@@ -23,15 +30,19 @@ public class MainMenuController extends Controller<MainMenu> {
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (GUI.OPTION option: options) {
             switch (option) {
-                case UP: getModel().prev_Op(); break;
-                case DOWN: getModel().next_Op(); break;
+                case UP:
+                    getModel().prev_Op();
+                    break;
+                case DOWN:
+                    getModel().next_Op();
+                    break;
                 case SELECT:
                     if (getModel().isSelectedExit()) game.setState(null);
                     else if (getModel().isSelectedStartSingle()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoader())));
+                        game.setState(new ChooseLevelState(new ChooseLevel(new SoundSelection(), new SoundSubject(), new ArenaLoader())));
                     }
                     else if (getModel().isSelectedStartMulti()) {
-                        game.setState(new ChooseLevelState(new ChooseLevel(new ArenaLoaderMultiplayer())));
+                        game.setState(new ChooseLevelState(new ChooseLevel(new SoundSelection(), new SoundSubject(), new ArenaLoaderMultiplayer())));
                     }
                     else if (getModel().isSelectedScores()) {
                         game.setState(new ScoreMenuState(new ScoreMenu()));

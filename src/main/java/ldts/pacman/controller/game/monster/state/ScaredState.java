@@ -21,6 +21,7 @@ public class ScaredState extends MonsterState {
         }
         return false;
     }
+
     @Override
     public void getHit(Monster monster, Arena arena) {
         Pacman pacman = arena.getPacman();

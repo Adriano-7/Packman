@@ -1,12 +1,17 @@
 package ldts.pacman.application.state;
 
 import ldts.pacman.controller.menu.ScoreMenuController;
+import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.view.menu.ScoreMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
 import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
 
 public class ScoreMenuStateTest {
     private ScoreMenuState scoreMenuState;
@@ -29,4 +34,15 @@ public class ScoreMenuStateTest {
     public void getController(){
         assertEquals(ScoreMenuController.class, scoreMenuState.getController().getClass());
     }
+
+    /*
+    @Test
+    public void step() throws IOException {
+        GUI gui = Mockito.mock(GUI.class);
+
+        scoreMenuState.step(null, gui, 0);
+
+        Mockito.verify(gui, times(1)).getNextOption();
+    }
+    */
 }

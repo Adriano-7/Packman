@@ -12,7 +12,8 @@ import java.util.List;
 public class SaveScore extends Menu {
     private final int score;
     private final String timeStamp;
-    public SaveScore(int score) {
+    public SaveScore(SoundSelection soundSelection, SoundSubject soundSubject, int score) {
+        super(soundSelection, soundSubject);
         this.score = score;
         this.timeStamp = new SimpleDateFormat("dd/MM").format(new Date());
     }
@@ -29,4 +30,7 @@ public class SaveScore extends Menu {
     public boolean isSelectedSave(){
         return  isSelected(0);
     }
+    public boolean isSelectedExit(){
+        return isSelected(1);
+    }   // TODO: might delete if not needed
 }

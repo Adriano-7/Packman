@@ -6,8 +6,11 @@ import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.view.menu.ScoreMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
+
 import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;

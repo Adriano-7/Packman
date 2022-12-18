@@ -1,9 +1,12 @@
 package ldts.pacman.controller.game.movement.strategy;
 
+
+import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
+
 import java.util.*;
 
 public class ScaredStrategy extends MovementStrategy {
@@ -33,6 +36,7 @@ public class ScaredStrategy extends MovementStrategy {
                 validDirections.add(direction);
             }
         }
+
         if (validDirections.isEmpty()){
             validDirections.add(oppositeDirection);
         }

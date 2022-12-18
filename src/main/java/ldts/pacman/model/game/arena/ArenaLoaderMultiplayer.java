@@ -6,10 +6,12 @@ import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;
 import ldts.pacman.model.game.elements.monsters.PinkMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaLoaderMultiplayer extends ArenaLoader {
+    public ArenaLoaderMultiplayer() {}
     @Override
     protected List<Monster> createMonsters() {
         List<Monster> monsters = new ArrayList<>();

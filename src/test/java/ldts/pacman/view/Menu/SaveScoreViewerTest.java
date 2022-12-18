@@ -9,7 +9,9 @@ import ldts.pacman.view.menu.SaveScoreViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -24,7 +26,7 @@ public class SaveScoreViewerTest {
     public void setUp() {
         SoundSelection soundSelection = Mockito.mock(SoundSelection.class);
         SoundSubject soundSubject = Mockito.mock(SoundSubject.class);
-        saveScore = new SaveScore(100);
+        saveScore = new SaveScore(soundSelection, soundSubject, 100);
         saveScoreViewer = new SaveScoreViewer(saveScore);
         gui = Mockito.mock(GUI.class);
     }
@@ -36,7 +38,8 @@ public class SaveScoreViewerTest {
     public void drawElements() {
         saveScoreViewer.drawElements(gui);
 
-        Mockito.verify(gui, atLeastOnce()).drawText(any(Position.class), any(String.class), any(String.class));
+        Mockito.verify(gui, atLeastOnce())
+                .drawText(any(Position.class), any(String.class), any(String.class));
     }
     @Test
     public void draw() {
