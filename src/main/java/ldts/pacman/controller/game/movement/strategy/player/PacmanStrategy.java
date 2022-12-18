@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class PacmanStrategy extends PlayerMovementStrategy {
     public PacmanStrategy() {
-        super(createPacmanOptionToDirectionMap(), 200);
+        super(createOptionToDirectionMap(), 200);
     }
-    private static Map<GUI.OPTION, Position> createPacmanOptionToDirectionMap() {
+    private static Map<GUI.OPTION, Position> createOptionToDirectionMap() {
         Map<GUI.OPTION, Position> pacmanOptionToDirection = new HashMap<>();
         pacmanOptionToDirection.put(GUI.OPTION.UP, new Position(0, -1));
         pacmanOptionToDirection.put(GUI.OPTION.DOWN, new Position(0, 1));

@@ -48,12 +48,6 @@ public class PositionTest {
         assertEquals(-1, y);
     }
     @Test
-    public void testGetRandomNeighbour(){
-        Position initial_pos= position;
-        Position final_pos=position.getRandomNeighbour();
-        assertTrue((initial_pos.getDown().equals(final_pos) || initial_pos.getUp().equals(final_pos) || initial_pos.getLeft().equals(final_pos) || initial_pos.getRight().equals(final_pos)));
-    }
-    @Test
     public void testEquals() {
         assertFalse(position.equals(null));
         assertFalse(position.equals(new String("ABC")));

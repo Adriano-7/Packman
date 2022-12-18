@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class MonsterPlayerStrategy extends PlayerMovementStrategy {
     public MonsterPlayerStrategy() {
-        super(createMonsterOptionToDirectionMap(), 250);
+        super(createOptionToDirectionMap(), 250);
     }
-    private static Map<GUI.OPTION, Position> createMonsterOptionToDirectionMap() {
+    private static Map<GUI.OPTION, Position> createOptionToDirectionMap() {
         Map<GUI.OPTION, Position> pacmanOptionToDirection = new HashMap<>();
         pacmanOptionToDirection.put(GUI.OPTION.UP, new Position(0, -1));
         pacmanOptionToDirection.put(GUI.OPTION.DOWN, new Position(0, 1));

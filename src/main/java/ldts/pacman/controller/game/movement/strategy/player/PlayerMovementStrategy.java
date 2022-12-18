@@ -18,7 +18,6 @@ public abstract class PlayerMovementStrategy extends MovementStrategy {
         this.optionToDirection = optionToDirection;
         this.movementInterval = movementInterval;
     }
-
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
         for (GUI.OPTION option : options) {
             if (optionToDirection.containsKey(option)) {
@@ -26,7 +25,6 @@ public abstract class PlayerMovementStrategy extends MovementStrategy {
             }
         }
     }
-
     @Override
     public boolean move(MovableElement element, Arena arena, List<GUI.OPTION> options, long time) {
         changeDirection(options, element);
@@ -38,7 +36,6 @@ public abstract class PlayerMovementStrategy extends MovementStrategy {
         }
         return false;
     }
-
     private boolean movePlayer(MovableElement element, Position position, Arena arena) {
         if (!arena.isWall(position)) {
             element.setPosition(position);
