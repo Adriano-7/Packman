@@ -19,7 +19,7 @@ import static org.mockito.Mockito.times;
 
 public class PacmanStrategyTest {
 
-    private PacmanPlayerStrategy pacmanStrategy;
+    private PacmanStrategy pacmanStrategy;
     private Pacman pacman;
     // private Arena arena;
 
@@ -27,7 +27,7 @@ public class PacmanStrategyTest {
     public void setUp() {
         // this.arena = Mockito.mock(Arena.class);
         this.pacman = Mockito.mock(Pacman.class);
-        this.pacmanStrategy = new PacmanPlayerStrategy();
+        this.pacmanStrategy = new PacmanStrategy();
     }
     @Test
     public void changeDirectionNone() {

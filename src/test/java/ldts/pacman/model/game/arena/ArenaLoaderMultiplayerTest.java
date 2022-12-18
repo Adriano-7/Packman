@@ -4,9 +4,6 @@ import ldts.pacman.sound.observer.SoundPacDies;
 import ldts.pacman.sound.observer.SoundStartLevel;
 import ldts.pacman.sound.subject.SoundSubject;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
