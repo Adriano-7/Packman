@@ -1,9 +1,8 @@
 package ldts.pacman.controller.game.monster.state;
-import ldts.pacman.controller.game.monster.state.EatenState;
+
 import ldts.pacman.model.game.elements.Monster;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EatenStateTest {

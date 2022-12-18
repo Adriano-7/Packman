@@ -12,12 +12,7 @@ import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.model.game.elements.Wall;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 

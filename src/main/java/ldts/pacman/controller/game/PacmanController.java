@@ -2,7 +2,7 @@ package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
 import ldts.pacman.controller.game.monster.state.ScaredState;
-import ldts.pacman.controller.game.movement.strategy.player.PacmanStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.PacmanPlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
@@ -14,12 +14,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class PacmanController extends GameController {
-    private PacmanStrategy pacmanStrategy;
-    public PacmanController(Arena model, PacmanStrategy pacmanStrategy) {
+    private PacmanPlayerStrategy pacmanStrategy;
+    public PacmanController(Arena model, PacmanPlayerStrategy pacmanStrategy) {
         super(model);
         this.pacmanStrategy = pacmanStrategy;
     }
-
     @Override
     public void step(Game game, List<GUI.OPTION> options, long time) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Arena arena = getModel();

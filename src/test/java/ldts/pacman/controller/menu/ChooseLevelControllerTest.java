@@ -9,14 +9,11 @@ import ldts.pacman.model.menu.ChooseLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -75,7 +72,7 @@ public class ChooseLevelControllerTest {
         try {
             chooseLevelController.step(game, List.of(GUI.OPTION.SELECT), 0);
 
-            Mockito.verify(arenaLoader, times(1)).createArena(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any());
+            Mockito.verify(arenaLoader, times(1)).createArena();
         }
         catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             fail();

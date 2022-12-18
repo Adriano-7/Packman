@@ -26,7 +26,4 @@ public abstract class Monster extends MovableElement {
         return this.cornerTarget;
     }
     public abstract String getBaseColor();
-    public boolean collidesWithPacman(Pacman pacman) {
-        return getPosition().equals(pacman.getPosition());
-    }
 }

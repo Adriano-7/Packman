@@ -4,7 +4,6 @@ import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
-
 import java.util.List;
 
 public abstract class MonsterState {
