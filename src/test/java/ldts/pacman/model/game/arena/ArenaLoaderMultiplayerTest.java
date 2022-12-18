@@ -1,6 +1,5 @@
 package ldts.pacman.model.game.arena;
 
-import ldts.pacman.model.game.elements.MonsterPlayer;
 import ldts.pacman.sound.observer.SoundPacCoin;
 import ldts.pacman.sound.observer.SoundPacDies;
 import ldts.pacman.sound.observer.SoundStartLevel;

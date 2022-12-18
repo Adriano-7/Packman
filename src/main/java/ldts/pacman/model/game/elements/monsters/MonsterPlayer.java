@@ -1,10 +1,11 @@
-package ldts.pacman.model.game.elements;
+package ldts.pacman.model.game.elements.monsters;
 
 import ldts.pacman.controller.game.monster.state.ChaseState;
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.controller.game.movement.strategy.player.MonsterPlayerStrategy;
 import ldts.pacman.model.game.arena.Arena;
+import ldts.pacman.model.game.elements.Monster;
 
 public class MonsterPlayer extends Monster {
     public MonsterPlayer(int x, int y) {
@@ -12,14 +13,17 @@ public class MonsterPlayer extends Monster {
     }
     @Override
     protected MonsterState createMonsterState() {
-        MonsterState state = new ChaseState(getBaseColor());
-        state.setMovementStrategy(new MonsterPlayerStrategy());
-        return state;
+        MonsterState monsterState = new ChaseState(getBaseColor());
+        setPlayerStrategy(monsterState);
+        return monsterState;
     }
     @Override
-    public void setState(MonsterState state) {
-        state.setMovementStrategy(new MonsterPlayerStrategy());
-        this.state = state;
+    public void setState(MonsterState monsterState) {
+        setPlayerStrategy(monsterState);
+        this.state = monsterState;
+    }
+    private void setPlayerStrategy(MonsterState monsterState) {
+        monsterState.setMovementStrategy(new MonsterPlayerStrategy());
     }
     @Override
     public String getBaseColor() {
