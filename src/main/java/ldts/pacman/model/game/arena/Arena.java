@@ -105,16 +105,15 @@ public class Arena extends SoundSubject {
     private void resetPosition(MovableElement element) {
         element.setPosition(element.getInitialPosition());
     }
-    public boolean collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void collectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (Coin coin: coins) {
             if(coin.collides(pacman)) {
                 coins.remove(coin);
                 pacman.increaseScore();
                 playSingleSound(soundPacCoin);
-                return true;
+                break;
             }
         }
-        return false;
     }
     public boolean collectPowerUp() {
         for (PowerUp powerUp: powerUps) {
