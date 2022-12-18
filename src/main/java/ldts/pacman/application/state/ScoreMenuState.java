@@ -4,7 +4,6 @@ import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.ScoreMenuController;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.view.Viewer;
-import ldts.pacman.view.menu.OptionsViewer;
 import ldts.pacman.view.menu.ScoreMenuViewer;
 
 public class ScoreMenuState extends State<ScoreMenu> {
