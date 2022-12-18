@@ -10,7 +10,6 @@ import ldts.pacman.model.game.elements.Wall;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -128,7 +127,6 @@ public class MonsterPlayerStrategyTest {
 
     @Test
     public void continueMovingInSameDirection() {
-        //(3->3) -> (4->3) -> (5->3) -> (6->3)
         List<GUI.OPTION> options = new ArrayList<>();
         options.add(GUI.OPTION.RIGHT2);
         boolean moved = monsterPlayerStrategy.move(monsterPlayer, arena, options, 300);

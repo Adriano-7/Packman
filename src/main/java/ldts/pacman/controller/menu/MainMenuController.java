@@ -23,12 +23,8 @@ public class MainMenuController extends Controller<MainMenu> {
     public void step(Game game, List<GUI.OPTION> options, long time) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         for (GUI.OPTION option: options) {
             switch (option) {
-                case UP:
-                    getModel().prev_Op();
-                    break;
-                case DOWN:
-                    getModel().next_Op();
-                    break;
+                case UP: getModel().prev_Op(); break;
+                case DOWN: getModel().next_Op(); break;
                 case SELECT:
                     if (getModel().isSelectedExit()) game.setState(null);
                     else if (getModel().isSelectedStartSingle()) {
