@@ -8,7 +8,6 @@ import ldts.pacman.model.game.elements.Monster;
 import static java.lang.Math.pow;
 
 public class ScatterState extends MonsterState {
-    // needs color in constructor
     private final String color;
     public ScatterState(String color) {
         this.color = color;
