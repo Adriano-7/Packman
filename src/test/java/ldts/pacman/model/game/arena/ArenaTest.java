@@ -6,6 +6,9 @@ import ldts.pacman.model.game.elements.monsters.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.OrangeMonster;
 import ldts.pacman.model.game.elements.monsters.PinkMonster;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
+import ldts.pacman.sound.observer.SoundPacCoin;
+import ldts.pacman.sound.observer.SoundPacDies;
+import ldts.pacman.sound.observer.SoundStartLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ldts.pacman.model.game.elements.Monster;
@@ -20,9 +23,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaTest {
     private Arena arena;
+    private SoundPacCoin soundPacCoin;
+    private SoundPacDies soundPacDies;
+    private SoundStartLevel soundStartLevel;
+
     @BeforeEach
     public void setUp() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        this.arena = new Arena(10, 20);
+        this.soundPacCoin = Mockito.mock(SoundPacCoin.class);
+        this.soundPacDies = Mockito.mock(SoundPacDies.class);
+        this.soundStartLevel = Mockito.mock(SoundStartLevel.class);
+
+        this.arena = new Arena(10, 20, soundPacCoin, soundPacDies, soundStartLevel);
     }
     @Test
     public void testGetWidth() {

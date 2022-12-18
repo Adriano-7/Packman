@@ -12,7 +12,8 @@ import java.util.List;
 public class SaveScore extends Menu {
     private final int score;
     private final String timeStamp;
-    public SaveScore(int score) {
+    public SaveScore(SoundSelection soundSelection, int score) {
+        super(soundSelection);
         this.score = score;
         this.timeStamp = new SimpleDateFormat("dd/MM").format(new Date());
     }

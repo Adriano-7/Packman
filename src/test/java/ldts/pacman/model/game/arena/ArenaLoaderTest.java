@@ -1,6 +1,9 @@
 package ldts.pacman.model.game.arena;
 
 import ldts.pacman.file.manipulation.ResourceFileReader;
+import ldts.pacman.sound.observer.SoundPacCoin;
+import ldts.pacman.sound.observer.SoundPacDies;
+import ldts.pacman.sound.observer.SoundStartLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -20,7 +23,11 @@ public class ArenaLoaderTest {
         ArenaLoader arenaLoader = new ArenaLoader();
         arenaLoader.setLevelNumber(3);
 
-        this.arena = arenaLoader.createArena();
+        SoundPacCoin soundPacCoin = Mockito.mock(SoundPacCoin.class);
+        SoundPacDies soundPacDies = Mockito.mock(SoundPacDies.class);
+        SoundStartLevel soundStartLevel = Mockito.mock(SoundStartLevel.class);
+
+        this.arena = arenaLoader.createArena(soundPacCoin, soundPacDies, soundStartLevel);
     }
     @Test
     public void arenaElements() {

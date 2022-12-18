@@ -1,5 +1,6 @@
 package ldts.pacman.model.menu;
 
+import ldts.pacman.sound.observer.SoundSelection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,9 +13,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SaveScoreTest {
     private SaveScore saveScore;
+    private SoundSelection soundSelection;
     @BeforeEach
     public void setUp() {
-        this.saveScore = new SaveScore(100);
+        this.soundSelection = Mockito.mock(SoundSelection.class);
+        this.saveScore = new SaveScore(soundSelection, 100);
     }
     @Test
     public void getters() {

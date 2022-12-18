@@ -1,12 +1,15 @@
 package ldts.pacman.model.menu;
 
 import ldts.pacman.model.game.arena.ArenaLoader;
+import ldts.pacman.sound.observer.SoundSelection;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class ChooseLevel extends Menu {
     private final ArenaLoader arenaLoader;
-    public ChooseLevel(ArenaLoader arenaLoader) {
+    public ChooseLevel(SoundSelection soundSelection, ArenaLoader arenaLoader) {
+        super(soundSelection);
         this.arenaLoader = arenaLoader;
     }
     public ArenaLoader getArenaLoader() {

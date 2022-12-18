@@ -25,13 +25,13 @@ public class Arena extends SoundSubject {
     private SoundPacCoin soundPacCoin;
     private SoundPacDies soundPacDies;
     private SoundStartLevel soundStartLevel;
-    public Arena(int width, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public Arena(int width, int height, SoundPacCoin soundPacCoin, SoundPacDies soundPacDies, SoundStartLevel soundStartLevel) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.width = width;
         this.height = height;
 
-        this.soundPacCoin = new SoundPacCoin();
-        this.soundPacDies = new SoundPacDies();
-        this.soundStartLevel = new SoundStartLevel();
+        this.soundPacCoin = soundPacCoin;
+        this.soundPacDies = soundPacDies;
+        this.soundStartLevel = soundStartLevel;
         playSingleSound(soundStartLevel);
     }
     public int getWidth() {

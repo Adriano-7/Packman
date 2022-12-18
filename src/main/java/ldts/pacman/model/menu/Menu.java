@@ -10,9 +10,9 @@ public abstract class Menu extends SoundSubject {
     protected List<String> options;
     protected SoundSelection soundSelection;
     private int currentOption = 0;
-    public Menu() {
+    public Menu(SoundSelection soundSelection) {
         this.options = createOptions();
-        this.soundSelection = new SoundSelection();
+        this.soundSelection = soundSelection;
     }
     public void next_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         currentOption = (currentOption + 1) % options.size();
