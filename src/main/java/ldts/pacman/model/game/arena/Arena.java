@@ -120,6 +120,7 @@ public class Arena extends SoundSubject {
         for (PowerUp powerUp: powerUps) {
             if(powerUp.collides(pacman)) {
                 powerUps.remove(powerUp);
+                pacman.increaseScore();
                 return true;
             }
         }

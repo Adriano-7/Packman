@@ -13,8 +13,7 @@ public class ArenaLoaderMultiplayerTest {
     public void setUp() {
         try {
             ArenaLoader arenaLoader = new ArenaLoaderMultiplayer();
-            arenaLoader.setLevelNumber(3);
-
+            arenaLoader.setLevelNumber(1);
             this.arena = arenaLoader.createArena();
         }
         catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {

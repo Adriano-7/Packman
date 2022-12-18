@@ -179,10 +179,10 @@ public class ArenaTest {
         arena.setPowerUps(powerUps);
 
         boolean collectedTrue = arena.collectPowerUp();
+        assertTrue(collectedTrue);
 
         assertEquals(expectedScore, arena.getPacman().getScore());
         assertEquals(0, arena.getPowerUps().size());
-        assertTrue(collectedTrue);
 
         PowerUp powerUp1=new PowerUp(10,30);
         List<PowerUp> powerUps1 = new ArrayList<>();

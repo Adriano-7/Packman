@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaLoaderMultiplayer extends ArenaLoader {
-    public ArenaLoaderMultiplayer() {}
     @Override
     protected List<Monster> createMonsters() {
         List<Monster> monsters = new ArrayList<>();
