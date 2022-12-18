@@ -5,22 +5,12 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.menu.ChooseLevel;
 import ldts.pacman.view.Viewer;
 
-public class ChooseLevelViewer extends Viewer<ChooseLevel> {
-    private final OptionsViewer optionsViewer;
+public class ChooseLevelViewer extends MenuViewer<ChooseLevel> {
     public ChooseLevelViewer(ChooseLevel model, OptionsViewer optionsViewer) {
-        super(model);
-        // assert (optionsViewer.getModel() == model);
-        this.optionsViewer = optionsViewer;
+        super(model, optionsViewer);
     }
     @Override
-    protected void drawElements(GUI gui) {
-        /*
-        // TODO
-        Duplicate code in drawElements of ChooseLevelViewer and MainMenuViewer
-        Idea (do later): drawElements calls drawHeader() and drawOptions()
-        drawHeader() implemented in subclasses
-        */
+    protected void drawHeader(GUI gui) {
         gui.drawText(new Position(5, 5), "CHOOSE LEVEL", "#FFFFFF");
-        optionsViewer.drawOptions(gui);
     }
 }

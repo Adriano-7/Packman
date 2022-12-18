@@ -23,3 +23,4 @@ public class SaveScoreViewer extends Viewer<SaveScore> {
                     getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
     }
 }
+
