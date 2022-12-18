@@ -1,7 +1,7 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.controller.game.movement.strategy.player.PacmanStrategy;
+import ldts.pacman.controller.game.movement.strategy.player.PacmanPlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.SaveScore;
@@ -17,7 +17,7 @@ public class ArenaController extends GameController {
     public ArenaController(Arena arena) {
         super(arena);
         controllers = new ArrayList<>();
-        controllers.add(new PacmanController(arena, new PacmanStrategy()));
+        controllers.add(new PacmanController(arena, new PacmanPlayerStrategy()));
         controllers.add(new MonsterController(arena));
     }
     @Override
