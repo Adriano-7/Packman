@@ -32,6 +32,7 @@ public class SaveScoreController extends Controller<SaveScore> {
                     if (getModel().isSelectedSave()) {
                         new ScoreMenu("/scores.txt").addScore(getModel().getTimeStamp(), getModel().getScore());
                     }
+                    // fall through
                 case QUIT:
                     game.setState(new MainMenuState(new MainMenu(new SoundSelection(), new SoundSubject())));
                     break;

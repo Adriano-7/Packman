@@ -4,6 +4,9 @@ import net.jqwik.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PositionTest {
@@ -35,10 +38,20 @@ public class PositionTest {
         Position otherPosition = new Position(10,5);
         assertEquals(new Position(15,4), position.plus(otherPosition));
     }
-    @Test public void distance(){
+    @Test
+    public void distance(){
         Position otherPosition=new Position(1,-4);
         double distance=position.distanceTo(otherPosition);
         assertEquals(5,distance);
+    }
+    @Test
+    public void hash() {
+        Set<Integer> hashSet;
+        hashSet = new HashSet<>();
+        hashSet.add(position.hashCode());
+        hashSet.add(position.hashCode());
+
+        assertEquals(1, hashSet.size());
     }
     @Property
     public void comutativeDistance(@ForAll("generatePosition") Position first, @ForAll("generatePosition") Position second) {
