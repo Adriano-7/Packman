@@ -6,24 +6,28 @@ If one of the ghosts catches you, you will lose a life unless you've eaten a pow
 You'll also be able to play with your friend in a 2-player mode, where one of you will live in the shoes of Pac-Man and the other will be a ghost.
 
 This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Félix Martins* (*up202108837*@fe.up.pt) and *Tomás Pereira* (*up202108845*@fe.up.pt) for LDTS 2022⁄23.
-
 ### IMPLEMENTED FEATURES
->- **Pacman movement** - moves in direction given by input and keeps moving until reaches a wall or receives input
->- **Monster movement** - moves randomly in the maze for now
+>- **Connected Menus** - Browsing back and forth through different Menus
+>- **Main Menu** to browse to different menus and to choose whether to play single or multiplayer
+>- **Menu** to choose the level to play
+>- **Menu** to see the best scores
+>- **Sound** - many actions produce sounds. Ex: moving through menus, starting the game, pacman eating coins/hitting monsters
+>- **Player movement** - moves in direction given by input and keeps moving until reaches wall or receives input
+>- **Monster movement** - monster move according to different algorithms
+>- **Multiplayer** - additional monster player with movement similar to pacman
 >- **Pacman collects coins** - score increases when he collects one
->- **Pacman collides with monsters** - health decreased and positions of monsters and pacman reset to beginning of level
+>- **Pacman collides with monsters** - health decreased and positions of monsters and pacman reset to beginning
+>- **PowerUps** for pacman - makes ghosts "scared" and is able to eat them on collision for points
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
-> ![Game](https://user-images.githubusercontent.com/93844395/204083448-e0a45342-ce44-46d8-b204-686bc19dc1c8.png)
+>- **Resetting map** - after pacman collects all coins of the map, the coins and powerUps get reset back to how they were in the start of the level
 
 ### PLANNED FEATURES
 All planned features were implemented.
 
-> <img src="https://user-images.githubusercontent.com/93844395/204063857-afe1e54a-b2d7-45c2-a558-3914241dc886.jpg" height="664,8" width="806,4" >
 
 ### DESIGN
 
->> A photograph of the current UML class diagram can be found in the following link: [UML Diagram](https://user-images.githubusercontent.com/93844395/204084591-b0a2ea99-712e-439c-8c15-ae827d00ecf9.jpg)
-
+>> ### GUI
 >>**Problem in Context**\
 >>Using Lanterna directly as a way of drawing in all of our Viewer Classes would make for a direct violation of the DIP.
 >>In fact, a lot of our classes would depend on Lanterna. Changing that external library would be difficult (or just updating it): changes would have to be made across several classes.
@@ -40,23 +44,41 @@ All planned features were implemented.
 >> - [GUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/GUI.java)
 >> - [LanternaGUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/LanternaGUI.java)
 >>
->> The client in the picture is a denotation for all the classes that use the GUI
+>> The client in the picture is a denotation for all the classes that use the GUI (mostly Viewer classes)
 >> 
 >>**Consequences**\
 >>Promotes replaceability (in this case, of Lanterna with another external library to draw things) and promotes SRP, since only the LanternaGUI is concerned with how exactly to draw things with Lanterna and not each of the Viewers (e.g. the viewers don't have to be concerned with the existence of a screen or TextGraphics) 
 
 
-
+>> ### Monster States
 >>**Problem in Context**\
->>Monsters could have different ways of moving and the controller needs to know how to move them.
-> There is the possibility of using a switch-case and determining the way they move that way, depending on flags in monster. 
-> However, that disrespects the OCP and is not a good solution.
+>>Monsters can have different behaviours, including different ways of moving, and the controller needs to know how to treat and move them.
+> There is the possibility of using a switch-case and determining the way their behaviour that way, depending on flags in monster. 
+> However, that disrespects the OCP and is definitely not a good solution.
 >>
 >>**The Pattern**\
->>We have used the **Factory Method** pattern to return the way the monsters move to the controller (and also the color of the monster).
+>>We have used the **State** pattern to define the state/behaviour of the monsters.
+> In fact, the monster abstract class has a MonsterState field that can be changed throughout the game, and can be accessed by the controller and the viewer.
+> Different monster states have different ways of moving and different drawing characters, meaning different ways of drawing them.
+> The states can change the monster state themselves, or they could be changed by an outside entity, such as the PacmanController when Pacman collects a powerUp.
+
+>>**Implementation**
+>> [INTRODUCE IMAGE HERE]
+>> The UML state diagram for the MonsterStates is presented here:
+>> [INTRODUCE IMAGE HERE]
+>> These classes can be found in the following links:
+>> [INTRODUCE LINKS HERE]
+
+>>**Consequences**
+> This pattern allows us to change the monster behaviour (state) during runtime, and we've avoided scattered conditional logic.
+> Another benefit is making these state transitions explicit.
+
+FACTORY METHOD EXPLANATION (use somewhere else?)
 > The abstract Class Monster knows it has to return a way to move (an abstract MovementStrategy).
 > It does not know, however, which concrete implementation to return. Therefore, by using this pattern, we delegate the choice of the MovementStrategy to the subclasses of Monster.
 > Only those will (know to) specify the concrete specification (e.g. RandomMovement)
+
+
 >>
 >>**Implementation**
 >> 
@@ -105,7 +127,7 @@ All planned features were implemented.
 >>That class would have too many responsibilities and there would be many reasons for it to change.
 >>
 >>**The Pattern**
-We've used the **Model-View-Control** pattern, more specifically HMVC (MVC for each component).
+We've used the **Model-View-Control** architectural pattern, more specifically HMVC (MVC for each component).
 > This defines a model with the data for the entity, a controller which manipulates that data and a Viewer to display the data.
 >>
 >>**Implementation**
@@ -156,7 +178,7 @@ Passing input to the controllers is now done by states using the factory method.
 
 
 >- **Problem in context**-
->- ** The Pattern** - State pattern was used to modify the behaviour of monsters according to their state. The monsters can have the following states : Eaten state,
+>- **State** - State pattern was used to modify the behaviour of monsters according to their state. The monsters can have the following states : Eaten state,
 >- ChaseState,MonsterState,ScaredState,ScatterState. This states can interfere with the algorithms to move these defined in the movement strategy. All of this states are valid
 >- for all kind of monsters (playable and non-playable monsters).
 
@@ -167,12 +189,7 @@ OBSERVER?
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-#### Parallel Inheritance Hierarchies
-When creating a new Monster subclass, there would be a tendency to create a new MovementStrategy to generate a new way to move that monster.
-This could be fixed by allocating the movement logic to the monster subclass.
-However, this is not a good solution from our project's point of view, since there may be many monsters with the same movement logic.
-
-#### Switch Statements
+#### Switch Statements (probably delete this)
 There are switches used in direction and options.
 Possible refactor would be to add a Direction and/or Option Parent Class and add specific Direction/Option subclasses.
 For example, in the case of Direction, it would be easy to implement a method getNextPosition() for each Direction.
@@ -180,18 +197,24 @@ As such, defining the direction would allow us to only call that method and not 
 The conditional logic (switches) would be substituted by polymorphism (refactor called Replace Type Code with Subclasses)
 However, this would result in a "class explosion" (too many classes), especially in the long run.
 
-#### Speculative Generality (remove this)
-Several options in Menu are not implemented and are unused ("MULTIPLAYER", "SCORES", "OPTIONS").
-In fact, Multiplayer for now does the same as single player.
-A possibly refactor would be to remove these options and only adding them when the features for these options are implemented (or are in the work)
+#### Data classes
 
-#### Repeated field across subclasses
-Each monster class has a certain colour with which it will be coloured.
-However, the attribute for color is present in each of the monsters and not even in the general (abstract) monster.
-A simple refactor would be to move that attribute to the Monster class and to make the constructor initiate that element with the return value of getColor.
-Another possible solution would be to delete that attribute and implement the getColor logic directly with the raw return value for each subclass of monster.
+#### Feature envy (complete this)
+Due to the usage of the MVC architectural pattern, a lot of our controllers only use their models "features".
+The same happens in our Viewers classes, which access the models data to draw it.
+A clear example of this is the ...
 
-#### Refused Bequest (adapt this)
+Since this is a direct consequence of the MVC pattern, we didn't feel the need to correct/change it.
+Also, by separating these features across the model, controller and viewer, we're appealing to the SRP (Single responsibility principle)
+However, generally this code smell could be "fixed" by moving features across objects (e.g. from the model to the controller)
+
+#### Refused Bequest (complete this)
+Examples:
+Parameters such as described below (previous report)
+Stuff that does nothing some places
+method getHit in MonsterState -> this was done in order to better generalize our code and to be able to treat any monster state the same
+method setStrategy in MonsterState -> this was in order to be able to treat the MonsterPlayer as if he was a regular Monster
+
 Class Controller has abstract function step with parameters Game, GUI.OPTION, time.
 There exist many controllers that extend this class, but not all of them use all of those parameters in their implementation of step.
 For example, MenuController's step doesn't use time and MonsterController's step does not need the option.
