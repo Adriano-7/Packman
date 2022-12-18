@@ -49,6 +49,8 @@ All planned features were implemented.
 >>**Consequences**\
 >>Promotes replaceability (in this case, of Lanterna with another external library to draw things) and promotes SRP, since only the LanternaGUI is concerned with how exactly to draw things with Lanterna and not each of the Viewers (e.g. the viewers don't have to be concerned with the existence of a screen or TextGraphics) 
 
+Factory method for getTarget in Monster in MonsterState
+Factory method for createStrategy in MonsterState
 
 >> ### Monster States
 >>**Problem in Context**\
@@ -200,11 +202,11 @@ However, this would result in a "class explosion" (too many classes), especially
 #### Data classes
 
 #### Feature envy (complete this)
-Due to the usage of the MVC architectural pattern, a lot of our controllers only use their models "features".
-The same happens in our Viewers classes, which access the models data to draw it.
-A clear example of this is the ...
+Due to the usage of the MVC architectural pattern, a lot of our controllers access a lot of their models' "features".
+The same happens in our viewers classes, which access the models data to draw it.
+Some examples of this are the MainMenuController or PacmanController, that access and modify the data of their models.
 
-Since this is a direct consequence of the MVC pattern, we didn't feel the need to correct/change it.
+Since this is a direct consequence of the MVC pattern, we didn't see the benefits of changing it.
 Also, by separating these features across the model, controller and viewer, we're appealing to the SRP (Single responsibility principle)
 However, generally this code smell could be "fixed" by moving features across objects (e.g. from the model to the controller)
 
@@ -215,6 +217,8 @@ Stuff that does nothing some places
 method getHit in MonsterState -> this was done in order to better generalize our code and to be able to treat any monster state the same
 method setStrategy in MonsterState -> this was in order to be able to treat the MonsterPlayer as if he was a regular Monster
 
+#### Refused Bequest (adapt this)
+[MIGHT FIX: MONSTER PLAYER HAS CORNER TARGET]
 Class Controller has abstract function step with parameters Game, GUI.OPTION, time.
 There exist many controllers that extend this class, but not all of them use all of those parameters in their implementation of step.
 For example, MenuController's step doesn't use time and MonsterController's step does not need the option.
