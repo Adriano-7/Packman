@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
+    private static final int FPS = 60;
+    private static final int FRAME_TIME = 1000 / FPS;
     private final LanternaGUI gui;
     private State state;
 
@@ -30,16 +32,13 @@ public class Game {
         this.state = state;
     }
     public void run() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        int FPS = 60;
-        int frameTime = 1000 / FPS;
-
         while (this.state != null) {
             long startTime = System.currentTimeMillis();
 
             state.step(this, gui, startTime);
 
             long elapsedTime = System.currentTimeMillis() - startTime;
-            long sleepTime = frameTime - elapsedTime;
+            long sleepTime = FRAME_TIME - elapsedTime;
 
             try {
                 if (sleepTime > 0) Thread.sleep(sleepTime);

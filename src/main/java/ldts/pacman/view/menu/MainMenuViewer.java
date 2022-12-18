@@ -5,15 +5,12 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.menu.MainMenu;
 import ldts.pacman.view.Viewer;
 
-public class MainMenuViewer extends Viewer<MainMenu> {
-    private final OptionsViewer optionsViewer;
+public class MainMenuViewer extends MenuViewer<MainMenu> {
     public MainMenuViewer(MainMenu menu, OptionsViewer optionsViewer) {
-        super(menu);
-        this.optionsViewer = optionsViewer;
+        super(menu, optionsViewer);
     }
     @Override
-    public void drawElements(GUI gui) {
-        gui.drawText(new Position(5, 5), "PACMAN", "#FFFFFF");
-        optionsViewer.drawOptions(gui);
+    protected void drawHeader(GUI gui) {
+        gui.drawText(new Position(5, 5), "MAIN MENU", "#FFFFFF");
     }
 }
