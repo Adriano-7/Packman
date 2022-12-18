@@ -5,8 +5,8 @@ import ldts.pacman.model.game.Position;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PacmanStrategy extends PlayerMovementStrategy {
-    public PacmanStrategy() {
+public class PacmanPlayerStrategy extends PlayerMovementStrategy {
+    public PacmanPlayerStrategy() {
         super(createOptionToDirectionMap(), 200);
     }
     private static Map<GUI.OPTION, Position> createOptionToDirectionMap() {

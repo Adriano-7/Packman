@@ -1,4 +1,5 @@
 package ldts.pacman.model.game.arena;
+
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.BlueMonster;
@@ -8,16 +9,13 @@ import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ldts.pacman.model.game.elements.Monster;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaTest {
@@ -112,6 +110,7 @@ public class ArenaTest {
         assertEquals(mockMonster4, arena.getCollidingMonster(new Position(7, 3)));
         assertNull(arena.getCollidingMonster(new Position(1, 1)));
     }
+    /*
     @Test
     public void testCollidesWithPacman() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Pacman mockPacman = Mockito.mock(Pacman.class);
@@ -128,7 +127,7 @@ public class ArenaTest {
         assertTrue(arena.collidesWithPacman(mockMonster1));
         assertFalse(arena.collidesWithPacman(mockMonster2));
     }
-
+*/
     @Test
     public void testResetPositions(){
         Pacman mockPacman = Mockito.mock(Pacman.class);

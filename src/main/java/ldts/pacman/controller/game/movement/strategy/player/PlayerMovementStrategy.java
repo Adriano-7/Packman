@@ -11,12 +11,10 @@ import java.util.Map;
 
 public abstract class PlayerMovementStrategy extends MovementStrategy {
     private Map<GUI.OPTION, Position> optionToDirection;
-    private long movementInterval;
 
     protected PlayerMovementStrategy(Map<GUI.OPTION, Position> optionToDirection, long movementInterval) {
         super(movementInterval);
         this.optionToDirection = optionToDirection;
-        this.movementInterval = movementInterval;
     }
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
         for (GUI.OPTION option : options) {

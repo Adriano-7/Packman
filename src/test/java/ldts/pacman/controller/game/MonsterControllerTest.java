@@ -7,16 +7,12 @@ import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-//Use jUnit and Mockito to test the MonsterController class
 public class MonsterControllerTest {
     private MonsterController monsterController;
     @BeforeEach

@@ -1,24 +1,13 @@
 package ldts.pacman.controller.game;
 
-
-import ldts.pacman.gui.GUI;
-import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Coin;
 import ldts.pacman.model.game.elements.Pacman;
 import ldts.pacman.model.game.elements.Wall;
 import ldts.pacman.model.game.elements.monsters.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class PacmanControllerTest {
     private PacmanController pacmanController;
