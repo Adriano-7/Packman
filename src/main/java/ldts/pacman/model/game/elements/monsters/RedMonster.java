@@ -5,7 +5,7 @@ import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.Monster;
 
-public class RedMonster extends Monster {
+public class RedMonster extends MonsterBot {
     public RedMonster(int x, int y) {
         super(x, y, new Position(16, 16));
     }

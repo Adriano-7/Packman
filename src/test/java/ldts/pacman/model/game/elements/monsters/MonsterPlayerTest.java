@@ -34,8 +34,4 @@ public class MonsterPlayerTest {
         Mockito.verify(monsterState, times(1)).setMovementStrategy(Mockito.any(MonsterPlayerStrategy.class));
         assertEquals(monsterState, monsterPlayer.getState());
     }
-    @Test
-    public void getCornerTarget() {
-        assertNull(monsterPlayer.getCornerTarget());
-    }
 }

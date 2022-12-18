@@ -5,12 +5,10 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 
 public abstract class Monster extends MovableElement {
-    private final Position cornerTarget;
     protected MonsterState state;
-    protected Monster(int x, int y, Position cornerTarget) {
+    protected Monster(int x, int y) {
         super(x, y);
         this.state = createMonsterState();
-        this.cornerTarget = cornerTarget;
     }
     protected abstract MonsterState createMonsterState();
     public void getHit(Arena arena) {
@@ -21,9 +19,6 @@ public abstract class Monster extends MovableElement {
     }
     public void setState(MonsterState state) {
         this.state = state;
-    }
-    public Position getCornerTarget() {
-        return this.cornerTarget;
     }
     public abstract String getBaseColor();
 }

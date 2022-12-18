@@ -4,6 +4,7 @@ import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.MovableElement;
+import ldts.pacman.model.game.elements.monsters.MonsterBot;
 
 public class ScatterCornerStrategy extends TargetStrategy {
     public ScatterCornerStrategy() {
@@ -11,7 +12,7 @@ public class ScatterCornerStrategy extends TargetStrategy {
     }
     @Override
     protected Position getTarget(MovableElement element, Arena arena) {
-        Monster monster = (Monster) element;
+        MonsterBot monster = (MonsterBot) element;
         return monster.getCornerTarget();
     }
 }
