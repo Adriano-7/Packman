@@ -14,14 +14,6 @@ public class ScaredState extends MonsterState {
         return new ScaredStrategy();
     }
     @Override
-    protected boolean changeState(Monster monster, Arena arena, long time) {
-        if (time - getStateStartTime() > pow(10, 4)) { // 10 seconds
-            monster.setState(new ScatterState(monster.getBaseColor()));
-            return true;
-        }
-        return false;
-    }
-    @Override
     public void getHit(Monster monster, Arena arena) {
         Pacman pacman = arena.getPacman();
         pacman.setScore(pacman.getScore() + 20);
@@ -29,7 +21,10 @@ public class ScaredState extends MonsterState {
     }
     @Override
     public String getColor() {return "#2121ff";}
-
+    @Override
+    public MonsterState getNextState(Monster monster) {
+        return new ScatterState(monster.getBaseColor());
+    }
     @Override
     protected char[] createDrawingChar() {
         return new char[]{'f', 'g', 'h', 'i'};

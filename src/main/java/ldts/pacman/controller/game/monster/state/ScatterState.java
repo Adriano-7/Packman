@@ -14,12 +14,8 @@ public class ScatterState extends MonsterState {
         this.color = color;
     }
     @Override
-    protected boolean changeState(Monster monster, Arena arena, long time) {
-        if (time - getStateStartTime() > pow (10, 4)) { // 10 seconds
-            monster.setState(new ChaseState(monster.getBaseColor()));
-            return true;
-        }
-        return false;
+    protected MonsterState getNextState(Monster monster) {
+        return new ChaseState(monster.getBaseColor());
     }
     @Override
     public void getHit(Monster monster, Arena arena) {

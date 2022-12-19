@@ -6,7 +6,10 @@ import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
 import java.util.List;
 
+import static java.lang.Math.pow;
+
 public abstract class MonsterState {
+    private static final long TIME_IN_STATE = 10000; // 10 seconds
     private MovementStrategy movementStrategy;
     private final char[] drawingChar;
     private final long stateStartTime;
@@ -26,7 +29,15 @@ public abstract class MonsterState {
         }
         return false;
     }
-    protected abstract boolean changeState(Monster monster, Arena arena, long time);
+    protected abstract MonsterState getNextState(Monster monster);
+    protected boolean changeState(Monster monster, Arena arena, long time) {
+        if (time - getStateStartTime() > TIME_IN_STATE) {
+            monster.setState(getNextState(monster));
+            return true;
+        }
+        return false;
+    }
+
     public abstract void getHit(Monster monster, Arena arena);
     protected abstract char[] createDrawingChar();
     public char[] getDrawingChar() {

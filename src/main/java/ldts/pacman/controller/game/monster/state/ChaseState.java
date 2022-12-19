@@ -4,7 +4,6 @@ import ldts.pacman.controller.game.movement.strategy.bot.target.ChasePacmanStrat
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
-import static java.lang.Math.pow;
 
 public class ChaseState extends MonsterState {
     private final String color;
@@ -20,12 +19,8 @@ public class ChaseState extends MonsterState {
         return this.color;
     }
     @Override
-    protected boolean changeState(Monster monster, Arena arena, long time) {
-        if (time - getStateStartTime() > pow (10, 4)) { // 10 seconds
-            monster.setState(new ScatterState(monster.getBaseColor()));
-            return true;
-        }
-        return false;
+    public MonsterState getNextState(Monster monster) {
+        return new ScatterState(monster.getBaseColor());
     }
     @Override
     public void getHit(Monster monster, Arena arena) {
