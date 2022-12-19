@@ -2,6 +2,7 @@ package ldts.pacman.model.game.arena;
 
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.sound.observer.SoundPacCoin;
 import ldts.pacman.sound.observer.SoundPacDies;
 import ldts.pacman.sound.observer.SoundStartLevel;

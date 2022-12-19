@@ -3,7 +3,7 @@ package ldts.pacman.controller.game;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Pacman;
-import ldts.pacman.model.game.elements.monsters.RedMonster;
+import ldts.pacman.model.game.elements.monsters.bot.RedMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

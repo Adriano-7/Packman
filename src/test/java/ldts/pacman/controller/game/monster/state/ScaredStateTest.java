@@ -1,7 +1,7 @@
 package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.Pacman;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

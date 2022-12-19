@@ -6,8 +6,8 @@ import ldts.pacman.controller.game.movement.strategy.player.PacmanPlayerStrategy
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
-import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.monsters.Monster;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;

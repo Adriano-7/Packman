@@ -2,16 +2,16 @@ package ldts.pacman.model.game.arena;
 
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
-import ldts.pacman.model.game.elements.monsters.BlueMonster;
-import ldts.pacman.model.game.elements.monsters.OrangeMonster;
-import ldts.pacman.model.game.elements.monsters.PinkMonster;
-import ldts.pacman.model.game.elements.monsters.RedMonster;
+import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
+import ldts.pacman.model.game.elements.monsters.bot.OrangeMonster;
+import ldts.pacman.model.game.elements.monsters.bot.PinkMonster;
+import ldts.pacman.model.game.elements.monsters.bot.RedMonster;
 import ldts.pacman.sound.observer.SoundPacCoin;
 import ldts.pacman.sound.observer.SoundPacDies;
 import ldts.pacman.sound.observer.SoundStartLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import org.mockito.Mockito;
 
 import javax.sound.sampled.LineUnavailableException;

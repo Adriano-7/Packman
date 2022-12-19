@@ -1,8 +1,9 @@
-package ldts.pacman.model.game.elements;
+package ldts.pacman.model.game.elements.monsters;
 
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
+import ldts.pacman.model.game.elements.MovableElement;
 
 public abstract class Monster extends MovableElement {
     protected MonsterState state;

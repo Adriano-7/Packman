@@ -3,10 +3,8 @@ package ldts.pacman.controller.game.monster.state;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.controller.game.movement.strategy.bot.ScaredStrategy;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.Pacman;
-
-import static java.lang.Math.pow;
 
 public class ScaredState extends MonsterState {
     @Override

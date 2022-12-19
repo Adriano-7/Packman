@@ -1,7 +1,7 @@
-package ldts.pacman.model.game.elements.monsters;
+package ldts.pacman.model.game.elements.monsters.bot;
 
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 
 public abstract class MonsterBot extends Monster {
     private final Position cornerTarget;

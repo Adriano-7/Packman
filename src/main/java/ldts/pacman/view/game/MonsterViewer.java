@@ -1,7 +1,7 @@
 package ldts.pacman.view.game;
 
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 
 public class MonsterViewer implements ElementViewer<Monster> {
     @Override

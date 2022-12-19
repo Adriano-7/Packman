@@ -1,11 +1,11 @@
 package ldts.pacman.model.game.arena;
 
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.monsters.MonsterPlayer;
-import ldts.pacman.model.game.elements.monsters.BlueMonster;
-import ldts.pacman.model.game.elements.monsters.OrangeMonster;
-import ldts.pacman.model.game.elements.monsters.PinkMonster;
-import ldts.pacman.model.game.elements.monsters.RedMonster;
+import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
+import ldts.pacman.model.game.elements.monsters.bot.OrangeMonster;
+import ldts.pacman.model.game.elements.monsters.bot.PinkMonster;
+import ldts.pacman.model.game.elements.monsters.bot.RedMonster;
 import java.util.ArrayList;
 import java.util.List;
 

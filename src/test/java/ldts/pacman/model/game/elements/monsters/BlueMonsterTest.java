@@ -1,6 +1,7 @@
 package ldts.pacman.model.game.elements.monsters;
 
 import ldts.pacman.controller.game.monster.state.ScatterState;
+import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

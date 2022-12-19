@@ -4,7 +4,7 @@ import ldts.pacman.controller.game.movement.strategy.bot.target.EatenStrategy;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 
 public class EatenState extends MonsterState {
     private final static long TIME_OUT = 6000; // 6 seconds

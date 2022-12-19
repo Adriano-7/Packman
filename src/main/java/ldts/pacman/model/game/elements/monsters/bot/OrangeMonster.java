@@ -1,13 +1,12 @@
-package ldts.pacman.model.game.elements.monsters;
+package ldts.pacman.model.game.elements.monsters.bot;
 
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.elements.Monster;
 
-public class RedMonster extends MonsterBot {
-    public RedMonster(int x, int y) {
-        super(x, y, new Position(16, 16));
+public class OrangeMonster extends MonsterBot {
+    public OrangeMonster(int x, int y) {
+        super(x, y, new Position(16, 2));
     }
     @Override
     protected MonsterState createMonsterState() {
@@ -15,6 +14,6 @@ public class RedMonster extends MonsterBot {
     }
     @Override
     public String getBaseColor() {
-        return "#d03e19";
+        return "#db851c";
     }
 }

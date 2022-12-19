@@ -3,10 +3,8 @@ package ldts.pacman.controller.game.monster.state;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import java.util.List;
-
-import static java.lang.Math.pow;
 
 public abstract class MonsterState {
     private static final long TIME_IN_STATE = 10000; // 10 seconds
