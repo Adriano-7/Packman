@@ -9,10 +9,6 @@ public class BlueMonster extends MonsterBot {
         super(x, y, new Position(2, 2));
     }
     @Override
-    public MonsterState createMonsterState() {
-        return new ScatterState(getBaseColor());
-    }
-    @Override
     public String getBaseColor() {
         return "#46bfee";
     }

@@ -9,10 +9,6 @@ public class PinkMonster extends MonsterBot {
         super(x, y, new Position(2, 16));
     }
     @Override
-    protected MonsterState createMonsterState() {
-        return new ScatterState(getBaseColor());
-    }
-    @Override
     public String getBaseColor() {
         return "#ea82e5";
     }
