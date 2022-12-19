@@ -1,6 +1,6 @@
 package ldts.pacman.controller.game.monster.state;
 
-import ldts.pacman.controller.game.movement.strategy.target.ChasePacmanStrategy;
+import ldts.pacman.controller.game.movement.strategy.bot.target.ChasePacmanStrategy;
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.Monster;
