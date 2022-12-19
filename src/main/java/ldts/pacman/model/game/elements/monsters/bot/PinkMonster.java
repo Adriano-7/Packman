@@ -1,7 +1,5 @@
 package ldts.pacman.model.game.elements.monsters.bot;
 
-import ldts.pacman.controller.game.monster.state.MonsterState;
-import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.model.game.Position;
 
 public class PinkMonster extends MonsterBot {
