@@ -21,5 +21,6 @@ For a more detailed versin of this description, click [here](./docs/README.md).
 >- **Pacman collides with monsters** - health decreased and positions of monsters and pacman reset to beginning
 >- **PowerUps** for pacman - makes ghosts "scared" and is able to eat them on collision for points
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
+>- **Resetting map** - after pacman collects all coins of the map, the coins and powerUps get reset back to how they were in the start of the level
 
 ![SinglePlayerGame](https://user-images.githubusercontent.com/93844395/208137735-5112e3ae-c75d-4148-b4d9-2d65421081cc.gif)
