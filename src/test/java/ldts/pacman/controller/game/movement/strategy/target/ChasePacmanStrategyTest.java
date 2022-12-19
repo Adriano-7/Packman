@@ -1,9 +1,10 @@
 package ldts.pacman.controller.game.movement.strategy.target;
 
+import ldts.pacman.controller.game.movement.strategy.bot.target.ChasePacmanStrategy;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.Monster;
 import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
