@@ -18,19 +18,18 @@ public abstract class TargetStrategy extends MovementStrategy {
         if (enoughTimeElapsed(time)) {
             setLastMovement(time);
             Position target = getTarget(element, arena);
-            boolean moved = moveToTarget(element, arena, target);
-            return moved;
+            moveToTarget(element, arena, target);
+            return true;
         }
         return false;
     }
     protected abstract Position getTarget(MovableElement element, Arena arena);
-    private boolean moveToTarget(MovableElement element, Arena arena, Position target) {
+    private void moveToTarget(MovableElement element, Arena arena, Position target) {
         List<Position> validDirections = getValidDirections(element, arena);
         Position bestDirection = getBestDirection(element, validDirections, target);
 
         element.setDirection(bestDirection);
         element.setPosition(element.getPosition().plus(bestDirection));
-        return true;
     }
     private List<Position> getValidDirections(MovableElement element, Arena arena) {
         List<Position> directions = Arrays.asList(new Position(0, 1), new Position(0, -1),
