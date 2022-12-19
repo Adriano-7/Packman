@@ -63,30 +63,37 @@ Factory method for createStrategy in MonsterState
 > In fact, the monster abstract class has a MonsterState field that can be changed throughout the game, and can be accessed by the controller and the viewer.
 > Different monster states have different ways of moving and different drawing characters, meaning different ways of drawing them.
 > The states can change the monster state themselves, or they could be changed by an outside entity, such as the PacmanController when Pacman collects a powerUp.
-
+>
 >>**Implementation**
->> [INTRODUCE IMAGE HERE]
+>> 
 >> The UML state diagram for the MonsterStates is presented here:
+> [INTRODUCE IMAGE HERE]
+> The UML class diagram for this pattern is presented here:
 >> [INTRODUCE IMAGE HERE]
 >> These classes can be found in the following links:
 >> [INTRODUCE LINKS HERE]
-
+>
 >>**Consequences**
 > This pattern allows us to change the monster behaviour (state) during runtime, and we've avoided scattered conditional logic.
 > Another benefit is making these state transitions explicit in the code.
 
-FACTORY METHOD EXPLANATION (use somewhere else?)
-> The abstract Class Monster knows it has to return a way to move (an abstract MovementStrategy).
-> It does not know, however, which concrete implementation to return. Therefore, by using this pattern, we delegate the choice of the MovementStrategy to the subclasses of Monster.
-> Only those will (know to) specify the concrete specification (e.g. RandomMovement)
-
-
+### Factory method
+>>**Problem in Context**\
+> Parent abstract classes sometimes can't define the class of objects that they should create.
+> It must be specified only by the subclasses.
+> An example of this is the MonsterState [INTRODUCE LINK HERE] and the usage/creation of its MovementStrategy [INTRODUCE LINK HERE].
+>>**The Pattern**\
+We've used the Factory method several times in our code.
+> The abstract class MonsterState knows it has to define a way to move (an abstract MovementStrategy).
+> It does not know, however, which concrete implementation to return. By using this pattern, we delegate the choice of the MovementStrategy to the subclasses of MonsterState.
+> Only those will (know to) specify the concrete specification (e.g. ScaredState defines ScaredStrategy)
 >>
 >>**Implementation**
->> 
+>> [INTRODUCE NEW IMAGE HERE]
 >> <img src="https://user-images.githubusercontent.com/93844395/204080284-b589bb6e-7bc4-4db3-a905-9f265da6bf1c.jpg" height="338,58" width="556,38" > 
 >> 
 >> These classes can be found in the following links:
+> [INTRODUCE NEW LINKS HERE]
 >> - [Monster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/Monster.java)
 >> - [BlueMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/BlueMonster.java)
 >> - [RedMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/RedMonster.java)
@@ -96,9 +103,9 @@ FACTORY METHOD EXPLANATION (use somewhere else?)
 >> - [RandomMovement](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/RandomMovement.java)
 >>
 >>**Consequences**
->Using this pattern, we delegate the algorithm choice for the movement to the type of monster.
-> The controller asks for it from the monster and uses it to move said monster.
-> This avoids any switch case by using polymorphism.
+> By using this pattern, we delegate the algorithm choice for the movement to the concrete MonsterStates, that know which to define.
+> When asked to move a monster, the MonsterState can easily ask its MovementStrategy to do so.
+> This avoids any switch cases by using polymorphism.
 
 ### Strategy
 >>**Problem in Context**\
@@ -139,6 +146,7 @@ We've used the **Model-View-Control** architectural pattern, more specifically H
 >>![MVC](https://user-images.githubusercontent.com/93844395/204065838-d7cb2566-f179-4da2-b522-af6faff55a1f.jpg)
 >> 
 >> An example of the application of this pattern can be found in the following links:
+> [INTRODUCE NEW LINKS HERE?]
 >> - [PacmanController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/PacmanController.java)
 >> - [PacmanViewer](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/view/game/PacmanViewer.java)
 >> - [PacmanModel](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/Pacman.java)
@@ -165,10 +173,10 @@ In the classes below, there's also present the usage of a FactoryMethod, allowin
 >>
 >>**Implementation**
 >> [INTRODUCE NEW IMAGE HERE]
->><img src="https://user-images.githubusercontent.com/93844395/204080620-b3bb1148-4f18-43b0-9ef5-fb8fb8881615.jpg" height="328,4" width="505,8" >
+>>
 >>
 >>  These classes can be found in the following links:
->  [INTRODUCE MORE LINKS HERE]
+>  [INTRODUCE NEW/MORE LINKS HERE]
 >> - [Game](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/Game.java)
 >> - [State](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/state/State.java)
 >> - [GameState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/state/GameState.java)
