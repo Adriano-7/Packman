@@ -65,7 +65,7 @@ public class ArenaLoader {
         }
         return null;
     }
-    protected List<Monster> createMonsters() {
+    protected List<Monster> createRegularMonsters() {
         List<Monster> monsters = new ArrayList<>();
         for (int y = 0; y < lines.size(); y++){
             for (int x = 0; x < lines.get(y).length(); x++) {
@@ -78,6 +78,9 @@ public class ArenaLoader {
             }
         }
         return monsters;
+    }
+    protected List<Monster> createMonsters() {
+        return createRegularMonsters();
     }
     private List<Wall> createWalls() {
         List<Wall> walls = new ArrayList<>();
