@@ -63,7 +63,6 @@ public class MonsterPlayerStrategyTest {
         monsterPlayerStrategy = Mockito.spy(monsterPlayerStrategy);
         Mockito.doNothing().when(monsterPlayerStrategy).changeDirection(Mockito.any(), Mockito.any());
 
-        Position down = new Position(0, 1);
         Mockito.when(monster.getDirection()).thenReturn(direction);
         Mockito.when(monster.getPosition()).thenReturn(begin);
     }

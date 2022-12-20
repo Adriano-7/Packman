@@ -36,6 +36,8 @@ public class SaveScoreController extends Controller<SaveScore> {
                 case QUIT:
                     game.setState(new MainMenuState(new MainMenu(new SoundSelection())));
                     break;
+                default:
+                    break;
             }
         }
     }

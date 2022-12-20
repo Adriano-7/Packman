@@ -6,6 +6,7 @@ import ldts.pacman.sound.subject.SoundSubject;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class SaveScore extends Menu {
     public SaveScore(SoundSelection soundSelection, int score) {
         super(soundSelection);
         this.score = score;
-        this.timeStamp = new SimpleDateFormat("dd/MM").format(new Date());
+        this.timeStamp = new SimpleDateFormat("dd/MM").format(Calendar.getInstance().getTime());
     }
     @Override
     protected List<String> createOptions() {

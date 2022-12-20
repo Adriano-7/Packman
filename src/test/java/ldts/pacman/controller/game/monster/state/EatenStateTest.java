@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EatenStateTest {
     private EatenState eatenState;
-    private Monster monster;
     @BeforeEach
     public void setUp(){
         this.eatenState=new EatenState();

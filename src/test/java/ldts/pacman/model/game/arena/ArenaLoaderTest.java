@@ -14,14 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ArenaLoaderTest {
     private Arena arena;
-    private ResourceFileReader resourceFileReader;
     private ArenaLoader arenaLoader;
     @BeforeEach
     public void setUp() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        resourceFileReader = Mockito.mock(ResourceFileReader.class);
-        arenaLoader = new ArenaLoader();
-        ArenaLoader arenaLoader = new ArenaLoader();
-        arenaLoader.setLevelNumber(3);
+        this.arenaLoader = new ArenaLoader();
+        this.arenaLoader.setLevelNumber(3);
 
         SoundPacCoin soundPacCoin = Mockito.mock(SoundPacCoin.class);
         SoundPacDies soundPacDies = Mockito.mock(SoundPacDies.class);

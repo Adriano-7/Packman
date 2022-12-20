@@ -12,7 +12,6 @@ import static org.mockito.Mockito.times;
 
 public class ScaredStateTest {
     private ScaredState scaredState;
-    private Monster monster;
     @BeforeEach
     public void setUp(){
         this.scaredState = new ScaredState();

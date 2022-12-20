@@ -48,6 +48,8 @@ public class ChooseLevelController extends Controller<ChooseLevel> {
                     Arena arena = arenaLoader.createArena(new SoundPacCoin(), new SoundPacDies(), new SoundStartLevel());
                     game.setState(new GameState(arena));
                     break;
+                default:
+                    break;
             }
         }
     }

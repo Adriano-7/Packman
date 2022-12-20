@@ -46,6 +46,8 @@ public class MainMenuController extends Controller<MainMenu> {
                 case QUIT:
                     System.exit(0);
                     break;
+                default:
+                    break;
             }
         }
     }
