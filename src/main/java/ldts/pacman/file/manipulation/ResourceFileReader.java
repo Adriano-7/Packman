@@ -10,7 +10,6 @@ import java.util.List;
 public class ResourceFileReader {
     public List<String> readLines(String filePath) throws IOException {
         URL resource = ResourceFileReader.class.getResource(filePath);
-        System.out.println(resource);
         BufferedReader reader = new BufferedReader(new FileReader(resource.getFile()));
         return readLines(reader);
     }

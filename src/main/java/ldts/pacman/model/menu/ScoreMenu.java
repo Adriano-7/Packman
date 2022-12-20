@@ -31,7 +31,6 @@ public class ScoreMenu {
         List<String> newLines = new ArrayList<>();
 
         boolean newLineAdded = false;
-        System.out.println(lines);
         int i = 0;
         for ( ; i < lines.size(); i++) {
             int place = i + 1;
@@ -39,7 +38,6 @@ public class ScoreMenu {
 
                 newLines.add("  " + place + ". " + name + " - " + scoreToAdd);
                 newLineAdded = true;
-                System.out.println("Added" + newLines.get(i));
             }
             if (newLineAdded) {
                 newLines.add(lines.get(i).replaceFirst(Integer.toString(place),
@@ -50,7 +48,6 @@ public class ScoreMenu {
         if (!newLineAdded) {
             newLines.add("  " + (i + 1) + ". " + name + " - " + scoreToAdd);
         }
-        System.out.println(newLines);
         if (newLines.size() > 10) newLines.remove(newLines.size() - 1);
 
         return newLines;

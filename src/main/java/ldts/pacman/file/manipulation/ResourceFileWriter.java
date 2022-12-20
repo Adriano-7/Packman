@@ -12,7 +12,6 @@ public class ResourceFileWriter {
     }
     public void writeLines(BufferedWriter writer, List<String> lines) throws IOException {
         for (String line: lines) {
-            System.out.println(line);
             writer.write(line + "\n");
         }
         writer.close();
