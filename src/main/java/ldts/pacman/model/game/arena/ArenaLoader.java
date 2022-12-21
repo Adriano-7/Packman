@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaLoader {
-    private List<String> lines;
+    private List<String> lines = null;
     public void setLevelNumber(int levelNumber) throws IOException {
         this.lines = readLines(levelNumber);
     }

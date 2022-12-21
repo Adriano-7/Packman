@@ -9,6 +9,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
 
 public class MainMenuTest {
     private MainMenu mainMenu;
@@ -22,13 +23,18 @@ public class MainMenuTest {
     @Test
     public void testNext_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assertEquals(0, mainMenu.getCurrentOption());
+
         mainMenu.next_Op();
+
         assertTrue(mainMenu.isSelected(1));
         assertEquals(1, mainMenu.getCurrentOption());
+        Mockito.verify(soundSelection, times(1)).onSoundEvent();
     }
     @Test
     public void testPrev_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         mainMenu.prev_Op();
+
+        Mockito.verify(soundSelection, times(1)).onSoundEvent();
         assertTrue(mainMenu.isSelected(3));
     }
     @Test
@@ -42,13 +48,22 @@ public class MainMenuTest {
         assertTrue(selected);
     }
     @Test
-    public void testIsSelectedStartSingle() {
+    public void testIsSelectedStartSingle() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         boolean selected = mainMenu.isSelectedStartSingle();
         assertTrue(selected);
+
+        mainMenu.next_Op();
+
+        boolean selectedAfterNextOp = mainMenu.isSelectedStartSingle();
+        assertFalse(selectedAfterNextOp);
     }
     @Test
     public void testIsSelectedStartMulti() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        boolean selectedBeforeNextOp = mainMenu.isSelectedStartMulti();
+        assertFalse(selectedBeforeNextOp);
+
         mainMenu.next_Op();
+
         boolean selected = mainMenu.isSelectedStartMulti();
         assertTrue(selected);
     }

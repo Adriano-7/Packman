@@ -29,8 +29,8 @@ public class ArenaLoaderTest {
     @Test
     public void arenaElements() {
         assertNotNull(arena.getPacman());
-        assertTrue(arena.getMonsters().size() > 0);
-        assertTrue(arena.getPowerUps().size() > 0);
+        assertEquals(4, arena.getMonsters().size());
+        assertEquals(4, arena.getPowerUps().size());
         assertTrue(arena.getCoins().size() > 0);
         assertTrue(arena.getWalls().size() > 0);
     }

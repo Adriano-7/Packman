@@ -29,8 +29,11 @@ public class ChooseLevelTest {
     @Test
     public void isSelectedExit() {
         try {
+            assertFalse(chooseLevel.isSelectedExit());
             chooseLevel.next_Op();
+            assertFalse(chooseLevel.isSelectedExit());
             chooseLevel.next_Op();
+            assertFalse(chooseLevel.isSelectedExit());
             chooseLevel.next_Op();
         }
         catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
