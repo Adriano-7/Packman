@@ -23,16 +23,17 @@ import java.util.List;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
-    Set<Integer> pressedKeys = new HashSet<>();
-    public LanternaGUI(Screen screen) {this.screen = screen;}
+    private Set<Integer> pressedKeys = new HashSet<>();
+    public LanternaGUI(Screen screen) {
+        this.screen = screen;
+    }
     public LanternaGUI(int width, int height) throws IOException, URISyntaxException, FontFormatException {
         AWTTerminalFontConfiguration fontConfig = loadFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
     private Screen createScreen(Terminal terminal) throws IOException{
-        final Screen screen;
-        screen = new TerminalScreen(terminal);
+        Screen screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
@@ -84,11 +85,12 @@ public class LanternaGUI implements GUI {
     }
     @Override
     public void drawPacman(Position position, Position direction) {
-        if(direction.equals(new Position(0,1))) {drawCharacter(position,'b', "#FFFF00");}
-        else if(direction.equals(new Position(0,-1))) {drawCharacter(position,'d', "#FFFF00");}
-        else if(direction.equals(new Position(1,0))) {drawCharacter(position,'a', "#FFFF00");}
-        else if(direction.equals(new Position(-1,0))) {drawCharacter(position,'c', "#FFFF00");}
-        else drawCharacter(position, 'e', "#FFFF00");
+        String yellowColor = "#FFFF00";
+        if(direction.equals(new Position(0,1))) {drawCharacter(position,'b', yellowColor);}
+        else if(direction.equals(new Position(0,-1))) {drawCharacter(position,'d', yellowColor);}
+        else if(direction.equals(new Position(1,0))) {drawCharacter(position,'a', yellowColor);}
+        else if(direction.equals(new Position(-1,0))) {drawCharacter(position,'c', yellowColor);}
+        else drawCharacter(position, 'e', yellowColor);
     }
     @Override
     public void drawWall(Position position){
