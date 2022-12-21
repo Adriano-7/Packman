@@ -4,6 +4,7 @@ import ldts.pacman.controller.game.monster.state.ChaseState;
 import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.controller.game.movement.strategy.player.MonsterPlayerStrategy;
+import ldts.pacman.model.game.arena.Arena;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -33,5 +34,15 @@ public class MonsterPlayerTest {
 
         Mockito.verify(monsterState, times(1)).setMovementStrategy(Mockito.any(MonsterPlayerStrategy.class));
         assertEquals(monsterState, monsterPlayer.getState());
+    }
+    @Test
+    public void getHit() {
+        MonsterState monsterState = Mockito.mock(MonsterState.class);
+        monsterPlayer.setState(monsterState);
+        Arena arena = Mockito.mock(Arena.class);
+
+        monsterPlayer.getHit(arena);
+
+        Mockito.verify(monsterState, times(1)).getHit(monsterPlayer, arena);
     }
 }

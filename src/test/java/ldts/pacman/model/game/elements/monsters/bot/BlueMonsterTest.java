@@ -1,9 +1,12 @@
 package ldts.pacman.model.game.elements.monsters.bot;
 
+import ldts.pacman.controller.game.monster.state.MonsterState;
 import ldts.pacman.controller.game.monster.state.ScatterState;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,5 +33,12 @@ public class BlueMonsterTest {
     public void testBlueMonsterColor(){
         assertEquals("#46bfee", blueMonster.getBaseColor());
         assertNotEquals("#000000", blueMonster.getBaseColor());
+    }
+    @Test
+    public void setState() {
+        MonsterState monsterState = Mockito.mock(MonsterState.class);
+        blueMonster.setState(monsterState);
+
+        assertEquals(monsterState, blueMonster.getState());
     }
 }

@@ -20,7 +20,7 @@ public class ScaredState extends MonsterState {
     @Override
     public String getColor() {return "#2121ff";}
     @Override
-    public MonsterState getNextState(Monster monster) {
+    protected MonsterState getNextState(Monster monster) {
         return new ScatterState(monster.getBaseColor());
     }
     @Override

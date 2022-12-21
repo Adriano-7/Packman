@@ -19,7 +19,7 @@ public class ChaseState extends MonsterState {
         return this.color;
     }
     @Override
-    public MonsterState getNextState(Monster monster) {
+    protected MonsterState getNextState(Monster monster) {
         return new ScatterState(monster.getBaseColor());
     }
     @Override
