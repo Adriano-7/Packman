@@ -37,6 +37,7 @@ public class ArenaTest {
 
         this.arena = new Arena(10, 20, soundPacCoin, soundPacDies, soundStartLevel);
         Mockito.verify(soundStartLevel, times(1)).onSoundEvent();
+        Mockito.clearInvocations(soundStartLevel);
     }
     @Test
     public void testGetWidth() {
@@ -268,5 +269,39 @@ public class ArenaTest {
 
         Mockito.verify(pacman, times(0)).increaseScore();
         assertEquals(1, arena.getPowerUps().size());
+    }
+    @Test
+    public void resetLevel() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Pacman pacman = Mockito.mock(Pacman.class);
+        arena.setPacman(pacman);
+
+        List<Coin> coins = new ArrayList<>();
+        Coin coin = Mockito.mock(Coin.class);
+        coins.add(coin);
+        arena.setCoins(coins);
+
+        List<PowerUp> powerUps = new ArrayList<>();
+        PowerUp powerUp = Mockito.mock(PowerUp.class);
+        powerUps.add(powerUp);
+        arena.setPowerUps(powerUps);
+
+        Mockito.when(powerUp.collides(pacman)).thenReturn(true);
+        Mockito.when(coin.collides(pacman)).thenReturn(true);
+
+        List<Coin> initialCoins = new ArrayList<>(coins);
+        List<PowerUp> initialPowerUps = new ArrayList<>(powerUps);
+
+        arena.collectCoin();
+        boolean collectedPowerUp = arena.collectPowerUp();
+        assertTrue(collectedPowerUp);
+
+        assertEquals(0, arena.getCoins().size());
+        assertEquals(0, arena.getPowerUps().size());
+
+        arena.resetLevel();
+
+        assertEquals(initialCoins, arena.getCoins());
+        assertEquals(initialPowerUps, arena.getPowerUps());
+        Mockito.verify(soundStartLevel, times(1)).onSoundEvent();
     }
 }
