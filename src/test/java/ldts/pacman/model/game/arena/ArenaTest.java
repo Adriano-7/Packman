@@ -36,6 +36,7 @@ public class ArenaTest {
         this.soundStartLevel = Mockito.mock(SoundStartLevel.class);
 
         this.arena = new Arena(10, 20, soundPacCoin, soundPacDies, soundStartLevel);
+        Mockito.verify(soundStartLevel, times(1)).onSoundEvent();
     }
     @Test
     public void testGetWidth() {
@@ -137,27 +138,33 @@ public class ArenaTest {
         assertEquals(mockMonster2, arena.getCollidingMonster(p2));
         assertEquals(mockMonster3, arena.getCollidingMonster(p3));
         assertEquals(mockMonster4, arena.getCollidingMonster(p4));
+        Mockito.verify(soundPacDies, times(4)).onSoundEvent();
 
         assertNull(arena.getCollidingMonster(new Position(1, 1)));
     }
-    /*
+
     @Test
     public void testCollidesWithPacman() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Pacman mockPacman = Mockito.mock(Pacman.class);
-        Mockito.when(mockPacman.getPosition()).thenReturn(new Position(4,6));
         arena.setPacman(mockPacman);
 
         Monster mockMonster1 = Mockito.mock(RedMonster.class);
-        Mockito.when(mockMonster1.collidesWithPacman(mockPacman)).thenReturn(true);
+        Mockito.when(mockMonster1.collides(mockPacman)).thenReturn(true);
 
         Monster mockMonster2 = Mockito.mock(BlueMonster.class);
-        Mockito.when(mockMonster2.collidesWithPacman(mockPacman)).thenReturn(false);
+        Mockito.when(mockMonster2.collides(mockPacman)).thenReturn(false);
 
         arena.setMonsters(Arrays.asList(mockMonster1, mockMonster2));
-        assertTrue(arena.collidesWithPacman(mockMonster1));
-        assertFalse(arena.collidesWithPacman(mockMonster2));
+
+        boolean collidedTrue = arena.collidesWithPacman(mockMonster1);
+        assertTrue(collidedTrue);
+        Mockito.verify(soundPacDies, times(1)).onSoundEvent();
+
+        boolean collidedFalse = arena.collidesWithPacman(mockMonster2);
+        assertFalse(collidedFalse);
+        Mockito.verifyNoMoreInteractions(soundPacDies);
     }
-*/
+
     @Test
     public void testResetPositions(){
         Position pacmanPos = new Position(4, 6);
@@ -203,7 +210,27 @@ public class ArenaTest {
         arena.collectCoin();
 
         Mockito.verify(pacman, times(1)).increaseScore();
+        Mockito.verify(soundPacCoin, times(1)).onSoundEvent();
         assertEquals(0, arena.getCoins().size());
+    }
+    @Test
+    public void noCollectCoin() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Pacman pacman = Mockito.mock(Pacman.class);
+        arena.setPacman(pacman);
+        Coin coin = Mockito.mock(Coin.class);
+        Mockito.when(coin.collides(pacman)).thenReturn(false);
+
+        List<Coin> coins = new ArrayList<>();
+        coins.add(coin);
+        arena.setCoins(coins);
+        int initialSize = coins.size();
+
+        arena.collectCoin();
+
+        Mockito.verify(pacman, times(0)).increaseScore();
+        Mockito.verifyNoMoreInteractions(soundPacCoin);
+        assertEquals(initialSize, arena.getCoins().size());
+
     }
     @Test
     public void collectPowerUpTrue() {
@@ -221,6 +248,7 @@ public class ArenaTest {
         assertTrue(collectedTrue);
 
         Mockito.verify(pacman, times(1)).increaseScore();
+        Mockito.verifyNoInteractions(soundPacCoin);
         assertEquals(0, arena.getPowerUps().size());
     }
     @Test
