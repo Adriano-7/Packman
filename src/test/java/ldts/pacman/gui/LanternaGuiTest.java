@@ -11,7 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.io.IOException;
 
-public class LanternaGuiTest {
+import static org.mockito.Mockito.times;
+
+public class LanternaGUITest {
     private LanternaGUI gui;
     private Screen screen;
     private TextGraphics textGraphics;
@@ -21,74 +23,102 @@ public class LanternaGuiTest {
         screen = Mockito.mock(Screen.class);
         textGraphics = Mockito.mock(TextGraphics.class);
 
-        Mockito.when(screen.pollInput()).thenReturn(new KeyStroke(KeyType.ArrowUp));
         Mockito.when(screen.newTextGraphics()).thenReturn(textGraphics);
         gui = new LanternaGUI(screen);
     }
-    /*
     @Test
-    public void testGetNextOption() throws IOException {
-        assertEquals(gui.getNextOption(), GUI.OPTION.UP);
-    }
-
-     */
-    /*
     public void testDrawPacman() {
-        gui.drawPacman(new Position(2,3), );
+        Position pacmanPos = new Position(2, 3);
+        Position noDir = new Position(0, 0);
+        Position upDir = new Position(0, -1);
+        Position downDir = new Position(0, 1);
+        Position rightDir = new Position(1, 0);
+        Position leftDir = new Position(-1, 0);
+        LanternaGUI guiSpy = Mockito.spy(gui);
 
-        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 255, 0));
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 3, "@");
+        guiSpy.drawPacman(pacmanPos, noDir);
+        verifyDrawPacman(pacmanPos, 'e', guiSpy);
+
+        guiSpy.drawPacman(pacmanPos, upDir);
+        verifyDrawPacman(pacmanPos, 'd', guiSpy);
+
+        guiSpy.drawPacman(pacmanPos, downDir);
+        verifyDrawPacman(pacmanPos, 'b', guiSpy);
+
+        guiSpy.drawPacman(pacmanPos, rightDir);
+        verifyDrawPacman(pacmanPos, 'a', guiSpy);
+
+        guiSpy.drawPacman(pacmanPos, leftDir);
+        verifyDrawPacman(pacmanPos, 'c', guiSpy);
     }
-    */
-
+    private void verifyDrawPacman(Position pacmanPos, char c, LanternaGUI guiSpy) {
+        String yellowColor = "#FFFF00";
+        Mockito.verify(guiSpy, times(1)).drawCharacter(pacmanPos, c, yellowColor);
+    }
     @Test
     public void testDrawWall(){
-        gui.drawWall(new Position(4, 5));
-        //Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(36, 36, 255));
-        //Mockito.verify(textGraphics, Mockito.times(1)).putString(4, 5, "#");
+        LanternaGUI guiSpy = Mockito.spy(gui);
+        Position wallPos = new Position(4, 5);
+
+        guiSpy.drawWall(wallPos);
+
+        Mockito.verify(guiSpy, times(1)).drawCharacter(wallPos, 'k', "#2424FF");
     }
     @Test
     public void testDrawCoin(){
-        gui.drawCoin(new Position(2, 2));
-        //Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(212, 175, 55));
-        //Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 2, "o");
+        LanternaGUI guiSpy = Mockito.spy(gui);
+        Position coinPos = new Position(2, 2);
+
+        guiSpy.drawCoin(coinPos);
+
+        Mockito.verify(guiSpy, times(1)).drawCharacter(coinPos, 'l', "#d4af37");
     }
-    /*
-    @Test
-    public void testDrawMonster(){
-        gui.drawMonster(new Position(2, 2), "#FF0000");
-        //Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 0, 0));
-        //Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 2, "M");
-    }
-    */
     @Test
     public void testDrawText(){
         gui.drawText(new Position(2, 2), "Hello World", "#FF0000");
-        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 0, 0));
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 2, "Hello World");
+        Mockito.verify(textGraphics, times(1)).setForegroundColor(new TextColor.RGB(255, 0, 0));
+        Mockito.verify(textGraphics, times(1)).putString(2, 2, "Hello World");
     }
     @Test
     public void testDrawCharacter(){
-        gui.drawCharacter(new Position(2, 2), 'A', "#FF0000");
-        Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 0, 0));
-        Mockito.verify(textGraphics, Mockito.times(1)).putString(2, 2, "A");
+        int x = 2, y = 2;
+        Position pos = new Position(x, y);
+        gui.drawCharacter(pos, 'A', "#FF0000");
+        Mockito.verify(textGraphics, times(1)).setForegroundColor(new TextColor.RGB(255, 0, 0));
+        Mockito.verify(textGraphics, times(1)).putString(x, y, "A");
     }
     @Test
     public void testDrawScore(){
-        gui.drawScore(100);
-        //Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 215, 0));
-        //Mockito.verify(textGraphics, Mockito.times(1)).putString(0, 21, "Score: 100");
+        Position scorePos = new Position(0, 22);
+        int score = 100;
+        String scoreStr = "SCORE: " + score;
+        String color = "#FFFFFF";
+
+        LanternaGUI guiSpy = Mockito.spy(gui);
+
+        guiSpy.drawScore(100);
+        Mockito.verify(guiSpy, times(1)).drawText(scorePos, scoreStr, color);
     }
     @Test
     public void testDrawHealth(){
-        gui.drawHealth(100);
-        //Mockito.verify(textGraphics, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 215, 0));
-        //Mockito.verify(textGraphics, Mockito.times(1)).putString(0, 20, "Health: 100");
+        LanternaGUI guiSpy = Mockito.spy(gui);
+        int health = 3;
+
+        guiSpy.drawHealth(health);
+        Mockito.verify(guiSpy, times(health)).drawCharacter(Mockito.any(Position.class), Mockito.anyChar(), Mockito.anyString());
+
+        Mockito.clearInvocations(guiSpy);
+
+        guiSpy.drawHealth(0);
+        Mockito.verify(guiSpy, times(0)).drawCharacter(Mockito.any(Position.class), Mockito.anyChar(), Mockito.anyString());
     }
     @Test
-    public void testDrawPowerups(){
-        gui.drawPowerUp(new Position(10, 5));
-        // Mockito.verify(textGraphics,Mockito.times(1)).setForegroundColor(new TextColor.RGB(255,215,0));
-       // Mockito.verify(textGraphics,Mockito.times(1)).putString(10,5,"j");
+    public void testDrawPowerUps(){
+        LanternaGUI guiSpy = Mockito.spy(gui);
+        Position powerUpPos = new Position(10, 5);
+
+        guiSpy.drawPowerUp(powerUpPos);
+
+        Mockito.verify(guiSpy, times(1)).drawCharacter(powerUpPos, 'j', "#ffffff");
     }
 }
