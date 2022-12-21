@@ -5,15 +5,25 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.elements.MovableElement;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public abstract class PlayerMovementStrategy extends MovementStrategy {
     private Map<GUI.OPTION, Position> optionToDirection;
 
-    protected PlayerMovementStrategy(Map<GUI.OPTION, Position> optionToDirection, long timeBetweenMoves) {
+    protected PlayerMovementStrategy(GUI.OPTION up, GUI.OPTION down, GUI.OPTION left, GUI.OPTION right, long timeBetweenMoves) {
         super(timeBetweenMoves);
-        this.optionToDirection = optionToDirection;
+        this.optionToDirection = createOptionToDirectionMap(up, down, left, right);
+    }
+    private Map<GUI.OPTION, Position> createOptionToDirectionMap(GUI.OPTION up, GUI.OPTION down, GUI.OPTION left, GUI.OPTION right) {
+        Map<GUI.OPTION, Position> monsterOptionToDirection = new HashMap<>();
+        monsterOptionToDirection.put(up, new Position(0, -1));
+        monsterOptionToDirection.put(down, new Position(0, 1));
+        monsterOptionToDirection.put(left, new Position(-1, 0));
+        monsterOptionToDirection.put(right, new Position(1, 0));
+        return monsterOptionToDirection;
     }
     public void changeDirection(List<GUI.OPTION> options, MovableElement element) {
         for (GUI.OPTION option : options) {
@@ -41,4 +51,3 @@ public abstract class PlayerMovementStrategy extends MovementStrategy {
         return false;
     }
 }
-
