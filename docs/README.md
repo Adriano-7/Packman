@@ -1,6 +1,6 @@
-## LDTS_2L.EIC04-03 - PAC-MAN
+# LDTS_2L.EIC04-03 - PAC-MAN
 
-### Game Description
+## Game Description
 > In this thrilling recreation of the classic arcade game, you will be tasked with navigating a maze and eating all the Pac-dots while avoiding the infamous ghosts  Blinky, Pinky, Inky, and Clyde.
 If one of the ghosts catches you, you will lose a life unless you've eaten a power pellet, in which case you can eat the ghosts for bonus points. If you lose all your three lives, it's game over.
 You'll also be able to play with your friend in a 2-player mode, where one of you will live in the shoes of Pac-Man and the other will be a ghost.
@@ -12,7 +12,7 @@ You'll also be able to play with your friend in a 2-player mode, where one of yo
 >- Q: going back (in game and in menu)
 
 This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Félix Martins* (*up202108837*@fe.up.pt) and *Tomás Pereira* (*up202108845*@fe.up.pt) for LDTS 2022⁄23.
-### IMPLEMENTED FEATURES
+## IMPLEMENTED FEATURES
 >- **Connected Menus** - Browsing back and forth through different Menus
 >- **Main Menu** to browse to different menus and to choose whether to play single or multiplayer
 >- **Menu** to choose the level to play
@@ -27,11 +27,11 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
 >- **Resetting map** - after pacman collects all coins of the map, the coins and powerUps get reset back to how they were in the start of the level
 
-### PLANNED FEATURES
+## PLANNED FEATURES
 All planned features were implemented.
 
 
-### DESIGN
+## DESIGN
 
 >> ### GUI
 >>**Problem in Context**\
@@ -213,16 +213,15 @@ MORE PATTERNS:
 OBSERVER?
 
 
-#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-#### MIDDLE MAN
-
-#### Data classes (ver relatório exemplo: justificação MVC)
 #### Large classes
+
 Some of our classes contain a lot of methods (GUI interface and LanternaGUI) and others a lot of fields (Arena).
 In both of these cases, we judged it acceptable since these classes require them to fulfill their responsibility.
 However, to solve this, for example, for the GUI, it could be split into two (or multiple interfaces), each one having some methods.
 It doesn't seem crucial here.
+
 
 #### Long Parameter List (and Data Clumps)
 These code smells are present in the constructor of [Arena](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/model/game/arena/Arena.java) and the createArena method in [ArenaLoader](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/model/game/arena/ArenaLoader.java).
@@ -232,6 +231,7 @@ In fact, it would be a good solution, since the two examples given contain a rep
 
 Another example of this code smell is on the [PlayerMovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java), in which we have 4 options that convert to directions.
 This is done mainly for readability purposes, but could also be solved in the same way as the other example.
+
 
 #### Feature envy (and message chaining)
 Due to the usage of the **MVC** architectural pattern, a lot of our controllers mainly access their models' "features".
@@ -264,16 +264,22 @@ In the first two examples, this does not seem necessary since they are exception
 In the last example, we opted not to avoid this smell in order to treat the monsters, including MonsterPlayer, the same way.
 
 
+#### Data classes
+Since we've used the MVC architectural pattern, it is natural that some of our classes only contain data (fields and methods to access them) and don't have much behaviour.
+Some examples of this code smell are the [Element](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/f18657cad0aa0de6e2f77d0b8ece47c46ead4573/src/main/java/ldts/pacman/model/game/elements)
+derived classes, such as abstract MovableElement and classes Pacman, Coin, PowerUp and Wall.
+It is also present in some [Menu](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/f18657cad0aa0de6e2f77d0b8ece47c46ead4573/src/main/java/ldts/pacman/model/menu)
+model classes: MainMenu, SaveScore and ChooseLevel.
+We did not consider this a bad code smell, since it directly originates from the usage of the MVC pattern.
 
-
-### TESTING
-**Coverage Report**
+## TESTING
+### Coverage Report
 
 <img src="https://user-images.githubusercontent.com/93844395/204059751-7b661b7e-4353-4d14-a1db-d0f69be09885.png" height="340,2" width="997,5" >
 
 -[Mutation testing report](https://adriano-7.github.io/)
 
-### SELF-EVALUATION
+## SELF-EVALUATION
 
 - Adriano Machado: %
 - Félix Martins: %
