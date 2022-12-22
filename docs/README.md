@@ -135,10 +135,16 @@ We've used the Factory method several times in our code.
 >> 
 >> These classes can be found in the following links:
 > [INTRODUCE NEW LINKS HERE]
->> - [MonsterController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/MonsterController.java)
->> - [MovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/MovementStrategy.java)
->> - [RandomMovement](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/RandomMovement.java)
->> - [PlayerMovement](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/PlayerMovement.java)
+>> - [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
+>> - [PlayerStrategy]()
+>> - [PacmanPlayerStrategy]()
+>> - [MonsterPlayerStrategy]()
+>> - [BotStrategy]()
+>> - [ScaredStrategy]()
+>> - [TargetStrategy]()
+>> - [ScatterCornerStrategy]()
+>> - [EatenStrategy]()
+>> - [ChasePacmanStrategy]()
 >>
 >>**Consequences**
 >>As such, we've avoided having to duplicate code due to multiple entities having the same movement algorithm.
