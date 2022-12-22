@@ -209,23 +209,23 @@ OBSERVER?
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-#### Switch Statements (probably delete this)
-There are switches used in direction and options.
-Possible refactor would be to add a Direction and/or Option Parent Class and add specific Direction/Option subclasses.
-For example, in the case of Direction, it would be easy to implement a method getNextPosition() for each Direction.
-As such, defining the direction would allow us to only call that method and not have to deal with conditional logic.
-The conditional logic (switches) would be substituted by polymorphism (refactor called Replace Type Code with Subclasses)
-However, this would result in a "class explosion" (too many classes), especially in the long run.
-
+#### MIDDLE MAN
 
 #### Data classes (ver relatório exemplo: justificação MVC)
 #### Large classes
-#### MIDDLE MAN
-#### Long Parameter List and Data Clumps
-Examples of these code smells are in the constructor of Arena[INTRODUCE LINK HERE] and the createArena method in ArenaLoader[INTRODUCE LINK HERE].
-These parameters are passed for dependency injection, so tests can mock them and verify method calls (and not produce sound while testing). 
+Some of our classes contain a lot of methods (GUI interface and LanternaGUI) and others a lot of fields (Arena).
+In both of these cases, we judged it acceptable since these classes require them to fulfill their responsibility.
+However, to solve this, for example, for the GUI, it could be split into two (or multiple interfaces), each one having some methods.
+It doesn't seem crucial here.
+
+#### Long Parameter List (and Data Clumps)
+These code smells are present in the constructor of [Arena](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/model/game/arena/Arena.java) and the createArena method in [ArenaLoader](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/model/game/arena/ArenaLoader.java).
+These sound parameters are passed for dependency injection, so tests can mock them and verify method calls (and not produce sound while testing).
 A solution would be to bundle the SoundObservers given to Arena in an object.
 In fact, it would be a good solution, since the two examples given contain a repeating group of parameters (data clump).
+
+Another example of this code smell is on the [PlayerMovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java), in which we have 4 options that convert to directions.
+This is done mainly for readability purposes, but could also be solved in the same way as the other example.
 
 #### Feature envy (and message chaining)
 Due to the usage of the **MVC** architectural pattern, a lot of our controllers mainly access their models' "features".
@@ -240,14 +240,18 @@ However, generally this code smell could be "fixed" by moving features across ob
 
 
 #### Refused Bequest
-While trying to generalize code, we couldn't avoid this code smell. We created abstract classes such as MonsterState, so their children all be treated the same.
+While trying to generalize code, we couldn't avoid this code smell. We created abstract classes such as MonsterState, so their children could all be treated the same.
 However, not all the subclasses needed/wanted to define all of their parent's methods. This is the definition of refused bequest.
 Another example of this smell are the parameters given to methods which do not use them.
 Examples of this smell in our code are:
-- ScoreMenuController [INTRODUCE LINK HERE] doesn't use its model;
-- Some methods in EatenState [INTRODUCE LINK HERE] that we've defined to do nothing (getHit and setStrategy) so we could treat this state as just another Monster State
-- MovementStrategy's [INTRODUCE LINK HERE] move method receives options as a parameter, but only the PlayerStrategy [INTRODUCE LINK HERE] classes use them.
-This is done, so we can, in MonsterState [INTRODUCE LINK HERE], treat all monsters the same way. Only the MonsterPlayer will have a PlayerStrategy strategy, but this will allow us to treat all the monsters the same way.
+- [ScoreMenuController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/menu/ScoreMenuController.java) doesn't use its model;
+- Some methods in [EatenState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java) that we've defined to do nothing (getHit and setStrategy) so we could treat this state as just another Monster State
+- [MovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/movement/strategy/MovementStrategy.java)'s 
+move method receives options as a parameter, but only the [PlayerMovementStrategy]()[INTRODUCE LINK HERE]
+classes use them.
+This is done, so we can, in [MonsterController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/6a8388fcd254b8835c33d03814aedb0d58b8fa26/src/main/java/ldts/pacman/controller/game/MonsterController.java)
+and [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/6a8388fcd254b8835c33d03814aedb0d58b8fa26/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java), 
+treat all monsters the same way. Only the MonsterPlayer will have a PlayerMovementStrategy strategy, but this will allow us to treat all the monsters the same way.
 
 A solution for this would be splitting the "interfaces" of said classes.
 In the first two examples, this does not seem necessary since they are exceptions to the rule.
