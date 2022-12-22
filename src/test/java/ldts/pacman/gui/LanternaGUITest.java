@@ -2,8 +2,6 @@ package ldts.pacman.gui;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 import ldts.pacman.model.game.Position;
 import org.junit.jupiter.api.BeforeEach;
