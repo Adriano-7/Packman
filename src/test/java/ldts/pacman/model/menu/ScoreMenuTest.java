@@ -2,7 +2,6 @@ package ldts.pacman.model.menu;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,14 +19,11 @@ public class ScoreMenuTest {
     @Test
     public void getLines() {
         List<String> lines = scoreMenu.getLines();
-        assertTrue(lines.size() >= 2 && lines.size() <= 12);
+        assertTrue(lines.size() <= 10);
     }
     @Test
     public void addScore() {
-        // TODO
-        /* Spy on scoreMenu -> replace getLines behaviour with List<String> that we want in the test
-        * Therefore independent of ResourceFileReader */
-        String userName = "Username";
+        String userName = "25/11";
         int score = 100;
         int beforeSize = scoreMenu.getLines().size();
 
@@ -41,12 +37,10 @@ public class ScoreMenuTest {
 
         if (beforeSize == 10) assertEquals(beforeSize, afterSize);
         else assertEquals(beforeSize + 1, afterSize);
-
-        System.out.println(scoreMenu.getLines());
     }
     @Test
     public void addScoreZero() {
-        String userName = "Username";
+        String userName = "25/12";
         int score = 0;
         int beforeSize = scoreMenu.getLines().size();
 
@@ -60,7 +54,5 @@ public class ScoreMenuTest {
 
         if (beforeSize == 10) assertEquals(beforeSize, afterSize);
         else assertEquals(beforeSize + 1, afterSize);
-
-        System.out.println(scoreMenu.getLines());
     }
 }
