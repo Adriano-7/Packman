@@ -47,16 +47,13 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >><img src="images/uml/LanternaAdapterPattern.jpg" width="600"/>
 >>
 >> These classes can be found in the following links:
->> - [GUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/GUI.java)
->> - [LanternaGUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/LanternaGUI.java)
+>> - [GUI](../src/main/java/ldts/pacman/gui/GUI.java)
+>> - [LanternaGUI](../src/main/java/ldts/pacman/gui/LanternaGUI.java)
 >>
 >> The client in the picture is a denotation for all the classes that use the GUI (mostly Viewer classes)
 >> 
 >>**Consequences**\
->>Promotes replaceability (in this case, of Lanterna with another external library to draw things) and promotes SRP, since only the LanternaGUI is concerned with how exactly to draw things with Lanterna and not each of the Viewers (e.g. the viewers don't have to be concerned with the existence of a screen or TextGraphics) 
-
-Factory method for getTarget in Monster in MonsterState
-Factory method for createStrategy in MonsterState
+>>Promotes replaceability (in this case, of Lanterna with another external library to draw things) and promotes SRP, since only the LanternaGUI is concerned with how exactly to draw things with Lanterna and not each of the Viewers (e.g. the viewers don't have to be concerned with the existence of a screen or TextGraphics)
 
 >> ### Monster States
 >>**Problem in Context**\
@@ -66,24 +63,23 @@ Factory method for createStrategy in MonsterState
 >>
 >>**The Pattern**\
 >>We have used the **State** pattern to define the state/behaviour of the monsters.
-> In fact, the [Monster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/model/game/elements/Monster.java) abstract class has a MonsterState field that can be changed throughout the game, and can be accessed by the controller and the viewer.
+> In fact, the [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java) abstract class has a MonsterState field that can be changed throughout the game, and can be accessed by the controller and the viewer.
 > Different monster states have different ways of moving and different drawing characters, meaning different ways of drawing them.
 > The states can change the monster state themselves, or they could be changed by an outside entity, such as the PacmanController when Pacman collects a powerUp.
 >
 >>**Implementation**
->> 
+>>
 >> The UML state diagram for the MonsterStates is presented here:
-> [INTRODUCE IMAGE HERE]
-> The UML class diagram for this pattern is presented here:
->> [INTRODUCE IMAGE HERE]
+>>
+>>  <img src="images/uml/MonsterState_UML_diagram.jpg" width="600" >
+>>
 >> These classes can be found in the following links:
->> [INTRODUCE LINKS HERE]
->> - [Monster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/model/game/elements/Monster.java)
->> - [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
->> - [ScatterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
->> - [ChaseState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
->> - [EatenState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java)
->> - [ScaredState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
+>> - [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java)
+>> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
+>> - [ScatterState](../src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
+>> - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
+>> - [EatenState](../src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java)
+>> - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
 >
 >>**Consequences**
 > This pattern allows us to change the monster behaviour (state) during runtime, and we've avoided scattered conditional logic.
@@ -93,7 +89,7 @@ Factory method for createStrategy in MonsterState
 >>**Problem in Context**\
 > Parent abstract classes sometimes can't define the class of objects that they should create.
 > It must be specified only by the subclasses.
-> An example of this is the [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java) and the usage/creation of its [MovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/movement/strategy).
+> An example of this is the [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java).
 
 >**The Pattern**
 We've used the Factory method several times in our code.
@@ -102,18 +98,19 @@ We've used the Factory method several times in our code.
 > Only those will (know to) specify the concrete specification (e.g. ScaredState defines ScaredStrategy)
 >>
 >>**Implementation**
->> [INTRODUCE NEW IMAGE HERE]
->> <img src="https://user-images.githubusercontent.com/93844395/204080284-b589bb6e-7bc4-4db3-a905-9f265da6bf1c.jpg" height="338,58" width="556,38" > 
+>> 
+>><img src="images/uml/FactoryMethod_createStrategy.jpg" width="600"/>
 >> 
 >> These classes can be found in the following links:
-> [INTRODUCE NEW LINKS HERE]
->> - [Monster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/Monster.java)
->> - [BlueMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/BlueMonster.java)
->> - [RedMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/RedMonster.java)
->> - [OrangeMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/OrangeMonster.java)
->> - [PurpleMonster](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/monsters/PurpleMonster.java)
->> - [MovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/MovementStrategy.java)
->> - [RandomMovement](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/RandomMovement.java)
+>> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
+>> - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
+>> - [ScatterState](../src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
+>> - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
+>> - [MovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/MovementStrategy.java)
+>> - [ScaredStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/ScaredStrategy.java)
+>> - [ChasePacmanStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
+>> - [ScatterCornerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
+>> - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
 >>
 >>**Consequences**
 > By using this pattern, we delegate the algorithm choice for the movement to the concrete MonsterStates, that know which to define.
@@ -130,21 +127,21 @@ We've used the Factory method several times in our code.
 > A given entity must only identify as moving with that algorithm and not define it.
 >>
 >>**Implementation**
->> [INTRODUCE NEW IMAGE HERE]
->> <img src="https://user-images.githubusercontent.com/93844395/204080444-1fe67958-bcd0-4e7e-a1bc-45e9f087192b.jpg" height="307" width="508,2" > 
+>> 
+>> <img src="images/uml/StrategyPattern.jpg"  width="600" > 
 >> 
 >> These classes can be found in the following links:
 > [INTRODUCE NEW LINKS HERE]
->> - [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
->> - [PlayerMovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java)
->> - [PacmanPlayerStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PacmanPlayerStrategy.java)
->> - [MonsterPlayerStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/player/MonsterPlayerStrategy.java)
->> - [BotStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/BotStrategy.java)
->> - [ScaredStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/ScaredStrategy.java)
->> - [TargetStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/TargetStrategy.java)
->> - [ScatterCornerStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
->> - [EatenStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
->> - [ChasePacmanStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
+>> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
+>> - [PlayerMovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java)
+>> - [PacmanPlayerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PacmanPlayerStrategy.java)
+>> - [MonsterPlayerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/MonsterPlayerStrategy.java)
+>> - [BotStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/BotStrategy.java)
+>> - [ScaredStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/ScaredStrategy.java)
+>> - [TargetStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/TargetStrategy.java)
+>> - [ScatterCornerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
+>> - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
+>> - [ChasePacmanStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
 >>
 >>**Consequences**
 >>As such, we've avoided having to duplicate code due to multiple entities having the same movement algorithm.
@@ -162,13 +159,14 @@ We've used the **Model-View-Control** architectural pattern, more specifically H
 >>**Implementation**
 >> 
 >> This image represents an example of the usage of MVC.
->>![MVC](https://user-images.githubusercontent.com/93844395/204065838-d7cb2566-f179-4da2-b522-af6faff55a1f.jpg)
+>>
+>> <img src="images/uml/mvcPacman.jpg"  width="600" > 
 >> 
 >> An example of the application of this pattern can be found in the following links:
 > [INTRODUCE NEW LINKS HERE?]
->> - [PacmanController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/control/game/PacmanController.java)
->> - [PacmanViewer](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/view/game/PacmanViewer.java)
->> - [Pacman](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/model/game/elements/Pacman.java)
+>> - [PacmanController](../src/main/java/ldts/pacman/controller/game/PacmanController.java)
+>> - [PacmanViewer](../src/main/java/ldts/pacman/view/game/PacmanViewer.java)
+>> - [Pacman](../src/main/java/ldts/pacman/model/game/elements/Pacman.java)
 >>
 >>**Consequences**\
 By using this pattern, we've delegated each responsibility to each class, now respecting the SRP.
@@ -191,17 +189,17 @@ In the classes below, there's also present the usage of a FactoryMethod, allowin
 >> 
 >>
 >>**Implementation**
->> [INTRODUCE NEW IMAGE HERE]
->>
+>> 
+>> <img src="images/uml/StateDiagram.jpg"  width="600" > 
 >>
 >>  These classes can be found in the following links:
->> - [Game](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/Game.java)
->> - [State](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/state/State.java)
->> - [GameState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/state/GameState.java)
->> - [MainMenuState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/state/MainMenuState.java)
->> - [ChooseLevelState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/application/state/ChooseLevelState.java)
->> - [SaveScoreState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/application/state/SaveScoreState.java)
->> - [ScoreMenuState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/application/state/ScoreMenuState.java)
+>> - [Game](../src/main/java/ldts/pacman/Game.java)
+>> - [State](../src/main/java/ldts/pacman/application/state/State.java)
+>> - [GameState](../src/main/java/ldts/pacman/application/state/GameState.java)
+>> - [MainMenuState](../src/main/java/ldts/pacman/application/state/menu/MainMenuState.java)
+>> - [ChooseLevelState](../src/main/java/ldts/pacman/application/state/menu/ChooseLevelState.java)
+>> - [SaveScoreState](../src/main/java/ldts/pacman/application/state/menu/SaveScoreState.java)
+>> - [ScoreMenuState](../src/main/java/ldts/pacman/application/state/menu/ScoreMenuState.java)
 
 >>**Consequences**\
 Using this pattern makes existing states explicit and easier to comprehend.
@@ -211,7 +209,6 @@ Passing input to the controllers is now done by states using the factory method.
 >### Sound
 >Even though we were using the Observer patter for the Sound (as discussed in the presentation), we decided it was not the best option.
 >We also felt that we were forcing a not needed pattern, so we removed it.
-
 
 
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
@@ -225,12 +222,12 @@ It doesn't seem crucial here.
 
 
 #### Long Parameter List (and Data Clumps)
-These code smells are present in the constructor of [Arena](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/model/game/arena/Arena.java) and the createArena method in [ArenaLoader](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/model/game/arena/ArenaLoader.java).
+These code smells are present in the constructor of [Arena](../src/main/java/ldts/pacman/model/game/arena/Arena.java) and the createArena method in [ArenaLoader](../src/main/java/ldts/pacman/model/game/arena/ArenaLoader.java).
 These sound parameters are passed for dependency injection, so tests can mock them and verify method calls (and not produce sound while testing).
 A solution would be to bundle the SoundObservers given to Arena in an object.
 In fact, it would be a good solution, since the two examples given contain a repeating group of parameters (data clump).
 
-Another example of this code smell is on the [PlayerMovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java), in which we have 4 options that convert to directions.
+Another example of this code smell is on the [PlayerMovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java), in which we have 4 options that convert to directions.
 This is done mainly for readability purposes, but could also be solved in the same way as the other example.
 
 
@@ -251,13 +248,13 @@ While trying to generalize code, we couldn't avoid this code smell. We created a
 However, not all the subclasses needed/wanted to define all of their parent's methods. This is the definition of refused bequest.
 Another example of this smell are the parameters given to methods which do not use them.
 Examples of this smell in our code are:
-- [ScoreMenuController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/menu/ScoreMenuController.java) doesn't use its model;
-- Some methods in [EatenState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java) that we've defined to do nothing (getHit and setStrategy) so we could treat this state as just another Monster State
-- [MovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/75e768bd40ac5e823682b961cc6e197ae9c6cc9c/src/main/java/ldts/pacman/controller/game/movement/strategy/MovementStrategy.java)'s 
-move method receives options as a parameter, but only the [PlayerMovementStrategy]()[INTRODUCE LINK HERE]
+- [ScoreMenuController](../src/main/java/ldts/pacman/controller/menu/ScoreMenuController.java) doesn't use its model;
+- Some methods in [EatenState](../src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java) that we've defined to do nothing (getHit and setStrategy) so we could treat this state as just another Monster State
+- [MovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/MovementStrategy.java)'s 
+move method receives options as a parameter, but only the [PlayerMovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java)
 classes use them.
-This is done, so we can, in [MonsterController](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/6a8388fcd254b8835c33d03814aedb0d58b8fa26/src/main/java/ldts/pacman/controller/game/MonsterController.java)
-and [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/6a8388fcd254b8835c33d03814aedb0d58b8fa26/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java), 
+This is done, so we can, in [MonsterController](../src/main/java/ldts/pacman/controller/game/MonsterController.java)
+and [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java), 
 treat all monsters the same way. Only the MonsterPlayer will have a PlayerMovementStrategy strategy, but this will allow us to treat all the monsters the same way.
 
 A solution for this would be splitting the "interfaces" of said classes.
@@ -267,9 +264,9 @@ In the last example, we opted not to avoid this smell in order to treat the mons
 
 #### Data classes
 Since we've used the MVC architectural pattern, it is natural that some of our classes only contain data (fields and methods to access them) and don't have much behaviour.
-Some examples of this code smell are the [Element](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/f18657cad0aa0de6e2f77d0b8ece47c46ead4573/src/main/java/ldts/pacman/model/game/elements)
+Some examples of this code smell are the [Element](../src/main/java/ldts/pacman/model/game/elements)
 derived classes, such as abstract MovableElement and classes Pacman, Coin, PowerUp and Wall.
-It is also present in some [Menu](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/f18657cad0aa0de6e2f77d0b8ece47c46ead4573/src/main/java/ldts/pacman/model/menu)
+It is also present in some [Menu](../src/main/java/ldts/pacman/model/menu)
 model classes: MainMenu, SaveScore and ChooseLevel.
 We did not consider this a bad code smell, since it directly originates from the usage of the MVC pattern.
 

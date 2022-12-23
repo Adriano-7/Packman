@@ -45,3 +45,16 @@ For a more detailed versin of this description, click [here](./docs/README.md).
     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
   <b><i>Gif 2. Multiplayer Game</i></b>
 </p>
+
+<p align="left" justify="left">
+  <img src="docs/gifs/MainMenu.gif" width="300"/>
+  <img src="docs/gifs/ChooseLevelMenu.gif" width="300"/>
+  <img src="docs/gifs/ScoreMenu.gif" width="300"/>
+</p>
+<p align="left">
+  <b><i>Gif 3. Main Menu</i></b>
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+  <b><i>Gif 4. Choose Level</i></b>
+</p>
