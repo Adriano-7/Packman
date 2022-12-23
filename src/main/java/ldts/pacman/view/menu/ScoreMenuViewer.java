@@ -4,6 +4,7 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.view.Viewer;
+
 import java.util.List;
 
 public class ScoreMenuViewer extends Viewer<ScoreMenu> {
