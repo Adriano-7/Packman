@@ -93,12 +93,12 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>**Problem in Context**\
 >> Parent abstract classes sometimes can't define the class of objects that they should create.
 >> It must be specified only by the subclasses.
->> An example of this is the [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java).
+>> An example of this is in [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java).
 >>
->>**The Pattern**
+>>**The Pattern**\
 >>We've used the Factory method several times in our code.
 >> In this example, the abstract class MonsterState knows it has to define a way to move (an abstract MovementStrategy).
->> It does not know, however, which concrete implementation to return. By using this pattern, we delegate the choice of the MovementStrategy to the subclasses of MonsterState.
+>> It does not know, however, which concrete implementation to define. By using this pattern, we delegate the choice of the MovementStrategy to the subclasses of MonsterState.
 >> Only those will (know to) specify the concrete specification (e.g. ScaredState defines ScaredStrategy)
 >>
 >>**Implementation**
@@ -116,7 +116,7 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >> - [ScatterCornerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
 >> - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
 >>
->>**Consequences**
+>>**Consequences**\
 >> By using this pattern, we delegate the algorithm choice for the movement to the concrete MonsterStates, that know which to define.
 >> When asked to move a monster, the MonsterState can easily ask its MovementStrategy to do so.
 >> This avoids any switch cases by using polymorphism.
@@ -129,8 +129,9 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>**The Pattern**\
 >>We used the **Strategy** pattern. There exist some strategies that define the way the entities can move.
 >> A given entity must only identify as moving with that algorithm and not define it.
+>>
 >>**Implementation**
->> 
+>>
 >> <img src="images/uml/StrategyPattern.jpg"  width="900" > 
 >> 
 >> These classes can be found in the following links:
@@ -147,7 +148,7 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>
 >>**Consequences**\
 >>As such, we've avoided having to duplicate code due to multiple entities having the same movement algorithm.
->> It allows us to pass it to a movable object, and it will behave accordingly.
+>> This pattern allows us to pass it to a movable object, and it will behave accordingly.
 
 >>### MVC
 >>**Problem in Context**\
@@ -235,7 +236,7 @@ Due to the usage of the **MVC** architectural pattern, a lot of our controllers 
 The same happens in our viewers classes, which access the model's data to draw it.
 Since they have to request to access their model's data, this also generates message chaining.
 
-Some examples of this are the MainMenuController or PacmanController, that access and modify the data of their models.
+Some examples of this are the [MainMenuController](../src/main/java/ldts/pacman/controller/menu/MainMenuController.java) or [PacmanController](../src/main/java/ldts/pacman/controller/game/PacmanController.java), that access and modify the data of their models.
 
 Since this is a direct consequence of the MVC pattern, we didn't see the benefits of changing it.
 Also, by separating these features across the model, controller and viewer, we're appealing to the SRP (Single responsibility principle).
@@ -243,7 +244,7 @@ However, generally this code smell could be "fixed" by moving features across ob
 
 
 #### Refused Bequest
-While trying to generalize code, we couldn't avoid this code smell. We created abstract classes such as MonsterState, so their children could all be treated the same.
+While trying to generalize code, we couldn't totally avoid this code smell. We created abstract classes such as MonsterState, so their children could all be treated the same.
 However, not all the subclasses needed/wanted to define all of their parent's methods. This is the definition of refused bequest.
 Another example of this smell are the parameters given to methods which do not use them.
 Examples of this smell in our code are:
@@ -254,11 +255,11 @@ move method receives options as a parameter, but only the [PlayerMovementStrateg
 classes use them.
 This is done, so we can, in [MonsterController](../src/main/java/ldts/pacman/controller/game/MonsterController.java)
 and [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java), 
-treat all monsters the same way. Only the MonsterPlayer will have a PlayerMovementStrategy strategy, but this will allow us to treat all the monsters the same way.
+treat all the monsters in the same way. Only the MonsterPlayer will have a PlayerMovementStrategy strategy, but this will allow us to treat all of them in the same way.
 
 A solution for this would be splitting the "interfaces" of said classes.
 In the first two examples, this does not seem necessary since they are exceptions to the rule.
-In the last example, we opted not to avoid this smell in order to treat the monsters, including MonsterPlayer, the same way.
+In the last example, we opted not to avoid this smell in order to treat the monsters, including MonsterPlayer, equally.
 
 #### Data classes
 Since we've used the MVC architectural pattern, it is natural that some of our classes only contain data (fields and methods to access them) and don't have much behaviour.
