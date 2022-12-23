@@ -272,13 +272,17 @@ We did not consider this a bad code smell, since it directly originates from the
 ### Coverage Report
 
 <p align="center" justify="center">
-  <img src="images/reports/PIP.png"  width="800"/>
+  <img src="images/reports/jacoco.png"  width="800"/>
+</p>
+
+<p align="center" justify="center">
+  <img src="images/reports/PIT.png"  width="800"/>
 </p>
 
 -[Mutation testing report](https://adriano-7.github.io/)
 
 ## SELF-EVALUATION
 
-- Adriano Machado: %
-- Félix Martins: %
-- Tomás Pereira: %
+- Adriano Machado: 35 % 
+- Félix Martins: 50 % 
+- Tomás Pereira: 15 % 
