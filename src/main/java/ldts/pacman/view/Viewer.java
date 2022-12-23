@@ -1,7 +1,6 @@
 package ldts.pacman.view;
 
 import ldts.pacman.gui.GUI;
-
 import java.io.IOException;
 
 public abstract class Viewer<T> {

@@ -2,14 +2,14 @@ package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
 import ldts.pacman.application.state.menu.ChooseLevelState;
-import ldts.pacman.application.state.menu.ScoreMenuState;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.game.arena.ArenaLoaderMultiplayer;
-import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.model.menu.options.ChooseLevel;
 import ldts.pacman.model.menu.options.MainMenu;
+import ldts.pacman.model.menu.ScoreMenu;
+import ldts.pacman.application.state.menu.ScoreMenuState;
 import ldts.pacman.sound.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;

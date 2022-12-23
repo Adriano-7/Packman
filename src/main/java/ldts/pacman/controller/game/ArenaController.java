@@ -1,18 +1,18 @@
 package ldts.pacman.controller.game;
 
 import ldts.pacman.Game;
-import ldts.pacman.application.state.menu.SaveScoreState;
 import ldts.pacman.controller.game.movement.strategy.player.PacmanPlayerStrategy;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.options.SaveScore;
+import ldts.pacman.application.state.menu.SaveScoreState;
 import ldts.pacman.sound.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class ArenaController extends GameController {
     private final List<GameController> controllers;

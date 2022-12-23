@@ -2,11 +2,10 @@ package ldts.pacman.controller;
 
 import ldts.pacman.Game;
 import ldts.pacman.gui.GUI;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.List;
+import java.io.IOException;
 
 public abstract class Controller<T> {
     private final T model;

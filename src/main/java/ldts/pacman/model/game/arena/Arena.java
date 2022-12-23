@@ -6,7 +6,6 @@ import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.sound.SoundPacCoin;
 import ldts.pacman.sound.SoundPacDies;
 import ldts.pacman.sound.SoundStartLevel;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
