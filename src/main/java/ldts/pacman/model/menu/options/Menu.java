@@ -1,13 +1,13 @@
 package ldts.pacman.model.menu.options;
 
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.SoundSelection;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 public abstract class Menu {
     protected List<String> options;
-    protected SoundSelection soundSelection;
+    protected final SoundSelection soundSelection;
     private int currentOption = 0;
     public Menu(SoundSelection soundSelection) {
         this.options = createOptions();

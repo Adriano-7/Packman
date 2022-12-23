@@ -6,7 +6,7 @@ import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.options.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.SoundSelection;
 
 import java.util.List;
 

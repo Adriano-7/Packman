@@ -10,7 +10,7 @@ import ldts.pacman.model.menu.options.ChooseLevel;
 import ldts.pacman.model.menu.options.MainMenu;
 import ldts.pacman.model.menu.ScoreMenu;
 import ldts.pacman.application.state.menu.ScoreMenuState;
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

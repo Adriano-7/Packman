@@ -1,8 +1,8 @@
 package ldts.pacman.model.game.arena;
 
-import ldts.pacman.sound.observer.SoundPacCoin;
-import ldts.pacman.sound.observer.SoundPacDies;
-import ldts.pacman.sound.observer.SoundStartLevel;
+import ldts.pacman.sound.SoundPacCoin;
+import ldts.pacman.sound.SoundPacDies;
+import ldts.pacman.sound.SoundStartLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

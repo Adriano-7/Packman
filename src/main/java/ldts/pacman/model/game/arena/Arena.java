@@ -3,9 +3,9 @@ package ldts.pacman.model.game.arena;
 import ldts.pacman.model.game.Position;
 import ldts.pacman.model.game.elements.*;
 import ldts.pacman.model.game.elements.monsters.Monster;
-import ldts.pacman.sound.observer.SoundPacCoin;
-import ldts.pacman.sound.observer.SoundPacDies;
-import ldts.pacman.sound.observer.SoundStartLevel;
+import ldts.pacman.sound.SoundPacCoin;
+import ldts.pacman.sound.SoundPacDies;
+import ldts.pacman.sound.SoundStartLevel;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -22,9 +22,9 @@ public class Arena {
     private List<PowerUp> powerUps;
     private List<Coin> initialCoins;
     private List<PowerUp> initialPowerUps;
-    private SoundPacCoin soundPacCoin;
-    private SoundPacDies soundPacDies;
-    private SoundStartLevel soundStartLevel;
+    private final SoundPacCoin soundPacCoin;
+    private final SoundPacDies soundPacDies;
+    private final SoundStartLevel soundStartLevel;
     public Arena(int width, int height, SoundPacCoin soundPacCoin, SoundPacDies soundPacDies, SoundStartLevel soundStartLevel) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.width = width;
         this.height = height;

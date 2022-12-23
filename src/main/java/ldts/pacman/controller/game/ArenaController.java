@@ -6,7 +6,7 @@ import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.menu.options.SaveScore;
 import ldts.pacman.application.state.menu.SaveScoreState;
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

@@ -2,7 +2,7 @@ package ldts.pacman.model.menu;
 
 import ldts.pacman.model.game.arena.ArenaLoader;
 import ldts.pacman.model.menu.options.ChooseLevel;
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.SoundSelection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

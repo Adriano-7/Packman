@@ -7,9 +7,9 @@ import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.bot.OrangeMonster;
 import ldts.pacman.model.game.elements.monsters.bot.PinkMonster;
 import ldts.pacman.model.game.elements.monsters.bot.RedMonster;
-import ldts.pacman.sound.observer.SoundPacCoin;
-import ldts.pacman.sound.observer.SoundPacDies;
-import ldts.pacman.sound.observer.SoundStartLevel;
+import ldts.pacman.sound.SoundPacCoin;
+import ldts.pacman.sound.SoundPacDies;
+import ldts.pacman.sound.SoundStartLevel;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
