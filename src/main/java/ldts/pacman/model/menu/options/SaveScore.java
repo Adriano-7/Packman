@@ -1,4 +1,4 @@
-package ldts.pacman.model.menu;
+package ldts.pacman.model.menu.options;
 
 import ldts.pacman.sound.observer.SoundSelection;
 

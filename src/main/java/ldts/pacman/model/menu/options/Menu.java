@@ -1,12 +1,11 @@
-package ldts.pacman.model.menu;
+package ldts.pacman.model.menu.options;
 
 import ldts.pacman.sound.observer.SoundSelection;
-import ldts.pacman.sound.subject.SoundSubject;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
-public abstract class Menu extends SoundSubject {
+public abstract class Menu {
     protected List<String> options;
     protected SoundSelection soundSelection;
     private int currentOption = 0;
@@ -16,12 +15,12 @@ public abstract class Menu extends SoundSubject {
     }
     public void next_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         currentOption = (currentOption + 1) % options.size();
-        playSingleSound(soundSelection);
+        soundSelection.onSoundEvent();
     }
     public void prev_Op() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         currentOption--;
         if (currentOption < 0) currentOption = this.options.size() - 1;
-        playSingleSound(soundSelection);
+        soundSelection.onSoundEvent();
     }
     public String getOption(int i){
         return this.options.get(i);

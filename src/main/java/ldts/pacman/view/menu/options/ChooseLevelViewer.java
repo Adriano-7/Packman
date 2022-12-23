@@ -1,9 +1,8 @@
-package ldts.pacman.view.menu;
+package ldts.pacman.view.menu.options;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.menu.ChooseLevel;
-import ldts.pacman.view.Viewer;
+import ldts.pacman.model.menu.options.ChooseLevel;
 
 public class ChooseLevelViewer extends MenuViewer<ChooseLevel> {
     public ChooseLevelViewer(ChooseLevel model, OptionsViewer optionsViewer) {

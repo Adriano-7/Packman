@@ -1,11 +1,12 @@
-package ldts.pacman.application.state;
+package ldts.pacman.application.state.menu;
 
+import ldts.pacman.application.state.State;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.MainMenuController;
-import ldts.pacman.model.menu.MainMenu;
+import ldts.pacman.model.menu.options.MainMenu;
 import ldts.pacman.view.Viewer;
-import ldts.pacman.view.menu.MainMenuViewer;
-import ldts.pacman.view.menu.OptionsViewer;
+import ldts.pacman.view.menu.options.MainMenuViewer;
+import ldts.pacman.view.menu.options.OptionsViewer;
 
 public class MainMenuState extends State<MainMenu> {
     public MainMenuState(MainMenu model) {

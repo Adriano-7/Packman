@@ -1,8 +1,8 @@
-package ldts.pacman.view.menu;
+package ldts.pacman.view.menu.options;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.menu.Menu;
+import ldts.pacman.model.menu.options.Menu;
 
 public class OptionsViewer {
     private final Menu menu;

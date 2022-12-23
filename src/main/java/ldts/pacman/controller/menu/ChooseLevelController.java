@@ -2,13 +2,13 @@ package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
 import ldts.pacman.application.state.GameState;
-import ldts.pacman.application.state.MainMenuState;
+import ldts.pacman.application.state.menu.MainMenuState;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.Arena;
 import ldts.pacman.model.game.arena.ArenaLoader;
-import ldts.pacman.model.menu.ChooseLevel;
-import ldts.pacman.model.menu.MainMenu;
+import ldts.pacman.model.menu.options.ChooseLevel;
+import ldts.pacman.model.menu.options.MainMenu;
 import ldts.pacman.sound.observer.SoundPacCoin;
 import ldts.pacman.sound.observer.SoundPacDies;
 import ldts.pacman.sound.observer.SoundSelection;

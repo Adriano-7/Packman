@@ -1,7 +1,8 @@
-package ldts.pacman.view.menu;
+package ldts.pacman.view.menu.options;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.view.Viewer;
+import ldts.pacman.view.menu.options.OptionsViewer;
 
 abstract class MenuViewer<T> extends Viewer<T> {
     private final OptionsViewer optionsViewer;

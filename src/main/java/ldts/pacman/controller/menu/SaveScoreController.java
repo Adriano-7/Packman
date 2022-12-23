@@ -3,10 +3,10 @@ package ldts.pacman.controller.menu;
 import ldts.pacman.Game;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.menu.MainMenu;
-import ldts.pacman.model.menu.SaveScore;
+import ldts.pacman.model.menu.options.MainMenu;
+import ldts.pacman.model.menu.options.SaveScore;
 import ldts.pacman.model.menu.ScoreMenu;
-import ldts.pacman.application.state.MainMenuState;
+import ldts.pacman.application.state.menu.MainMenuState;
 import ldts.pacman.sound.observer.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;

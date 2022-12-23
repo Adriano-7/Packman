@@ -1,9 +1,9 @@
 package ldts.pacman.view.Menu;
 
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.view.menu.OptionsViewer;
-import ldts.pacman.view.menu.SaveScoreViewer;
+import ldts.pacman.model.menu.options.SaveScore;
+import ldts.pacman.view.menu.options.OptionsViewer;
+import ldts.pacman.view.menu.options.SaveScoreViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

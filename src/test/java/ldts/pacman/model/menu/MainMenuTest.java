@@ -1,5 +1,6 @@
 package ldts.pacman.model.menu;
 
+import ldts.pacman.model.menu.options.MainMenu;
 import ldts.pacman.sound.observer.SoundSelection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
