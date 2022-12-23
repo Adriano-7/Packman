@@ -58,20 +58,24 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >> ### Monster States
 >>**Problem in Context**\
 >>Monsters can have different behaviours, including different ways of moving, and the controller and the viewer need to know how to treat and move them.
-> There is the possibility of using a switch-case and determining their behaviour that way, depending on flags in monster. 
-> However, that disrespects the OCP and is definitely not a good solution.
+>> There is the possibility of using a switch-case and determining their behaviour that way, depending on flags in monster. 
+>> However, that disrespects the OCP and is definitely not a good solution.
 >>
 >>**The Pattern**\
 >>We have used the **State** pattern to define the state/behaviour of the monsters.
-> In fact, the [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java) abstract class has a MonsterState field that can be changed throughout the game, and can be accessed by the controller and the viewer.
-> Different monster states have different ways of moving and different drawing characters, meaning different ways of drawing them.
-> The states can change the monster state themselves, or they could be changed by an outside entity, such as the PacmanController when Pacman collects a powerUp.
->
+>> In fact, the [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java) abstract class has a MonsterState field that can be changed throughout the game, and can be accessed by the controller and the viewer.
+>> Different monster states have different ways of moving and different drawing characters, meaning different ways of drawing them.
+>> The states can change the monster state themselves, or they could be changed by an outside entity, such as the PacmanController when Pacman collects a powerUp.
+>>
 >>**Implementation**
+>>
+>> The UML class diagram for the MonsterStates is presented here:
+>>
+>>  <img src="images/uml/MonsterState_UML_diagram.jpg" width="700" >
 >>
 >> The UML state diagram for the MonsterStates is presented here:
 >>
->>  <img src="images/uml/MonsterState_UML_diagram.jpg" width="600" >
+>>  <img src="images/uml/MonsterStateDiagram.jpg" width="700" >
 >>
 >> These classes can be found in the following links:
 >> - [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java)
@@ -80,26 +84,26 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >> - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
 >> - [EatenState](../src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java)
 >> - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
->
->>**Consequences**
-> This pattern allows us to change the monster behaviour (state) during runtime, and we've avoided scattered conditional logic.
-> Another benefit is making these state transitions explicit in the code.
+>>
+>>**Consequences**\
+>> This pattern allows us to change the monster behaviour (state) during runtime, and we've avoided scattered conditional logic.
+>> Another benefit is making these state transitions explicit in the code.
 
-### Factory method
+>>### Factory method
 >>**Problem in Context**\
-> Parent abstract classes sometimes can't define the class of objects that they should create.
-> It must be specified only by the subclasses.
-> An example of this is the [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java).
-
->**The Pattern**
-We've used the Factory method several times in our code.
-> In this example, the abstract class MonsterState knows it has to define a way to move (an abstract MovementStrategy).
-> It does not know, however, which concrete implementation to return. By using this pattern, we delegate the choice of the MovementStrategy to the subclasses of MonsterState.
-> Only those will (know to) specify the concrete specification (e.g. ScaredState defines ScaredStrategy)
+>> Parent abstract classes sometimes can't define the class of objects that they should create.
+>> It must be specified only by the subclasses.
+>> An example of this is the [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java).
+>>
+>>**The Pattern**
+>>We've used the Factory method several times in our code.
+>> In this example, the abstract class MonsterState knows it has to define a way to move (an abstract MovementStrategy).
+>> It does not know, however, which concrete implementation to return. By using this pattern, we delegate the choice of the MovementStrategy to the subclasses of MonsterState.
+>> Only those will (know to) specify the concrete specification (e.g. ScaredState defines ScaredStrategy)
 >>
 >>**Implementation**
 >> 
->><img src="images/uml/FactoryMethod_createStrategy.jpg" width="600"/>
+>><img src="images/uml/FactoryMethod_createStrategy.jpg" width="900"/>
 >> 
 >> These classes can be found in the following links:
 >> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
@@ -113,25 +117,23 @@ We've used the Factory method several times in our code.
 >> - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
 >>
 >>**Consequences**
-> By using this pattern, we delegate the algorithm choice for the movement to the concrete MonsterStates, that know which to define.
-> When asked to move a monster, the MonsterState can easily ask its MovementStrategy to do so.
-> This avoids any switch cases by using polymorphism.
+>> By using this pattern, we delegate the algorithm choice for the movement to the concrete MonsterStates, that know which to define.
+>> When asked to move a monster, the MonsterState can easily ask its MovementStrategy to do so.
+>> This avoids any switch cases by using polymorphism.
 
-### Strategy
+>>### Strategy
 >>**Problem in Context**\
 >>There are different ways of moving and a movable object might share his movement algorithm with another object.
-> That would make for code cloning.
+>> That would make for code cloning.
 >>
 >>**The Pattern**\
 >>We used the **Strategy** pattern. There exist some strategies that define the way the entities can move.
-> A given entity must only identify as moving with that algorithm and not define it.
->>
+>> A given entity must only identify as moving with that algorithm and not define it.
 >>**Implementation**
 >> 
->> <img src="images/uml/StrategyPattern.jpg"  width="600" > 
+>> <img src="images/uml/StrategyPattern.jpg"  width="900" > 
 >> 
 >> These classes can be found in the following links:
-> [INTRODUCE NEW LINKS HERE]
 >> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
 >> - [PlayerMovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java)
 >> - [PacmanPlayerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PacmanPlayerStrategy.java)
@@ -143,54 +145,51 @@ We've used the Factory method several times in our code.
 >> - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
 >> - [ChasePacmanStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
 >>
->>**Consequences**
+>>**Consequences**\
 >>As such, we've avoided having to duplicate code due to multiple entities having the same movement algorithm.
-> It allows us to pass it to a movable object, and it will behave accordingly.
+>> It allows us to pass it to a movable object, and it will behave accordingly.
 
-### MVC
+>>### MVC
 >>**Problem in Context**\
 >>In defining a class with its data, behaviour (movement) and way of drawing itself, we would be neglecting the **Single Responsibility Principle**.
 >>That class would have too many responsibilities and there would be many reasons for it to change.
 >>
->>**The Pattern**
-We've used the **Model-View-Control** architectural pattern, more specifically HMVC (MVC for each component).
-> This defines a model with the data for the entity, a controller which manipulates that data and a Viewer to display the data.
+>>**The Pattern**\
+>>We've used the **Model-View-Control** architectural pattern, more specifically HMVC (MVC for each component).
+>> This defines a model with the data for the entity, a controller which manipulates that data and a Viewer to display the data.
 >>
->>**Implementation**
->> 
+>>**Implementation**\
 >> This image represents an example of the usage of MVC.
 >>
 >> <img src="images/uml/mvcPacman.jpg"  width="600" > 
 >> 
 >> An example of the application of this pattern can be found in the following links:
-> [INTRODUCE NEW LINKS HERE?]
 >> - [PacmanController](../src/main/java/ldts/pacman/controller/game/PacmanController.java)
 >> - [PacmanViewer](../src/main/java/ldts/pacman/view/game/PacmanViewer.java)
 >> - [Pacman](../src/main/java/ldts/pacman/model/game/elements/Pacman.java)
 >>
 >>**Consequences**\
-By using this pattern, we've delegated each responsibility to each class, now respecting the SRP.
-> There will only be one reason for each class to change.
+>>By using this pattern, we've delegated each responsibility to each class, now respecting the SRP.
+>> There will only be one reason for each class to change.
 
-### Application state
+>>### Application state
 >>**Problem in Context**\
 >> To define application state/behaviour, a possible but bad solution would be to have multiple flags for the states in the Game and use a switch-case statement.
-Any controller (controls movement of entities) could modify those flags which would make the game/application change behaviour.
-> This is a direct violation of the OCP.
+>>Any controller (controls movement of entities) could modify those flags which would make the game/application change behaviour.
+>> This is a direct violation of the OCP.
 >>
 >>**The Pattern**\
-We used the **State** Pattern to modify behaviour according to the state.
-This pattern allows us to represent different states with different subclasses.
-We can switch to a different state of the "game" by switching to another implementation (another subclass of State).
-Our game (main class) has a state and any controller can modify it. The state represents what's going on in the application.
-This pattern allows us to avoid the scattered conditional logic by using polymorphism.
-In the classes below, there's also present the usage of a FactoryMethod, allowing the subclasses of State to denote their controller and viewer of choice.
->> This will allow them to pass input from the user to their controller. 
->> 
+>>We used the **State** Pattern to modify behaviour according to the state.
+>>This pattern allows us to represent different states with different subclasses.
+>>We can switch to a different state of the "game" by switching to another implementation (another subclass of State).
+>>Our game (main class) has a state and any controller can modify it. The state represents what's going on in the application.
+>>This pattern allows us to avoid the scattered conditional logic by using polymorphism.
+>>In the classes below, there's also present the usage of a FactoryMethod, allowing the subclasses of State to denote their controller and viewer of choice.
+>> This will allow them to pass input from the user to their controller.
 >>
 >>**Implementation**
 >> 
->> <img src="images/uml/StateDiagram.jpg"  width="600" > 
+>> <img src="images/uml/ApplicationState.jpg"  width="600" > 
 >>
 >>  These classes can be found in the following links:
 >> - [Game](../src/main/java/ldts/pacman/Game.java)
@@ -200,15 +199,15 @@ In the classes below, there's also present the usage of a FactoryMethod, allowin
 >> - [ChooseLevelState](../src/main/java/ldts/pacman/application/state/menu/ChooseLevelState.java)
 >> - [SaveScoreState](../src/main/java/ldts/pacman/application/state/menu/SaveScoreState.java)
 >> - [ScoreMenuState](../src/main/java/ldts/pacman/application/state/menu/ScoreMenuState.java)
-
+>>
 >>**Consequences**\
-Using this pattern makes existing states explicit and easier to comprehend.
-There's no need for conditional statements in relation to application state, used polymorphism instead.
-Passing input to the controllers is now done by states using the factory method.
+>>Using this pattern makes existing states explicit and easier to comprehend.
+>>There's no need for conditional statements in relation to application state, used polymorphism instead.
+>>Passing input to the controllers is now done by states using the factory method.
 
->### Sound
->Even though we were using the Observer patter for the Sound (as discussed in the presentation), we decided it was not the best option.
->We also felt that we were forcing a not needed pattern, so we removed it.
+>>### Sound
+>>Even though we were using the Observer patter for the Sound (as discussed in the presentation), we decided it was not the best option.
+>>We also felt that we were forcing a not needed pattern, so we removed it.
 
 
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
@@ -260,7 +259,6 @@ treat all monsters the same way. Only the MonsterPlayer will have a PlayerMoveme
 A solution for this would be splitting the "interfaces" of said classes.
 In the first two examples, this does not seem necessary since they are exceptions to the rule.
 In the last example, we opted not to avoid this smell in order to treat the monsters, including MonsterPlayer, the same way.
-
 
 #### Data classes
 Since we've used the MVC architectural pattern, it is natural that some of our classes only contain data (fields and methods to access them) and don't have much behaviour.
