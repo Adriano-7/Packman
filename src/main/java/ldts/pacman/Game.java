@@ -1,9 +1,9 @@
 package ldts.pacman;
 
+import ldts.pacman.application.state.State;
 import ldts.pacman.application.state.menu.MainMenuState;
 import ldts.pacman.gui.LanternaGUI;
 import ldts.pacman.model.menu.options.MainMenu;
-import ldts.pacman.application.state.State;
 import ldts.pacman.sound.SoundSelection;
 
 import javax.sound.sampled.LineUnavailableException;

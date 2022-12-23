@@ -1,7 +1,10 @@
 package ldts.pacman.model.game.arena;
 
 import ldts.pacman.file.manipulation.ResourceFileReader;
-import ldts.pacman.model.game.elements.*;
+import ldts.pacman.model.game.elements.Coin;
+import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.PowerUp;
+import ldts.pacman.model.game.elements.Wall;
 import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.bot.OrangeMonster;
