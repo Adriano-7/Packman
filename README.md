@@ -47,16 +47,16 @@ For a more detailed versin of this description, click [here](./docs/README.md).
 </p>
 
 <p align="left" justify="left">
-  <img src="docs/gifs/MainMenu.gif" height="350"/>
-  <img src="docs/gifs/ChooseLevelMenu.gif" height="350"/>
-  <img src="docs/images/ScoreMenu.png" height="350"/>
+  <img src="docs/gifs/MainMenu.gif" height="325"/>
+  <img src="docs/gifs/ChooseLevelMenu.gif" height="325"/>
+  <img src="docs/images/ScoreMenu.png" height="325"/>
 </p>
 <p align="left">
   <b><i>Gif 3. Main Menu</i></b>
     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
   <b><i>Gif 4. Choose Level</i></b>
     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
   <b><i>Fig 1. Scores</i></b>
 </p>
