@@ -4,8 +4,8 @@ package ldts.pacman.controller.game;
 import ldts.pacman.controller.game.monster.state.ScaredState;
 import ldts.pacman.controller.game.movement.strategy.player.PacmanPlayerStrategy;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,11 +15,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 
 public class PacmanControllerTest {
     private PacmanController pacmanController;

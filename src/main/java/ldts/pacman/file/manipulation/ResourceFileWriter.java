@@ -1,6 +1,8 @@
 package ldts.pacman.file.manipulation;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 

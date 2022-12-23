@@ -1,6 +1,7 @@
 package ldts.pacman.model.menu.options;
 
 import ldts.pacman.sound.SoundSelection;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;

@@ -2,14 +2,14 @@ package ldts.pacman.model.game.elements.monsters;
 
 import ldts.pacman.controller.game.monster.state.ChaseState;
 import ldts.pacman.controller.game.monster.state.MonsterState;
-import ldts.pacman.controller.game.monster.state.ScatterState;
 import ldts.pacman.controller.game.movement.strategy.player.MonsterPlayerStrategy;
 import ldts.pacman.model.game.arena.Arena;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 
 public class MonsterPlayerTest {

@@ -136,15 +136,15 @@ We've used the Factory method several times in our code.
 >> These classes can be found in the following links:
 > [INTRODUCE NEW LINKS HERE]
 >> - [MonsterState](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/cc8ff46590408fddf089f15ea70145ae9de2201f/src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
->> - [PlayerStrategy]()
->> - [PacmanPlayerStrategy]()
->> - [MonsterPlayerStrategy]()
->> - [BotStrategy]()
->> - [ScaredStrategy]()
->> - [TargetStrategy]()
->> - [ScatterCornerStrategy]()
->> - [EatenStrategy]()
->> - [ChasePacmanStrategy]()
+>> - [PlayerMovementStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java)
+>> - [PacmanPlayerStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/player/PacmanPlayerStrategy.java)
+>> - [MonsterPlayerStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/player/MonsterPlayerStrategy.java)
+>> - [BotStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/BotStrategy.java)
+>> - [ScaredStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/ScaredStrategy.java)
+>> - [TargetStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/TargetStrategy.java)
+>> - [ScatterCornerStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
+>> - [EatenStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
+>> - [ChasePacmanStrategy](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
 >>
 >>**Consequences**
 >>As such, we've avoided having to duplicate code due to multiple entities having the same movement algorithm.
@@ -208,9 +208,10 @@ Using this pattern makes existing states explicit and easier to comprehend.
 There's no need for conditional statements in relation to application state, used polymorphism instead.
 Passing input to the controllers is now done by states using the factory method.
 
+>### Sound
+>Even though we were using the Observer patter for the Sound (as discussed in the presentation), we decided it was not the best option.
+>We also felt that we were forcing a not needed pattern, so we removed it.
 
-MORE PATTERNS:
-OBSERVER?
 
 
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS

@@ -1,7 +1,11 @@
 package ldts.pacman.model.game.arena;
 
 import ldts.pacman.model.game.Position;
-import ldts.pacman.model.game.elements.*;
+import ldts.pacman.model.game.elements.Coin;
+import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.PowerUp;
+import ldts.pacman.model.game.elements.Wall;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.monsters.bot.BlueMonster;
 import ldts.pacman.model.game.elements.monsters.bot.OrangeMonster;
 import ldts.pacman.model.game.elements.monsters.bot.PinkMonster;
@@ -11,7 +15,6 @@ import ldts.pacman.sound.SoundPacDies;
 import ldts.pacman.sound.SoundStartLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ldts.pacman.model.game.elements.monsters.Monster;
 import org.mockito.Mockito;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -20,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
