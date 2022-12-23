@@ -2,10 +2,10 @@ package ldts.pacman.controller.menu;
 
 import ldts.pacman.Game;
 import ldts.pacman.application.state.GameState;
-import ldts.pacman.application.state.MainMenuState;
+import ldts.pacman.application.state.menu.MainMenuState;
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.game.arena.ArenaLoader;
-import ldts.pacman.model.menu.ChooseLevel;
+import ldts.pacman.model.menu.options.ChooseLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -7,11 +7,11 @@ import ldts.pacman.view.Viewer;
 import java.util.List;
 
 public class ArenaViewer extends Viewer<Arena> {
-    private PacmanViewer pacmanViewer;
-    private MonsterViewer monsterViewer;
-    private CoinViewer coinViewer;
-    private WallViewer wallViewer;
-    private PowerUpViewer powerUpViewer;
+    private final PacmanViewer pacmanViewer;
+    private final MonsterViewer monsterViewer;
+    private final CoinViewer coinViewer;
+    private final WallViewer wallViewer;
+    private final PowerUpViewer powerUpViewer;
     public ArenaViewer(Arena arena) {
         super(arena);
         pacmanViewer = new PacmanViewer();

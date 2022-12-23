@@ -1,11 +1,12 @@
-package ldts.pacman.application.state;
+package ldts.pacman.application.state.menu;
 
+import ldts.pacman.application.state.State;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.ChooseLevelController;
-import ldts.pacman.model.menu.ChooseLevel;
+import ldts.pacman.model.menu.options.ChooseLevel;
 import ldts.pacman.view.Viewer;
-import ldts.pacman.view.menu.ChooseLevelViewer;
-import ldts.pacman.view.menu.OptionsViewer;
+import ldts.pacman.view.menu.options.ChooseLevelViewer;
+import ldts.pacman.view.menu.options.OptionsViewer;
 
 public class ChooseLevelState extends State<ChooseLevel> {
     public ChooseLevelState(ChooseLevel model) {

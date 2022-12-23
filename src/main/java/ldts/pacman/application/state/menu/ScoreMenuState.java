@@ -1,5 +1,6 @@
-package ldts.pacman.application.state;
+package ldts.pacman.application.state.menu;
 
+import ldts.pacman.application.state.State;
 import ldts.pacman.controller.Controller;
 import ldts.pacman.controller.menu.ScoreMenuController;
 import ldts.pacman.model.menu.ScoreMenu;
@@ -16,7 +17,6 @@ public class ScoreMenuState extends State<ScoreMenu> {
     }
     @Override
     protected Controller<ScoreMenu> getController() {
-        // refused bequest -> doesn't use model (ScoreMenu)
         return new ScoreMenuController(getModel());
     }
 }

@@ -1,10 +1,10 @@
-package ldts.pacman.sound.observer;
+package ldts.pacman.sound;
 
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
-public abstract class SoundObserver {
+public abstract class Sound {
     public abstract void onSoundEvent() throws UnsupportedAudioFileException, LineUnavailableException, IOException;
     protected void playSingleSound(String soundPath) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundPath));

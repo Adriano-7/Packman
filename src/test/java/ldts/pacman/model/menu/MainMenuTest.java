@@ -1,6 +1,7 @@
 package ldts.pacman.model.menu;
 
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.model.menu.options.MainMenu;
+import ldts.pacman.sound.SoundSelection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

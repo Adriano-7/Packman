@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class PacmanController extends GameController {
-    private PacmanPlayerStrategy pacmanStrategy;
+    private final PacmanPlayerStrategy pacmanStrategy;
     public PacmanController(Arena model, PacmanPlayerStrategy pacmanStrategy) {
         super(model);
         this.pacmanStrategy = pacmanStrategy;

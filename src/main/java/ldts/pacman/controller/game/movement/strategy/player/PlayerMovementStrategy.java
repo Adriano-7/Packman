@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class PlayerMovementStrategy extends MovementStrategy {
-    private Map<GUI.OPTION, Position> optionToDirection;
+    private final Map<GUI.OPTION, Position> optionToDirection;
 
     protected PlayerMovementStrategy(GUI.OPTION up, GUI.OPTION down, GUI.OPTION left, GUI.OPTION right, long timeBetweenMoves) {
         super(timeBetweenMoves);

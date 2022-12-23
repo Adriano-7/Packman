@@ -1,7 +1,7 @@
-package ldts.pacman.model.menu;
+package ldts.pacman.model.menu.options;
 
 import ldts.pacman.model.game.arena.ArenaLoader;
-import ldts.pacman.sound.observer.SoundSelection;
+import ldts.pacman.sound.SoundSelection;
 
 import java.util.Arrays;
 import java.util.List;

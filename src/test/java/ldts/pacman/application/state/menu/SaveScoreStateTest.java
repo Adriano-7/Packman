@@ -1,8 +1,8 @@
-package ldts.pacman.application.state;
+package ldts.pacman.application.state.menu;
 
 import ldts.pacman.controller.menu.SaveScoreController;
-import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.view.menu.SaveScoreViewer;
+import ldts.pacman.model.menu.options.SaveScore;
+import ldts.pacman.view.menu.options.SaveScoreViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

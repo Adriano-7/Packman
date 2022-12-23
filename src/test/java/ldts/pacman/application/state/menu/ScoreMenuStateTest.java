@@ -1,4 +1,4 @@
-package ldts.pacman.application.state;
+package ldts.pacman.application.state.menu;
 
 import ldts.pacman.controller.menu.ScoreMenuController;
 import ldts.pacman.gui.GUI;
