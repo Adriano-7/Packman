@@ -1,10 +1,8 @@
 package ldts.pacman.view.Menu;
 
 import ldts.pacman.gui.GUI;
-import ldts.pacman.model.game.Position;
 import ldts.pacman.model.menu.SaveScore;
-import ldts.pacman.sound.observer.SoundSelection;
-import ldts.pacman.sound.subject.SoundSubject;
+import ldts.pacman.view.menu.OptionsViewer;
 import ldts.pacman.view.menu.SaveScoreViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,32 +17,37 @@ import static org.mockito.Mockito.times;
 public class SaveScoreViewerTest {
     private SaveScore saveScore;
     private SaveScoreViewer saveScoreViewer;
+    private OptionsViewer optionsViewer;
     private GUI gui;
     @BeforeEach
     public void setUp() {
         this.saveScore = Mockito.mock(SaveScore.class);
-        saveScoreViewer = new SaveScoreViewer(saveScore);
-        gui = Mockito.mock(GUI.class);
+        this.optionsViewer = Mockito.mock(OptionsViewer.class);
+
+        this.saveScoreViewer = new SaveScoreViewer(saveScore, optionsViewer);
+        this.gui = Mockito.mock(GUI.class);
+
+        Mockito.doNothing().when(optionsViewer).drawOptions(gui);
     }
     @Test
     public void getModel() {
         assertEquals(saveScore, saveScoreViewer.getModel());
     }
     @Test
-    public void drawElements() {
-        saveScoreViewer.drawElements(gui);
+    public void drawElements() throws IOException {
+        saveScoreViewer.draw(gui);
 
+        Mockito.verify(gui, times(1)).clear();
         Mockito.verify(gui, atLeastOnce()).drawText(any(), any(), any());
+        Mockito.verify(gui, times(1)).refresh();
     }
     @Test
     public void draw() {
-        SaveScoreViewer spy = Mockito.spy(saveScoreViewer);
-        Mockito.doNothing().when(spy).drawElements(gui);
         try {
-            spy.draw(gui);
+            saveScoreViewer.draw(gui);
 
             Mockito.verify(gui, times(1)).clear();
-            Mockito.verify(spy, times(1)).drawElements(gui);
+            Mockito.verify(optionsViewer, times(1)).drawOptions(gui);
             Mockito.verify(gui, times(1)).refresh();
         }
         catch (IOException e) {

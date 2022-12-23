@@ -11,6 +11,6 @@ public class ChooseLevelViewer extends MenuViewer<ChooseLevel> {
     }
     @Override
     protected void drawHeader(GUI gui) {
-        gui.drawText(new Position(5, 5), "CHOOSE LEVEL", "#FFFFFF");
+        gui.drawText(new Position(5, 7), "CHOOSE LEVEL", "#FFFFFF");
     }
 }

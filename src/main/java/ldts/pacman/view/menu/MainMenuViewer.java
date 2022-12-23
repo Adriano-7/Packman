@@ -11,6 +11,6 @@ public class MainMenuViewer extends MenuViewer<MainMenu> {
     }
     @Override
     protected void drawHeader(GUI gui) {
-        gui.drawText(new Position(5, 5), "MAIN MENU", "#FFFFFF");
+        gui.drawText(new Position(5, 7), "MAIN MENU", "#FFFFFF");
     }
 }
