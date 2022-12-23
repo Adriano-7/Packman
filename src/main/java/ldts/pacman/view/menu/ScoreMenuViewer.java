@@ -15,7 +15,6 @@ public class ScoreMenuViewer extends Viewer<ScoreMenu> {
         gui.drawText(new Position(5, 5), "TOP 10 SCORES", "#FFFFFF");
         List<String> scores = getModel().getLines();
         for (int i = 0; i < scores.size(); i++) {
-            // TODO: choose a color
             gui.drawText(new Position(0, 5 + (i + 1)),
                     scores.get(i), "#FFFF00");
         }

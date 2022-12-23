@@ -16,7 +16,6 @@ public class ScoreMenuState extends State<ScoreMenu> {
     }
     @Override
     protected Controller<ScoreMenu> getController() {
-        // refused bequest -> doesn't use model (ScoreMenu)
         return new ScoreMenuController(getModel());
     }
 }

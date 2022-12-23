@@ -12,7 +12,7 @@ public class ScaredStrategy extends BotStrategy {
         super(400);
     }
 
-    private boolean move(MovableElement element, Arena arena) {
+    private void move(MovableElement element, Arena arena) {
         List<Position> validDirections = getValidDirections(element, arena);
 
         int n = (int) (Math.random() * validDirections.size());
@@ -20,13 +20,13 @@ public class ScaredStrategy extends BotStrategy {
 
         element.setDirection(nextDirection);
         element.setPosition(element.getPosition().plus(nextDirection));
-        return true;
     }
     @Override
     public boolean move(MovableElement element, Arena arena, List<GUI.OPTION> options, long time) {
         if (enoughTimeElapsed(time)) {
             setLastMovement(time);
-            return move(element, arena);
+            move(element, arena);
+            return true;
         }
         return false;
     }

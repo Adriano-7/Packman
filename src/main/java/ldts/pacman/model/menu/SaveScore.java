@@ -1,13 +1,10 @@
 package ldts.pacman.model.menu;
 
 import ldts.pacman.sound.observer.SoundSelection;
-import ldts.pacman.sound.subject.SoundSubject;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class SaveScore extends Menu {
