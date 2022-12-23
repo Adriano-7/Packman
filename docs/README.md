@@ -5,6 +5,9 @@
 If one of the ghosts catches you, you will lose a life unless you've eaten a power pellet, in which case you can eat the ghosts for bonus points. If you lose all your three lives, it's game over.
 You'll also be able to play with your friend in a 2-player mode, where one of you will live in the shoes of Pac-Man and the other will be a ghost.
 
+<p align="center" justify="center">
+  <img src="gifs/SinglePlayer.gif" width="400"/>
+
 > The keyboard controls are:
 >- Up/Down/Left/Right: moving in the menu and moving the pacman
 >- W/A/S/D: moving for the monster player
@@ -12,6 +15,7 @@ You'll also be able to play with your friend in a 2-player mode, where one of yo
 >- Q: going back (in game and in menu)
 
 This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Félix Martins* (*up202108837*@fe.up.pt) and *Tomás Pereira* (*up202108845*@fe.up.pt) for LDTS 2022⁄23.
+
 ## IMPLEMENTED FEATURES
 >- **Connected Menus** - Browsing back and forth through different Menus
 >- **Main Menu** to browse to different menus and to choose whether to play single or multiplayer
@@ -27,10 +31,6 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >- **Loading map from file** - map is loaded from file thus allowing different maps to be used
 >- **Resetting map** - after pacman collects all coins of the map, the coins and powerUps get reset back to how they were in the start of the level
 
-## PLANNED FEATURES
-All planned features were implemented.
-
-
 ## DESIGN
 
 >> ### GUI
@@ -44,7 +44,7 @@ All planned features were implemented.
 >>
 >>**Implementation**
 >> 
->> <img src="https://user-images.githubusercontent.com/93844395/204065998-a82f33bd-253e-4c7f-8e70-a52c010587c6.jpg" height="336,63" width="531,09" >
+>><img src="images/uml/LanternaAdapterPattern.jpg" width="600"/>
 >>
 >> These classes can be found in the following links:
 >> - [GUI](https://github.com/FEUP-LDTS-2022/project-l04gr03/blob/main/src/main/java/ldts/pacman/gui/GUI.java)
@@ -275,7 +275,9 @@ We did not consider this a bad code smell, since it directly originates from the
 ## TESTING
 ### Coverage Report
 
-<img src="https://user-images.githubusercontent.com/93844395/204059751-7b661b7e-4353-4d14-a1db-d0f69be09885.png" height="340,2" width="997,5" >
+<p align="center" justify="center">
+  <img src="images/reports/PIP.png"  width="800"/>
+</p>
 
 -[Mutation testing report](https://adriano-7.github.io/)
 
