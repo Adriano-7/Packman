@@ -6,14 +6,13 @@ import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.sound.observer.SoundPacCoin;
 import ldts.pacman.sound.observer.SoundPacDies;
 import ldts.pacman.sound.observer.SoundStartLevel;
-import ldts.pacman.sound.subject.SoundSubject;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Arena extends SoundSubject {
+public class Arena {
     private final int width;
     private final int height;
     private Pacman pacman;
@@ -33,7 +32,7 @@ public class Arena extends SoundSubject {
         this.soundPacCoin = soundPacCoin;
         this.soundPacDies = soundPacDies;
         this.soundStartLevel = soundStartLevel;
-        playSingleSound(soundStartLevel);
+        soundStartLevel.onSoundEvent();
     }
     public int getWidth() {
         return width;
@@ -84,7 +83,7 @@ public class Arena extends SoundSubject {
     public Monster getCollidingMonster(Position position) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (Monster monster: monsters) {
             if (monster.getPosition().equals(position)) {
-                playSingleSound(soundPacDies);
+                soundPacDies.onSoundEvent();
                 return monster;
             }
         }
@@ -92,7 +91,7 @@ public class Arena extends SoundSubject {
     }
     public boolean collidesWithPacman(Monster monster) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         if (monster.collides(pacman)) {
-            playSingleSound(soundPacDies);
+            soundPacDies.onSoundEvent();
             return true;
         }
         return false;
@@ -111,7 +110,7 @@ public class Arena extends SoundSubject {
             if(coin.collides(pacman)) {
                 coins.remove(coin);
                 pacman.increaseScore();
-                playSingleSound(soundPacCoin);
+                soundPacCoin.onSoundEvent();
                 break;
             }
         }
@@ -129,6 +128,6 @@ public class Arena extends SoundSubject {
     public void resetLevel() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.coins = new ArrayList<>(initialCoins);
         this.powerUps = new ArrayList<>(initialPowerUps);
-        playSingleSound(soundStartLevel);
+        soundStartLevel.onSoundEvent();
     }
 }
