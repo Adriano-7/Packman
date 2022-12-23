@@ -1,13 +1,13 @@
 package ldts.pacman.application.state.menu;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import ldts.pacman.controller.menu.ChooseLevelController;
+import ldts.pacman.model.menu.options.ChooseLevel;
 import ldts.pacman.view.menu.options.ChooseLevelViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import ldts.pacman.model.menu.options.ChooseLevel;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChooseLevelStateTest {
     ChooseLevel chooseLevel;

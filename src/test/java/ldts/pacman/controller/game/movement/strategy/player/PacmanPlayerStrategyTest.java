@@ -10,7 +10,6 @@ import org.mockito.Mockito;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 
@@ -18,11 +17,9 @@ public class PacmanPlayerStrategyTest {
 
     private PacmanPlayerStrategy pacmanStrategy;
     private Pacman pacman;
-    // private Arena arena;
 
     @BeforeEach
     public void setUp() {
-        // this.arena = Mockito.mock(Arena.class);
         this.pacman = Mockito.mock(Pacman.class);
         this.pacmanStrategy = new PacmanPlayerStrategy();
     }

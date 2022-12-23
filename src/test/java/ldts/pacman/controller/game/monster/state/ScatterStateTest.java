@@ -2,15 +2,17 @@ package ldts.pacman.controller.game.monster.state;
 
 import ldts.pacman.controller.game.movement.strategy.MovementStrategy;
 import ldts.pacman.model.game.arena.Arena;
-import ldts.pacman.model.game.elements.monsters.Monster;
 import ldts.pacman.model.game.elements.Pacman;
+import ldts.pacman.model.game.elements.monsters.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.times;
 
 public class ScatterStateTest {
