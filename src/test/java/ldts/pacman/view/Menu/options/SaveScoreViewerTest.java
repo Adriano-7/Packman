@@ -1,4 +1,4 @@
-package ldts.pacman.view.Menu;
+package ldts.pacman.view.Menu.options;
 
 import ldts.pacman.gui.GUI;
 import ldts.pacman.model.menu.options.SaveScore;

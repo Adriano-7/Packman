@@ -1,4 +1,4 @@
-package ldts.pacman.controller.game.movement.strategy;
+package ldts.pacman.controller.game.movement.strategy.bot;
 
 import ldts.pacman.controller.game.movement.strategy.bot.ScaredStrategy;
 import ldts.pacman.model.game.Position;
