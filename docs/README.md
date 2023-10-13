@@ -43,13 +43,13 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>In the case that we would change the external library, all that would be needed is to implement the GUI interface in a new class and pass that derived class to our classes.
 >>
 >>**Implementation**
->> 
->><img src="images/uml/LanternaAdapterPattern.jpg" width="600"/>
->>
->> These classes can be found in the following links:
->> - [GUI](../src/main/java/ldts/pacman/gui/GUI.java)
->> - [LanternaGUI](../src/main/java/ldts/pacman/gui/LanternaGUI.java)
->>
+ 
+<img src="images/uml/LanternaAdapterPattern.jpg" width="600"/>
+
+ These classes can be found in the following links:
+ - [GUI](../src/main/java/ldts/pacman/gui/GUI.java)
+ - [LanternaGUI](../src/main/java/ldts/pacman/gui/LanternaGUI.java)
+
 >> The client in the picture is a denotation for all the classes that use the GUI (mostly Viewer classes)
 >> 
 >>**Consequences**\
@@ -71,20 +71,20 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>
 >> The UML class diagram for the MonsterStates is presented here:
 >>
->>  <img src="images/uml/MonsterState_UML_diagram.jpg" width="700" >
->>
->> The UML state diagram for the MonsterStates is presented here:
->>
->>  <img src="images/uml/MonsterStateDiagram.jpg" width="700" >
->>
->> These classes can be found in the following links:
->> - [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java)
->> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
->> - [ScatterState](../src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
->> - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
->> - [EatenState](../src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java)
->> - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
->>
+<img src="images/uml/MonsterState_UML_diagram.jpg" width="700" >
+
+ The UML state diagram for the MonsterStates is presented here:
+
+<img src="images/uml/MonsterStateDiagram.jpg" width="700" >
+
+ These classes can be found in the following links:
+ - [Monster](../src/main/java/ldts/pacman/model/game/elements/monsters/Monster.java)
+ - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
+ - [ScatterState](../src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
+ - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
+ - [EatenState](../src/main/java/ldts/pacman/controller/game/monster/state/EatenState.java)
+ - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
+
 >>**Consequences**\
 >> This pattern allows us to change the monster behaviour (state) during runtime, and we've avoided scattered conditional logic.
 >> Another benefit is making these state transitions explicit in the code.
@@ -102,20 +102,20 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >> Only those will (know to) specify the concrete specification (e.g. ScaredState defines ScaredStrategy)
 >>
 >>**Implementation**
->> 
->><img src="images/uml/FactoryMethod_createStrategy.jpg" width="900"/>
->> 
->> These classes can be found in the following links:
->> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
->> - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
->> - [ScatterState](../src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
->> - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
->> - [MovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/MovementStrategy.java)
->> - [ScaredStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/ScaredStrategy.java)
->> - [ChasePacmanStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
->> - [ScatterCornerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
->> - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
->>
+ 
+<img src="images/uml/FactoryMethod_createStrategy.jpg" width="900"/>
+ 
+ These classes can be found in the following links:
+ - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
+ - [ScaredState](../src/main/java/ldts/pacman/controller/game/monster/state/ScaredState.java)
+ - [ScatterState](../src/main/java/ldts/pacman/controller/game/monster/state/ScatterState.java)
+ - [ChaseState](../src/main/java/ldts/pacman/controller/game/monster/state/ChaseState.java)
+ - [MovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/MovementStrategy.java)
+ - [ScaredStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/ScaredStrategy.java)
+ - [ChasePacmanStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ChasePacmanStrategy.java)
+ - [ScatterCornerStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/ScatterCornerStrategy.java)
+ - [EatenStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/bot/target/EatenStrategy.java)
+
 >>**Consequences**\
 >> By using this pattern, we delegate the algorithm choice for the movement to the concrete MonsterStates, that know which to define.
 >> When asked to move a monster, the MonsterState can easily ask its MovementStrategy to do so.
@@ -131,9 +131,9 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >> A given entity must only identify as moving with that algorithm and not define it.
 >>
 >>**Implementation**
->>
->> <img src="images/uml/StrategyPattern.jpg"  width="900" > 
->> 
+
+ <img src="images/uml/StrategyPattern.jpg"  width="900" > 
+ 
 >> These classes can be found in the following links:
 >> - [MonsterState](../src/main/java/ldts/pacman/controller/game/monster/state/MonsterState.java)
 >> - [PlayerMovementStrategy](../src/main/java/ldts/pacman/controller/game/movement/strategy/player/PlayerMovementStrategy.java)
@@ -162,13 +162,13 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>**Implementation**\
 >> This image represents an example of the usage of MVC.
 >>
->> <img src="images/uml/mvcPacman.jpg"  width="600" > 
->> 
->> An example of the application of this pattern can be found in the following links:
->> - [PacmanController](../src/main/java/ldts/pacman/controller/game/PacmanController.java)
->> - [PacmanViewer](../src/main/java/ldts/pacman/view/game/PacmanViewer.java)
->> - [Pacman](../src/main/java/ldts/pacman/model/game/elements/Pacman.java)
->>
+<img src="images/uml/mvcPacman.jpg"  width="600" > 
+
+ An example of the application of this pattern can be found in the following links:
+ - [PacmanController](../src/main/java/ldts/pacman/controller/game/PacmanController.java)
+ - [PacmanViewer](../src/main/java/ldts/pacman/view/game/PacmanViewer.java)
+ - [Pacman](../src/main/java/ldts/pacman/model/game/elements/Pacman.java)
+
 >>**Consequences**\
 >>By using this pattern, we've delegated each responsibility to each class, now respecting the SRP.
 >> There will only be one reason for each class to change.
@@ -190,17 +190,17 @@ This project was developed by *Adriano Machado* (*up202105352*@fe.up.pt), *Féli
 >>
 >>**Implementation**
 >> 
->> <img src="images/uml/ApplicationState.jpg"  width="600" > 
->>
->>  These classes can be found in the following links:
->> - [Game](../src/main/java/ldts/pacman/Game.java)
->> - [State](../src/main/java/ldts/pacman/application/state/State.java)
->> - [GameState](../src/main/java/ldts/pacman/application/state/GameState.java)
->> - [MainMenuState](../src/main/java/ldts/pacman/application/state/menu/MainMenuState.java)
->> - [ChooseLevelState](../src/main/java/ldts/pacman/application/state/menu/ChooseLevelState.java)
->> - [SaveScoreState](../src/main/java/ldts/pacman/application/state/menu/SaveScoreState.java)
->> - [ScoreMenuState](../src/main/java/ldts/pacman/application/state/menu/ScoreMenuState.java)
->>
+<img src="images/uml/ApplicationState.jpg"  width="600" > 
+
+  These classes can be found in the following links:
+ - [Game](../src/main/java/ldts/pacman/Game.java)
+ - [State](../src/main/java/ldts/pacman/application/state/State.java)
+ - [GameState](../src/main/java/ldts/pacman/application/state/GameState.java)
+ - [MainMenuState](../src/main/java/ldts/pacman/application/state/menu/MainMenuState.java)
+ - [ChooseLevelState](../src/main/java/ldts/pacman/application/state/menu/ChooseLevelState.java)
+ - [SaveScoreState](../src/main/java/ldts/pacman/application/state/menu/SaveScoreState.java)
+ - [ScoreMenuState](../src/main/java/ldts/pacman/application/state/menu/ScoreMenuState.java)
+
 >>**Consequences**\
 >>Using this pattern makes existing states explicit and easier to comprehend.
 >>There's no need for conditional statements in relation to application state, used polymorphism instead.
